@@ -42,6 +42,6 @@ Bellow are included files, when compiled you should see complete lyrics
 
 ---
 
-!{{sandman/1.md}}
+!{{report/sandman/1.md}}
 
 ---

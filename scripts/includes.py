@@ -50,4 +50,8 @@ def scanForReplacement(cwd, file):
 	file.close()
 	return "" 
 
-print scanForReplacement(os.getcwd(), open(sys.argv[1], "r"))
+cwd = os.getcwd()
+filepath = os.path.realpath(os.path.join(cwd, sys.argv[1]))
+cwd = os.path.dirname(filepath)
+
+print scanForReplacement(cwd, open(filepath, "r"))
