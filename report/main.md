@@ -1,7 +1,1 @@
-!{{../README.md}}
-
-## Include code 
-
-```c
-!{{../code/martin.c}}
-```
+!{{social_consequenses.md}}
