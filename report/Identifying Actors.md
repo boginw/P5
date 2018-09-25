@@ -12,7 +12,7 @@ The current death rate in Denmark by cars is as low as it has ever been [^vejdir
 
 #### Car Manufacturers
 
-Safety is highly regarded at car manufacturers such as Tesla where extensive testing is done in order to make sure that users of their cars can feel as safe as possible while driving. This is also why Tesla is so diligent about their auto pilot system that provides partial autonomous driving. Partial autonomous driving because of the fact that the user is always recommended to be aware of dangerious environments and circumstances while their auto pilot system is active. 
+Safety is highly regarded at car manufacturers such as Tesla where extensive testing is done in order to make sure that users of their cars can feel as safe as possible while driving. This is also why Tesla is so diligent about their auto pilot system that provides partial autonomous driving. Partial autonomous driving because of the fact that the user is always recommended to be aware of dangerous environments and circumstances while their auto pilot system is active. 
 
 Safety is a very important topic for car manufacturers because any kind of accident that leads to death, especially where families are involved, could eventually lead to a bad reputation and inevitably a decrease in the number of cars sold by the individual car manufacturers. That's also why Tesla recommends that you are 100% aware duing their auto pilot system even though it is as advanced as it is. 
 
