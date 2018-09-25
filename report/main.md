@@ -1,7 +1,1 @@
-!{{../README.md}}
-
-## Include code 
-
-```c
-!{{../code/martin.c}}
-```
+!{{Current Systems.md}}
