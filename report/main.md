@@ -1,8 +1,1 @@
-!{{../README.md}}
-
-## Include code 
-
-```c
-!{{../code/martin.c}}
-!{{is speed a concern.md}}
-```
+!{{is_speed_a_concern.md}}
