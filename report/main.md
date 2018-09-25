@@ -1,7 +1,1 @@
-!{{../README.md}}
-
-## Include code 
-
-```c
-!{{../code/martin.c}}
-```
+!{{is_speed_a_concern.md}}
