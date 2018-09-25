@@ -28,6 +28,3 @@ Another report by AIB from 2011[^HVU_Grove_Hastighedsovertrædelser] investigate
 [^HVU_Grove_Hastighedsovertrædelser]: The Danish Road Traffic Accident Investigation Board: Grove Hastighedsovertrædelser from: http://www.hvu.dk/SiteCollectionDocuments/HVUrapp08_Hastighed.pdf
 
 [^VD_Trafikulykker_for_året_2017]: Vejdirektoratet: Trafikulykker for året 2017 from http://www.vejdirektoratet.dk/DA/viden_og_data/publikationer/Lists/Publikationer/Attachments/979/Trafikulykker%20for%20%C3%A5ret%202017%20-%20web.pdf
-
-# Economic Consequences
-
