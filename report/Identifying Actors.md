@@ -12,11 +12,9 @@ The current death rate in Denmark by cars is as low as it has ever been [^vejdir
 
 #### The Car Manufacturers
 
-Safety is highly regarded at car manufacturers such as Tesla where extensive testing is done in order to make sure that users of their cars can feel as safe as possible while driving [^tesla_safety_measures]. This is also why Tesla is so diligent about their AutoPilot system, which provides partial autonomous driving. Partial autonomous driving because of the fact that the user is always recommended to be aware of dangerous environments and circumstances while their auto pilot system is active [^tesla_hands_on]. 
+Safety is highly regarded at car manufacturers such as Tesla where extensive testing is done in order to make sure that users of their cars can feel as safe as possible while driving [^tesla_safety_measures]. This is also why Tesla is so diligent about their AutoPilot system, which provides full autonomous driving capabilities. 
 
-Safety is a very important topic for car manufacturers because any kind of accident that leads to death, especially where families are involved, could eventually lead to a bad reputation and inevitably a decrease in the number of cars sold by the individual car manufacturers. Because of this, Tesla recommends drivers keep fully aware during their auto-pilot system is on, albeit not strictly necessary.
-
-However, even though safety is an important aspect of a car another one is how the future market will evolve. The inidivual car manufacturers could seem more attractive for certain companies like those providing ride-sharing as a service. If we are moving toward a future where autonomous cars will become more and more normal, then creating solutions and implementing them in various cars will also become more attractive.
+Safety is a very important topic for car manufacturers because any kind of accident that leads to death, especially where families are involved, could eventually lead to a bad reputation and inevitably a decrease in the number of cars sold by the individual car manufacturers. This is one reasn why Tesla recommends drivers always stay fully aware and not sleep while the Tesla AutoPilot system is on [^tesla_hands_on].
 
 #### The Users
 
