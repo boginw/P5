@@ -2,11 +2,13 @@
 When it comes to traffic safety there is a lot of factors that affects every single accident. In 2017 1.756 people were seriously injured in a road accident, and 175 people lost their life in Denmark.[^VD_Trafikulykker_for_året_2017]  
 
 To better understand how speed affects traffic accidents, the Council for Safe Traffic composed some statistics from data published by The Norwegian Public Roads Administration. These statistics show a correlation between speed and fatalities in accidents[^CFST_Statistics].
+
 | Speed | Frontal Collision | Pedestrian Crossing |
 | ----- | ----------------- | ------------------- |
 | 80 km/h | In 3 out of 10 accidents someone dies | In 6 out of 10 accidents a pedestrian dies. |
 | 90 km/h | In 6 out of 10 accidents someone dies | In 8 out of 10 accidents a pedestrian dies. |
 | 100 km/h | In 8 out of 10 accidents someone dies | In 9 out of 10 accidents a pedestrian dies. |
+
 Likewise, a report from The Danish Road Directorate[^DRD_fatal_accidents] shows that in 2010 52% of the accidents where the driver drove more than 20 km/h above the speed limit resulted in a fatal accident, and only 6% escaped without any injuries. In cases where the driver complies with the speed limit 31% of accidents were fatal, and 37% were completely unharmed. Furthermore, the numbers reveal that the speeding limit was exceeded in 59% of all fatal accidents.
 
 In Denmark the government funded institution The Danish Road Traffic Accident Investigation Board (AIB) is responsible for analyzing the different accidents involving severe injury or death.  
