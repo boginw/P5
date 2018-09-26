@@ -2,7 +2,7 @@
 
 This section concerns the identification and reasoning of actors that are interested in a solution that could reduce the risk of death or any other incapacitated state caused by car accidents.
 
-In articles written by Vejdirektoratet [^vejdirektoratet] and Marketresearch[^marketresearch] 2 actors were identified.
+In articles written by Vejdirektoratet [^vejdirektoratet] and Marketresearch[^marketresearch] two actors were identified.
 
 #### The Danish Government
 
