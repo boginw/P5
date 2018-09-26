@@ -14,7 +14,7 @@ The current death rate in Denmark by cars is as low as it has ever been [^vejdir
 
 Safety is highly regarded by car manufacturers such as Tesla where extensive testing is done in order to make sure that users of their cars can feel as safe as possible while driving [^tesla_safety_measures]. This is also why Tesla is so diligent about their AutoPilot system, which provides full autonomous driving capabilities. 
 
-Safety is a very important topic for car manufacturers. Any kind of accident that leads to death, especially where families are involved, is most likely, as indicated in an article published by Fortune [^tesla_stock_price_decrease], to decrease the stock price and potentially the total amount of cars sold by the individual car manufacturer. This is one reasn why Tesla recommends drivers always stay fully aware and not sleep while the Tesla AutoPilot system is on [^tesla_hands_on].
+Safety is a very important topic for car manufacturers. Any kind of accident that leads to death, especially where families are involved, is most likely, as indicated in an article published by Fortune [^tesla_stock_price_decrease], to decrease the stock price and potentially the total amount of cars sold by the individual car manufacturer. This is one reason why Tesla recommends drivers always stay fully aware and not sleep while the Tesla AutoPilot system is on [^tesla_hands_on].
 
 #### The Users
 
