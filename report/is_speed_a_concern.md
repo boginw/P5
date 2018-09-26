@@ -2,6 +2,14 @@
 When it comes to traffic safety there is a lot of factors that affects every single accident. In 2017 1.756 people were seriously injured in a road accident, and 175 people lost their life in Denmark.[^VD_Trafikulykker_for_året_2017]  
 In Denmark the government funded institution The Danish Road Traffic Accident Investigation Board (AIB) is responsible for analyzing the different accidents involving severe injury or death.
 
+To better understand how speed affects traffic accidents, the Council for Safe Traffic composed some statistics from data published by The Norwegian Public Roads Administration. These statistics show a correlation between speed and fatalities in accidents[^CFST_Statistics].
+| Speed | Frontal Collision | Pedestrian Crossing |
+| ----- | ----------------- | ------------------- |
+| 80 km/h | In 3 out of 10 accidents someone dies | In 6 out of 10 accidents a pedestrian dies. |
+| 90 km/h | In 6 out of 10 accidents someone dies | In 8 out of 10 accidents a pedestrian dies. |
+| 100 km/h | In 8 out of 10 accidents someone dies | In 9 out of 10 accidents a pedestrian dies. |
+Likewise, a report from The Danish Road Directorate shows that in 2010 52% of the cases where the driver drove more than 20 km/h above the speed limit resulted in a fatal accident, and only 6% escaped without any injuries. In cases where the driver complies with the speed limit 31% of accidents were fatal, and 37% were completly unharmed. Furtermore, the numbers reveal that the speeding limit was exceeded in 59% of all fatal accidents.
+
 Due to the AIB being the sole provider of these reports in Denmark, they provide the reports that create the foundation for this project.
 
 In a report from December 2014[^HVU_hvorfor_sker_ulykker] the AIB investigates the factors contributing to the cause and the severity of the accidents.  
@@ -20,6 +28,8 @@ The increased speed means the risk-willing driver has less time to recognize and
 
 Another report by AIB from 2011[^HVU_Grove_Hastighedsovertrædelser] investigates the reason why people decides to drive too fast. 99 drivers who exceeded the speed limit was interviewed, and out of these, 44 of the drivers mentions being busy as the reason for exceeding the speed limit.  
 32 drivers mentions inattention as the reason why they drove to fast. Of these 32 drivers only 8 of them was not aware that they actually exceeded the speed limit. The remaining 26 drivers was aware that they exceeded the speed limit, but not by how much.
+
+[^CFST_Statistics]: The Council For Safe Traffic - Statistic - https://www.sikkertrafik.dk/presse/statistik/adfaerd/fart
 
 [^HVU_hvorfor_sker_ulykker]: The Danish Road Traffic Accident Investigation Board: Hvorfor sker trafikulykkerne? from http://www.hvu.dk/SiteCollectionDocuments/PDFx_HVUdec14_HvorforSkerUlykkerne.pdf
 
