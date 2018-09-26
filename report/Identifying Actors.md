@@ -6,7 +6,7 @@ In articles written by Vejdirektoratet [^vejdirektoratet] and Marketresearch[^ma
 
 #### The Danish Government
 
-The Danish Government has been identified as an actor because of the that their interest in reducing death and other effects of car accident is considered high due to social and economic consequences. Car accidents resulting in deaths can be immensely expensive. Police work, ambulance roll-out, cleaning, and other related tasks are all required for each crash. Car accidents resulting in forms of paralysis can be even more expensive as. 
+The Danish Government has been identified as an actor due to its interest in reducing death and other effects of car accident is considered high due to social and economic consequences. Car accidents resulting in deaths can be immensely expensive. Police work, ambulance roll-out, cleaning, and other related tasks are all required for each crash. Car accidents resulting in forms of paralysis can be even more expensive as. 
 
 The current death rate in Denmark by cars is as low as it has ever been [^vejdirektoratet], but it is still considered high. Therefore, a solution that could potentially reduce the risk of death or becoming incapacitated in such a manner that one is unable to work is desired. That is why autonomous cars could be considered a solution as this feature would perhaps reduce the total amount of decisions made by the individual users. An increase in the likelihood that rules such as the minimum distance from you to the car infront and speed limitis will be complied with. In regards to the speed limit, one potential would be that even if the user tried to exceed the speed limit for a given range, it would not be possible. 
 
