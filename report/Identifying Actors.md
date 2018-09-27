@@ -18,7 +18,7 @@ Safety is a very important topic for car manufacturers. Any kind of accident tha
 
 #### The Users
 
-In many circumstances, the drivers and the passangers of the car are the victims of injury during a car accident. As injury inarguably is an undesirable result, which is why the users are also considered an actor. Given a fully autonomous car, the user focuses on other things whilst in transit. Essentially, this frees the user from spending time on driving. 
+In many circumstances, the drivers and the passengers of the car are the victims of injury during a car accident. As injury inarguably is an undesirable result, which is why the users are also considered an actor. Given a fully autonomous car, the user focuses on other things whilst in transit. Essentially, this frees the user from spending time on driving. 
 
 [^vejdirektoratet]: http://www.vejdirektoratet.dk/DA/om-os/nyheder-og-presse/nyheder/Sider/F%C3%A6rre-dr%C3%A6bte-i-trafikken-i-2017---men-fortsat-for-mange.aspx
 
