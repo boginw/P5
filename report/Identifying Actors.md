@@ -6,9 +6,9 @@ In articles written by Vejdirektoratet [^vejdirektoratet] and Marketresearch[^ma
 
 #### The Danish Government
 
-The Danish Government has been identified as an actor due to its interest in reducing death and other effects of car accidents are considered high due to social and economic consequences. Car accidents resulting in deaths can be immensely expensive. Police work, ambulance roll-out, cleaning, and other related tasks are all required for each crash. Car accidents resulting in forms of paralysis can be even more expensive. 
+The Danish Government has been identified as an actor due to its interest in reducing death. Other effects of car accidents are considered high due to social and economic consequences. Car accidents resulting in deaths can be immensely expensive. Police work, ambulance roll-out, cleaning, and other related tasks are all required for each incident. Car accidents resulting in forms of paralysis can be even more expensive. 
 
-The current death rate in Denmark by cars is as low as it has ever been [^vejdirektoratet], but it is still considered high. Therefore, a solution that could potentially reduce the risk of death or becoming incapacitated in such a manner that one is unable to work is desired. That is why autonomous cars could be considered a solution as this feature would perhaps reduce the total amount of decisions made by the individual users. With autonomous cars, laws such as the required minimum distance between cars would be enforced automatically, thereby eliminating tailgating. In regards to the speed limit, one potential would be that even if the user tried to exceed the speed limit for a given range, it would not be possible. 
+The current death rate in Denmark by cars is as low as it has ever been [^vejdirektoratet], but it is still considered high. Therefore, a solution that could potentially reduce the risk of death or becoming incapacitated in such a manner that one is unable to work is desired. That is why autonomous cars could be considered a solution as this feature would perhaps reduce the total amount of decisions made by the individual users. With autonomous cars, laws such as the required minimum distance between cars would be enforced automatically thereby eliminating tailgating. It could also hinder the user exceeding the speed limit for a given range. 
 
 #### The Car Manufacturers
 
@@ -18,7 +18,7 @@ Safety is a very important topic for car manufacturers. Any kind of accident tha
 
 #### The Users
 
-In many circumstances the drivers and the passangers of the car are the victims of injury during a car accident. As injury inarguably is an undesirable result, which is why the users are also considered an actor. As mentioned earlier in regards to car accidents and the correlation between death and an increase of total expenses in Denmark, it is course inexpedient and rather undesirable as the Danish welfare system depends on all taxpayers to continue providing healthcare and making other areas in Denmark free to the general public. Given a fully autonomous car, the user focuses on other things whilst in transit. Essentially, this frees the user from spending time on driving. 
+In many circumstances, the drivers and the passangers of the car are the victims of injury during a car accident. As injury inarguably is an undesirable result, which is why the users are also considered an actor. Given a fully autonomous car, the user focuses on other things whilst in transit. Essentially, this frees the user from spending time on driving. 
 
 [^vejdirektoratet]: http://www.vejdirektoratet.dk/DA/om-os/nyheder-og-presse/nyheder/Sider/F%C3%A6rre-dr%C3%A6bte-i-trafikken-i-2017---men-fortsat-for-mange.aspx
 
