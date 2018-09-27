@@ -11,7 +11,7 @@ As a result of brainstorming, several ideas were generated as listed below:
 
 Following a conceptual expansion on all ideas, as well as a voting session, the latter was chosen as the general subject for this project.
 
-This procedure (brainstorm -> expand -> vote) was reused to narrow down the chosen subject. Being realistic and motivated to work were two criteria kept in mind, during the expansion, as to not end up overcomplicating the task or make it less enthralling. Following a vote, it was decided to look more into the speed at which an autonomous vehicle might travel.
+This procedure (brainstorm -> expand -> vote) was reused to narrow down the chosen subject. Being realistic and motivated to work were two criteria kept in mind during the expansion, as to not end up overcomplicating the task or make it less enthralling. Following a vote, it was decided to look more into the speed at which an autonomous vehicle might travel.
 
 #### Formulating a relevant initial problem statement
 Statistics from DEMA (Denmark's Emergency Management Agency) show that 1748 traffic accidents were responded to in 2017 [^DEMA_statistics]. Violation of speed regulations might be a contributing factor, which led to the following initial problem statement:
