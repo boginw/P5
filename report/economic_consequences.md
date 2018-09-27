@@ -10,8 +10,8 @@ Hvad koster det, og for hvem?
 3% af 41.272 skal får men som påvirker deres arbejdsliv. 
 6% skal have genoptræning, hjemmehjælp, pleje og efterbehandling i en periode efterfølgende.
 
-In statistics collected by Statistics Denmark [^statikbanken.dk] 41.272 people where involved in a transport accident. This number includes all kinds of transportation like cars and trucks, but it also includes pedestrian and bicyclist accidents. A table over the average costs for an accident i shown in table [the one under here]. There are two categories, one for all the injuries handled by the emergency rooms, and the other is injuries registered by the police.
-According to Statistics Denmark 16727 of the 41.272 in table [table under here] accidents are related to  vehicles.
+In statistics collected by Statistics Denmark [^statikbanken.dk] 41.272 people were involved in a transport accident. This number includes all kinds of transportation like cars and trucks, but it also includes pedestrian and bicycle accidents. A table over the average costs for an accident is shown in table [the one under here]. There are two categories; one for all the injuries handled by the emergency rooms, and the other is injuries registered by the police.
+According to Statistics Denmark 16727 of the 41.272 accidents in table [table under here] 16.727 accidents are related to  vehicles.
 
 |                                           |    Kommunernes andel | Regionernes andel | Statens andel | I alt   |
 | ----------------------------------------- | -------------------- | ----------------- | ------------- | ------- |
@@ -28,5 +28,6 @@ According to Statistics Denmark 16727 of the 41.272 in table [table under here] 
 | **I alt**                                 |    393.291           | 15.622            | 188.667       | 597.580 |
 | **Procentvis fordeling**                  |    65,8%             | 2,6%              | 31,6%         | 100,0%  |
 
-As seen in the table the cost of injuries registered by the police typically are around 5 times more expensive, this is due to the police typically handling more severe cases causing it to cost up to about 600.000 in average. 
-As seen the costs for the expenditure is most heavily on the municipality and the state, this is because they are the one providing the funds for the long time services like rehabilitation and transfer payments.  
+As seen in the table the cost of injuries registered by the police typically are around 5 times more expensive.  
+The reason behind this is that the police is only dispatched if it is a severe incident, where the involved parts usually get lasting injuries that will hinder their ability to work and function in normal everyday activities, requiring support both financially and in with everyday chores.  
+This is also why both the municipalities and the state shares the biggest load for each incident: they are the ones who are responsible for the transfer payments to support the victims.
