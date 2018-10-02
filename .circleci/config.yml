@@ -8,7 +8,7 @@ jobs:
      - checkout
      - run:
          name: Install pandoc-citeproc
-         command: apt-get install pandoc-citeproc -y
+         command: cabal install pandoc-citeproc
      - run:
          name: Install python
          command: apt-get update && apt-get install python -y
