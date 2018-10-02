@@ -7,6 +7,9 @@ jobs:
    steps:
      - checkout
      - run:
+         name: Install pandoc-citeproc
+         command: apt-get install pandoc-citeproc -y
+     - run:
          name: Install python
          command: apt-get update && apt-get install python -y
      - run:
