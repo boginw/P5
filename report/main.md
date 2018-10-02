@@ -1,6 +1,7 @@
 
+!{{Problem Analysis/Is Speed a Concern.md}}
+!{{Problem Analysis/Current Systems.md}}
+!{{Problem Analysis/Identifying Actors.md}}
 
-!{{is_speed_a_concern.md}}
-!{{Current Systems.md}}
 
 # References
