@@ -12,7 +12,7 @@ To include another file, the following command can be used:
 
 ## Install & Compile
 
-Although you will not need to install anything (except a Markdown editor) as the[CI](https://circleci.com/gh/Lynhx/P5) will generate artifacts, including a compiled PDF, this can be helpful for taking a glimpse of what the final result might look like.
+Although you will not need to install anything (except a Markdown editor) as the [CI](https://circleci.com/gh/Lynhx/P5) will generate artifacts, including a compiled PDF, this can be helpful for taking a glimpse of what the final result might look like.
 
 ### Install
 To install you'll need some prerequisites (_these packages are fairly large_).
@@ -34,14 +34,3 @@ To compile, just execute the following command:
 
 If no errors occurred, you should see a folder `dist` in the root of the project, containing the resulting PDF `output.pdf`.
 
-## Example
-
-Bellow are included files, when compiled you should see complete lyrics
-
-### Mr. Sandman
-
----
-
-!{{report/sandman/1.md}}
-
----
