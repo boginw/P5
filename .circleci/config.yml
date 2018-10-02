@@ -3,12 +3,9 @@ jobs:
  build:
    working_directory: ~/project
    docker:
-     - image: jagregory/pandoc:latest
+     - image: boginw/markdown-pandoc:latest
    steps:
      - checkout
-     - run:
-         name: Install pandoc-citeproc
-         command: cabal install pandoc-citeproc
      - run:
          name: Install python
          command: apt-get update && apt-get install python -y
