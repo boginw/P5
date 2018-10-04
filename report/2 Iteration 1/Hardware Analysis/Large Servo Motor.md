@@ -1,20 +1,22 @@
 ## EV3 Large Servo Motor
 
-According to Lego the EV3 Large Servo Motor is the most powerfull motor they provide, it uses tacho feedback whis is a instrument that measures the rotation speed of the motor. This allows for precise control which Lego claims is in one degree of accuracy. Lego also claims that motors have some intelligence that allows for aligning motors together, such that they would be able to drive in a straight line at the same speed[^Large_servo_motor].
+The vehicle to be built is required to drive, hence a motor or two are required. The Lego Group provides two types of motors with their Lego Mindstorm set[@mindstorm_set], and to achieve higher speeds with the vehicle, the larger motors, EV3 Large Servo Motor[@large_servo_motor], will be used for drive.
+
+According to Lego the EV3 Large Servo Motor is a powerful motor they which uses tacho feedback (tachometer) which is a instrument that measures the rotation speed of the motor. This allows for precise control which Lego claims is in one degree of accuracy. Lego also claims that motors have some intelligence that allows for aligning motors together, such that they would be able to drive in a straight line at the same speed[@large_servo_motor].
 
 ### Specifications
+These specifications where fetched from the product page of EV3 Large Servo[@large_servo_motor] and filtered such that only the relevant specifications for the vehicle remain.
 
-- Tachometer to one degree of accuracy
 - 160-170 RPM (Rounds per minute)
 - Running torque of 20 N.cm
 - Stall torque of 40 N.cm
-- XXX cm x XXXX cm x XXXX cm
-- XXX grams
 
 ### Hypothesis
-As the two EV3 Large Motors used in this project is brand new, it is assumed that they will perform better than the specification provided by Lego, this assumtion is based of the presumption that Lego provides conservative numbers for their specifications. It is therefore assumed that the actual measurement for torque is about between 5-10% higher than what the specification states. The same is assumed for the RPMs of the motor.
+As the motors provided in the set are brand new, it is assumed that they will perform better than the specification provided by Lego, this assumption is based on the presumption that the specifications provided is created conservatively. It is therefore assumed that the actual measurements for torque and RPM are about between 5-10% higher than what the specification states.
 
-It is assumed that the specifications given by Lego are based on tests with an external power source and not the included battery. Albeit the power source is expected to equal the output of the included battery at maximum charge. It is therefore presumed that different power levels yield different measurements, including differing torque and RPMs.
+It is assumed that the specifications given by Lego are based on tests with an external power source and not the included battery. Albeit the power source is expected to equal the output of the included battery at maximum charge. As the power-level of the battery 
+
+It is therefore presumed that different power levels yield different measurements, including differing torque and RPMs.
 
 The included battery is rated at 7.4V, but the EV3 also takes six standard AA batteries, which are rated at 1.5V, which results in 9V in serial. It is therefore assumed, that given a higher voltage, the measurements of both torque and speed, would be higher than the given specifications.
 
@@ -59,4 +61,3 @@ The above method for analyzing the precision of the motor, is to be repeated on 
 
 ### Conclusion
 
-[^Large_servo_motor]: EV3 Large Servo Motor -https://shop.lego.com/en-CA/EV3-Large-Servo-Motor-45502
