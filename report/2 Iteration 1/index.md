@@ -1,0 +1,1 @@
+!{{Hardware Analysis/Large Servo Motor.md}}

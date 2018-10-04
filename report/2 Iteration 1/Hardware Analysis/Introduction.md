@@ -1,0 +1,3 @@
+# Hardware Analysis
+
+In this chapter all the hardware availble and usefull for the group will be analyzied and tested. Every piece of hardware will be introduced and the specification provided by the manufactor will be presented. Afterwards the group wil present one or more hypothesis about the hardware, that should be tested. Then a methodology for testing those hypothesis will be presented. The results from the actual expirements will be presented and analysised, finally the group will conclude on their findings in terms of how the specific piece of hardware should be regarded moving forward.
