@@ -1,0 +1,25 @@
+# The Design of The Vehicle's Chassis
+This section includes a thorough description of how the car was build and the reasoning behind many of the design choices. Iterations of the vehicle - if the car have had its design changed during an iteration - will not be included as this was decided to be redundant. 
+
+### The Chassis Design
+// Should this be merged with the introduction above?
+Most vehicles that are driven on the road are of some square shape. Why? In this subsection it will be explored why exactly this design choice is a good way to construct a car's chassis. Furthermore, different chassis design options will be showcased and finally one will be chosen as the design that will be used to build the car. The design of the car will not change during the rest of this project unless good arguments of why such decision must be made is put forward for discussion.
+
+
+
+
+#### The Square Shape
++ Why do cars have this shape? 
++ Images
++ Alternatives?
++ Our choice and why.
+
+#### The Balance of the Car
++ Optimal destribution between weight and structural integrity.
++ Images
+
+#### Location of the Motor
++ Explain the difference between having the motor at the front, middle or back. 
++ Our choice and why. 
++ Images
+
