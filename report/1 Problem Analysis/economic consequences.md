@@ -7,7 +7,7 @@ Hvad koster det, og for hvem?
 
 
 2011 - 41.272 personskader i trafikken - 4.158 registreret hos politiet.
-3% af 41.272 skal får men som påvirker deres arbejdsliv. 
+3% af 41.272 skal får men som påvirker deres arbejdsliv.
 6% skal have genoptræning, hjemmehjælp, pleje og efterbehandling i en periode efterfølgende.
 
 In statistics collected by Statistics Denmark [^statikbanken.dk] 41.272 people were involved in a transport accident. This number includes all kinds of transportation like cars and trucks, but it also includes pedestrian and bicycle accidents. A table over the average costs for an accident is shown in table [the one under here][^VD_Offentlige_udgifter]. There are two categories; one for all the injuries handled by the emergency rooms, and the other is injuries registered by the police.
@@ -38,12 +38,12 @@ The longer a victim of an incident is affected by the injuries, the costlier it 
 The following will be a case study of an accident where the driver becomes paralyzed from the neck and down.[^ST_case_om_ulykke]
 Although the source considers another accident, the consequences and following process of said incident is identical.
 A young driver named Nikolaj and his friend becomes involved in an accident. His friend is unharmed, but Nikolaj gets a twist in his back and an accumulation of fluid in his spinal cord following the accident.  
-Within the first hour of the accident, society has the first expenses: 
+Within the first hour of the accident, society has the first expenses:
 
 | Expense | Cost     |
 | ---- | --------:|
 | Rescue and transport to the nearest hospital | 3.500 DKK|
- 
+
 These expenses does not take materialistic damage into account, as this is usually paid for by private insurance companies. Loss of earnings are likewise not calculated, as this is a complicated calculation that is dependent on a lot of variables, as there will be more people in a line on a freeway than a highway, and more people in the morning than at noon or at night. Furthermore it will be impossible to track how big the expenses actually are, as some people will have others who are not able to start without them in a meeting, and others will just be able to work extra time to compensate for the loss.
 
 Nikolaj is hospitalized for three weeks, and then moved to a rehabilitation center. He spends 11 months at this place, apart from 14 days where he is yet again hospitalized for various studies and a surgery operation.  
