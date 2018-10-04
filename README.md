@@ -10,6 +10,24 @@ To include another file, the following command can be used:
 
 **NOTE:** this command must be the only content on the line, otherwise it will be ignored.
 
+
+## Style
+
+The following describes how to keep the agreed style of formatting.
+
+### Titles and Headlines
+
+In this report The Chicago Manual of Style (CMOS) will be used as style for headlines and titles. The rules are as follow:
+1. Capitalize the first and last words in titles and subtitles (but see rule 7), and capitalize all other major words (nouns, pronouns, verbs, adjectives, adverbs, and some conjunctions—but see rule 4).
+2. Lowercase the articles *the*, *a*, and *an*.
+3. Lowercase prepositions, regardless of length, except when they are used adverbially or adjectivally (*up* in *Look Up*, *down* in *Turn Down*, *on* in *The On Button*, *to* in *Come To*, etc.) or when they compose part of a Latin expression used adjectivally or adverbially (*De Facto*, *In Vitro*, etc.).
+4. Lowercase the common coordinating conjunctions *and*, *but*, *for*, *or*, and *nor*.
+5. Lowercase *to* not only as a preposition (rule 3) but also as part of an infinitive (*to Run*, *to Hide*, etc.), and lowercase as in any grammatical function.
+6. Lowercase the part of a proper name that would be lowercased in text, such as *de* or *von*.
+7. Lowercase the second part of a species name, such as *fulvescens* in *Acipenser fulvescens*, even if it is the last word in a title or subtitle.
+
+The list has been yanked from the [CMOS-homepage](https://www.chicagomanualofstyle.org/book/ed17/part2/ch08/psec159.html).
+
 ### Citations
 
 To cite, please add your reference in the `report/biblio.bib` file first. The syntax for citing is as follows:
