@@ -1,10 +1,17 @@
 # Identifying Actors
 
-This section concerns the identification and reasoning of actors that are interested in a solution that could reduce the risk of death or any other incapacitated state caused by car accidents.
+<!-- This section concerns the identification and reasoning of actors that are interested in a solution that could reduce the risk of death or any other incapacitated state caused by car accidents.
 
-In articles written by Vejdirektoratet [^vejdirektoratet] and Marketresearch[^marketresearch], two actors were identified.
+In articles written by Vejdirektoratet [^vejdirektoratet] and Marketresearch[^marketresearch], two actors were identified. -->
 
-#### The Car Manufacturers
+5 levels of automation
+
+
+
+Safety is highly regarded by car manufacturers, extensive testing is done in order to make sure that users of cars can feel as safe as possible while driving. Many car manufactures are working on automating the different aspects of driving, and to varying degrees. This amount of automation is called "the five levels of automation". [^sea_5_level]
+Where level 0 describes a car with no automation, and level 5 describes a completely autonomous car. Many of the major car manufactures work with this scarle []
+
+
 
 Safety is highly regarded by car manufacturers such as Tesla where extensive testing is done in order to make sure that users of their cars can feel as safe as possible while driving [^tesla_safety_measures]. This is also why Tesla is so diligent about their AutoPilot system, which provides full autonomous driving capabilities. 
 
@@ -21,3 +28,6 @@ Safety is a very important topic for car manufacturers. Any kind of accident tha
 [^tesla_safety_measures]: https://www.tesla.com/da_DK/blog/update-last-week%E2%80%99s-accident?redirect=no
 
 [^tesla_stock_price_decrease]: http://fortune.com/2018/03/28/tesla-stock-price-model-x-crash-credit-crunch/
+
+[^sea_5_level]:
+https://www.sae.org/binaries/content/assets/cm/content/news/press-releases/pathway-to-autonomy/automated_driving.pdf
