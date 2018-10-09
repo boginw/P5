@@ -1,11 +1,11 @@
 Safety is highly regarded by car manufacturers, extensive testing is done in order to make sure that users of cars can feel as safe as possible while driving. Many car manufactures are working on automating the different aspects of driving, to make them both more safe, and convenient. This amount of automation is described in a taxonomy called "The Five Levels of Automation". [^sae_5_level]
 Where level 0 describes a car with no automation, and level 5 describes a completely autonomous car. Many of the major car manufactures, like BMW [^bmw], Mercedes[^mercedes], and Hyundai [^hyundai], work with this scale.
 
-In 2008 Marcin L. Eichner et. al. published a paper[^eichner08] on how to recognize round speed limit signs with a neural network. The paper separated the recognition into two tasks: detection and then recognition. A camera was to be placed in the car facing the road ahead. The algorithm would then extract the red channel from the image and try to detect circles in this channel, which would identify a speed sign. After detecting the speed sign the image would be cropped as to only contain the necessary part of the image, namely the speed sign. This cropped image would then be fed to an Artificial Neural Network to classify which speed sign it was.
-
-The technology used in the paper was first used in the redesigned BMW 7-Series. Although, only a sidenode to the car, this paper set the stepping stone for traffic-sign-recognition in cars. 
+An example of a part of such automation is described in 2008 Marcin L. Eichner et. al. published a paper[^eichner08] on how to recognize round speed limit signs with a neural network. The algorithm would use the red channel of an image to detect speed signs. Then crop the image to only contain the speed sign, and then feed it to a neural network, which will then classify the speed sign.
 
 Since then such algorithms have been integrated in many cars. Manufacturers such as BMW, Ford, and Audi have integrated traffic sign recognition in their cars with disparate actions[^bmwRec] [^fordRec] [^audiRec]. The technology is used to notify the driver of the current speed limit in case the driver missed the sign. In some cases cars even adjust the speed of the car to the current speed limit in an adaptive-cruise-control matter.
+
+Another example is Hyundai, they use a ultrasonic and radar sensors to cover blind spots in the car. The car will then alert the driver if other vehicles is approaching or has entered the blind spot. The system will also prevent the driver from leaving his/her lane it has detected a vehicle in the blind spot[^hyundai_blind_spot].
 
 [^eichner08]: http://breckon.eu/toby/publications/papers/eichner08speedlimit_a.pdf
 
@@ -19,14 +19,12 @@ Since then such algorithms have been integrated in many cars. Manufacturers such
 
 [^marketresearch]: https://blog.marketresearch.com/artificial-intelligence-in-cars-what-to-expect-from-2017-to-2021
 
-[^sae_5_level]:
-https://www.sae.org/binaries/content/assets/cm/content/news/press-releases/pathway-to-autonomy/automated_driving.pdf
+[^sae_5_level]: https://www.sae.org/binaries/content/assets/cm/content/news/press-releases/pathway-to-autonomy/automated_driving.pdf
 
-[^bmw]:
-https://www.bmw.com/en/automotive-life/autonomous-driving.html
+[^bmw]: https://www.bmw.com/en/automotive-life/autonomous-driving.html
 
-[^mercedes]:
-https://www.mercedes-benz.com/en/mercedes-benz/next/automation/mapping-the-way-to-autonomous-driving/
+[^mercedes]: https://www.mercedes-benz.com/en/mercedes-benz/next/automation/mapping-the-way-to-autonomous-driving/
 
-[^hyundai]:
-https://www.hyundai.news/eu/technology/how-do-self-driving-cars-work/
+[^hyundai]: https://www.hyundai.news/eu/technology/how-do-self-driving-cars-work/
+
+[^hyundai_blind_spot]: https://www.hyundai.news/eu/technology/another-set-of-eyes-how-does-blind-spot-detection-work/
