@@ -1,4 +1,4 @@
-# The Design of The Vehicle's Chassis
+# The Design of the Vehicle's Chassis
 
 This section includes a thorough description of how the car was built and the reasoning behind the design. Iterations of the vehicle - if the design of the car was to change during an iteration - will not be included as this was decided to be redundant. 
 
