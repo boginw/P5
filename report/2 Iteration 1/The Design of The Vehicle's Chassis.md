@@ -2,7 +2,7 @@
 
 This section includes a thorough description of how the car was built and the reasoning behind the design. Iterations of the vehicle - if the design of the car was to change during an iteration - will not be included as this was decided to be redundant. 
 
-Most vehicles that are driven on the road are more or less square shaped. Why? In this subsection, it is explored why exactly this design choice is a good way to construct a car's chassis. The design of the car will not change during the rest of this project unless good arguments of why such decision must be made is put forward for discussion. 
+Most vehicles that are driven on the road are more or less square shaped. Why? In this subsection, reasoning of why exactly this design choice is a good way to construct the LEGO car's chassis will be explored. The design of the car will not change during the rest of this project unless good arguments of why such a decision must be made is put forward for discussion. 
 
 ### The Shape of the Car
 
@@ -32,7 +32,7 @@ The optimal distribution of the weight of the car and its structural integrity a
 + Images
 
 ### The Chassis Design
-
+As is depicted on the images from the previous two subsections, the design that was choosen is of square shape. The reason why is because of the general balance of the car, not actually needing off-road strength etc., but also because it was the most prefered out of the few prototypes that were drawn because building the LEGO car. 
 
 
 
