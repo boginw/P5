@@ -67,10 +67,6 @@ In another report  from 2011[^HVU_Grove_Hastighedsovertrædelser] the AIB invest
 
 In articles written by Vejdirektoratet [^vejdirektoratet] and Marketresearch[^marketresearch], two actors were identified. -->
 
-5 levels of automation
-
-
-
 Safety is highly regarded by car manufacturers, extensive testing is done in order to make sure that users of cars can feel as safe as possible while driving. Many car manufactures are working on automating the different aspects of driving, and to varying degrees. This amount of automation is called "the five levels of automation". [^sea_5_level]
 Where level 0 describes a car with no automation, and level 5 describes a completely autonomous car. Many of the major car manufactures work with this scarle []
 
