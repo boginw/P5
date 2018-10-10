@@ -1,3 +1,3 @@
-!{{Hardware Analysis/Large Servo Motor.md}}
 
-!{{Desgin Criteria.md}}
+!{{Design Criteria.md}}
+!{{Hardware Analysis/index.md}}
