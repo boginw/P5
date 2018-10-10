@@ -1,17 +1,19 @@
-# Introduction
+<!-- # Introduction
 
-<!---
 #### Formulating a Relevant Initial Problem Statement
 Statistics from DEMA (Denmark's Emergency Management Agency) show that 1748 traffic accidents were responded to in 2017 [^DEMA_statistics]. Violation of speed regulations might be a contributing factor, which led to the following initial problem statement:
--->
+
+
 
 > *What is the cost of speeding for the Danish society in terms of economic and social perspectives?*
+
 
 [^AAU_Curriculum_SW5]: Aalborg University curriculum for Software 5 2018 (https://www.sict.aau.dk/digitalAssets/106/106274_software-bachelor.pdf)
 
 [^Amazon_Go]: Amazon.com:: Amazon Go (https://www.amazon.com/b?ie=UTF8&node=16008589011)
 
 [^DEMA_statistics]: DEMA (Denmark's Emergency Management Agency) on amount of 112-calls regarding traffic accidents (https://statistikbank.brs.dk/sb#page=e0048a3f-66c0-4ab9-b894-6d5f3de59ff0)
+-->
 
 # Is Speed Really a Concern?
 When it comes to traffic safety there are a lot of factors that affect every single accident. In 2017 1.756 people were seriously injured in a road accident, and 175 people lost their life in Denmark[^VD_Trafikulykker_for_året_2017].  
@@ -48,6 +50,10 @@ In another report  from 2011[^HVU_Grove_Hastighedsovertrædelser] the AIB invest
 32 drivers mention inattention as the reason why they drove too fast. Based on these 32 drivers only 8 of them were not aware that they actually exceeded the speed limit. The remaining 26 drivers was aware that they exceeded the speed limit, but not by how much.
 -->
 
+Now that we have established that speed actually is a relevant factor in traffic accidents, we formulate the following initial problem statement:
+
+> *What is done today to assist drivers to respect the speed limit, to reduce the amount and severety af accidents?*
+
 [^DRD_fatal_accidents]: The Danish Road Directorate - fatal accidents and speed - http://www.vejdirektoratet.dk/DA/viden_og_data/publikationer/Lists/Publikationer/Attachments/508/hastigheder%20ved%20d%C3%B8dsulykker.pdf
 
 [^CFST_Statistics]: The Council For Safe Traffic - Statistic - https://www.sikkertrafik.dk/presse/statistik/adfaerd/fart
@@ -60,37 +66,7 @@ In another report  from 2011[^HVU_Grove_Hastighedsovertrædelser] the AIB invest
 
 [^VD_Trafikulykker_for_året_2017]: Vejdirektoratet: Trafikulykker for året 2017 from http://www.vejdirektoratet.dk/DA/viden_og_data/publikationer/Lists/Publikationer/Attachments/979/Trafikulykker%20for%20%C3%A5ret%202017%20-%20web.pdf
 
-
-# Identifying Actors
-
-<!-- This section concerns the identification and reasoning of actors that are interested in a solution that could reduce the risk of death or any other incapacitated state caused by car accidents.
-
-In articles written by Vejdirektoratet [^vejdirektoratet] and Marketresearch[^marketresearch], two actors were identified. -->
-
-Safety is highly regarded by car manufacturers, extensive testing is done in order to make sure that users of cars can feel as safe as possible while driving. Many car manufactures are working on automating the different aspects of driving, and to varying degrees. This amount of automation is called "the five levels of automation". [^sea_5_level]
-Where level 0 describes a car with no automation, and level 5 describes a completely autonomous car. Many of the major car manufactures work with this scarle []
-
-
-
-Safety is highly regarded by car manufacturers such as Tesla where extensive testing is done in order to make sure that users of their cars can feel as safe as possible while driving [^tesla_safety_measures]. This is also why Tesla is so diligent about their AutoPilot system, which provides full autonomous driving capabilities.
-
-Safety is a very important topic for car manufacturers. Any kind of accident that leads to death, especially where families are involved, is most likely, as indicated in an article published by Fortune [^tesla_stock_price_decrease], to decrease the stock price and potentially the total amount of cars sold by the individual car manufacturer. This is one reason why Tesla recommends drivers always stay fully aware and not sleep while the Tesla AutoPilot system is on [^tesla_hands_on].
-
-<!--Safty assisting technology is now mature enough to be used in commercial cars, without compromising safty. -->
-
-[^vejdirektoratet]: http://www.vejdirektoratet.dk/DA/om-os/nyheder-og-presse/nyheder/Sider/F%C3%A6rre-dr%C3%A6bte-i-trafikken-i-2017---men-fortsat-for-mange.aspx
-
-[^marketresearch]: https://blog.marketresearch.com/artificial-intelligence-in-cars-what-to-expect-from-2017-to-2021
-
-[^tesla_hands_on]: https://electrek.co/2018/06/11/tesla-autopilot-update-nag-hands-wheel/
-
-[^tesla_safety_measures]: https://www.tesla.com/da_DK/blog/update-last-week%E2%80%99s-accident?redirect=no
-
-[^tesla_stock_price_decrease]: http://fortune.com/2018/03/28/tesla-stock-price-model-x-crash-credit-crunch/
-
-[^sea_5_level]:
-https://www.sae.org/binaries/content/assets/cm/content/news/press-releases/pathway-to-autonomy/automated_driving.pdf
-
+# Current Systems
 
 Safety is highly regarded by car manufacturers, extensive testing is done in order to make sure that users of cars can feel as safe as possible while driving. Many car manufactures are working on automating the different aspects of driving, to make them both more safe, and convenient. This amount of automation is described in a taxonomy called "The Five Levels of Automation". [^sae_5_level]
 Where level 0 describes a car with no automation, and level 5 describes a completely autonomous car. Many of the major car manufactures, like BMW [^bmw], Mercedes[^mercedes], and Hyundai [^hyundai], work with this scale.
@@ -100,7 +76,7 @@ Since then such algorithms have been integrated in many cars. Manufacturers such
 
 Another example is Hyundai, they use a ultrasonic and radar sensors to cover blind spots in the car. The car will then alert the driver if other vehicles is approaching or has entered the blind spot. The system will also prevent the driver from leaving his/her lane it has detected a vehicle in the blind spot[^hyundai_blind_spot].
 
-[^eichner08]: http://breckon.eu/toby/publications/papers/eichner08speedlimit_a.pdf
+[^eichner08]:http://breckon.eu/toby/publications/papers/eichner08speedlimit_a.pdf
 
 [^fordRec]: https://www.ford.co.uk/shop/research/technology/driving-experience/traffic-sign-recognition-system
 
