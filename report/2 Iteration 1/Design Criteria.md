@@ -10,7 +10,7 @@ These criteria will determine how the car should be designed, and will be evalua
 
 ### Components
 
-Given the specifications some components are already known to be required to build a functioning speed-sign-recognizing car with adjustable speeds. Including the whole car, the required components are listed below.
+Given the specifications, some of the required components is known in advance in order to make a functioning speed-sign-recognizing car with adjustable speeds. Including the whole car, the required components are listed below.
 
   * Let $C$ denote the entire car with its components.
 * Let $E$ denote the EV3 computer.
@@ -18,7 +18,7 @@ Given the specifications some components are already known to be required to bui
 * Let $W$ denote a single wheel including tire, of which 4 are required.
 * Let $O$ denote the camera.
 
-To be able to test multiple prototypes, and to withhold other criterion, a simple design is preferable to better optimize other criterion and for better time efficiency.
+To be able to test multiple prototypes, and to withhold other criteria, a simple design is preferable to better time efficiency.
 
 ### Weight
 
@@ -26,11 +26,11 @@ Let $X_w$ denote the weight of component $X$. With the given minimum required co
 
 $$\min(C_w) = E_w + M_w + O_w \times 4$$
 
-As the weight will affect many other criterion, as more weight requires more torque, hence less speed, and reduced rigidness, this will be important to keep low.
+The weight will affect many other criterion, as more weight requires more torque, hence less speed, and reduced rigidness, this will be important to keep low.
 
 ### Speed
 
-To illustrate the car changing speed, it will be important to have speed settings, which are easily observed visually. This, in turn, sets a requirement for a large speed range. As such, higher max speed ($C_s$) is preferable.
+There is a need for different speed levels which are distinguishable so that the differences can be clearly observed. This results in a need for a sufficient max speed ($C_s$) to accommodate this.
 
 ### Rigidness
 
