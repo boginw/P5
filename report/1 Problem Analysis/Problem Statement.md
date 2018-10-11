@@ -8,7 +8,12 @@ Following this initial problem analysis, we arrived at the following problem sta
 
 > *How would an adaptive-cruise-control-demo be implemented/designed as an embedded intelligent system?*
 
-_(Here be some DOD's, perhaps...)_ 
+As a solution to this problem, we are expecting to present a demonstrational prototype capable of the following:
+
+* Driving in a straight line.
+* Being able to manually adjust speed.
+* Being able to intelligently adjust speed according to road signs.
+
 
 <!--
 From an investigation conducted by the AIB 291 accidents were analysed. AIB found that in a bit over 40% af these accidents high speed was involved and in 30 of these cases high speed worsened the accident.

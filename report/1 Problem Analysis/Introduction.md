@@ -37,14 +37,14 @@ Now that we have established that speed actually is a relevant factor in traffic
 [^VD_Trafikulykker_for_året_2017]: Vejdirektoratet: Trafikulykker for året 2017 from http://www.vejdirektoratet.dk/DA/viden_og_data/publikationer/Lists/Publikationer/Attachments/979/Trafikulykker%20for%20%C3%A5ret%202017%20-%20web.pdf
 
 ## Current Systems
-In this section some of the current solutions the car manufacturers are employing to increase traffic safety. The section will only investigate what manufacturers are doing for the problem described in section [^initialProblem], as the report will focus on a technological approach to reduce and solve the problem.
+In this section some of the current solutions used by car manufacturers to increase traffic safety are presented. The section will only investigate what manufacturers are doing for problems derived from the initial problem, as the report will focus on a technological approach to reduce and solve the problem.
 
 Safety is highly regarded by car manufacturers, extensive testing is done in order to make sure that users of cars can feel as safe as possible while driving. Many car manufactures are working on automating the different aspects of driving, to make them both more safe, and convenient. This amount of automation is described in a taxonomy called "The Five Levels of Automation". [^sae_5_level]
 Where level 0 describes a car with no automation, and level 5 describes a completely autonomous car. Many of the major car manufactures, like BMW [^bmw], Mercedes[^mercedes], and Hyundai [^hyundai], work with this scale.
 
 An example of part of such automation is made by Hyundai, they use ultrasonic and radar sensors to cover blind spots in the car. The car will then alert the driver if other vehicles is approaching or has entered the blind spot. The system will also prevent the driver from either leaving his/her lane, or break, if it has detected a vehicle in the blind spot[^hyundai_blind_spot].
 
-Another example is described in 2008 Marcin L. Eichner et. al. published a paper[^eichner08] on how to recognize round speed limit signs with a neural network. The algorithm would use the red channel of an image to detect speed signs. Then crop the image to only contain the speed sign, and then feed it to a neural network, which will then classify the speed sign.
+In 2008 Marcin L. Eichner et. al. published a paper[^eichner08] on how to recognize round speed limit signs with a neural network. The algorithm would use the red channel of an image to detect speed signs. Then crop the image to only contain the speed sign, and then feed it to a neural network, which will then classify the speed sign.
 Since then such algorithms have been integrated in many cars. Manufacturers such as BMW, Ford, and Audi have integrated traffic sign recognition in their cars with disparate actions[^bmwRec] [^fordRec] [^audiRec]. The technology is used to notify the driver of the current speed limit in case the driver missed the sign. In some cases cars even adjust the speed of the car to the current speed limit in an adaptive-cruise-control matter.
 
 
