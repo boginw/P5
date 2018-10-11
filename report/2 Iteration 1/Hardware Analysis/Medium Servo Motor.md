@@ -1,4 +1,4 @@
-##EV3 Medium Servo Motor
+## EV3 Medium Servo Motor
 
 According to Lego the EV3 Medium Servo Motor is ideal for lower-load and higher speed applications. It introduces faste response times compared to the Ev3 Large Motor and has a smaller profile. It uses tacho feedback whis is a instrument that measures the rotation speed of the motor. This allows for precise control which Lego claims is in one degree of accuracy. [@medium_servo_motor]
 
