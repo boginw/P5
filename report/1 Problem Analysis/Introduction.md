@@ -1,32 +1,18 @@
-<!-- # Introduction
+# Introduction
+<!--- Skriv noget om hvad fanden man kan forvente sig af det her kapitel. Sgu! --->
 
-#### Formulating a Relevant Initial Problem Statement
-Statistics from DEMA (Denmark's Emergency Management Agency) show that 1748 traffic accidents were responded to in 2017 [^DEMA_statistics]. Violation of speed regulations might be a contributing factor, which led to the following initial problem statement:
-
-
-
-> *What is the cost of speeding for the Danish society in terms of economic and social perspectives?*
-
-
-[^AAU_Curriculum_SW5]: Aalborg University curriculum for Software 5 2018 (https://www.sict.aau.dk/digitalAssets/106/106274_software-bachelor.pdf)
-
-[^Amazon_Go]: Amazon.com:: Amazon Go (https://www.amazon.com/b?ie=UTF8&node=16008589011)
-
-[^DEMA_statistics]: DEMA (Denmark's Emergency Management Agency) on amount of 112-calls regarding traffic accidents (https://statistikbank.brs.dk/sb#page=e0048a3f-66c0-4ab9-b894-6d5f3de59ff0)
--->
-
-# Is Speed Really a Concern?
+## Is Speed Really a Concern?
 When it comes to traffic safety there are a lot of factors that affect every single accident. In 2017 1.756 people were seriously injured in a road accident, and 175 people lost their life in Denmark[^VD_Trafikulykker_for_året_2017].  
 To better understand how speed affects traffic accidents, the Council for Safe Traffic composed some statistics based on data published by The Norwegian Public Roads Administration. These statistics show a correlation between speed and fatalities in accidents[^CFST_Statistics].
 
-| Speed | Frontal Collision | Pedestrian Crossing |
-| ----- | ----------------- | ------------------- |
-| 80 km/h | In 3 out of 10 accidents someone dies | In 6 out of 10 accidents a pedestrian dies. |
-| 90 km/h | In 6 out of 10 accidents someone dies | In 8 out of 10 accidents a pedestrian dies. |
-| 100 km/h | In 8 out of 10 accidents someone dies | In 9 out of 10 accidents a pedestrian dies. |
+| Speed     | Frontal Collision                     | Pedestrian Crossing                           |
+| -----     | -----------------                     | -------------------                           |
+| 80 km/h   | In 3 out of 10 accidents someone dies | In 6 out of 10 accidents a pedestrian dies.   |
+| 90 km/h   | In 6 out of 10 accidents someone dies | In 8 out of 10 accidents a pedestrian dies.   |
+| 100 km/h  | In 8 out of 10 accidents someone dies | In 9 out of 10 accidents a pedestrian dies.   |
 
 Likewise, a report from The Danish Road Directorate[^DRD_fatal_accidents] shows that in 2010 52% of the accidents where the driver drove more than 20 km/h above the speed limit resulted in a fatal accident, and only 6% escaped without any injuries. In cases where the driver complies with the speed limit, 31% of accidents were fatal, and 37% were completely unharmed. Furthermore, the numbers reveal that the speeding limit was exceeded in 59% of all fatal accidents.
-In Denmark the government funded institution, The Danish Road Traffic Accident Investigation Board (AIB), is responsible for analyzing the different accidents involving severe injury or death.  
+In Denmark the government funded institution, The Danish Road Traffic Accident Investigation Board (AIB), is responsible for analyzing the different accidents involving severe injury or death.
 
 ![obeying the speed limit](../pictures/obeying_speed_limit.png)
 
@@ -36,22 +22,22 @@ In Denmark the government funded institution, The Danish Road Traffic Accident I
 
 Now that we have established that speed actually is a relevant factor in traffic accidents, we formulate the following initial problem statement:
 
-> *What is done today to assist drivers to respect the speed limit, to reduce the amount and severety af accidents?*
+> *What is done today to assist drivers in driving more safely, in order to reduce the amount and severity of traffic accidents?*
 
 [^DRD_fatal_accidents]: The Danish Road Directorate - fatal accidents and speed - http://www.vejdirektoratet.dk/DA/viden_og_data/publikationer/Lists/Publikationer/Attachments/508/hastigheder%20ved%20d%C3%B8dsulykker.pdf
 
 [^CFST_Statistics]: The Council For Safe Traffic - Statistic - https://www.sikkertrafik.dk/presse/statistik/adfaerd/fart
 
-[^HVU_hvorfor_sker_ulykker]: The Danish Road Traffic Accident Investigation Board: Hvorfor sker trafikulykkerne? from http://www.hvu.dk/SiteCollectionDocuments/PDFx_HVUdec14_HvorforSkerUlykkerne.pdf
+<!--[^HVU_hvorfor_sker_ulykker]: The Danish Road Traffic Accident Investigation Board: Hvorfor sker trafikulykkerne? from http://www.hvu.dk/SiteCollectionDocuments/PDFx_HVUdec14_HvorforSkerUlykkerne.pdf -->
 
-[^HVU_Risikovillig_kørsel]: The Danish Road Traffic Accident Investigation Board: Risikovillig kørsel from http://www.hvu.dk/SiteCollectionDocuments/Havarikommissionen2018_RisikovilligK%C3%B8rsel.pdf
+<!--[^HVU_Risikovillig_kørsel]: The Danish Road Traffic Accident Investigation Board: Risikovillig kørsel from http://www.hvu.dk/SiteCollectionDocuments/Havarikommissionen2018_RisikovilligK%C3%B8rsel.pdf -->
 
-[^HVU_Grove_Hastighedsovertrædelser]: The Danish Road Traffic Accident Investigation Board: Grove Hastighedsovertrædelser from: http://www.hvu.dk/SiteCollectionDocuments/HVUrapp08_Hastighed.pdf
+<!--[^HVU_Grove_Hastighedsovertrædelser]: The Danish Road Traffic Accident Investigation Board: Grove Hastighedsovertrædelser from: http://www.hvu.dk/SiteCollectionDocuments/HVUrapp08_Hastighed.pdf -->
 
 [^VD_Trafikulykker_for_året_2017]: Vejdirektoratet: Trafikulykker for året 2017 from http://www.vejdirektoratet.dk/DA/viden_og_data/publikationer/Lists/Publikationer/Attachments/979/Trafikulykker%20for%20%C3%A5ret%202017%20-%20web.pdf
 
-# Current Systems
-In this section some of the current solutions the car manufacures are employing to increase traffic safty. The section will only investigate what manufacures are doing for the problem described in section [^initialProblem], as te report will focus on technological approach to solving / reducing the problem.
+## Current Systems
+In this section some of the current solutions the car manufacturers are employing to increase traffic safety. The section will only investigate what manufacturers are doing for the problem described in section [^initialProblem], as the report will focus on a technological approach to reduce and solve the problem.
 
 Safety is highly regarded by car manufacturers, extensive testing is done in order to make sure that users of cars can feel as safe as possible while driving. Many car manufactures are working on automating the different aspects of driving, to make them both more safe, and convenient. This amount of automation is described in a taxonomy called "The Five Levels of Automation". [^sae_5_level]
 Where level 0 describes a car with no automation, and level 5 describes a completely autonomous car. Many of the major car manufactures, like BMW [^bmw], Mercedes[^mercedes], and Hyundai [^hyundai], work with this scale.
@@ -70,9 +56,9 @@ Since then such algorithms have been integrated in many cars. Manufacturers such
 
 [^bmwRec]: http://www.adelaidebmw.com.au/com/en/newvehicles/3series/sedan_active_hybrid/2011/showroom/safety/traffic_sign_recognition1.html
 
-[^vejdirektoratet]: http://www.vejdirektoratet.dk/DA/om-os/nyheder-og-presse/nyheder/Sider/F%C3%A6rre-dr%C3%A6bte-i-trafikken-i-2017---men-fortsat-for-mange.aspx
+<!-- [^vejdirektoratet]: http://www.vejdirektoratet.dk/DA/om-os/nyheder-og-presse/nyheder/Sider/F%C3%A6rre-dr%C3%A6bte-i-trafikken-i-2017---men-fortsat-for-mange.aspx -->
 
-[^marketresearch]: https://blog.marketresearch.com/artificial-intelligence-in-cars-what-to-expect-from-2017-to-2021
+<!--[^marketresearch]: https://blog.marketresearch.com/artificial-intelligence-in-cars-what-to-expect-from-2017-to-2021-->
 
 [^sae_5_level]: https://www.sae.org/binaries/content/assets/cm/content/news/press-releases/pathway-to-autonomy/automated_driving.pdf
 
