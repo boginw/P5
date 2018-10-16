@@ -1,5 +1,5 @@
 # Introduction
-In this chapter, the factors of speeding will be introduced. This is to achieve a better understanding of how big a factor speeding is, and to help determine whether or not this is a relevant point of attention.
+In this chapter, the aspects of speeding will be introduced. This is to achieve a better understanding of how big of a factor speeding is, and to help determine whether or not this is a relevant point of attention.
 
 ## Is Speed Really a Concern?
 
