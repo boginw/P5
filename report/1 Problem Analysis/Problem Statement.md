@@ -1,6 +1,6 @@
 ## Problem Statement
 
-From investigating data from The Danish Road Directive it was found that there was a clear correlation between speed and severity in traffic accidents, and, as previously presented, a lot of car manufacturers are currently working on a variety of different technologies used for assisting drivers in driving more safely - a feat that we would like to participate in.
+By investigating data from The Danish Road Directive it was found that there was a clear correlation between speed and severity in traffic accidents, and, as previously presented, a lot of car manufacturers are currently working on a variety of different technologies used for assisting drivers in driving more safely - a feat that we would like to participate in.
 
 Our goals will not be to implement a fully interfaced system in an actual car, but rather to make a small-scale demo of some sorts. Seeing as this semester is about embedded systems, implementing some sort of autonomy in a small remote-controlled car would be a feasible task. Furthermore we have access to Lego Mindstorm EV3 through Aalborg University, which gives us an opportunity to produce a satisfactory product on relatively limited hardware, with the purpose of emulating the restrictions of an embedded system.
 
