@@ -1,5 +1,5 @@
 ## The Design of the Vehicle's Chassis
-This section includes a thorough description of how the car was built and the reasoning behind the design. 
+This section describes how the car was built and the reasoning behind the design. 
 
 Most vehicles that are driven on the road are more or less square shaped. Why? In this subsection, reasoning of why exactly this design choice is a good way to construct the LEGO car's chassis will be described. The design of the car will not change during the rest of this project unless good arguments of why such a decision must be made is put forward for discussion. 
 
