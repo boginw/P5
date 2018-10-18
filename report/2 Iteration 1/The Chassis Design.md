@@ -1,11 +1,11 @@
 ## The Design of the Vehicle's Chassis
 This section includes a thorough description of how the car was built and the reasoning behind the design. 
 
-Most vehicles that are driven on the road are more or less square shaped. Why? In this subsection, reasoning of why exactly this design choice is a good way to construct the LEGO car's chassis will be described. The design of the car will not change during the rest of this project unless good arguments of why such a decision must be made is put forward for discussion. 
+Most vehicles on the road are more or less square shaped. In this subsection, the reasoning of why exactly this design choice is a good way to construct the LEGO car's chassis will be described.
 
 ### The Shape of the Car
 
-Cars today are typically designed in one of two ways when considering the body and frame: A *unibody* and a *body-on-frame* type of car. The table below lists a few pros and cons on why one is prefered over the other [^unibody_vs_body_on _frame].
+Cars today are typically designed in one of two ways when considering the body and frame: A *unibody* and a *body-on-frame* type of car. The table below lists a few pros and cons on why one is preferred over the other [^unibody_vs_body_on _frame].
 
 | Features          |     | Unibody | Body-on-frame |
 | ----------------- | --- | ------- | ------------- |
