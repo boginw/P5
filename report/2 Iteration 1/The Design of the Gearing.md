@@ -6,7 +6,7 @@ The basic concept is simple: You can use gears to transfer motion from one rotat
 
 ### Horsepower and Torque
 #### Torque
-Torque is a measure of force that can cause an object to **rotate** around an axis. Rotation here is important because applying force to an object moving it in a straight line has nothing to do with torque. Torque is basically what causes motion as the applied force over a given distance generates torque and therefore the movement of an object in a rotational direction. The output of torque is the amount of *work* done. The word "work" is somewhat loosely defined, but it is refered to as the cause of movement of a vehicle from point A to point B. This is an essential part of a vehicle because during initial acceleration a high amount of torque is required to move the car. The more the vehicle weighs, the more torque is required. The way torque is calculated by multiplying *force* by *distance*
+Torque is a measure of force that can cause an object to **rotate** around an axis. Rotation here is important because applying force to an object moving it in a straight line has nothing to do with torque. Torque is basically what causes motion as the applied force over a given distance generates torque and therefore the movement of an object in a rotational direction. The output of torque is the amount of *work* done. The word "work" is somewhat loosely defined, but it is refered to as the cause of movement of a vehicle from point A to point B. This is an essential part of a vehicle because during initial acceleration a high amount of torque is required to move the car. The more the vehicle weighs, the more torque is required. Torque is calculated by multiplying *force* by *distance*
 
 > $$T = F \cdot d$$
 
