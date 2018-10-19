@@ -1,22 +1,21 @@
 ## The Design of the Vehicle's Chassis
 This section describes how the car was built and the reasoning behind the design. 
 
-Most vehicles on the road are more or less square shaped. In this subsection, the reasoning of why exactly this design choice is a good way to construct the LEGO car's chassis will be described.
+Most vehicles on the road are more or less square shaped. In this subsection, the reasoning of why precisely this design choice is an excellent way to construct the LEGO car's chassis will be described.
 
 ### The Shape of the Car
-
-Cars today are typically designed in one of two ways when considering the body and frame: A *unibody* and a *body-on-frame* type of car. The table below lists a few pros and cons on why one is preferred over the other [^unibody_vs_body_on _frame].
+Looking at the body and the frame of a car, today's cars are typically designed in one of two ways: *unibody*, or *body-on-frame*. The table below lists a few trade-offs on why one is preferred over the other [^unibody_vs_body_on _frame].
 
 | Features          |     | Unibody | Body-on-frame |
 | ----------------- | --- | ------- | ------------- |
-| Safety (crash)    |     | [x]     | []            |
-| Fuel economy      |     | [x]     | []            |
-| Weight            |     | [x]     | []            |
-| Stress handling   |     | [x]     | []            |
-| Off-road strength |     | []      | [x]           |
-| Resist twisting   |     | []      | [x]           |
+| Safety (crash)    |     | [&#10003;]     | []            |
+| Fuel economy      |     | [&#10003;]     | []            |
+| Weight            |     | [&#10003;]     | []            |
+| Stress handling   |     | [&#10003;]     | []            |
+| Off-road strength |     | []      | [&#10003;]           |
+| Resist twisting   |     | []      | [&#10003;]           |
 
-From the table above it can be concluded that the features the LEGO car need the most are provided by the unibody. Off-road strength and resisting twisting are features that the LEGO car will never need as it will never experience different terrains other than a standard dry floor. The primary feature of interest is the *weight*. A car as light as possible is desired to make less torque required to initate acceleration and to have an appropiate speed enabling the car to adjust according to speed signs. Torque and speed will be discussed in another section. 
+From the table above it can be concluded that the features the LEGO car need the most are provided by the unibody. Off-road strength and resisting twisting are features that the LEGO car will never need as it will never experience different terrains other than a standard dry floor. The primary feature of interest is the *weight*. A car as light as possible is desired to make less torque required to initate acceleration and to have an appropiate speed enabling the car to adjust according to speed signs. Torque and speed will be discussed in another section **[Hardware analysis ref her]**. 
 
 + Images (refer to appendix)
 
@@ -27,7 +26,7 @@ The optimal distribution of the weight of the car and its structural integrity a
 + Images (refer to appendix)
 
 ### The Chassis Design
-As is depicted on the images in appendix ..., the design that was choosen is of square shape. The reason why is because of the general balance of the car and not actually needing off-road strength, but also because it was the most prefered out of the few prototypes that were drawn before building the actual LEGO car. 
+As is depicted on the images in the appendix, the design chosen was the square shape. The reason is the general balance of the car and not needing off-road strength, but also because it was the most preferred out of the few prototypes that were drawn before building the actual LEGO car. 
 
 
 
