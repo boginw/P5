@@ -15,7 +15,7 @@ Looking at the body and the frame of a car, today's cars are typically designed 
 | Off-road strength |     | []      | [x]           |
 | Resist twisting   |     | []      | [x]           |
 
-From the table above it can be concluded that the features the LEGO car need the most are provided by the unibody. Off-road strength and resisting twisting are features that the LEGO car will never need as it will never experience different terrains other than a standard dry floor. The primary feature of interest is the *weight*. A car as light as possible is desired to make less torque required to initate acceleration and to have an appropiate speed enabling the car to adjust according to speed signs. Torque and speed will be discussed in another section **[Hardware analysis ref her]**. 
+From the table above it can be concluded that the features the LEGO car need the most are provided by the unibody. Off-road strength and resisting twisting are features that the LEGO car will never need as it will never experience different terrains other than a standard dry floor. The primary feature of interest is the *weight*, as is also one of our design criteria [ref til design criteria her]. A car as light as possible is desired to make less torque required to initate acceleration and to have an appropiate speed enabling the car to adjust according to speed signs [ref til design criteria her om speed]. Torque and speed will be discussed in another section **[Hardware analysis ref her]**. 
 
 + Images (refer to appendix)
 
