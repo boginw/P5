@@ -8,12 +8,12 @@ Looking at the body and the frame of a car, today's cars are typically designed 
 
 | Features          |     | Unibody | Body-on-frame |
 | ----------------- | --- | ------- | ------------- |
-| Safety (crash)    |     | [&#10003;]     | []            |
-| Fuel economy      |     | [&#10003;]     | []            |
-| Weight            |     | [&#10003;]     | []            |
-| Stress handling   |     | [&#10003;]     | []            |
-| Off-road strength |     | []      | [&#10003;]           |
-| Resist twisting   |     | []      | [&#10003;]           |
+| Safety (crash)    |     | [x]     | []            |
+| Fuel economy      |     | [x]     | []            |
+| Weight            |     | [x]     | []            |
+| Stress handling   |     | [x]     | []            |
+| Off-road strength |     | []      | [x]           |
+| Resist twisting   |     | []      | [x]           |
 
 From the table above it can be concluded that the features the LEGO car need the most are provided by the unibody. Off-road strength and resisting twisting are features that the LEGO car will never need as it will never experience different terrains other than a standard dry floor. The primary feature of interest is the *weight*. A car as light as possible is desired to make less torque required to initate acceleration and to have an appropiate speed enabling the car to adjust according to speed signs. Torque and speed will be discussed in another section **[Hardware analysis ref her]**. 
 
