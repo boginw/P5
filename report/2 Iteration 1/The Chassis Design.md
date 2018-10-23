@@ -31,7 +31,7 @@ By making the LEGO car front wheel driven, the first issue of lifting upon initi
 As is depicted on the images in the appendix, the design chosen was the square shape. The reason is the general balance of the car and not needing off-road strength, but also because it was the most preferred out of the few prototypes that were drawn before building the actual LEGO car. 
 
 ### Conclusion
-The purpose of this section was to construct a durable LEGO car based on certain design criteria. Different designs were drawn to experiment on a few car designs on a theoretical level. The design that was chosen to work with was initially rear wheel driven, but during the process of building the car, it was deemed difficult to work with due to issues with the weight distribution. Therefore, by reiterating the design, making it rear wheel driven and slightly repositioning some of the components, the result was a more durable and reliable than the previously designed car. 
+The purpose of this section was to construct a durable LEGO car based on certain design criteria. Different designs were drawn to experiment on a few car designs on a theoretical level. The design that was chosen to work with was initially rear wheel driven, but during the process of building the car, it was deemed difficult to work with due to issues with the weight distribution. Therefore, by reiterating the design, making it rear wheel driven and slightly repositioning some of the components, the result was a more durable and reliable design than the previously designed car. 
 
 
 [^unibody_vs._body_on_frame]: http://www.autonews.com/article/20170626/OEM01/170629864/body-on-frame-vs.-unibody:-pros-and-cons
