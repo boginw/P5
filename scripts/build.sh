@@ -1,3 +1,18 @@
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-mkdir $DIR/../dist
-python $DIR/includes.py $DIR/../report/main.md | pandoc --filter pandoc-citeproc --csl=$DIR/../report/citation.csl --biblio=$DIR/../report/biblio.bib --from markdown -o $DIR/../dist/output.pdf
+DIR="$( cd "$( dirname "$0" )" >/dev/null && pwd )"
+MAIN="$DIR/../report/main.md"
+CSL="$DIR/../report/citation.csl"
+BIBTEX="$DIR/../report/biblio.bib"
+OUTDIR="$DIR/../dist"
+OUTPUT="$OUTDIR/output.pdf"
+
+if [ ! -d "$OUTDIR" ]; then
+    mkdir "$OUTDIR"
+fi
+
+python $DIR/includes.py $MAIN | \
+    pandoc --filter pandoc-fignos \
+           --filter pandoc-citeproc \
+           --csl=$CSL \
+           --biblio=$BIBTEX \
+           --from markdown \
+           -o $OUTPUT
