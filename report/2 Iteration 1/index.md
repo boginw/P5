@@ -1,4 +1,4 @@
 !{{Introduction.md}}
 !{{Design Criteria.md}}
-!{{The Chassis Design.md}}
+!{{Designing and Building of the Car.md}}
 !{{The Design of the Gearing.md}}

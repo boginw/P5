@@ -14,9 +14,9 @@ To better understand how speed affects traffic accidents, the Council for Safe T
 
 Likewise, a report from The Danish Road Directorate[^DRD_fatal_accidents] shows that in 2010 52% of the accidents, where the driver drove more than 20 km/h above the speed limit, resulted in a fatal accident, and only 6% escaped without any injuries. In cases where the driver complies with the speed limit, 31% of accidents were fatal, and 37% were completely unharmed. Furthermore, the numbers reveal that the speeding limit was exceeded in 59% of all fatal accidents.
 
-![obeying the speed limit](../pictures/obeying_speed_limit.png)
+![obeying the speed limit](report/assets/pictures/obeying_speed_limit.png)
 
-![Exceeding the speed limit](../pictures/exceeding_speed_limit.png)
+![Exceeding the speed limit](report/assets/pictures/exceeding_speed_limit.png)
 
 **These should be placed side by side. Caption: "Graphs showing injuries when you obey the speed limit compared to when you exceed it."**
 
