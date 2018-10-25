@@ -36,6 +36,10 @@ To cite, please add your reference in the `report/biblio.bib` file first. The sy
 
 **NOTE:** The `, p. 30` part is optional, and is only used when a specific page is refered.
 
+### Misc
+
+In order to have a checkmark (✓) character in the report, use LaTeX-syntax: `\checkmark`
+
 ## Install & Compile
 
 Although you will not need to install anything (except a Markdown editor) as the [CI](https://circleci.com/gh/Lynhx/P5) will generate artifacts, including a compiled PDF, this can be helpful for taking a glimpse of what the final result might look like.
@@ -60,4 +64,3 @@ To compile, just execute the following command:
 ```
 
 If no errors occurred, you should see a folder `dist` in the root of the project, containing the resulting PDF `output.pdf`.
-
