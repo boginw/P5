@@ -1,38 +1,41 @@
-## The Design of the Vehicle's Chassis
-This section describes how the car was built and the reasoning behind the design. 
+## Designing and Building the Car
+This section describes how the car was designed. It starts by describing the tools used and which features it brings and then steps through the design criteria to assert that the car fulfills the criteria.
 
-Most vehicles on the road are more or less square shaped. In this subsection, the reasoning of why precisely this design choice is an excellent way to construct the LEGO car's chassis will be described.
+### CAD design
+By utilizing LeoCAD[@leocad_website] a car with all the components, except the camera, was designed. By utilizing this tool, disassembly and reassembly become much easier since the steps for assembling are available through the tool. A rendered image of the car can be seen in figure {@fig:cad_car}
 
-### The Shape of the Car
-Looking at the body and the frame of a car, today's cars are typically designed in one of two ways: *unibody*, or *body-on-frame*. The table below lists a few trade-offs on why one is preferred over the other [^unibody_vs_body_on _frame].
+![CAD model of the car](report/pictures/cad_car.png){@fig:cad_car}
 
-| Features          |     | Unibody | Body-on-frame |
-| ----------------- | --- | ------- | ------------- |
-| Safety (crash)    |     | [x]     | []            |
-| Fuel economy      |     | [x]     | []            |
-| Weight            |     | [x]     | []            |
-| Stress handling   |     | [x]     | []            |
-| Off-road strength |     | []      | [x]           |
-| Resist twisting   |     | []      | [x]           |
+Through some simple non-formal tests, it was concluded that this design produced a car that drives around 6 km/h, is rigid enough to drive into walls multiple times and can withstand multiple drops from around 50 cm. These results prompted the group to stop the design process as most of the goals had been reached.
 
-From the table above it can be concluded that the features the LEGO car need the most are provided by the unibody. Off-road strength and resisting twisting are features that the LEGO car will never need as it will never experience different terrains other than a standard dry floor. The primary feature of interest is the *weight*, as is also one of our design criteria [ref til design criteria her]. A car as light as possible is desired to make less torque required to initate acceleration and to have an appropiate speed enabling the car to adjust according to speed signs [ref til design criteria her om speed]. Torque and speed will be discussed in another section **[Hardware analysis ref her]**. 
+### Comparing Design to Design Criteria
+This section steps through the elements of the design criteria and compares the design to them to assert that the design holds up to the criteria.
 
-+ Images (refer to appendix)
+#### Components
+The design of the car has 172 components (without the camera) which might sound like a lot, but to encompass all the necessary functions, such as rigidness, this was needed. A trade-off to consider is the weight. By shedding some components the weight of the car can be reduced, but as you can read later on, this might not be needed. There might be some optimizations that can be made, but this will not be focused on here.
 
-### The Balance of the Car
+#### Speed
+With no specific requirement for velocity, a subjective determination is made regarding the fulfillment of the criterion. A simple test showed that the car drives approximately 6 km/h, which leaves plenty of room for different speed levels. An obvious segmentation would be to have 1 km/h to correspond to 10 km/h, 2 km/h to 20 km/h, and so on, which leads to six speed levels. With multiple speed levels and reasonable top speed, this fulfills the criterion.
 
-The optimal distribution of the weight of the car and its structural integrity are two aspects that were considered when designing the car. The general center of mass is important to consider in order to not make the car lean towards a certain direction or create more preasure on one end of the car. The programming block weighs .288 kg whereas the two motors combined weigh .162 kg. If the programming block was to be positioned at the very rear end of the LEGO car, it would create an unequal weight distribution casuing the LEGO car to lift upon initial acceleration. 
-This assumption holds true if the motors were to drive the rear wheels. 
-By making the LEGO car front wheel driven, the first issue of lifting upon initial acceleration is discarded. However, if the programming blocks center of mass is further away from the middle than the rear wheel pivot points, the car is at risk of tipping, and then the car will not be able to drive anyway, as the front wheels does not touch the ground. Therefore, by positioning the programming block more towards the center of mass of the car, the issue of direct pressure on the rear wheels are discarded. Designing the car this way results in a car with a more equally distributed weight. However, it will be difficult to create a 100% equal weight distribution as the programming block weighs 43.8% more in total weight compared to the two motors. 
+#### Weight
+As mentioned in section {ref to Components}, some optimizations regarding component count might be possible, but rigidness is also important. As a compromise, only functional components were added to the car, which might sound obvious, but can get hard to design due to Lego's stud system. At the time of writing, the weight of the car and its components have not been measured, but as mentioned earlier, the speed is deemed appropriate, and as such, the weight goal is considered achieved.
 
-+ Images (refer to appendix)
+#### Rigidness
+To fulfill the criterion of rigidness the bottom and front were considered primary areas of stress since these surfaces will be most exposed to crashes and other stresses. 
 
-### The Chassis Design
-As is depicted on the images in the appendix, the design chosen was the square shape. The reason is the general balance of the car and not needing off-road strength, but also because it was the most preferred out of the few prototypes that were drawn before building the actual LEGO car. 
+* The front of the car, as seen in figure {@fig:cad_car_front}, is built to absorb shock coming from the front, which is then hopefully is dissipated by the time it would reach the driving axle. 
+* The bottom of the car is made almost completely solid in order to make it sturdy. The front and back of the bottom are left open, in order to absorb shock from crashes from those sides.
+
+![CAD model of the car, front](report/pictures/cad_car_front.png){@fig:cad_car_front}
+
+The rigidness of the car was tested dropping the car approximately 50 cm and by making the car drive into a wall at full speed multiple times. As the car could withstand this criterion was considered fulfilled. 
+
+#### Modular
+The car was built with modularity in mind. The camera, programming block, and wheels are easily removed. Unfortunately, the motors are a bit more difficult to remove, since they sit at the base of the car. This was due to the motors being the centerpiece of the build, as this makes a more rigid car.
+
+#### Steering
+Steering is not the most important feature, and as such, not a lot of time was spent on it. A simple test showed that the car is turning slightly to the right. The issue has been isolated to the front wheels, but nothing will be done about it since the car drives a great enough distance before turning.
 
 ### Conclusion
-The purpose of this section was to construct a durable LEGO car based on certain design criteria. Different designs were drawn to experiment on a few car designs on a theoretical level. The design that was chosen to work with was initially rear wheel driven, but during the process of building the car, it was deemed difficult to work with due to issues with the weight distribution. Therefore, by reiterating the design, making it rear wheel driven and slightly repositioning some of the components, the result was a more durable and reliable design than the previously designed car. 
-
-
-[^unibody_vs._body_on_frame]: http://www.autonews.com/article/20170626/OEM01/170629864/body-on-frame-vs.-unibody:-pros-and-cons
+The purpose of this section was to construct a durable LEGO car based on certain design criteria. The finished design fulfills all criteria to an acceptable extent. Some issues were introduced in the process regarding rigidity, weight, and modularity. The result was a more durable and reliable design. 
 

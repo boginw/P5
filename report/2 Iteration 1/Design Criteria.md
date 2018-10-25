@@ -2,8 +2,7 @@
 In this section, the design criteria for the car to be built will be discussed. These criteria are determined from the following:
 
 * Achieving specifications
-* Ease of prototyping
-* Ease of component change
+* Ease of component change, as components might be needed for tests or replacements.
  
 These criteria will determine how the car should be designed and will be evaluated on each revision of the vehicle to be built.
 
