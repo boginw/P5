@@ -1,5 +1,5 @@
 ## Designing and Building of the Car
-This section describes how the car was designed. It starts by describing the tools used and which features it brings and then steps through the design criteria to assert that the car fulfills the criteria.
+This section describes how the car was designed. Included is a description of the tools used, which features it brings and then steps through the design criteria to assert that the vehicle fulfills the criteria.
 
 ### CAD design
 By utilizing LeoCAD[@leocad_website] a car with all the components, except the camera, was designed. By utilizing this tool, disassembly and reassembly become much easier since the steps for assembling are available through the tool. A rendered image of the car can be seen in figure {@fig:cad_car}
@@ -9,7 +9,7 @@ By utilizing LeoCAD[@leocad_website] a car with all the components, except the c
 Through some simple non-formal tests, it was concluded that this design produced a car that drives around 6 km/h, is rigid enough to drive into walls multiple times and can withstand multiple drops from around 50 cm. These results prompted the group to stop the design process as most of the goals had been reached.
 
 ### Comparing Design to Design Criteria
-This section compares the elements of the design criteria to the design in order to assert that the design complies with the criteria.
+This section compares the elements of the design criteria to the design of the vehicle in order to assert that the design complies with the criteria.
 
 #### Components
 The design of the car has 172 components (without the camera) which might sound like a lot, but to encompass all the necessary functions, such as rigidness, this was needed. A trade-off to consider is the weight. By shedding some components the weight of the car can be reduced, but as you can read later on, this might not be needed. There might be some optimizations that can be made, but this will not be focused on here.
