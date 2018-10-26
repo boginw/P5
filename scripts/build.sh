@@ -6,9 +6,7 @@ BIBTEX="$DIR/../report/biblio.bib"
 OUTDIR="$DIR/../dist"
 OUTPUT="$OUTDIR/output.pdf"
 
-echo "$DIR/../"
 cd "$DIR/../"
-
 
 if [ ! -d "$OUTDIR" ]; then
     mkdir "$OUTDIR"
