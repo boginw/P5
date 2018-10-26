@@ -17,5 +17,5 @@ Different gearing options were tested with the amount of RPM available. Gear rat
 ### The LEGO Car Gearing
 Based on the findings of optimal gearing, it was decided that a gear ratio of 1:3 would be chosen for this project. This gear ratio means that the velocity will be increased by a factor of three, and the torque will, as a result, be divided by three. This gear ratio might not be the best option, but it makes sure that the vehicle can operate at different levels of velocity.
 
-### Conclusion
+### Results
 The purpose of this section was to describe the concept of gearing, experiment with several gearing options and finally select an appropriate gear ratio. The gear ratio should both enable liberal movement of the car by providing sufficient torque, but also have different levels of velocity to accommodate the need for adjustability based on the purpose of the overall project. The gear ratio 1:3 was chosen, as this ratio was deemed to provide the best options regarding torque and velocity based on what was desired for the car. 
