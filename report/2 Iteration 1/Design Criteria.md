@@ -12,7 +12,7 @@ Given the specifications, some of the required components are known in advance t
 * Let $C$ denote the entire car with its components.
 * Let $E$ denote the EV3 computer.
 * Let $M$ denote the Lego large motor.
-* Let $W$ denote a single wheel including tire, of which 4 are required.
+* Let $W$ denote a single wheel including a tire, of which four are required.
 * Let $O$ denote the camera.
 
 To be able to test multiple prototypes, and to withhold other criteria, a simple design is preferable to achieve better time efficiency.
@@ -28,7 +28,7 @@ The weight will affect many other criteria, as more weight requires more torque,
 There is a need for different speed levels which are distinguishable so that the differences can be clearly observed. This results in a need for sufficient max speed ($C_s$) to accommodate this.
 
 ### Rigidness
-The car should be able to crash into a wall at max speed, without getting destroyed. Due to the necessary tests to be performed, a crash is very likely. This, in turn, means the car should have a strong frame.
+The car should be able to crash into a wall at max speed, without getting destroyed. Due to the necessary tests to be performed, a crash is very likely, which means the car should have a strong frame.
 
 ### Modular
 As design changes are almost a guarantee, a modular design can be used to eliminate some of the hassles later on. Other benefits include changing of battery on the EV3 computer and testing multiple gearing solutions.
