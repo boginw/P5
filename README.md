@@ -36,6 +36,10 @@ To cite, please add your reference in the `report/biblio.bib` file first. The sy
 
 **NOTE:** The `, p. 30` part is optional, and is only used when a specific page is refered.
 
+### Misc
+
+In order to have a checkmark (✓) character in the report, use LaTeX-syntax: `\checkmark`
+
 ## Docker
 
 A Dockerfile is in the `/docker` directory, you can build this, or just use the published image at `boginw/markdown-pandoc`. To use the image to compile a pdf, run the following:
@@ -70,4 +74,3 @@ To compile, just execute the following command:
 ```
 
 If no errors occurred, you should see a folder `dist` in the root of the project, containing the resulting PDF `output.pdf`.
-
