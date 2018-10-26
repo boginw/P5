@@ -24,9 +24,12 @@ As mentioned in section {ref to Components}, some optimizations regarding compon
 To fulfill the criterion of rigidness the bottom and front were considered primary areas of stress since these surfaces will be most exposed to crashes and other stresses. 
 
 * The front of the car, as seen in figure {@fig:cad_car_front}, is built to absorb shock coming from the front, which is then hopefully is dissipated by the time it would reach the driving axle. 
-* The bottom of the car is made almost completely solid in order to make it sturdy. The front and back of the bottom are left open, in order to absorb shock from crashes from those sides.
+* The bottom of the car, as seen in figure {@fig:cad_car_back}, is made almost completely solid in order to make it sturdy. The front and back of the bottom are left open, in order to absorb shock from crashes from those sides.
 
 ![CAD model of the car, front](report/assets/pictures/cad_car_front.png){@fig:cad_car_front}
+
+![CAD model of the car, back](report/assets/pictures/cad_car_back.png){@fig:cad_car_back}
+
 
 The rigidness of the car was tested dropping the car approximately 50 cm and by making the car drive into a wall at full speed multiple times. As the car could withstand this criterion was considered fulfilled. 
 
