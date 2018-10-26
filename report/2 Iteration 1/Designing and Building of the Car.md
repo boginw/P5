@@ -23,8 +23,8 @@ As mentioned in section {ref to Components}, some optimizations regarding compon
 #### Rigidness
 To fulfill the criterion of rigidness the bottom and front were considered primary areas of stress since these surfaces will be most exposed to crashes and other stresses. 
 
-* The front of the car, as seen in figure {@fig:cad_car_front}, is built to absorb shock coming from the front, which is then hopefully is dissipated by the time it would reach the driving axle. 
-* The bottom of the car, as seen in figure {@fig:cad_car_back}, is made almost completely solid in order to make it sturdy. The front and back of the bottom are left open, in order to absorb shock from crashes from those sides.
+* The front of the car, as seen in figure {@fig:cad_car_front}, is built to absorb shock coming from the front, which hopefully is dissipated by the time it would reach the driving axle. 
+* The bottom of the car is made almost completely solid in order to make it sturdy. The front and back of the bottom are left open, in order to absorb shock from crashes from those sides.
 
 ![CAD model of the car, front](report/assets/pictures/cad_car_front.png){@fig:cad_car_front}
 
@@ -39,6 +39,6 @@ The car was built with modularity in mind. The camera, programming block, and wh
 #### Steering
 Steering is not the most important feature, and as such, not a lot of time was spent on it. A simple test showed that the car is turning slightly to the right. The issue has been isolated to the front wheels, but nothing will be done about it since the car drives a great enough distance before turning.
 
-### Conclusion
+### Results
 The purpose of this section was to construct a durable LEGO car based on certain design criteria. The finished design fulfills all criteria to an acceptable extent. Some issues were introduced in the process regarding rigidity, weight, and modularity. The result was a more durable and reliable design. 
 
