@@ -9,7 +9,7 @@ By utilizing LeoCAD[@leocad_website] a car with all the components, except the c
 Through some simple non-formal tests, it was concluded that this design produced a car that drives around 6 km/h, is rigid enough to drive into walls multiple times and can withstand multiple drops from around 50 cm. These results prompted the group to stop the design process as most of the goals had been reached.
 
 ### Comparing Design to Design Criteria
-This section steps through the elements of the design criteria and compares the design to them to assert that the design holds up to the criteria.
+This section compares the elements of the design criteria to the design in order to assert that the design complies with the criteria.
 
 #### Components
 The design of the car has 172 components (without the camera) which might sound like a lot, but to encompass all the necessary functions, such as rigidness, this was needed. A trade-off to consider is the weight. By shedding some components the weight of the car can be reduced, but as you can read later on, this might not be needed. There might be some optimizations that can be made, but this will not be focused on here.
