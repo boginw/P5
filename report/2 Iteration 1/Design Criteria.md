@@ -18,7 +18,7 @@ Given the specifications, some of the required components are known in advance t
 To be able to test multiple prototypes, and to withhold other criteria, a simple design is preferable to achieve better time efficiency.
 
 ### Weight
-Let $X_w$ denote the weight of component $X$. With the given minimum required components we can determine the minimum weight of the car as being: 
+Let $X_w$ denote the weight of component $X$. With the given minimum required components we can determine the minimum weight of a car as being: 
 
 $$\min(C_w) = E_w + M_w + O_w \times 4$$
 
