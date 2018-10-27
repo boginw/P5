@@ -53,6 +53,7 @@ int main()
 ```
 
 // The table description should be "Feature table that outlines the desired features labeled with *low, medium* or *high*".
+
 Based on the code examples and  description of the languages above, the following table was created:
 
 | Features       | Python |  Java  |   C++  |
@@ -71,7 +72,9 @@ Based on the table above, language X was chosen to proceed with the development 
 The purpose of this section was to compare three languages and figure out whether or not these languages would provide some features towards the development of the project as a whole. This was done by first comparing the languages and finally create a table that would elicit different features measured in a scale from low to medium to high. 
 
 // Notes
+
 // + Perhaps argue why the chosen features have been selected over other features?
+
 // + Reference of the languages being simple and readable or not?
 
 [^github_machine_learning]: https://github.com/search?q=machinelearning
