@@ -53,6 +53,7 @@ int main()
 ```
 
 // The table description should be "Feature table that outlines the desired features labeled with *low, medium* or *high*".
+
 Based on the code examples and  description of the languages above, the following table was created:
 
 | Features       | Python | Java   | C++    |
