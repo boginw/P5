@@ -12,7 +12,7 @@ Through some simple non-formal tests, it was concluded that this design produced
 This section compares the elements of the design criteria to the design of the vehicle in order to assert that the design complies with the criteria.
 
 #### Components
-The design of the car has 172 components (without the camera) which might sound like a lot, but to encompass all the necessary functions, such as rigidness, this was needed. A trade-off to consider is the weight. By shedding some components the weight of the car can be reduced, but as you can read later on, this might not be needed. There might be some optimizations that can be made, but this will not be focused on here.
+The design of the car has 114 components (without the camera) which might sound like a lot, but to encompass all the necessary functions, such as rigidness, this was needed. A trade-off to consider is the weight. By shedding some components the weight of the car can be reduced, but as you can read later on, this might not be needed. There might be some optimizations that can be made, but this will not be focused on here.
 
 #### Speed
 With no specific requirement for velocity, a subjective determination is made regarding the fulfillment of the criterion. A simple test showed that the car drives approximately 6 km/h, which leaves plenty of room for different speed levels. An obvious segmentation would be to have 1 km/h to correspond to 10 km/h, 2 km/h to 20 km/h, and so on, which leads to six speed levels. With multiple speed levels and reasonable top speed, this fulfills the criterion.
