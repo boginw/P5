@@ -72,10 +72,6 @@ int main()
 }
 ```
 
-// The table caption should be "Feature table that outlines the desired features labeled with *low, medium* or *high*".
-
-Based on the code examples and  description of the languages above, the following table was created:
-
 | Features        | Python |  Java  |   C++  |
 |:----------------|:------:|:------:|:------:|
 | Simplicity      |  High  | Medium |   Low  |
@@ -83,6 +79,8 @@ Based on the code examples and  description of the languages above, the followin
 | MI Community    |  High  |   Low  |   Low  |
 | Modularity      |  High  |   Low  |   Low  |
 | Learning Curce  |  High  |   Low  |   Low  |
+
+Table: Feature table that outlines the desired features labeled with *low, medium* or *high*
 
 The *MI Community* criterion is related to the amount of developers that actively use the language. By looking at the number of projects on GitHub related to ML, Python quickly stands out as the most used language whereas Java and C++ are placed relatively low. This is also why Python is measured as *high* whereas Java and C++ are measured as *low*. 
 
