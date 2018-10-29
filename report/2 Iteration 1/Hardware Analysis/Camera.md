@@ -1,7 +1,7 @@
 ## Pixy CMUCAM5 Image Sensor Lego
 This is a vision sensor which means it is a camera with a microcontroller onboard. The microcontroller uses a blob algorithm to detect objects based on color. The result of the microcontroller is then either communicated via SPI, I2C, UART, USB or analog/digital output interfaces. The output is simply a data object that contains the (x,y)-coordinates of the recognized object, the size of the boundary box surrounding the object, and which color label ie. which object it is.[^Pixy_Lego_wiki]
 
-The Pixy CMUCAM5 allows for very fast (50 fps) object recognition, but the output is not usable in the project, as the camera outputs the position of the object, but never the picture.
+The Pixy CMUCAM5 allows for high-speed (50 fps) object recognition, but the output is not usable in the project, as the camera outputs the position of the object, but never the picture.
 To determine the number on the speed sign, the original picture is needed in order to recognize the digits. Therefore, the Pixy CMUCAM5 is not suitable to solve the problem. 
 
 ### Alternative solutions
