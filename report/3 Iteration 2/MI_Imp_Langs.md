@@ -78,7 +78,7 @@ int main()
 | Readability     |  High  | Medium |   Low  |
 | MI Community    |  High  |   Low  |   Low  |
 | Modularity      |  High  |   Low  |   Low  |
-| Learning Curce  |  High  |   Low  |   Low  |
+| Learning Curve  |  High  |   Low  |   Low  |
 
 Table: Feature table that outlines the desired features labeled with *low, medium* or *high*
 
