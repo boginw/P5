@@ -8,7 +8,7 @@ Based on a quick search, three languages were chosen as candidates to be conside
 2. Java
 3. C++
 
-These languages have been chosen based on what the contributors of this project have some familiarty with. 
+These languages have been chosen based on what the contributors of this project have some familiarity with. 
 
 ### Description of the Language Paradigm
 Python is a widely used language and has existed for many years.
