@@ -82,7 +82,7 @@ Based on the code examples and  description of the languages above, the followin
 | Readability     |  High  | Medium |   Low  |
 | MI Community    |  High  |   Low  |   Low  |
 | Modularity      |  High  |   Low  |   Low  |
-| Learning Curce  |  High  |   Low  |   Low  |
+| Learning Curve  |  High  |   Low  |   Low  |
 
 The *MI Community* criterion is related to the amount of developers that actively use the language. By looking at the number of projects on GitHub related to ML, Python quickly stands out as the most used language whereas Java and C++ are placed relatively low. This is also why Python is measured as *high* whereas Java and C++ are measured as *low*. 
 
