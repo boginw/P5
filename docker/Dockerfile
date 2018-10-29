@@ -12,7 +12,9 @@ RUN apt-get update -y \
     texlive-fonts-extra \
     texlive-bibtex-extra \
     fontconfig \
-    lmodern
+    lmodern \
+    python-dev \
+    python-pip
 
 # will ease up the update process
 # updating this env variable will trigger the automatic build of the Docker image
@@ -21,8 +23,12 @@ ENV PANDOC_VERSION "1.19.2.1"
 # install pandoc
 RUN cabal update && cabal install pandoc-${PANDOC_VERSION} && cabal install pandoc-citeproc
 
+# install pandoc figure numberings
+RUN python -m pip install --upgrade setuptools
+RUN pip install pandoc-fignos
+
 WORKDIR /source
 
-ENTRYPOINT ["/root/.cabal/bin/pandoc"]
+ENTRYPOINT ["/bin/bash"]
 
 CMD ["--help"]
