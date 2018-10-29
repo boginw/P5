@@ -12,7 +12,6 @@ if [ ! -d "$OUTDIR" ]; then
     mkdir "$OUTDIR"
 fi
 
-
 python $DIR/includes.py $MAIN | \
     pandoc --filter pandoc-fignos \
            --filter pandoc-eqnos \

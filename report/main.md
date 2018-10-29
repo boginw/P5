@@ -10,7 +10,7 @@ titlepage-color: "06386e"
 titlepage-text-color: "FFFFFF"
 titlepage-rule-color: "FFFFFF"
 titlepage-rule-height: 1
-logo: /source/report/assets/pictures/aau.png
+logo: $DIR$/assets/pictures/aau.png
 ...
 
 !{{1 Problem Analysis/index.md}}
