@@ -1,18 +1,18 @@
 ## Pixy CMUCAM5 Image Sensor Lego
-This is a vision sensor which means it is a camera with a microcontroller onboard. The microcontroller uses a blob algorithm to detect objects based on color. The result of the microcontroller is then either communicated via SPI, I2C, UART, USB or analog/digital output interfaces. The output is simply a data object that contains the (x,y)-coordinates of the recognized object, the size of the boundary box surrounding the object, and which color label ie. which object it is.[^Pixy_Lego_wiki]
+The Pixy CMUCAM5 Image Sensor is a vision sensor which means it is a camera with a microcontroller onboard. The microcontroller uses a blob algorithm to detect objects based on color. The result from the microcontroller is then either communicated via SPI, I2C, UART, USB, or analog/digital output interfaces. The output is the (x,y)-coordinates of the recognized object, the size of the boundary box surrounding the object, and which color label it is.[^Pixy_Lego_wiki]
 
-The Pixy CMUCAM5 allows for high-speed (50 fps) object recognition, but the output is not usable in the project, as the camera outputs the position of the object, but never the picture.
+The Pixy CMUCAM5 allows for high-speed (50 fps) object recognition, but the output is not usable in the project, as the camera outputs the position of the object, but never the picture.  
 To determine the number on the speed sign, the original picture is needed in order to recognize the digits. Therefore, the Pixy CMUCAM5 is not suitable to solve the problem. 
 
 ### Alternative solutions
 The Pixy CMUCAM5 was the only camera available to the project as standard video equipment for the Ev3 platform, so alternative equipment not natively compatible with the Ev3 had to be used.
 The Ev3 has a USB 1.1 port and runs a Linux based system. This would allow for the use of an ordinary webcam, but the Ev3 does not support this natively.
-In 2014 Gabriel Ferrer made the Ev3 support an ordinary webcam by configuring a Java Virtual Machine named leJOS[^Webcam_with_Lego_Mindstorms_EV3].
+In 2014 Gabriel Ferrer made the Ev3 support an ordinary webcam by configuring an OS named leJOS with a Java Virtual Machine[^Webcam_with_Lego_Mindstorms_EV3].
 LeJOS later evolved to natively support an ordinary webcam alongside other relevant tools, such as OpenCV.[^lejos_091_release]
 
 ## leJos and webcam
 Since leJos specifies that not all webcams are supported, the group collected a set of webcams to test them and locate one that would work. Two tests were performed. The first was whether or not the leJos webcam API would support the camera. 
-The second tested if the camera was supported by the OpenCV webcam API, as this library is needed in the project.
+The second tested if the camera was supported by the OpenCV webcam API, as this library might be needed.
 
 The first two cameras were unsuccessful, the first one was suspected to fail because of the camera being broken. The second one failed since the leJos API could not interface with it, which most likely were due to the fact, that the camera was a webcam combined with a microphone which might have interfered with the leJos API. But the third camera we tested was successful in both the leJos and OpenCV API's. 
 
