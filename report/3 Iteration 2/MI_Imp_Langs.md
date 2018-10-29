@@ -85,7 +85,7 @@ Table: Feature table that outlines the desired features labeled with *low, mediu
 The *MI Community* criterion is related to the amount of developers that actively use the language. By looking at the number of projects on GitHub related to ML, Python quickly stands out as the most used language whereas Java and C++ are placed relatively low. This is also why Python is measured as *high* whereas Java and C++ are measured as *low*. 
 
 Aside from the features assessed in the table above, another important consideration is whether or not the languages can run on leJOS.
-However, it has not been explicity determined whether or not leJOS will be exclusively used for this project. If the specification would express this, then all arguments towards the use of any other language would immediate be discarded as other languages, but Java, cannot be used with leJOS. 
+However, it has not been explicitly determined whether or not leJOS will be exclusively used for this project. If this is deemed possible, all arguments will be immediate discarded as only Java can be used with leJOS. 
 
 The only language that can do this is Java because of its platform independency due to Java's virtual machine.
 Another proponent of Java is that Java can almost be directly mapped to C# syntactically.
