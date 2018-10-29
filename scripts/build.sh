@@ -18,6 +18,7 @@ python $DIR/includes.py $MAIN | \
            --filter pandoc-eqnos \
            --filter pandoc-citeproc \
            --csl=$CSL \
+           --number-sections \
            --biblio=$BIBTEX \
            --from markdown \
            -o $OUTPUT
