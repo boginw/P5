@@ -26,6 +26,7 @@ RUN cabal update && cabal install pandoc-${PANDOC_VERSION} && cabal install pand
 # install pandoc figure numberings
 RUN python -m pip install --upgrade setuptools
 RUN pip install pandoc-fignos
+RUN pip install pandoc-eqnos
 
 WORKDIR /source
 

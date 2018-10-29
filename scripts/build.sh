@@ -15,6 +15,7 @@ fi
 
 python $DIR/includes.py $MAIN | \
     pandoc --filter pandoc-fignos \
+           --filter pandoc-eqnos \
            --filter pandoc-citeproc \
            --csl=$CSL \
            --biblio=$BIBTEX \
