@@ -52,17 +52,18 @@ int main()
 }
 ```
 
-// The table description should be "Feature table that outlines the desired features labeled with *low, medium* or *high*".
+// The table caption should be "Feature table that outlines the desired features labeled with *low, medium* or *high*".
 
 Based on the code examples and  description of the languages above, the following table was created:
 
-| Features       | Python |  Java  |   C++  |
-|----------------|:------:|:------:|:------:|
-| Simplicity     |  High  | Medium |   Low  |
-| Readability    |  High  | Medium |   Low  |
-| MI Community   |  High  | Medium | Medium |
-| Modularity     |  High  |   Low  |   Low  |
-| Learning Curce |  High  |   Low  |   Low  |
+| Features        | Python |  Java  |   C++  |
+|:----------------|:------:|:------:|:------:|
+| Simplicity      |  High  | Medium |   Low  |
+| Readability     |  High  | Medium |   Low  |
+| MI Community    |  High  | Medium | Medium |
+| Modularity      |  High  |   Low  |   Low  |
+| Learning Curce  |  High  |   Low  |   Low  |
+Table: Test...
 
 The fortunate thing about Java is that it can almost be directly mapped to C# syntactically. This is benefical in the sense that all contributors to this project have had an indepth C# course, which is very similar to Java in serveral ways. Therefore, the learning curve is minimized (low), which means that more of the focus and time spent can be forwarded towards actual implemention and solving the problem of this project rather than also having to spend time learning Python or C++. However, the clear benefit of Python is its large amount of open source libraries related to MI or rather machine learning (ML), which can be utilized for fast prototyping and testing of ideas as their appear.  
 
