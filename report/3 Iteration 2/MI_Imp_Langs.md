@@ -6,7 +6,7 @@
 ### Description of the Language Paradigm
 Python is a widely used language and has existed for many years. Python is popular for its simplicity, readability and being a general-purpose language. Python also supports multi programming paradigms including object-oriented, imperative, functional, procedural.
 
-Java is almost used everyday and is a popular language because of its wide availability. Java is also a general-purpose language and supports a class-based, object-oriented paradigm. 
+Java is almost used everywhere and is a popular language because of its long history and being platform independant among other reasons. Java is also a general-purpose language and supports a class-based, object-oriented paradigm. 
 
 C++ is primarily used where you are especially interested in performance and proper resource utilization. One platform could be embedded systems. C++ is also a general-purpose programming language and has support for imperative and object-oriented programming features. 
 
