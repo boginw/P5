@@ -11,6 +11,11 @@ To include another file, the following command can be used:
 **NOTE:** this command must be the only content on the line, otherwise it will be ignored.
 
 
+## Template
+
+Template options can be found [here](https://github.com/Wandmalfarbe/pandoc-latex-template#custom-template-variables).
+
+
 ## Style
 
 The following describes how to keep the agreed style of formatting.

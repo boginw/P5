@@ -19,6 +19,9 @@ python $DIR/includes.py $MAIN | \
            --filter pandoc-citeproc \
            --csl=$CSL \
            --number-sections \
+           --toc \
            --biblio=$BIBTEX \
            --from markdown \
+           --template eisvogel \
+           --listings \
            -o $OUTPUT
