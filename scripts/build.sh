@@ -12,11 +12,15 @@ if [ ! -d "$OUTDIR" ]; then
     mkdir "$OUTDIR"
 fi
 
-
 python $DIR/includes.py $MAIN | \
     pandoc --filter pandoc-fignos \
+           --filter pandoc-eqnos \
            --filter pandoc-citeproc \
            --csl=$CSL \
+           --number-sections \
+           --toc \
            --biblio=$BIBTEX \
            --from markdown \
+           --template eisvogel \
+           --listings \
            -o $OUTPUT
