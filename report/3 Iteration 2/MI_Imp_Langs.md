@@ -85,16 +85,15 @@ Table: Feature table that outlines the desired features labeled with *low, mediu
 The *MI Community* criterion is related to the amount of developers that actively use the language. By looking at the number of projects on GitHub related to ML, Python quickly stands out as the most used language whereas Java and C++ are placed relatively low. This is also why Python is measured as *high* whereas Java and C++ are measured as *low*. 
 
 Aside from the features assessed in the table above, another important consideration is whether or not the languages can run on leJOS.
-However, it has not been explicitly determined whether or not leJOS will be exclusively used for this project. If this is deemed possible, all arguments will be immediate discarded as only Java can be used with leJOS. 
+However, it has not been explicitly determined whether or not leJOS will be used for this project. If this is deemed to be the case, all arguments towards using any other language than Java will immediate be disregarded as only Java can be used with leJOS because of its platform independency. 
 
-The only language that can do this is Java because of its platform independency due to Java's virtual machine.
 Another proponent of Java is that Java can almost be directly mapped to C# syntactically.
 This is benefical in the sense that all contributors to this project have had an indepth C# course, which is very similar to Java in several ways.
 Therefore, the learning curve is minimized (specified by low in the table), which means that more of the focus and time spent can be forwarded towards actual implemention and solving the problem of this project rather than also having to spend time learning Python or C++. 
 
-However, the clear benefit of Python is its large amount of open source libraries related to MI or rather ML, which can be utilized for fast prototyping and testing of ideas as they appear.
+However, the clear benefit of Python is its large amount of open source libraries related to MI, or rather ML, which can be utilized for fast prototyping and testing of ideas as they appear.
 
-C++ would, in comparison, require a lot of work due to the amount of manual work, but this would definitely contribute to cementing how the MI algorithms work. 
+C++ would, in comparison, require much due to the amount of manual work, but this would definitely contribute to cementing how the MI algorithms work. 
 
 Based on the table above, language X was chosen to proceed with the development of the project solution. 
 
