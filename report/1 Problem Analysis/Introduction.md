@@ -27,8 +27,8 @@ Now that it has been established that speed actually is a relevant factor in tra
 ## Current Systems
 In this section, some of the current solutions used by car manufacturers to increase traffic safety are presented. The section will only investigate what manufacturers are doing for problems derived from the initial problem, as the report will focus on a technological approach to reduce and solve the problem.
 
-Safety seems to be highly regarded by car manufacturers. Extensive testing is done in order to make sure that users of cars can feel as safe as possible while driving. Many car manufacturers are working on automating the different aspects of driving to make them more safe, and more convenient. This amount of automation is described in a taxonomy called "The Five Levels of Automation". [@sae_international_automated_nodate]
-Where level 0 describes a car with no automation, and level 5 describes a completely autonomous car. Many of the major car manufactures, like BMW [@bmw], Mercedes[@mercedes], and Hyundai [@hyundai], work with this scale.
+Safety seems to be highly regarded by car manufacturers. Extensive testing is done in order to make sure that users of cars can feel as safe as possible while driving. Many car manufacturers are working on automating the different aspects of driving to make them more safe, and more convenient. This amount of automation is described in a taxonomy called "The Five Levels of Automation"[@sae_international_automated_nodate].
+Where level 0 describes a car with no automation, and level 5 describes a completely autonomous car. Many of the major car manufactures, like BMW[@bmw], Mercedes[@mercedes], and Hyundai[@hyundai], work with this scale.
 
 An example  of such automation is made by Hyundai. They use ultrasonic and radar sensors to cover blind spots in the car. The car will then alert the driver if other vehicles is approaching or has entered the blind spot. The system will also prevent the driver from either leaving his/her lane, or break, if it has detected a vehicle in the blind spot[@hyundai_blindspots].
 
