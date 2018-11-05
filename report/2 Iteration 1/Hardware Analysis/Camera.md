@@ -1,17 +1,25 @@
 ## Pixy CMUCAM5 Image Sensor Lego
-Is a vision as a sensor, which means it is a camera with a microcontroller onboard. The microcontroller then uses a blob algorithm to detect objects based on colors. The result of the microcontroller is then either communicated via SPI, I2C, UART, USB or analog/digital output interfaces. The output is simply a data object that contains the (x,y)-coordinates of the recognized object, the size of the boundary box surrounding the object, and which color label ie. which object it is.[^Pixy_Lego_wiki]
+The Pixy CMUCAM5 Image Sensor is a vision sensor which means it is a camera with a microcontroller onboard. The microcontroller uses a blob algorithm to detect objects based on color. The result from the microcontroller is then either communicated via SPI, I2C, UART, USB, or analog/digital output interfaces. The output is the (x,y)-coordinates of the recognized object, the size of the boundary box surrounding the object, and which color label it is.[^Pixy_Lego_wiki]
 
-This means that even tho the Pixy CMUCAM5 has a lot of capabilities that would be beneficial for the group, such as 50 fps object recognition, we can not use it in our project. Due to the fact that we actually need to recognize the 'value' of a speed sign, and since there are no color-coded differences between the speed signs, coupled with the fact that the Pixy doesn't actually transmit any pixel data it would be impossible to detect the speed signs using the Pixy camera. 
+The Pixy CMUCAM5 allows for high-speed (50 fps) object recognition, but the output is not usable in the project, as the camera outputs the position of the object, but never the picture.  
+To determine the number on the speed sign, the original picture is needed in order to recognize the digits. Therefore, the Pixy CMUCAM5 is not suitable to solve the problem. 
 
 ### Alternative solutions
-Since the Pixy CMUCAM5 was the only vision sensor/ camera that the university could supply for the Ev3 platform, the group started to look for alternative solutions. It quickly became clear to the group that since the Ev3 is a Linux based system, and it has a USB 1.1 port, it probably would be possible to use an ordinary webcam, with a little tinkering. It turns out that this, in fact, was the case, Gabriel Ferrer a Professor of Computer Science at Hendrix College in Conway, Arkansas showcased an elegant solution for this on his blog back in 2014[^Webcam_with_Lego_Mindstorms_EV3]. Ferrer did it using leJos, which is a tiny Java Virtual Machine that runs on the Ev3 platform. Ferrer was able to connect a webcam to the Ev3 by carefully configure leJos and writing a driver for the camera which allowed for the Java code to interface with it. But since leJOS EV3 0.9.1 release from 2015[^lejos_091_release] the ability to interface with webcams are natively supported on the platform, alongside another potentially useful tool which is OpenCV.
+The Pixy CMUCAM5 was the only camera available to the project as standard video equipment for the EV3 platform, so alternative equipment not natively compatible with the EV3 had to be used.
+The EV3 has a USB 1.1 port and runs a Linux based system. This would allow for the use of an ordinary webcam, but the EV3 does not support this natively.
+In 2014 Gabriel Ferrer made the EV3 support an ordinary webcam by configuring an OS named leJOS with a Java Virtual Machine[^Webcam_with_Lego_Mindstorms_EV3].
+LeJOS later evolved to natively support an ordinary webcam alongside other relevant tools, such as OpenCV.[^lejos_091_release]
 
-## leJos and webcam
-Since leJos specifies that not all webcams are supported, the group collected a set of webcams to test them and locate one that would work. The group formulated two tests, the first one was whether or not the camera would be supported by the leJos webcam API. The second test was whether or not the webcam would be supported by the OpenCV webcam API, it was a requirement for the group that both tests should be successful before the camera could be rendered usable. 
+## leJOS and webcam
+Since leJOS specifies that not all webcams are supported, the group collected a set of webcams to test them and locate one that would work. Two tests were performed. The first was whether or not the leJOS webcam API would support the camera. 
+The second tested if the camera was supported by the OpenCV webcam API, as this library might be needed.
 
-The first two cameras were unsuccessful, the first one was suspected to fail because of the camera being broken. The second one failed since the leJos API could not interface with it, which most likely were due to the fact, that the camera was a webcam combined with a microphone which might have interfered with the leJos API. But the third camera we tested was successful in both the leJos and OpenCV API's. 
+In total, three cameras was tested.
+Of these three, the first is under suspicion of being faulty.
+The second camera was unable to interface with the leJOS API. This might be because the webcam also includes a microphone which interferes with the API.
+The third camera was successful in both the leJOS and OpenCV API tests.
 
-After identifying a working camera some demo programs were written to get a sense of the capabilities of using a webcam on the EV3. And to test whether or not there were any potential performance benefits in choosing one API over the other. 
+After identifying a working camera some demo programs were written to get a sense of the capabilities of using a webcam on the EV3. This test also concluded if there were any performance differences between the two APIs.
 
 ### Demo programs
 The first demo program conducted was to have the EV3 grab frames from the camera and display on the Monochrome LCD on the EV3. In doing this activity the group realized that there are some important performance considerations to consider when choosing which image format the camera data should be converted to. The leJos community claimed that JPEG is very cost inefficient for the EV3, whereas YUYV very cost efficient for the EV3. The group tried both in this demo program, and there was a small barely noticeable difference in response time on the video feed in favor of YUYV. But this claims should be tested in more depth when working with the actual model for MI since the claims of the leJos community are that YUYV is preferable over everything else when it comes to Computer Vision.
