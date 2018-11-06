@@ -4,7 +4,7 @@ This section describes how the car was designed. Included is a description of th
 ### CAD design
 By utilizing LeoCAD[@leocad_website] a car with all the components, except the camera, was designed. By utilizing this tool, disassembly and reassembly become much easier since the steps for assembling are available through the tool. A rendered image of the car can be seen in figure {@fig:cad_car}
 
-![CAD model of the car](report/assets/pictures/cad_car.png){@fig:cad_car}
+![CAD model of the car](report/assets/pictures/cad_car.png){#fig:cad_car}
 
 Through some simple non-formal tests, it was concluded that this design produced a car that drives around 6 km/h, is rigid enough to drive into walls multiple times and can withstand multiple drops from around 50 cm. These results prompted the group to stop the design process as most of the goals had been reached.
 
@@ -26,9 +26,9 @@ To fulfill the criterion of rigidness the bottom and front were considered prima
 * The front of the car, as seen in figure {@fig:cad_car_front}, is built to absorb shock coming from the front, which hopefully is dissipated by the time it would reach the driving axle. 
 * The bottom of the car is made almost completely solid in order to make it sturdy. The front and back of the bottom are left open, in order to absorb shock from crashes from those sides.
 
-![CAD model of the car, front](report/assets/pictures/cad_car_front.png){@fig:cad_car_front}
+![CAD model of the car, front](report/assets/pictures/cad_car_front.png){#fig:cad_car_front}
 
-![CAD model of the car, back](report/assets/pictures/cad_car_back.png){@fig:cad_car_back}
+![CAD model of the car, back](report/assets/pictures/cad_car_back.png){#fig:cad_car_back}
 
 
 The rigidness of the car was tested dropping the car approximately 50 cm and by making the car drive into a wall at full speed multiple times. As the car could withstand this criterion was considered fulfilled. 
