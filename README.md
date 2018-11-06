@@ -83,3 +83,35 @@ To compile, just execute the following command:
 ```
 
 If no errors occurred, you should see a folder `dist` in the root of the project, containing the resulting PDF `output.pdf`.
+
+## How to cite things
+Sometimes it's relevant to source things.<sup>citation needed</sup>
+
+Here's how you do it.
+Take the source and go to [ZBib](https://zbib.org/)
+
+Paste in the link and press cite.
+![](https://imgur.com/a/Gjm9DkN.png)
+
+If this doesn't work, you have to click on the manual entry and fill in as many of the blanks as possible.
+
+At the (near) bottom of the page you can click the dropdown arrow on `Copy to Clipboard` and then `Download BibTeX`
+![](https://imgur.com/a/UrRPaPu.png)
+
+Add everything in the document to biblio.bib:
+
+```@misc{waugh_here_2016,
+	title = {Here are 10 ‘proofs’ that the {Earth} is actually flat, not round},
+	url = {https://metro.co.uk/2016/07/19/here-are-10-proofs-that-the-earth-is-actually-flat-not-round-6016710/},
+	abstract = {Is it the biggest conspiracy in human history?},
+	language = {en},
+	urldate = {2018-11-06TZ},
+	author = {Waugh, Rob},
+	month = jul,
+	year = {2016}
+}
+```
+
+When you want to reference it, do it like this, and note the period after the source, and no space between the sentence and the source:
+
+`Jet fuel can't melt steel beams[@waugh_here_2016].`
