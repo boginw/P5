@@ -39,7 +39,7 @@ The first test conducted was the heap test. The result of which are shown in the
 | Total Memory     | 29        |
 | Max Memory       | 29        |
 
-As seen in the table above, the Java runtime identifies the max available as 29 MB, and when utilizing the ram, we can use all the up to a total utilized of 29 MB. It might seem odd why only 23 MB is used and 5 MB is Free, but this is due to how the test is conducted, the `ArrayList` implementation in Java, work by every time the array is too small, it doubles its space. And the last attempt to do so violates the upper bound of 29 MB, which throws the `OutOfMemoryException`.
+As seen in the table above, the Java runtime identifies the max available as 29 MB, and when utilizing the RAM, we can use all up to a total of 29 MB. It might seem odd why only 23 MB is used and 5 MB is free, but this is due to how the test is conducted. The `ArrayList` implementation in Java, work by doubling its space every time it runs out of memory. And the last attempt to do so violates the upper bound of 29 MB, which throws the `OutOfMemoryException`.
 
 Next the stack size was tested. The result of which are shown in the table below.
 
