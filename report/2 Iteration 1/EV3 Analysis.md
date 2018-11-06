@@ -5,16 +5,14 @@
 The EV3 will be running LeJOS as its operating system, LeJOS is a Linux derivirative. We were unable to find it's concrete resource usage, therfore test will be conducted to identify how many resources the OS will consume, and hence how many resources are free to be used.
 
 ### Hardware specification
-The hardware specifikations of the lego EV3:
+The hardware specifikations of the lego EV3[@the_lego_group_lmsuser_2015, p. 8]:
 
 | EV3 Specification        |             |
 | ------------- |:-------------|
 | Processor     | ARM 9 - 300Hz |
 | Memory      | 64 MB |
 | Storage | 16 MB Flash Memory & SD card slot up to 32 GB |
-| Communication | Bluetooth v2.1 & 1 USB 2.0 micro\* & 1 USB 1.1** & 4 Motor ports
-
-<!-- https://web.archive.org/web/20150224035959/http://service.lego.com/en-us/helptopics/products/themes/mindstorms/mindstorms-ev3/ev3-and-nxt-differences -->
+| Communication | Bluetooth v2.1 & 1 USB 2.0 micro\* & 1 USB 1.1** & 4 Motor ports |
 
 \* For communication with host PC.
 
@@ -27,7 +25,7 @@ For testing the heap a small program was developed, utilizing dynamic allocation
 
 For testing the stack size, the `arrayList` could not be utilized since it is located on the stack, the same premize applies for normal arrays in Java. Because of this the stack size was tested by conforming a recursion function, which where not a taylor recursion. The recursion function was conformed in such a way that it would never yield a result, effectively creating an infinite loop. In each recursion call a counter was increased, to count hte number of calls. The recursion function then run until an `stackOverflowException` occuried. The the Java's runtime envirioment was used to output the memory statistics and the counter was outputted.
 
-<!-- http://hg.openjdk.java.net/jdk7/jdk7/jdk/file/tip/src/share/classes/java/util/ArrayList.java -->
+
 #### Test Results 
 
 The first test conducted was the heap test. The result of which are shown in the table below.
@@ -39,7 +37,7 @@ The first test conducted was the heap test. The result of which are shown in the
 | Total Memory     | 29        |
 | Max Memory       | 29        |
 
-As seen in the table above, the Java runtime identifies the max available as 29 MB, and when utilizing the ram, we can use all the up to a total utilized of 29 MB. It might seem odd why only 23 MB is used and 5 MB is Free, but this is due to how the test is conducted, the `ArrayList` implementation in Java, work by every time the array is too small, it doubles its space. And the last attempt to do so violates the upper bound of 29 MB, which throws the `OutOfMemoryException`.
+As seen in the table above, the Java runtime identifies the max available as 29 MB, and when utilizing the ram, we can use all the up to a total utilized of 29 MB. It might seem odd why only 23 MB is used and 5 MB is Free, but this is due to how the test is conducted, the `ArrayList` implementation in Java, work by every time the array is too small, it doubles its space [@jdk_arraylist]. And the last attempt to do so violates the upper bound of 29 MB, which throws the `OutOfMemoryException`.
 
 Next the stack size was tested. The result of which are shown in the table below.
 
