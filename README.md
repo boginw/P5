@@ -38,12 +38,25 @@ In this report The Chicago Manual of Style (CMOS) will be used as style for head
 The list has been yanked from the [CMOS-homepage](https://www.chicagomanualofstyle.org/book/ed17/part2/ch08/psec159.html).
 
 ### Citations
+Take the source and go to [ZBib](https://zbib.org/)
 
-To cite, please add your reference in the `report/biblio.bib` file first. The syntax for citing is as follows:
+Paste in the link and press cite.
+![](https://imgur.com/a/Gjm9DkN.png)
+
+If this doesn't work, you have to click on the manual entry and fill in as many of the blanks as possible.
+
+At the (near) bottom of the page you can click the dropdown arrow on `Copy to Clipboard` and then `Download BibTeX`
+![](https://imgur.com/a/UrRPaPu.png)
+
+Add everything in the document to `report/biblio.bib`. The syntax for citing is as follows:
 
 > `[@cite_key, p. 30] says fooo.`
+or
+> `Jet fuel can't melt steel beams[@waugh_here_2016].`
 
-**NOTE:** The `, p. 30` part is optional, and is only used when a specific page is refered.
+**NOTE:** Period goes after the source, and there's no space between the last word of the sentence and the source.
+
+**NOTE:** The `, p. 30` part is optional, and is only used when a specific page is referred.
 
 ### Misc
 
