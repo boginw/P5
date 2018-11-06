@@ -2,10 +2,14 @@
 ## Analysis of the EV3 
 
 
-The EV3 will be running LeJOS as its operating system, LeJOS is a Linux derivirative. We were unable to find it's concrete resource usage, therfore test will be conducted to identify how many resources the OS will consume, and hence how many resources are free to be used.
+The EV3 will be running LeJOS as its operating system, LeJOS is a Linux derivative. We were unable to find its concrete resource usage. Therefore experiments will be conducted to identify how many resources the OS will consume, and hence how many resources are free to be used.
 
 ### Hardware specification
+<<<<<<< HEAD
 The hardware specifikations of the lego EV3[@the_lego_group_lmsuser_2015, p. 8]:
+=======
+The hardware specifications of the LEGO EV3:
+>>>>>>> 806ab6db6b7083c92c9a8138239e5b189c0dd4e0
 
 | EV3 Specification        |             |
 | ------------- |:-------------|
@@ -19,41 +23,45 @@ The hardware specifikations of the lego EV3[@the_lego_group_lmsuser_2015, p. 8]:
 ** For host communication.
 
 #### Test methodology
-For testing both heap and stack size of the EV3 with LeJOS, the tests will be seperated to minimize noice in the measurments.
+For testing both heap and stack size of the EV3 with LeJOS, the tests will be separated to minimize noise in the measurements.
 
-For testing the heap a small program was developed, utilizing dynamic allocation for testing the heap size. This will be done using java's `arrayList` implementation, and then adding elements to the list until the LeJOS throws an `OutOfMemoryException`. To see the actuall memory usage Java's runtime class is utilized.
+For testing the heap a small program was developed, utilizing dynamic allocation for testing the heap size. This will be done using Java's `arrayList` implementation, and then adding elements to the list until the LeJOS throws an `OutOfMemoryException`. To see the actuall memory usage Java's runtime class is utilized.
 
-For testing the stack size, the `arrayList` could not be utilized since it is located on the stack, the same premize applies for normal arrays in Java. Because of this the stack size was tested by conforming a recursion function, which where not a taylor recursion. The recursion function was conformed in such a way that it would never yield a result, effectively creating an infinite loop. In each recursion call a counter was increased, to count hte number of calls. The recursion function then run until an `stackOverflowException` occuried. The the Java's runtime envirioment was used to output the memory statistics and the counter was outputted.
+For testing the stack size, the `arrayList` could not be utilized since it is located on the stack, the same premise applies for normal arrays in Java. Because of this the stack size was tested by conforming a recursion function, which where not a Taylor recursion. The recursion function was conformed in such a way that it would never yield a result, effectively creating an infinite loop. In each recursion call a counter was increased, to count the number of calls. The recursion function then ran until an `stackOverflowException` occurred. Then Java's runtime environment was used to output the memory statistics and the counter was outputted.
 
 
 #### Test Results 
 
 The first test conducted was the heap test. The result of which are shown in the table below.
 
-| Memory Categorie | Ram in MB |
+| Memory Categorie | RAM in MB |
 | ---------------- | :-------: |
 | Used Memory      | 23        |
 | Free Memory      | 5         |
 | Total Memory     | 29        |
 | Max Memory       | 29        |
 
+<<<<<<< HEAD
 As seen in the table above, the Java runtime identifies the max available as 29 MB, and when utilizing the ram, we can use all the up to a total utilized of 29 MB. It might seem odd why only 23 MB is used and 5 MB is Free, but this is due to how the test is conducted, the `ArrayList` implementation in Java, work by every time the array is too small, it doubles its space [@jdk_arraylist]. And the last attempt to do so violates the upper bound of 29 MB, which throws the `OutOfMemoryException`.
+=======
+As seen in the table above, the Java runtime identifies the max available as 29 MB, and when utilizing the RAM, we can use all up to a total of 29 MB. It might seem odd why only 23 MB is used and 5 MB is free, but this is due to how the test is conducted. The `ArrayList` implementation in Java, work by doubling its space every time it runs out of memory. And the last attempt to do so violates the upper bound of 29 MB, which throws the `OutOfMemoryException`.
+>>>>>>> 806ab6db6b7083c92c9a8138239e5b189c0dd4e0
 
 Next the stack size was tested. The result of which are shown in the table below.
 
-| Memory Categorie       | Ram in MB |
+| Memory Categorie       | RAM in MB |
 | ---------------------- | :-------: |
 | Used Memory            | 1         |
 | Free Memory            | 3         |
 | Total Memory           | 4         |
 | Max Memory             | 29        |
 
-The Java Runtime is still specifying that the max available memory is 29 MB, but in this test only 4 MB where utilized. Where of those 4 MB, 3MB was Free memory and 1 MB was Used memory. This shows that the stack size is 1 MB.
+The Java Runtime is still specifying that the max available memory is 29 MB, but in this test only 4 MB where utilized. Where of those 4 MB, 3MB was free memory and 1 MB was used memory. This shows that the stack size is 1 MB.
 
 ### Conclusion
 
-The tests show that only 29 MB of the EV3's 64 MB memory is actually available. The group assumes that the other 35 MB of memory is used by the leJOS operating system. SInce leJOS do not provide any specification on this part, we cant assert this assumption.
+The tests show that only 29 MB of the EV3's 64 MB memory is actually available. The group assumes that the other 35 MB of memory is used by the LeJOS operating system. Since LeJOS do not provide any specification on this part, we cannot assert this assumption.
 
-The stack size test showed that a `StackOverflowException` was thrown when the memory used was only 1 MB and having 3 MB free memory, this leads the group to conclude that the stack size is a fix size of 1 MB.
+The stack size test showed that a `StackOverflowException` was thrown when the memory used was only 1 MB and having 3 MB free memory, this leads the group to conclude that the stack size is a fixed size of 1 MB.
 
 Therefore the group concludes that the system is bound by the restrictions of 29 MB of ram where 1 MB is dedicated to a fixed stack size. This means that all software that is intended to run on the EV3 brick should never be able to exceed these limitations.
