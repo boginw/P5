@@ -23,6 +23,10 @@ For testing the heap a small program was developed, utilizing dynamic allocation
 
 For testing the stack size, the `arrayList` could not be utilized since it is located on the stack, the same premise applies for normal arrays in Java. Because of this the stack size was tested by conforming a recursion function, which where not a Taylor recursion. The recursion function was conformed in such a way that it would never yield a result, effectively creating an infinite loop. In each recursion call a counter was increased, to count the number of calls. The recursion function then ran until an `stackOverflowException` occurred. Then Java's runtime environment was used to output the memory statistics and the counter was outputted.
 
+#### Hypothesis
+Since the EV3 has 64 MB of RAM according to the specifications provided by LEGO, it is assumed that it is 64 MB of RAM installed, this means that some of the RAM will be used by the operating system running on the device. Since the group has chosen to use a third-party operating system, it is assumed that it would rather costly in RAM usages. Also since the chosen operating system runs a Java Virtual Machine it is assumed to take up even more RAM. 
+
+Based on the above considerations the group assumes that the operating system would take roughly around 1/3 of the  RAM and therefore there will be 2/3 of the RAM available for utilization. Since LEGO specifies the EV3 brick to have 64 MB of RAM it is assumed that around 21 MB of RAM is occupied by the operating system and around 43 MB is available for utilization.
 
 #### Test Results 
 The first test conducted was the heap test. The result of which are shown in the table below.
