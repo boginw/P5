@@ -21,7 +21,7 @@ The hardware specifications of the LEGO EV3:
 ** For host communication.
 
 #### Test methodology
-For testing both heap and stack size of the EV3 with LeJOS, the tests will be seperated to minimize noice in the measurments.
+For testing both heap and stack size of the EV3 with LeJOS, the tests will be separated to minimize noise in the measurements.
 
 For testing the heap a small program was developed, utilizing dynamic allocation for testing the heap size. This will be done using java's `arrayList` implementation, and then adding elements to the list until the LeJOS throws an `OutOfMemoryException`. To see the actuall memory usage Java's runtime class is utilized.
 
