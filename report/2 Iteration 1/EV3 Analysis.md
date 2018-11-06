@@ -54,7 +54,7 @@ The Java Runtime is still specifying that the max available memory is 29 MB, but
 
 ### Conclusion
 
-The tests show that only 29 MB of the EV3's 64 MB memory is actually available. The group assumes that the other 35 MB of memory is used by the leJOS operating system. SInce leJOS do not provide any specification on this part, we cant assert this assumption.
+The tests show that only 29 MB of the EV3's 64 MB memory is actually available. The group assumes that the other 35 MB of memory is used by the LeJOS operating system. Since LeJOS do not provide any specification on this part, we cannot assert this assumption.
 
 The stack size test showed that a `StackOverflowException` was thrown when the memory used was only 1 MB and having 3 MB free memory, this leads the group to conclude that the stack size is a fix size of 1 MB.
 
