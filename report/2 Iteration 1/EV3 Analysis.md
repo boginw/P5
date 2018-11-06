@@ -50,7 +50,7 @@ Next the stack size was tested. The result of which are shown in the table below
 | Total Memory           | 4         |
 | Max Memory             | 29        |
 
-The Java Runtime is still specifying that the max available memory is 29 MB, but in this test only 4 MB where utilized. Where of those 4 MB, 3MB was Free memory and 1 MB was Used memory. This shows that the stack size is 1 MB.
+The Java Runtime is still specifying that the max available memory is 29 MB, but in this test only 4 MB where utilized. Where of those 4 MB, 3MB was free memory and 1 MB was used memory. This shows that the stack size is 1 MB.
 
 ### Conclusion
 
