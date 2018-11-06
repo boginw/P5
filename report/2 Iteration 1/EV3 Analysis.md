@@ -43,7 +43,7 @@ As seen in the table above, the Java runtime identifies the max available as 29 
 
 Next the stack size was tested. The result of which are shown in the table below.
 
-| Memory Categorie       | Ram in MB |
+| Memory Categorie       | RAM in MB |
 | ---------------------- | :-------: |
 | Used Memory            | 1         |
 | Free Memory            | 3         |
