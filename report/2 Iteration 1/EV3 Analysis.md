@@ -1,15 +1,9 @@
 
 ## Analysis of the EV3 
-
-
 The EV3 will be running LeJOS as its operating system, LeJOS is a Linux derivative. We were unable to find its concrete resource usage. Therefore experiments will be conducted to identify how many resources the OS will consume, and hence how many resources are free to be used.
 
 ### Hardware specification
-<<<<<<< HEAD
-The hardware specifikations of the lego EV3[@the_lego_group_lmsuser_2015, p. 8]:
-=======
-The hardware specifications of the LEGO EV3:
->>>>>>> 806ab6db6b7083c92c9a8138239e5b189c0dd4e0
+The hardware specifications of the lego EV3[@the_lego_group_lmsuser_2015, p. 8]
 
 | EV3 Specification        |             |
 | ------------- |:-------------|
@@ -31,7 +25,6 @@ For testing the stack size, the `arrayList` could not be utilized since it is lo
 
 
 #### Test Results 
-
 The first test conducted was the heap test. The result of which are shown in the table below.
 
 | Memory Categorie | RAM in MB |
@@ -41,11 +34,7 @@ The first test conducted was the heap test. The result of which are shown in the
 | Total Memory     | 29        |
 | Max Memory       | 29        |
 
-<<<<<<< HEAD
-As seen in the table above, the Java runtime identifies the max available as 29 MB, and when utilizing the ram, we can use all the up to a total utilized of 29 MB. It might seem odd why only 23 MB is used and 5 MB is Free, but this is due to how the test is conducted, the `ArrayList` implementation in Java, work by every time the array is too small, it doubles its space [@jdk_arraylist]. And the last attempt to do so violates the upper bound of 29 MB, which throws the `OutOfMemoryException`.
-=======
-As seen in the table above, the Java runtime identifies the max available as 29 MB, and when utilizing the RAM, we can use all up to a total of 29 MB. It might seem odd why only 23 MB is used and 5 MB is free, but this is due to how the test is conducted. The `ArrayList` implementation in Java, work by doubling its space every time it runs out of memory. And the last attempt to do so violates the upper bound of 29 MB, which throws the `OutOfMemoryException`.
->>>>>>> 806ab6db6b7083c92c9a8138239e5b189c0dd4e0
+As seen in the table above, the Java runtime identifies the max available as 29 MB, and when utilizing the RAM, we can use all up to a total of 29 MB. It might seem odd why only 23 MB is used and 5 MB is free, but this is due to how the test is conducted. The `ArrayList` implementation in Java, work by doubling its space every time it runs out of memory[@jdk_arraylist]. And the last attempt to do so violates the upper bound of 29 MB, which throws the `OutOfMemoryException`.
 
 Next the stack size was tested. The result of which are shown in the table below.
 
@@ -59,7 +48,6 @@ Next the stack size was tested. The result of which are shown in the table below
 The Java Runtime is still specifying that the max available memory is 29 MB, but in this test only 4 MB where utilized. Where of those 4 MB, 3MB was free memory and 1 MB was used memory. This shows that the stack size is 1 MB.
 
 ### Conclusion
-
 The tests show that only 29 MB of the EV3's 64 MB memory is actually available. The group assumes that the other 35 MB of memory is used by the LeJOS operating system. Since LeJOS do not provide any specification on this part, we cannot assert this assumption.
 
 The stack size test showed that a `StackOverflowException` was thrown when the memory used was only 1 MB and having 3 MB free memory, this leads the group to conclude that the stack size is a fixed size of 1 MB.
