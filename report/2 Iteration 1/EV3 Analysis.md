@@ -32,7 +32,7 @@ For testing the stack size, the `arrayList` could not be utilized since it is lo
 
 The first test conducted was the heap test. The result of which are shown in the table below.
 
-| Memory Categorie | Ram in MB |
+| Memory Categorie | RAM in MB |
 | ---------------- | :-------: |
 | Used Memory      | 23        |
 | Free Memory      | 5         |
