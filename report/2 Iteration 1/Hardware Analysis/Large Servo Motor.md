@@ -14,36 +14,70 @@ These specifications were obtained from the product page of EV3 Large Servo[@lar
 
 ### Hypothesis
 
-As the motors provided in the set are brand new, it is assumed that they will perform better than the specification provided by Lego, this assumption is based on the presumption that the specifications provided are created conservatively. It is therefore assumed that the actual measurements for torque and RPM are about between 5-10% higher than what the specification states.
-
-As the power level of the battery most likely affects the specifications, it is assumed that the specifications given by Lego are based on tests with an external power source and not the included battery. Albeit the power source is expected to equal the output of the included battery at maximum charge. It is therefore assumed that different power levels yield different measurements, including differing torque and RPM.
-
-The included battery is rated at 7.4V, but the EV3 also takes six standard AA batteries, which are rated at 1.5V each, which results in 9V in serial. It is therefore assumed, that given a higher voltage, the measurements of both torque and speed, would be higher than the given specifications.
+As the motors provided in the set are brand new, it is assumed that they will perform close specification provided by Lego.
 
 ### Methodology for the experiments
 
-Each of the following experiments is to be repeated three times in an attempt to eliminate any abnormalities. All experiments sensitive to power are started with a fully charged battery.
+Each of the following experiments is to be repeated three times in an attempt to eliminate any abnormalities.
 
 #### Speed (RPM)
 
 As tachometers are expensive, a rotary encoder can be used, in conjunction with an Arduino Micro Processor to measure revolutions. The EV3 Large servo motor is then attached to a rotary encoder in such a way that the motor spins freely. For each revolution of the motor, the rotary encoder also revolves once. Given the number of steps in the rotary encoder, a simple program can then determine when the motor has revolved.
 
-##### Affects of power
+#### Torque
 
-The abovementioned method is to be repeated with the EV3 official battery of 7.4V and with 6 $\times$ 1.5V AA batteries, which will determine if an increase in voltage has any effect on the RPM of the motor.
+To test the torque of the motors a Prony brake is to be used. As can be seen on figure @fig:prony, two wooden planks are clamped on the motor, in such a way that the planks extend out to lay on a scale. The motor is then started. While the motor is running, the planks are tightened until the motor cannot rotate anymore. At this point, we note the weight on the scale. The length from the center of the motor, to the end of the planks, in conjunction with the weight noted on the scale, can then be used to determine torque.
+
+![Illustration of Prony Brake](report/assets/pictures/prony.png){#fig:prony}
+
+#### 2nd Torque
+
+To verify the primary torque test, a secondary torque test is performed. By using a wheel with a radius of 1.5 cm, a cord is attached to this wheel. At the other end of the cord, a bottle is attached. Water is poured into the bottle in increments, such that between each increment, the motor lifts the bottle and sets it back down. By determining the maximum weight the motor can lift, it also provides approximate stall torque.
+
+### Results
+
+#### Speed (RPM)
+
+The results from the test can be seen in +@tbl:motorRPM. The table shows each motors speed at increments of 20%.
+
++---------------+--------+--------+--------+--------+--------+
+| Motor / Speed |    20% |    40% |    60% |    80% |   100% |
++===============+========+========+========+========+========+
+| 1st Motor     |  34,48 |  68,08 | 101,39 | 135,31 | 156,06 |
++---------------+--------+--------+--------+--------+--------+
+| 2nd Motor     |  34,50 |  69,01 | 101,71 | 137,83 | 151,14 |
++---------------+--------+--------+--------+--------+--------+
+
+Table: RPM Test results {#tbl:motorRPM}
+
+The percentage difference is shown +@eq:rpmPercent1 and +@eq:rpmPercent2.
+
+$$ \frac{156,06-160}{160} = -2,4625\% $$ {#eq:rpmPercent1}
+
+$$ \frac{151,14-160}{160} = -5,5375\% $$ {#eq:rpmPercent2}
 
 #### Torque
 
-To test the torque of the motors a Prony brake is to be used. Two wooden planks are clamped on the motor, in such a way that the planks extend out to lay on a scale. The motor is then started. While the motor is running, the planks are tightened until the motor cannot rotate anymore. At this point, we note the weight on the scale. The length from the center of the motor, to the end of the planks, in conjunction with the weight noted on the scale, can then be used to determine torque.
+The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 17 cm in length, the max weight ($W$) was 0,12 Kg. 
 
-##### Affects of power
+$$ \tau = A \times W \times g = 20,03 \text{N}\cdot \text{cm} $$
 
-The abovementioned method is to be repeated on the EV3 official battery on 7.4V and 6 $\times$ 1.5V AA batteries, which will determine if an increase in voltage has any effect on the torque of the motor.
+The percentage difference is shown +@eq:torquePercent1.
 
-### Notes from experiment
+$$ \frac{20,03-40}{40} = -49,925\% $$ {#eq:torquePercent1}
+
+#### 2nd Torque
+
+The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 1,5 cm in length, the max weight ($W$) was 1.268 Kg. 
+
+$$ \tau = A \times W \times g = 18,68 \text{N}\cdot \text{cm} $$
+
+The percentage difference is shown +@eq:torquePercent2.
+
+$$ \frac{18,68-40}{40} = -53,3\% $$ {#eq:torquePercent2}
 
 ### Conclusion
 
-used to refer to something which is boring or without meaningful content.
+Taking the lower bound of the range 160-170 RPM which LEGO provided, the speed test showed that the motors used were close to the specifications LEGO provided. 
 
-> "talking all kinds of blah to him"
+LEGO claims the motor has 40 Ncm in stall torque and 20 Ncm in running torque. As far as my understanding goes, the experiments performed should test stall torque, and I'm getting half of what's expected, are there any blatant faults in my tests?
