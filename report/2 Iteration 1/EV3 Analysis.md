@@ -1,4 +1,3 @@
-
 ## Analysis of the EV3 
 The EV3 will be running LeJOS, a Linux derivative, as its operating system. We were unable to find its concrete resource usage. Experiments will therefore be conducted to identify how many resources the OS will consume, and hence how many resources are free to be used.
 
@@ -16,19 +15,22 @@ The hardware specifications of the lego EV3[@the_lego_group_lmsuser_2015, p. 8]
 
 ** For host communication.
 
-#### Test methodology
+### OS Choice
+The choice of OS and programming language for the project is leJOS [@lejos_website] with Java. Since 2014 leJOS has had support for webcams [@gloomyandy_webcam_2014] which makes it ideal for this project. Also, the group is familiar with Java development, the group will not perform any tests regarding the choice of OS, since leJOS supplies all the desired functionality and familiarity.
+
+### Test methodology
 For testing both heap- and stack size of the EV3 with LeJOS, the tests will be separated to minimize noise in the measurements.
 
 For testing the heap a small program was developed, utilizing dynamic allocation for testing the heap size. This will be done using Java's `arrayList` implementation, and then adding elements to the list until the LeJOS throws an `OutOfMemoryException`. Java's runtime class is utilized in order to see the actual memory usage.
 
 For testing the stack size, the `arrayList` could not be utilized since it is located on the stack. The same premise applies for normal arrays in Java. Because of this, the stack size was tested by conforming a recursion function, which was not a Taylor recursion. The recursion function was conformed in such a way that it would never yield a result, effectively creating an infinite loop. In each recursion call a counter was increased to count the number of calls. The recursion function then ran until a `stackOverflowException` occurred. Java's runtime environment was then used to output the memory statistics, and the counter was outputted.
 
-#### Hypothesis
+### Hypothesis
 Since the EV3 has 64 MB of RAM, according to the specifications provided by LEGO, it is assumed that this means 64 MB of physical RAM installed. This means that some of the RAM will be used by the operating system running on the device. Since the group has chosen to use a third-party operating system, it is assumed that this OS is rather costly in RAM usage. Also, since the chosen operating system runs a Java Virtual Machine, this VM is assumed to take up even more RAM.
 
 Based on the above considerations, the group assumes that the operating system would occupy roughly 1/3 of the RAM, and 2/3 of the RAM will therefore be available for utilization. In specific numbers: LEGO specifies the EV3 brick to have 64 MB of RAM. It is assumed that around 21 MB of RAM is occupied by the operating system and around 43 MB is available for utilization.
 
-#### Test Results 
+### Test Results 
 The first test conducted was the heap test. The result of which are shown in the table below.
 
 | Memory Categorie | RAM in MB |
