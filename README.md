@@ -10,6 +10,15 @@ To include another file, the following command can be used:
 
 **NOTE:** this command must be the only content on the line, otherwise it will be ignored.
 
+### Directory path
+
+Any occurrence of the string `$DIR$` is replaced with the directory to the opened file.
+
+
+## Template
+
+Template options can be found [here](https://github.com/Wandmalfarbe/pandoc-latex-template#custom-template-variables).
+
 
 ## Style
 
@@ -29,16 +38,43 @@ In this report The Chicago Manual of Style (CMOS) will be used as style for head
 The list has been yanked from the [CMOS-homepage](https://www.chicagomanualofstyle.org/book/ed17/part2/ch08/psec159.html).
 
 ### Citations
+Take the source and go to [ZBib](https://zbib.org/)
 
-To cite, please add your reference in the `report/biblio.bib` file first. The syntax for citing is as follows:
+Paste in the link and press cite.
+![](https://imgur.com/a/Gjm9DkN.png)
+
+If this doesn't work, you have to click on the manual entry and fill in as many of the blanks as possible.
+
+At the (near) bottom of the page you can click the dropdown arrow on `Copy to Clipboard` and then `Download BibTeX`
+![](https://imgur.com/a/UrRPaPu.png)
+
+Add everything in the document to `report/biblio.bib`. The syntax for citing is as follows:
 
 > `[@cite_key, p. 30] says fooo.`
+or
+> `Jet fuel can't melt steel beams[@waugh_here_2016].`
 
-**NOTE:** The `, p. 30` part is optional, and is only used when a specific page is refered.
+**NOTE:** Period goes after the source, and there's no space between the last word of the sentence and the source.
+
+**NOTE:** The `, p. 30` part is optional, and is only used when a specific page is referred.
+
+### Misc
+
+In order to have a checkmark (✓) character in the report, use LaTeX-syntax: `\checkmark`
+
+## Docker
+
+A Dockerfile is in the `/docker` directory, you can build this, or just use the published image at `boginw/markdown-pandoc`. To use the image to compile a pdf, run the following:
+
+```bash
+./scripts/docker_build.sh
+```
+
+Which produces a pdf in the `/dist` folder, called `output.pdf`
 
 ## Install & Compile
 
-Although you will not need to install anything (except a Markdown editor) as the [CI](https://circleci.com/gh/Lynhx/P5) will generate artifacts, including a compiled PDF, this can be helpful for taking a glimpse of what the final result might look like.
+Although you will not need to install anything (except a Markdown editor) as the [CI](https://circleci.com/gh/boginw/P5) will generate artifacts, including a compiled PDF, this can be helpful for taking a glimpse of what the final result might look like.
 
 ### Install
 To install you'll need some prerequisites (_these packages are fairly large_).
@@ -60,4 +96,3 @@ To compile, just execute the following command:
 ```
 
 If no errors occurred, you should see a folder `dist` in the root of the project, containing the resulting PDF `output.pdf`.
-

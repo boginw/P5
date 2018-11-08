@@ -7,9 +7,6 @@ jobs:
    steps:
      - checkout
      - run:
-         name: Install python
-         command: apt-get update && apt-get install python -y
-     - run:
          name: Compile Markdown
          command: ./scripts/build.sh
      - store_artifacts:
