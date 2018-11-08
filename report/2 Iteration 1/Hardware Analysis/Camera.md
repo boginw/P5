@@ -10,11 +10,6 @@ The EV3 has a USB 1.1 port and runs a Linux based system. This would allow for t
 In 2014 Gabriel Ferrer made the EV3 support an ordinary webcam by configuring an OS named leJOS with a Java Virtual Machine[^Webcam_with_Lego_Mindstorms_EV3].
 LeJOS later evolved to natively support an ordinary webcam alongside other relevant tools, such as OpenCV.[^lejos_091_release]
 
-## leJos and webcam
-Since leJOS specifies that not all webcams are supported, the group collected a set of webcams to test them and locate one that would work. The group formulated two tests, the first one was whether or not the camera would be supported by the leJos webcam API. The second test was whether or not the webcam would be supported by the OpenCV webcam API, it was a requirement for the group that both tests should be successful before the camera could be rendered usable. 
-
-The first two cameras were unsuccessful, the first one was suspected to fail because of the camera being broken. The second one failed since the leJOS API could not interface with it, which most likely were due to the fact, that the camera was a webcam combined with a microphone which might have interfered with the leJos API. But the third camera we tested was successful in both the leJos and OpenCV API's. 
-
 ## leJOS and webcam
 Since leJOS specifies that not all webcams are supported, the group collected a set of webcams to test them and locate one that would work. Two tests were performed. The first was whether or not the leJOS webcam API would support the camera. 
 The second tested if the camera was supported by the OpenCV webcam API, as this library might be needed.
