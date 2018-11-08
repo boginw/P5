@@ -1,12 +1,12 @@
 ## EV3 Large Servo Motor
 
-The vehicle to be built is required to drive, hence a motor or two are required. The Lego Group provides two types of motors with their Lego Mindstorm set[@mindstorm_set], and to achieve higher speeds with the vehicle, the larger motors, EV3 Large Servo Motor[@large_servo_motor], will be used for drive.
+The vehicle to be built is required to drive; hence a motor or two are required. The Lego Group provides two types of motors with its Lego Mindstorms set[@mindstorm_set], and to achieve higher speeds with the vehicle, the larger motors, EV3 Large Servo Motor[@large_servo_motor], will be used for driving since these motors are the largest available for the group.
 
-According to Lego the EV3 Large Servo Motor is a powerful motor they which uses tacho feedback (tachometer) which is a instrument that measures the rotation speed of the motor. This allows for precise control which Lego claims is in one degree of accuracy. Lego also claims that motors have some intelligence that allows for aligning motors together, such that they would be able to drive in a straight line at the same speed[@large_servo_motor].
+According to Lego, the EV3 Large Servo Motor is a powerful motor which uses tacho feedback (tachometer) which is an instrument that measures the rotation speed of the motor. This tachometer allows for precise control which Lego claims is in one degree of accuracy. Lego also claims that motors have some intelligence that allows for aligning motors together, such that they would be able to drive in a straight line at the same speed[@large_servo_motor].
 
 ### Specifications
 
-These specifications where fetched from the product page of EV3 Large Servo[@large_servo_motor] and filtered such that only the relevant specifications for the vehicle remain.
+These specifications were obtained from the product page of EV3 Large Servo[@large_servo_motor] and filtered such that only the relevant specifications for the vehicle remain.
 
 - 160-170 RPM (Rounds per minute)
 - Running torque of 20 N.cm
@@ -14,36 +14,70 @@ These specifications where fetched from the product page of EV3 Large Servo[@lar
 
 ### Hypothesis
 
-As the motors provided in the set are brand new, it is assumed that they will perform better than the specification provided by Lego, this assumption is based on the presumption that the specifications provided is created conservatively. It is therefore assumed that the actual measurements for torque and RPM are about between 5-10% higher than what the specification states.
+As the motors provided in the set are brand new, it is assumed that they will perform close specification provided by Lego.
 
-As the power-level of the battery most likely affects the specifications, it is assumed that the specifications given by Lego are based on tests with an external power source and not the included battery. Albeit the power source is expected to equal the output of the included battery at maximum charge. It is therefore presumed that different power levels yield different measurements, including differing torque and RPM.
+### Methodology for the experiments
 
-The included battery is rated at 7.4V, but the EV3 also takes six standard AA batteries, which are rated at 1.5V, which results in 9V in serial. It is therefore assumed, that given a higher voltage, the measurements of both torque and speed, would be higher than the given specifications.
-
-### Methodology for experiment
-
-Each of the following experiments is to be repeated 3 times in an attempt to eliminate any abnormalities. All experiments sensitive to power are started with a fully charged battery.
+Each of the following experiments is to be repeated three times in an attempt to eliminate any abnormalities.
 
 #### Speed (RPM)
 
-As tachometers are expensive, a rotary encoder can be used, in conjunction with an Arduino Micro Processor to measure revolutions. The EV3 Large servo motor is then attached to an rotary encoder in such a way that the motor spins freely. For each revolution of the motor, the rotary encoder also revolves once. Given the number of steps in the rotary encoder, a simple program can then determine when the motor has revolved.
-
-##### Affects of power
-
-The above-mentioned method, is to be repeated on the EV3 official battery of 7.4V and on 6 $\times$ 1.5V AA batteries. This will determine if an increase in voltage has any effect on the RPM of the motor.
+As tachometers are expensive, a rotary encoder can be used, in conjunction with an Arduino Micro Processor to measure revolutions. The EV3 Large servo motor is then attached to a rotary encoder in such a way that the motor spins freely. For each revolution of the motor, the rotary encoder also revolves once. Given the number of steps in the rotary encoder, a simple program can then determine when the motor has revolved.
 
 #### Torque
 
-To test the torque of the motors a Prony brake is to be used. Two wooden planks are clamped on the motor, in such a way that the planks extend out to lay on a scale. The motor is then started. Whilst the motor is running, the planks are tightened until the motor cannot rotate anymore. At this point we note the weight on the scale. The length from the center of the motor, to the end of the planks, in conjunction with the weight noted on the scale, can then be used to determine torque.
+To test the torque of the motors a Prony brake is to be used. As can be seen on figure @fig:prony, two wooden planks are clamped on the motor, in such a way that the planks extend out to lay on a scale. The motor is then started. While the motor is running, the planks are tightened until the motor cannot rotate anymore. At this point, we note the weight on the scale. The length from the center of the motor, to the end of the planks, in conjunction with the weight noted on the scale, can then be used to determine torque.
 
-##### Affects of power
+![Illustration of Prony Brake](report/assets/pictures/prony.png){#fig:prony}
 
-The above-mentioned method, is to be repeated on the EV3 official battery of 7.4V and on 6 $\times$ 1.5V AA batteries. This will determine if an increase in voltage has any effect on the torque of the motor.
+#### 2nd Torque
 
-### Notes from experiment
+To verify the primary torque test, a secondary torque test is performed. By using a wheel with a radius of 1.5 cm, a cord is attached to this wheel. At the other end of the cord, a bottle is attached. Water is poured into the bottle in increments, such that between each increment, the motor lifts the bottle and sets it back down. By determining the maximum weight the motor can lift, it also provides approximate stall torque.
+
+### Results
+
+#### Speed (RPM)
+
+The results from the test can be seen in +@tbl:motorRPM. The table shows each motors speed at increments of 20%.
+
++---------------+--------+--------+--------+--------+--------+
+| Motor / Speed |    20% |    40% |    60% |    80% |   100% |
++===============+========+========+========+========+========+
+| 1st Motor     |  34,48 |  68,08 | 101,39 | 135,31 | 156,06 |
++---------------+--------+--------+--------+--------+--------+
+| 2nd Motor     |  34,50 |  69,01 | 101,71 | 137,83 | 151,14 |
++---------------+--------+--------+--------+--------+--------+
+
+Table: RPM Test results {#tbl:motorRPM}
+
+The percentage difference is shown +@eq:rpmPercent1 and +@eq:rpmPercent2.
+
+$$ \frac{156,06-160}{160} = -2,4625\% $$ {#eq:rpmPercent1}
+
+$$ \frac{151,14-160}{160} = -5,5375\% $$ {#eq:rpmPercent2}
+
+#### Torque
+
+The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 17 cm in length, the max weight ($W$) was 0,12 Kg. 
+
+$$ \tau = A \times W \times g = 20,03 \text{N}\cdot \text{cm} $$
+
+The percentage difference is shown +@eq:torquePercent1.
+
+$$ \frac{20,03-40}{40} = -49,925\% $$ {#eq:torquePercent1}
+
+#### 2nd Torque
+
+The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 1,5 cm in length, the max weight ($W$) was 1.268 Kg. 
+
+$$ \tau = A \times W \times g = 18,68 \text{N}\cdot \text{cm} $$
+
+The percentage difference is shown +@eq:torquePercent2.
+
+$$ \frac{18,68-40}{40} = -53,3\% $$ {#eq:torquePercent2}
 
 ### Conclusion
 
-used to refer to something which is boring or without meaningful content.
+Taking the lower bound of the range 160-170 RPM which LEGO provided, the speed test showed that the motors used were close to the specifications LEGO provided. 
 
-> "talking all kinds of blah to him"
+LEGO claims the motor has 40 Ncm in stall torque and 20 Ncm in running torque. As far as my understanding goes, the experiments performed should test stall torque, and I'm getting half of what's expected, are there any blatant faults in my tests?
