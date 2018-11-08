@@ -1,6 +1,7 @@
 import os, sys, re
 
 regex = r"^!{{(.*?)}}$"
+dir_regex = r"\$DIR\$"
 
 if (len(sys.argv) != 2):
 	print "Usage: python build.py file.md"
@@ -38,6 +39,9 @@ def scanForReplacement(cwd, file):
 	if (file.mode == "r"):
 		# read the whole file as a string
 		contents = file.read()
+		
+		contents = re.sub(dir_regex, cwd, contents)
+
 		# search file contents for includes
 		matches = re.finditer(regex, contents, re.MULTILINE)
 
