@@ -95,7 +95,7 @@ However, the clear benefit of Python is its large amount of open source librarie
 
 C++ would, in comparison, require much due to the amount of manual work, but this would definitely contribute to cementing how the MI algorithms work. 
 
-Based on the table above, language X was chosen to proceed with the development of the project solution. 
+Based on the table above, Java was chosen for the embedded part, and Python for the training set as this was deemed to be the most productive choice. 
 
 ### Conclusion
 The purpose of this section was to compare three appropriate candidate languages and figure out whether or not these languages would provide some features towards the development of the project as a whole.
