@@ -4,13 +4,13 @@ The Pixy CMUCAM5 Image Sensor is a vision sensor which means it is a camera with
 The Pixy CMUCAM5 allows for high-speed (50 fps) object recognition, but the output is not usable in the project, as the camera outputs the position of the object, but never the picture.  
 To determine the number on the speed sign, the original picture is needed in order to recognize the digits. Therefore, the Pixy CMUCAM5 is not suitable to solve the problem. 
 
-### Alternative solutions
+### Alternative Solutions
 The Pixy CMUCAM5 was the only camera available to the project as standard video equipment for the EV3 platform, so alternative equipment not natively compatible with the EV3 had to be used.
 The EV3 has a USB 1.1 port and runs a Linux based system. This would allow for the use of an ordinary webcam, but the EV3 does not support this natively.
 In 2014 Gabriel Ferrer made the EV3 support an ordinary webcam by configuring an OS named leJOS with a Java Virtual Machine[^Webcam_with_Lego_Mindstorms_EV3].
 LeJOS later evolved to natively support an ordinary webcam alongside other relevant tools, such as OpenCV.[^lejos_091_release]
 
-## leJOS and webcam
+## leJOS and Webcam
 Since leJOS specifies that not all webcams are supported, the group collected a set of webcams to test them and locate one that would work. Two tests were performed. The first was whether or not the leJOS webcam API would support the camera. 
 The second tested if the camera was supported by the OpenCV webcam API, as this library might be needed.
 
@@ -21,7 +21,7 @@ The third camera was successful in both the leJOS and OpenCV API tests.
 
 After identifying a working camera some demo programs were written to get a sense of the capabilities of using a webcam on the EV3. This test also concluded if there were any performance differences between the two APIs.
 
-### Demo programs
+### Demo Programs
 The first demo program test was about having the EV3 grab frames from the camera and display on the Monochrome LCD on the EV3. Conducting this activity, the group realized that there are some important aspects of performance to consider when choosing which image format the camera data should be converted to. The leJOS community claims that JPEG is cost inefficient whereas YUYV is cost efficient for the EV3. Both JPEG and YUYV image formats were assessed in this demo program, and there was a not insignificant difference in response time on the video feed in favor of YUYV. However, these claims should be tested more in-depth when working with the actual model for MI since the claims from the leJOS community are that YUYV is preferable over everything else when it comes to Computer Vision.
 
 The second demo program that was to have the EV3 live stream the video feed over HTTP via a bluetooth connection.
