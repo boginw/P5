@@ -16,7 +16,9 @@ The hardware specifications of the lego EV3[@the_lego_group_lmsuser_2015, p. 8]
 ** For host communication.
 
 ### OS Choice
-The choice of OS and programming language for the project is leJOS [@lejos_website] with Java. Since 2014 leJOS has had support for webcams [@gloomyandy_webcam_2014] which makes it ideal for this project. Also, the group is familiar with Java development, the group will not perform any tests regarding the choice of OS, since leJOS supplies all the desired functionality and familiarity.
+The choice of OS and programming language for the project is leJOS [@lejos_website] with Java. 
+Since 2014 leJOS has had support for webcams [@gloomyandy_webcam_2014] and with the familiarity of Java in the group, this setup makes it ideal for this project.
+The group will not be performing any tests regarding the choice of OS since leJOS supplies all the desired functionality and familiarity.
 
 ### Test methodology
 For testing both heap- and stack size of the EV3 with LeJOS, the tests will be separated to minimize noise in the measurements.
