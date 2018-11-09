@@ -9,7 +9,7 @@ Since the Pixy CMUCAM5 was the only vision sensor/ camera that the university co
 ## leJOS and webcam
 Since leJOS specifies that not all webcams are supported, the group collected a set of webcams to test them and locate one that would work. The group formulated two tests, the first one was whether or not the camera would be supported by the leJOS webcam API. The second test was whether or not the webcam would be supported by the OpenCV webcam API, it was a requirement for the group that both tests should be successful before the camera could be rendered usable. 
 
-The first two cameras were unsuccessful, the first one was suspected to fail because of the camera being broken. The second one failed since the leJos API could not interface with it, which most likely were due to the fact, that the camera was a webcam combined with a microphone which might have interfered with the leJos API. But the third camera we tested was successful in both the leJos and OpenCV API's. 
+The first two cameras were unsuccessful, the first one was suspected to fail because of the camera being broken. The second one failed since the leJOS API could not interface with it, which most likely were due to the fact, that the camera was a webcam combined with a microphone which might have interfered with the leJos API. But the third camera we tested was successful in both the leJOS and OpenCV API's. 
 
 After identifying a working camera some demo programs were written to get a sense of the capabilities of using a webcam on the EV3. And to test whether or not there were any potential performance benefits in choosing one API over the other. 
 
