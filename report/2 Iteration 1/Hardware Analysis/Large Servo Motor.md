@@ -33,17 +33,15 @@ To test the torque of the motors a Prony brake is to be used. As can be seen on 
 #### 2nd Torque
 
 Due to issues that will be described later, a verification of the first torque test was needed. 
-First a LEGO wheel rim with a radius of 1,5cm is aquired, then a wire is attached to said wheel rim, in such a way that when the rim rotates the wire is wrapped around the rim. 
+First, a LEGO wheel rim with a radius of 1,5cm is acquired, then a wire is attached to the said wheel rim, in such a way that when the rim rotates the wire is wrapped around the rim.
 
-Afterwards a the rim is attached to the motor, so that when the motor rotates, the rim rotates. At the end of the wire a container is attached. The motor is then set to rotate, and by doing so it is lifting the container. After the container has been lifted close to the rim, the container is then lowered again, and some extra weight is put in the container. 
+Afterward, the rim is attached to the motor, so that when the motor rotates, the rim rotates. At the end of the wire, a container is attached. The motor is then set to rotate, and by doing so, it is lifting the container. After the container has been lifted close to the rim, the container is then lowered again, and some extra weight is put in the container.
 
-The lifting, lowering, and adding weights is repeated until the motor cannot lift the weight of the container and extra weights, at that point the rim is detached from the motor put on a scale, along with the wire, container, and weights. 
+The lifting, lowering, and adding weights is repeated until the motor cannot lift the weight of the container and extra weights, at that point the rim is detached from the motor put on a scale, along with the wire, container, and weights.
 
-Given the radius as $A$, the weight as $W$, and the gravitational acceleration as $g$, the torque can be calculated as seen in +@eq:torqueFormula2
+Given the radius as $A$, the weight as $W$, and the gravitational acceleration as $g$, the torque can be calculated as seen in +@eq:torqueFormula2.
 
-$$
-\tau = A \times W \times g
-$$ {#eq:torqueFormula2}
+$$ \tau = A \times W \times g $$ {#eq:torqueFormula2}
 
 ### Results
 
