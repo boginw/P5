@@ -2,7 +2,7 @@
 The EV3 will be running LeJOS, a Linux derivative, as its operating system. We were unable to find its concrete resource usage. Experiments will therefore be conducted to identify how many resources the OS will consume, and hence how many resources are free to be used.
 
 ### Hardware specification
-The hardware specifications of the lego EV3[@the_lego_group_lmsuser_2015, p. 8]
+Seen below is a table of the specifications of the LEGO EV3 as found in [@the_lego_group_lmsuser_2015, p. 8].
 
 | EV3 Specification        |             |
 | ------------- |:-------------|
