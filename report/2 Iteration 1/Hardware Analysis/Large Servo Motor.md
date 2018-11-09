@@ -22,7 +22,11 @@ Each of the following experiments is to be repeated three times in an attempt to
 
 #### Speed (RPM)
 
-As tachometers are expensive, a rotary encoder can be used, in conjunction with an Arduino Micro Processor to measure revolutions. The EV3 Large servo motor is then attached to a rotary encoder in such a way that the motor spins freely. For each revolution of the motor, the rotary encoder also revolves once. Given the number of steps in the rotary encoder, a simple program can then determine when the motor has revolved.
+The speed test is to be conducted using an Arduino and a rotary encoder. It is essential that the rotary encoder be an incremental encoder. Every incremental rotary encoder has a set of steps in a full rotation, and every step produces a digital output. So to calculate how many rotations is as simple as count the steps up until the number of steps per rotation and then increment the number of rotations. Then the Arduino script takes the number of rotations and divides it with the amount of time passed.  Depending on how the time passed is notated it might be necessary to do some calculations to achieve the Rounds Per Minute.
+
+The Lego Medium Motor is to be attached to the rotary encoder using a custom designed Lego block, which attaches the encoder in the center and the motor at two points on each side.
+
+The Motor is then set to run at speed intervals of 20, i.e., 20, 40, 60, 80, 100. Between every run, the battery of the EV3 should stay fully charged. A run has a duration of 5 minutes per speed interval and the average RPM after the 5 minutes is the result.
 
 #### Torque
 
