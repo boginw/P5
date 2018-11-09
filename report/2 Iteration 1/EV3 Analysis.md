@@ -9,16 +9,11 @@ Seen below is a table of the specifications of the LEGO EV3 as found in [@the_le
 | Processor     | ARM 9 - 300Hz |
 | Memory      | 64 MB |
 | Storage | 16 MB Flash Memory & SD card slot up to 32 GB |
-| Communication | Bluetooth v2.1 & 1 USB 2.0 micro\* & 1 USB 1.1** & 4 Motor ports |
+| Communication | Bluetooth v2.1 & 1 USB 2.0 micro\* & 1 USB 1.1\*\* & 4 Motor ports |
 
 \* For communication with host PC.
 
-** For host communication.
-
-### OS and Programming Language Choice
-The choice of OS and programming language for the project is leJOS [@lejos_website] with Java. 
-Since 2014 leJOS has had support for webcams [@gloomyandy_webcam_2014] and with the familiarity of Java in the group, this setup makes it ideal for this project.
-The group will not be performing any tests regarding the choice of OS since leJOS supplies all the desired functionality and familiarity.
+\*\* For host communication.
 
 ### Test methodology
 For testing both heap- and stack size of the EV3 with LeJOS, the tests will be separated to minimize noise in the measurements.
