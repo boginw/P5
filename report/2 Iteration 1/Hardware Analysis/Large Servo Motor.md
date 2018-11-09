@@ -14,7 +14,7 @@ These specifications were obtained from the product page of EV3 Large Servo[@lar
 
 ### Hypothesis
 
-As the motors provided in the set are brand new, it is assumed that they will perform close specification provided by Lego.
+As the motors provided in the set are brand new, it is assumed that they will perform close to the specification provided by Lego.
 
 ### Methodology for the experiments
 
