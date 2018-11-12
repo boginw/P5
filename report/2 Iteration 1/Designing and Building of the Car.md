@@ -28,16 +28,16 @@ To calculate the speed, the formula below was used
 
 The speed test was conducted ten times in order to get an estimate of the speed of the car on average. A video was also captured in slow motion to have another type of measurement to compare with.
 
-The change in space, or distance, was three meters and the change in time was 2.25 seconds on average. Given these measurements, the calculated overall speed is
+The change in space, or distance, was three meters and the change in time was 2.02 seconds on average. Given these measurements, the calculated overall speed is
 
-> $$speed = \frac{3}{2.25} = 1.33 m/s $$
+> $$speed = \frac{3}{2.02} = 1.48 m/s $$
 
-To get this in km/h, 1.33 m/s is multiplied by 3.6 to get 4.78 km/h. 
+To get this in km/h, 1.48 m/s is multiplied by 3.6 to get 5.33 km/h. 
 
 The video footage that was used as a measure of comparison resulted in 4.67 km/h, which makes the total difference between the ten tests and the video footage .11 km/h. 
 This was done to determine whether or not the speed is accurate or not. 
 
-The conclusion, based on the performed tests, is that the car drives approximately 4.78 km/h, which enables adjustment of different speed levels while the car is driving.
+The conclusion, based on the performed tests, is that the car drives approximately 5.33 km/h, which enables adjustment of different speed levels while the car is driving.
 
 #### Weight
 As mentioned in section {ref to Components}, some optimizations regarding component count might be possible, but rigidness is also important. As a compromise, only functional components were added to the car, which might sound obvious, but can get hard to design due to Lego's stud system. At the time of writing, the weight of the car and its components have not been measured, but as mentioned earlier, the speed is deemed appropriate, and as such, the weight goal is considered achieved.
