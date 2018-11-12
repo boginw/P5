@@ -92,7 +92,7 @@ The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 1,5
 
 $$ \tau = A \times W \times g = 18,68 \text{N}\cdot \text{cm} $$
 
-The percentage difference is shown +@eq:torquePercent2.
+The percentage difference is shown in +@eq:torquePercent2.
 
 $$ \frac{18,68-40}{40} = -53,3\% $$ {#eq:torquePercent2}
 
