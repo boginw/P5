@@ -22,7 +22,7 @@ Each of the following experiments is to be repeated three times in an attempt to
 
 #### Speed (RPM)
 
-The speed test is to be conducted using an Arduino and a rotary encoder. It is essential that the rotary encoder be an incremental encoder. Every incremental rotary encoder has a set of steps in a full rotation, and every step produces a digital output. So to calculate how many rotations is as simple as count the steps up until the number of steps per rotation and then increment the number of rotations. Then the Arduino script takes the number of rotations and divides it with the amount of time passed. Depending on how the time passed is notated it might be necessary to do some calculations to achieve the Rounds Per Minute.
+The speed test is to be conducted using an Arduino and a rotary encoder. It is essential that the rotary encoder be an incremental encoder. Every incremental rotary encoder has a set of steps in a full rotation, and every step produces a digital output. To calculate how many rotations is as simple as counting the steps up until the number of steps per rotation and then increment the number of rotations. Then the Arduino script takes the number of rotations and divides it with the amount of time passed in minutes.
 
 The LEGO Medium Motor is to be attached to the rotary encoder using a custom designed LEGO block, which attaches the encoder in the center and the motor at two points on each side.
 
