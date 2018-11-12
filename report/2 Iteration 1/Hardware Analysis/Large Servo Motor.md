@@ -72,7 +72,7 @@ $$ \frac{156,06-160}{160} = -2,4625\% $$ {#eq:rpmPercent1}
 $$ \frac{151,14-160}{160} = -5,5375\% $$ {#eq:rpmPercent2}
 
 
-As shown in @fig:rpmFig, which shows a graph of the @tlb:torqueMotorRPM, shows a clear linear growth.
+As shown in @fig:rpmFig, which plots a graph of the @tlb:torqueMotorRPM, a clear linear growth is observed.
 
 ![The Motors RPM](report/assets/pictures/motor_rpm.png){#fig:rpmFig}
 
