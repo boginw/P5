@@ -55,6 +55,8 @@ In this section the results from the tests are described.
 
 The results from the test can be seen in +@tbl:motorRPM. The table shows each motor's speed at increments of 20%.
 
+Table: RPM Test results {#tbl:motorRPM} \label{test}
+
 +---------------+--------+--------+--------+--------+--------+
 | Motor / Speed |    20% |    40% |    60% |    80% |   100% |
 +===============+========+========+========+========+========+
@@ -63,16 +65,13 @@ The results from the test can be seen in +@tbl:motorRPM. The table shows each mo
 | 2nd Motor     |  34,50 |  69,01 | 101,71 | 137,83 | 151,14 |
 +---------------+--------+--------+--------+--------+--------+
 
-Table: RPM Test results {#tbl:torqueMotorRPM}
-
 Taking the lower bound of the 160 - 170 RPM from the specificaton, these motors look to be close to it. The percentage difference is shown in +@eq:rpmPercent1 and +@eq:rpmPercent2.
 
 $$ \frac{156,06-160}{160} = -2,4625\% $$ {#eq:rpmPercent1}
 
 $$ \frac{151,14-160}{160} = -5,5375\% $$ {#eq:rpmPercent2}
 
-
-As shown in @fig:rpmFig, which plots a graph of the @tlb:torqueMotorRPM, a clear linear growth is observed.
+As shown in @fig:rpmFig, which plots a graph of +@tbl:motorRPM, a clear linear growth is observed.
 
 ![The Motors RPM](report/assets/pictures/motor_rpm.png){#fig:rpmFig}
 
