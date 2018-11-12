@@ -22,7 +22,7 @@ Each of the following experiments is to be repeated three times in an attempt to
 
 #### Speed (RPM)
 
-The speed test is to be conducted using an Arduino and a rotary encoder. It is essential that the rotary encoder be an incremental encoder. Every incremental rotary encoder has a set of steps in a full rotation, and every step produces a digital output. So to calculate how many rotations is as simple as count the steps up until the number of steps per rotation and then increment the number of rotations. Then the Arduino script takes the number of rotations and divides it with the amount of time passed.  Depending on how the time passed is notated it might be necessary to do some calculations to achieve the Rounds Per Minute.
+The speed test is to be conducted using an Arduino and a rotary encoder. It is essential that the rotary encoder be an incremental encoder. Every incremental rotary encoder has a set of steps in a full rotation, and every step produces a digital output. So to calculate how many rotations is as simple as count the steps up until the number of steps per rotation and then increment the number of rotations. Then the Arduino script takes the number of rotations and divides it with the amount of time passed. Depending on how the time passed is notated it might be necessary to do some calculations to achieve the Rounds Per Minute.
 
 The Lego Medium Motor is to be attached to the rotary encoder using a custom designed Lego block, which attaches the encoder in the center and the motor at two points on each side.
 
@@ -49,6 +49,8 @@ $$ \tau = A \times W \times g $$ {#eq:torqueFormula2}
 
 ### Results
 
+In this section the results from the tests are described.
+
 #### Speed (RPM)
 
 The results from the test can be seen in +@tbl:motorRPM. The table shows each motors speed at increments of 20%.
@@ -63,7 +65,9 @@ The results from the test can be seen in +@tbl:motorRPM. The table shows each mo
 
 Table: RPM Test results {#tbl:motorRPM}
 
-The percentage difference is shown +@eq:rpmPercent1 and +@eq:rpmPercent2.
+![The Motors RPM](report/assets/pictures/motor_rpm.png){#fig:rpmFig}
+
+Taking the lower bound of the 160 - 170 RPM from the specificaton, these motors look to be close to it. The percentage difference is shown +@eq:rpmPercent1 and +@eq:rpmPercent2.
 
 $$ \frac{156,06-160}{160} = -2,4625\% $$ {#eq:rpmPercent1}
 
