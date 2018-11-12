@@ -17,7 +17,7 @@ The first two methods are quite similar, as they use Template Matching and the V
 Both of these algorithms run a "window" across the screen, where the algorithm only work inside the window.
 In terms of Template Matching, the window fits the size of the templates provided.
 A template consists of the item to be recognized, i.e. the red rings.
-Templates are size-specific, so it is necessary to provide red rings in different sizes, in order to recognize roadsigns at different distances, as shown on figure {@fig:templates}.
+Templates are size-specific, so it is necessary to provide red rings in different sizes, in order to recognize roadsigns at different distances, as shown on figure  {@fig:templates}.
 ![](https://i.imgur.com/7HKscOf.png){#fig:templates}
 
 The Viola-Jones Detector on the other hand, slides a window across the screen, wherein it tries to find some predefined Haar-features.
