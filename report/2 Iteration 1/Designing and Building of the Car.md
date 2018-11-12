@@ -22,7 +22,10 @@ The test was also done with the camera as this would be most realistic since the
 An obvious segmentation would be to have 1 km/h to correspond to 10 km/h, 2 km/h to 20 km/h, and so on, which leads to six speed levels. 
 With multiple speed levels and reasonable top speed, this fulfills the criterion.
 
-### Results
+##### Results
+To calculate the speed, the formula below was used
+> $$\speed = \Deltas \ \Deltat d$$
+The change in space, or distance, measured in meters, was ... and the change in time, measured in minutes, was ... Given these measurements, the calculated overall speed is ... . To be certain that this is corrected, the test was performed (number of times) times to get an average. 
 The test showed that the car drives approximately X km/h, which enables adjustment of different speed levels while the car is driving.
 
 #### Weight
