@@ -6,7 +6,7 @@ By utilizing LeoCAD[@leocad_website] a car with all the components, except the c
 
 ![CAD model of the car](report/assets/pictures/cad_car.png){#fig:cad_car}
 
-Through some simple non-formal tests, it was concluded that this design produced a car that drives around 6 km/h, is rigid enough to drive into walls multiple times and can withstand multiple drops from around 50 cm. These results prompted the group to stop the design process as most of the goals had been reached.
+Through some simple non-formal tests, it was concluded that this design produced a car that drives around 6 km/h. This result prompted the group to stop the design process as most of the goals had been reached.
 
 ### Comparing Design to Design Criteria
 This section compares the elements of the design criteria to the design of the vehicle in order to assert that the design complies with the criteria.
@@ -19,19 +19,6 @@ With no specific requirement for velocity, a subjective determination is made re
 
 #### Weight
 As mentioned in section {ref to Components}, some optimizations regarding component count might be possible, but rigidness is also important. As a compromise, only functional components were added to the car, which might sound obvious, but can get hard to design due to Lego's stud system. At the time of writing, the weight of the car and its components have not been measured, but as mentioned earlier, the speed is deemed appropriate, and as such, the weight goal is considered achieved.
-
-#### Rigidness
-To fulfill the criterion of rigidness the bottom and front were considered primary areas of stress since these surfaces will be most exposed to crashes and other stresses. 
-
-* The front of the car, as seen in figure {@fig:cad_car_front}, is built to absorb shock coming from the front, which hopefully is dissipated by the time it would reach the driving axle. 
-* The bottom of the car is made almost completely solid in order to make it sturdy. The front and back of the bottom are left open, in order to absorb shock from crashes from those sides.
-
-![CAD model of the car, front](report/assets/pictures/cad_car_front.png){#fig:cad_car_front}
-
-![CAD model of the car, back](report/assets/pictures/cad_car_back.png){#fig:cad_car_back}
-
-
-The rigidness of the car was tested dropping the car approximately 50 cm and by making the car drive into a wall at full speed multiple times. As the car could withstand this criterion was considered fulfilled. 
 
 #### Modular
 The car was built with modularity in mind. The camera, programming block, and wheels are easily removed. Unfortunately, the motors are a bit more difficult to remove, since they sit at the base of the car. This was due to the motors being the centerpiece of the build, as this makes a more rigid car.
