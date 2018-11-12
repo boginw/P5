@@ -2,7 +2,7 @@
 
 The vehicle to be built is required to drive; hence a motor or two are required. The LEGO Group provides two types of motors with its LEGO Mindstorms set[@mindstorm_set], and to achieve higher speeds with the vehicle, the larger motors, EV3 Large Servo Motor[@large_servo_motor], will be used for driving since these motors are the largest available for the group.
 
-According to LEGO, the EV3 Large Servo Motor is a powerful motor which uses tacho feedback (tachometer) which is an instrument that measures the rotation speed of the motor. This tachometer allows for precise control which LEGO claims is in one degree of accuracy. LEGO also claims that motors have some intelligence that allows for aligning motors together, such that they would be able to drive in a straight line at the same speed[@large_servo_motor].
+According to LEGO, the EV3 Large Servo Motor is a powerful motor which uses tacho feedback (tachometer) which is an instrument that measures the rotation speed of the motor. This tachometer allows for precise control which LEGO claims is within one degree of accuracy. LEGO also claims that motors have some intelligence that allows for aligning motors together, such that they would be able to drive in a straight line at the same speed[@large_servo_motor].
 
 ### Specifications
 
