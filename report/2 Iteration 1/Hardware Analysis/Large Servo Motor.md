@@ -41,7 +41,7 @@ First, a LEGO wheel rim with a radius of 1,5cm is acquired, then a wire is attac
 
 Afterward, the rim is attached to the motor, so that when the motor rotates, the rim rotates. At the end of the wire, a container is attached. The motor is then set to rotate, and by doing so, it is lifting the container. After the container has been lifted close to the rim, the container is then lowered again, and some extra weight is put in the container.
 
-The lifting, lowering, and adding weights is repeated until the motor cannot lift the weight of the container and extra weights, at that point the rim is detached from the motor put on a scale, along with the wire, container, and weights.
+The lifting, lowering, and adding weights is repeated until the motor cannot lift the weight of the container and extra weights, at which point the rim is detached from the motor put on a scale, along with the wire, container, and weights.
 
 Given the radius as $A$, the weight as $W$, and the gravitational acceleration as $g$, the torque can be calculated as seen in +@eq:torqueFormula2.
 
