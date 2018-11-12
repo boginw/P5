@@ -26,7 +26,7 @@ The speed test is to be conducted using an Arduino and a rotary encoder. It is e
 
 The Lego Medium Motor is to be attached to the rotary encoder using a custom designed Lego block, which attaches the encoder in the center and the motor at two points on each side.
 
-The Motor is then set to run at speed intervals of 20, i.e., 20, 40, 60, 80, 100. Between every run, the battery of the EV3 should stay fully charged. A run has a duration of 5 minutes per speed interval and the average RPM after the 5 minutes is the result.
+The Motor is then set to run at speed intervals of 20, i.e., 20, 40, 60, 80, 100. Between every run, the battery of the EV3 should stay fully charged. A run has a duration of 5 minutes per speed interval and the average RPM after the 5 minutes is the result. As to why the motor is tested at different intervals, this is needed to show whether by increasing the motor speed shows a linear or exponetial growth.
 
 #### Torque
 
@@ -65,13 +65,16 @@ The results from the test can be seen in +@tbl:motorRPM. The table shows each mo
 
 Table: RPM Test results {#tbl:motorRPM}
 
-![The Motors RPM](report/assets/pictures/motor_rpm.png){#fig:rpmFig}
-
 Taking the lower bound of the 160 - 170 RPM from the specificaton, these motors look to be close to it. The percentage difference is shown +@eq:rpmPercent1 and +@eq:rpmPercent2.
 
 $$ \frac{156,06-160}{160} = -2,4625\% $$ {#eq:rpmPercent1}
 
 $$ \frac{151,14-160}{160} = -5,5375\% $$ {#eq:rpmPercent2}
+
+
+As shown in @fig:rpmFig, which shows a graph of the {@tlb:motorRPM}, shows a clear linear growth.
+
+![The Motors RPM](report/assets/pictures/motor_rpm.png){#fig:rpmFig}
 
 #### Torque
 
@@ -95,6 +98,6 @@ $$ \frac{18,68-40}{40} = -53,3\% $$ {#eq:torquePercent2}
 
 ### Conclusion
 
-Taking the lower bound of the range 160-170 RPM which LEGO provided, the speed test showed that the motors used were close to the specifications LEGO provided. 
+Taking the lower bound of the range 160-170 RPM which LEGO provided, the speed test showed that the motors used were close to the specifications LEGO provided. Taking the average deviation, our motors are around 4% off what LEGO claims, but this is within the margin of error.
 
-LEGO claims the motor has 40 Ncm in stall torque and 20 Ncm in running torque. As far as my understanding goes, the experiments performed should test stall torque, and I'm getting half of what's expected, are there any blatant faults in my tests?
+The torque tests on the other hand show completely different results. LEGO claims the motors have 40 N$\cdot$cm in stall torque, and 20 N$\cdot$cm in running torque, and to the best of knowledge of the group, our tests tested the stall torque, which only show the motors getting to half of what LEGO claims. No further actions will be taking in regards to these tests, as these are the motors to be used, regardless of torque.
