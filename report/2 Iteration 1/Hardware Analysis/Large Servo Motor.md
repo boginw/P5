@@ -1,8 +1,8 @@
 ## EV3 Large Servo Motor
 
-The vehicle to be built is required to drive; hence a motor or two are required. The Lego Group provides two types of motors with its Lego Mindstorms set[@mindstorm_set], and to achieve higher speeds with the vehicle, the larger motors, EV3 Large Servo Motor[@large_servo_motor], will be used for driving since these motors are the largest available for the group.
+The vehicle to be built is required to drive; hence a motor or two are required. The LEGO Group provides two types of motors with its LEGO Mindstorms set[@mindstorm_set], and to achieve higher speeds with the vehicle, the larger motors, EV3 Large Servo Motor[@large_servo_motor], will be used for driving since these motors are the largest available for the group.
 
-According to Lego, the EV3 Large Servo Motor is a powerful motor which uses tacho feedback (tachometer) which is an instrument that measures the rotation speed of the motor. This tachometer allows for precise control which Lego claims is in one degree of accuracy. Lego also claims that motors have some intelligence that allows for aligning motors together, such that they would be able to drive in a straight line at the same speed[@large_servo_motor].
+According to LEGO, the EV3 Large Servo Motor is a powerful motor which uses tacho feedback (tachometer) which is an instrument that measures the rotation speed of the motor. This tachometer allows for precise control which LEGO claims is in one degree of accuracy. LEGO also claims that motors have some intelligence that allows for aligning motors together, such that they would be able to drive in a straight line at the same speed[@large_servo_motor].
 
 ### Specifications
 
@@ -14,19 +14,19 @@ These specifications were obtained from the product page of EV3 Large Servo[@lar
 
 ### Hypothesis
 
-As the motors provided in the set are brand new, it is assumed that they will perform close to the specification provided by Lego.
+As the motors provided in the set are brand new, it is assumed that they will perform close to the specification provided by LEGO. It is also assumed that the RPM of the motor has a linear growth with the power level provided to the motors by the EV3 brick. 
 
 ### Methodology for the experiments
 
-Each of the following experiments is to be repeated three times in an attempt to eliminate any abnormalities.
+Each of the following experiments is to be repeated three times in an attempt to eliminate any abnormalities. The EV3 brick will be programmed using the LEGO programming software for LEGO Mindstorms in these tests.
 
 #### Speed (RPM)
 
 The speed test is to be conducted using an Arduino and a rotary encoder. It is essential that the rotary encoder be an incremental encoder. Every incremental rotary encoder has a set of steps in a full rotation, and every step produces a digital output. So to calculate how many rotations is as simple as count the steps up until the number of steps per rotation and then increment the number of rotations. Then the Arduino script takes the number of rotations and divides it with the amount of time passed. Depending on how the time passed is notated it might be necessary to do some calculations to achieve the Rounds Per Minute.
 
-The Lego Medium Motor is to be attached to the rotary encoder using a custom designed Lego block, which attaches the encoder in the center and the motor at two points on each side.
+The LEGO Medium Motor is to be attached to the rotary encoder using a custom designed LEGO block, which attaches the encoder in the center and the motor at two points on each side.
 
-The Motor is then set to run at speed intervals of 20, i.e., 20, 40, 60, 80, 100. Between every run, the battery of the EV3 should stay fully charged. A run has a duration of 5 minutes per speed interval and the average RPM after the 5 minutes is the result. As to why the motor is tested at different intervals, this is needed to show whether by increasing the motor speed shows a linear or exponetial growth.
+The Motor is then set to run at speed intervals of 20% power level, i.e., 20%, 40%, 60%, 80%, 100%. Between every run, the battery of the EV3 should stay fully charged. A run has a duration of 5 minutes per speed interval and the average RPM after the 5 minutes is the result. As to why the motor is tested at different intervals, this is needed to show whether by increasing the motor power level shows a linear or exponetial growth.
 
 #### Torque
 
@@ -63,7 +63,7 @@ The results from the test can be seen in +@tbl:motorRPM. The table shows each mo
 | 2nd Motor     |  34,50 |  69,01 | 101,71 | 137,83 | 151,14 |
 +---------------+--------+--------+--------+--------+--------+
 
-Table: RPM Test results {#tbl:motorRPM}
+Table: RPM Test results {#tbl:torqueMotorRPM}
 
 Taking the lower bound of the 160 - 170 RPM from the specificaton, these motors look to be close to it. The percentage difference is shown +@eq:rpmPercent1 and +@eq:rpmPercent2.
 
@@ -72,13 +72,13 @@ $$ \frac{156,06-160}{160} = -2,4625\% $$ {#eq:rpmPercent1}
 $$ \frac{151,14-160}{160} = -5,5375\% $$ {#eq:rpmPercent2}
 
 
-As shown in @fig:rpmFig, which shows a graph of the {@tlb:motorRPM}, shows a clear linear growth.
+As shown in @fig:rpmFig, which shows a graph of the @tlb:torqueMotorRPM, shows a clear linear growth.
 
 ![The Motors RPM](report/assets/pictures/motor_rpm.png){#fig:rpmFig}
 
 #### Torque
 
-The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 17 cm in length, the max weight ($W$) was 0,12 Kg. 
+The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 17 cm in length, the max weight ($W$) was 0,12 Kg.
 
 $$ \tau = A \times W \times g = 20,03 \text{N}\cdot \text{cm} $$
 
@@ -88,7 +88,7 @@ $$ \frac{20,03-40}{40} = -49,925\% $$ {#eq:torquePercent1}
 
 #### 2nd Torque
 
-The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 1,5 cm in length, the max weight ($W$) was 1.268 Kg. 
+The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 1,5 cm in length, the max weight ($W$) was 1.268 Kg.
 
 $$ \tau = A \times W \times g = 18,68 \text{N}\cdot \text{cm} $$
 
@@ -98,6 +98,8 @@ $$ \frac{18,68-40}{40} = -53,3\% $$ {#eq:torquePercent2}
 
 ### Conclusion
 
-Taking the lower bound of the range 160-170 RPM which LEGO provided, the speed test showed that the motors used were close to the specifications LEGO provided. Taking the average deviation, our motors are around 4% off what LEGO claims, but this is within the margin of error.
+Taking the lower bound of the range 160-170 RPM which LEGO provided, the speed test showed that the motors used were close to the specifications LEGO provided. With the average deviation, our motors are around 4% off what LEGO claims, but this is an acceptable margin of error. The motors also show a linear growth, which enables easy predictions for the actual RPM given the power level provided.
 
-The torque tests on the other hand show completely different results. LEGO claims the motors have 40 N$\cdot$cm in stall torque, and 20 N$\cdot$cm in running torque, and to the best of knowledge of the group, our tests tested the stall torque, which only show the motors getting to half of what LEGO claims. No further actions will be taking in regards to these tests, as these are the motors to be used, regardless of torque.
+The torque tests on the other hand show completely different results. LEGO claims the motors have 40 N.cm in stall torque and 20 N.cm in running torque, and to the best of the group's knowledge, our tests tested the stall torque, which only shows the motors getting to half of what LEGO claims. It should be noted, that our tests only tested the motors at their maximum speeds, and it is unknown what their stall torque is at lower levels. Acknowledging the oversight in our test, the group choose not to proceed with further tests. If a problem should arise due to the oversight, new torque tests with the different speed levels will be performed.
+
+These tests show that the motors have a torque of 20 N.cm, a linear growth in RPM per power level, and match the RPM specifications of roughly 160 RPM. The tests also show a deficit in torque in the motors, compared to the specifications. These findings will be used in later decisions regarding the design of the car.
