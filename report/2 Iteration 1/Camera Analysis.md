@@ -18,7 +18,7 @@ The first demo program conducted was to have the EV3 grab frames from the camera
 
 The second demo program conducted was to have the EV3 live stream the video feed over HTTP via a Bluetooth connection. This was to see how converting the camera data to a JPEG format affected the system while using the Bluetooth protocol to communicate. The test showed a high latency, almost unusable when using the leJOS API and JPEG. Switching to OpenCV API and utilizing their Mat-datatype for representing the image significantly decreased the latency to a point that it became somewhat usable. Because of the noticeable differences between leJOS API and OpenCV API, the group should conduct some experiments with OpenCV to recognize whether or not there is any performance to be gained by using that over leJOS API.
 
-Finally, the group did a quick and dirty test to count the FPS from using the leJOS API to grab frames and nothing else. That yielded a result between 14-15 fps, which in theory should be enough. But that test should be revisited when the MI models complexity is accounted for and tested on both leJOS API and OpenCV API.
+Finally, the group did a quick and dirty test to count the FPS from using the leJOS API to grab frames and nothing else. This yielded a result between 14-15 fps, which in theory should be enough. This test should be revisited when the MI model's complexity is accounted for, and tested, on both leJOS API and OpenCV API.
 
 
 [^Webcam_with_Lego_Mindstorms_EV3]: Webcam with Lego Mindstorms EV3, part 1 (kernel): http://gjf2a.blogspot.com/2014/08/webcam-with-lego-mindstorms-ev3-part-1.html
