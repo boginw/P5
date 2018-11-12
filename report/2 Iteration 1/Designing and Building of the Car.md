@@ -17,16 +17,27 @@ The design of the car has 114 components (without the camera) which might sound 
 #### Speed
 With no specific requirement for velocity, a subjective determination is made regarding the fulfillment of the criterion. 
 An empirical test was conducted with the purpose of figuring out, through observation, what the speed of the car actually is.
-The test performed was done by measuring a given distance of X meters and then letting the car drive that distance while measuring how long it would take the car to go from the starting point to the finish line. 
+The test performed was done by measuring a given distance of three meters and then letting the car drive that distance while measuring how long it would take the car to go from the starting point to the finish line. 
 The test was also done with the camera as this would be most realistic since the camera is an integral part of the car.  
 An obvious segmentation would be to have 1 km/h to correspond to 10 km/h, 2 km/h to 20 km/h, and so on, which leads to six speed levels. 
 With multiple speed levels and reasonable top speed, this fulfills the criterion.
 
-##### Results
 To calculate the speed, the formula below was used
-> $$\speed = \Deltas \ \Deltat d$$
-The change in space, or distance, measured in meters, was ... and the change in time, measured in minutes, was ... Given these measurements, the calculated overall speed is ... . To be certain that this is corrected, the test was performed (number of times) times to get an average. 
-The test showed that the car drives approximately X km/h, which enables adjustment of different speed levels while the car is driving.
+
+> $$speed = \frac{\Delta s}{\Delta t} $$
+
+The speed test was conducted ten times in order to get an estimate of the speed of the car on average. A video was also captured in slow motion to have another type of measurement to compare with.
+
+The change in space, or distance, was three meters and the change in time was 2.25 seconds on average. Given these measurements, the calculated overall speed is
+
+> $$speed = \frac{3}{2.25} = 1.33 m/s $$
+
+To get this in km/h, 1.33 m/s is multiplied by 3.6 to get 4.78 km/h. 
+
+The video footage that was used as a measure of comparison resulted in 4.67 km/h, which makes the total difference between the ten tests and the video footage .11 km/h. 
+This was done to determine whether or not the speed is accurate or not. 
+
+The conclusion, based on the performed tests, is that the car drives approximately 4.78 km/h, which enables adjustment of different speed levels while the car is driving.
 
 #### Weight
 As mentioned in section {ref to Components}, some optimizations regarding component count might be possible, but rigidness is also important. As a compromise, only functional components were added to the car, which might sound obvious, but can get hard to design due to Lego's stud system. At the time of writing, the weight of the car and its components have not been measured, but as mentioned earlier, the speed is deemed appropriate, and as such, the weight goal is considered achieved.
