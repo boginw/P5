@@ -1,4 +1,3 @@
-
 DIR="$( cd "$( dirname "$0" )" >/dev/null && pwd )"
 MAIN="$DIR/../report/main.md"
 CSL="$DIR/../report/citation.csl"
