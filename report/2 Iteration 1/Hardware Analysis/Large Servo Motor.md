@@ -26,7 +26,7 @@ The speed test is to be conducted using an Arduino and a rotary encoder. It is e
 
 The LEGO Medium Motor is to be attached to the rotary encoder using a custom designed LEGO block, which attaches the encoder in the center and the motor at two points on each side.
 
-The Motor is then set to run at speed intervals of 20% power level, i.e., 20%, 40%, 60%, 80%, 100%. Between every run, the battery of the EV3 should stay fully charged. A run has a duration of 5 minutes per speed interval and the average RPM after the 5 minutes is the result. As to why the motor is tested at different intervals, this is needed to show whether by increasing the motor power level shows a linear or exponetial growth.
+The Motor is then set to run at speed intervals of 20% power level, i.e., 20%, 40%, 60%, 80%, 100%. Between every run, the battery of the EV3 should stay fully recharged. A run has a duration of 5 minutes per speed interval and the average RPM after the 5 minutes is the result. As to why the motor is tested at different intervals, this is needed to show whether by increasing the motor power level shows a linear or exponetial growth.
 
 #### Torque
 
