@@ -65,7 +65,7 @@ The results from the test can be seen in +@tbl:motorRPM. The table shows each mo
 
 Table: RPM Test results {#tbl:torqueMotorRPM}
 
-Taking the lower bound of the 160 - 170 RPM from the specificaton, these motors look to be close to it. The percentage difference is shown +@eq:rpmPercent1 and +@eq:rpmPercent2.
+Taking the lower bound of the 160 - 170 RPM from the specificaton, these motors look to be close to it. The percentage difference is shown in +@eq:rpmPercent1 and +@eq:rpmPercent2.
 
 $$ \frac{156,06-160}{160} = -2,4625\% $$ {#eq:rpmPercent1}
 
