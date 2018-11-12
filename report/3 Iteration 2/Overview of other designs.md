@@ -8,7 +8,7 @@ As can be seen in +@fig:MI_Chart, the overall flow consists of seven more or les
 
 #### Picture is Captured
 
-Starting from the left, the first step is to capture a picture. During this step, it has to be predetermined which format to use for the storage of the picture, since this, as previously mentioned in section \ref{DEMOPROG}, affects overall performance.
+Starting from the left, the first step is to capture a picture. During this step, it has to be predetermined which format to use for the storage of the picture, since this, as previously mentioned in section \ref{ssec:DEMOPROG}, affects overall performance.
 
 #### Red Cirle on Screen?
 
