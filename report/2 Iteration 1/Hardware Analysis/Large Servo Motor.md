@@ -53,7 +53,7 @@ In this section the results from the tests are described.
 
 #### Speed (RPM)
 
-The results from the test can be seen in +@tbl:motorRPM. The table shows each motors speed at increments of 20%.
+The results from the test can be seen in +@tbl:motorRPM. The table shows each motor's speed at increments of 20%.
 
 +---------------+--------+--------+--------+--------+--------+
 | Motor / Speed |    20% |    40% |    60% |    80% |   100% |
