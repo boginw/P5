@@ -2,7 +2,7 @@
 
 The vehicle to be built is required to drive; hence a motor or two are required. The LEGO Group provides two types of motors with its LEGO Mindstorms set[@mindstorm_set], and to achieve higher speeds with the vehicle, the larger motors, EV3 Large Servo Motor[@large_servo_motor], will be used for driving since these motors are the largest available for the group.
 
-According to LEGO, the EV3 Large Servo Motor is a powerful motor which uses tacho feedback (tachometer) which is an instrument that measures the rotation speed of the motor. This tachometer allows for precise control which LEGO claims is in one degree of accuracy. LEGO also claims that motors have some intelligence that allows for aligning motors together, such that they would be able to drive in a straight line at the same speed[@large_servo_motor].
+According to LEGO, the EV3 Large Servo Motor is a powerful motor which uses tacho feedback (tachometer) which is an instrument that measures the rotation speed of the motor. This tachometer allows for precise control which LEGO claims is within one degree of accuracy. LEGO also claims that motors have some intelligence that allows for aligning motors together, such that they would be able to drive in a straight line at the same speed[@large_servo_motor].
 
 ### Specifications
 
@@ -22,7 +22,7 @@ Each of the following experiments is to be repeated three times in an attempt to
 
 #### Speed (RPM)
 
-The speed test is to be conducted using an Arduino and a rotary encoder. It is essential that the rotary encoder be an incremental encoder. Every incremental rotary encoder has a set of steps in a full rotation, and every step produces a digital output. So to calculate how many rotations is as simple as count the steps up until the number of steps per rotation and then increment the number of rotations. Then the Arduino script takes the number of rotations and divides it with the amount of time passed. Depending on how the time passed is notated it might be necessary to do some calculations to achieve the Rounds Per Minute.
+The speed test is to be conducted using an Arduino and a rotary encoder. It is essential that the rotary encoder be an incremental encoder. Every incremental rotary encoder has a set of steps in a full rotation, and every step produces a digital output. To calculate how many rotations is as simple as counting the steps up until the number of steps per rotation and then increment the number of rotations. Then the Arduino script takes the number of rotations and divides it with the amount of time passed in minutes.
 
 The LEGO Medium Motor is to be attached to the rotary encoder using a custom designed LEGO block, which attaches the encoder in the center and the motor at two points on each side.
 
@@ -41,7 +41,7 @@ First, a LEGO wheel rim with a radius of 1,5cm is acquired, then a wire is attac
 
 Afterward, the rim is attached to the motor, so that when the motor rotates, the rim rotates. At the end of the wire, a container is attached. The motor is then set to rotate, and by doing so, it is lifting the container. After the container has been lifted close to the rim, the container is then lowered again, and some extra weight is put in the container.
 
-The lifting, lowering, and adding weights is repeated until the motor cannot lift the weight of the container and extra weights, at that point the rim is detached from the motor put on a scale, along with the wire, container, and weights.
+The lifting, lowering, and adding weights is repeated until the motor cannot lift the weight of the container and extra weights, at which point the rim is detached from the motor put on a scale, along with the wire, container, and weights.
 
 Given the radius as $A$, the weight as $W$, and the gravitational acceleration as $g$, the torque can be calculated as seen in +@eq:torqueFormula2.
 
@@ -53,7 +53,7 @@ In this section the results from the tests are described.
 
 #### Speed (RPM)
 
-The results from the test can be seen in +@tbl:motorRPM. The table shows each motors speed at increments of 20%.
+The results from the test can be seen in +@tbl:motorRPM. The table shows each motor's speed at increments of 20%.
 
 +---------------+--------+--------+--------+--------+--------+
 | Motor / Speed |    20% |    40% |    60% |    80% |   100% |
@@ -65,14 +65,14 @@ The results from the test can be seen in +@tbl:motorRPM. The table shows each mo
 
 Table: RPM Test results {#tbl:torqueMotorRPM}
 
-Taking the lower bound of the 160 - 170 RPM from the specificaton, these motors look to be close to it. The percentage difference is shown +@eq:rpmPercent1 and +@eq:rpmPercent2.
+Taking the lower bound of the 160 - 170 RPM from the specificaton, these motors look to be close to it. The percentage difference is shown in +@eq:rpmPercent1 and +@eq:rpmPercent2.
 
 $$ \frac{156,06-160}{160} = -2,4625\% $$ {#eq:rpmPercent1}
 
 $$ \frac{151,14-160}{160} = -5,5375\% $$ {#eq:rpmPercent2}
 
 
-As shown in @fig:rpmFig, which shows a graph of the @tlb:torqueMotorRPM, shows a clear linear growth.
+As shown in @fig:rpmFig, which plots a graph of the @tlb:torqueMotorRPM, a clear linear growth is observed.
 
 ![The Motors RPM](report/assets/pictures/motor_rpm.png){#fig:rpmFig}
 
@@ -82,7 +82,7 @@ The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 17 
 
 $$ \tau = A \times W \times g = 20,03 \text{N}\cdot \text{cm} $$
 
-The percentage difference is shown +@eq:torquePercent1.
+The percentage difference is shown in +@eq:torquePercent1.
 
 $$ \frac{20,03-40}{40} = -49,925\% $$ {#eq:torquePercent1}
 
@@ -92,7 +92,7 @@ The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 1,5
 
 $$ \tau = A \times W \times g = 18,68 \text{N}\cdot \text{cm} $$
 
-The percentage difference is shown +@eq:torquePercent2.
+The percentage difference is shown in +@eq:torquePercent2.
 
 $$ \frac{18,68-40}{40} = -53,3\% $$ {#eq:torquePercent2}
 
