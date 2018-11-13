@@ -1,5 +1,5 @@
 # Machine intelligence algorithm candidates
-Three different reports on this subject was analyzed in order to create a foundation for choosing the right sequence of algorithms.
+Three different reports on this subject were analyzed in order to create a foundation for choosing the right sequence of algorithms.
 The following section accounts for the different algorithms described in the papers that is considered potential candidate algorithms.
 Most papers take the same abstract steps in recognition of a speed sign: detect if there's actually a red circle, check if it's a speed sign, isolate and normalize the numbers, recognize the numbers and thus the speed sign.
 
@@ -10,11 +10,11 @@ This step takes an image as input - typically directly from the camera, without 
 All reports isolate the red circle in order to reduce the amount of data to process.
 This can be done since all speed signs are defined by a red circle. When it comes to actually determining if and where the speed sign is, the approaches differ.
 
-This side would rather have false-positives (recognizing something as a speedsign when it is not a speedsign) than false-negatives, as the false-positives will be sorted in later sections.
+This process should rather have false-positives (recognizing something as a speedsign when it is not a speedsign) than false-negatives, as the false-positives will be sorted in later sections.
 
 ### Template Matching and Viola-Jones Detection
 The first two methods are quite similar, as they use Template Matching[@torresen_efficient_2004] and the Viola-Jones Detector method[@real_time_detection].
-Both of these algorithms run a "window" across the screen, where the algorithm only work inside the window.
+Both of these algorithms slide a "window" across the screen, where the algorithm only computes inside the window.
 In terms of Template Matching, the window fits the size of the templates provided.
 A template consists of the item to be recognized, i.e. the red rings.
 Templates are size-specific, so it is necessary to provide red rings in different sizes, in order to recognize roadsigns at different distances, as shown on figure  {@fig:templates}.
@@ -25,15 +25,14 @@ These Haar-features, as seen in figure {@fig:haar-features} are based on the lev
 ![](https://qph.fs.quoracdn.net/main-qimg-f14c8b76756db356a4f168d3a998a061){#fig:haar-features}
 
 ### Random Sample Consensus
-
-RANdom SAmple Consensus (RANSAC)[@integrated_speed_limit] is a method to filter out outliers in samples. It works by randomly selecting a subset og points from a given set, then attempting to fit it as a circle model, then this model is compared to the whole feature set. If the circle modle fits a sufficient set of feature from the feature set, then the feature is evaluating as present.
+RANdom SAmple Consensus (RANSAC)[@integrated_speed_limit] is a method to filter out outliers in samples. It works by randomly selecting a subset of points from a given set, then attempting to fit it as a circle model, then this model is compared to the whole feature set. If the circle model fits a sufficient set of feature from the feature set, then the feature is evaluating as present.
 
 ## Isolate and normalize the numbers
 In order to feed the numbers to the neural networks, there is a need for normalizing the image of the numbers.
 When normalized, the numbers can be given as input to the number-recognizing algorithm, which will determine what speed limit is printed on the sign.
 
 The papers all use a feed-forward neural network to recognize the numbers.
-They do however differentiate, in the amount of preparation that they do with the numbers, before giving them as input.
+They do however differentiate, in the amount of preparation that they do with the numbers, before supplying them as input.
 This section will thus begin by describing the least amount of preparation, and then move on to describe the method with most preparation.
 
 ### Grayscaling and binary representation
