@@ -28,7 +28,8 @@ Having a uniform starting point of pixels, the next step is to normalize the pic
 
 #### Let Neural Network do its Magic
 
-This part is mostly black magic, high hopes, and potentially Illuminati-unmasking processes, which we will not do any further elaboration as of right now.
+After all stages of preparation have been applied, the data structure is ready to be given as input to the neural network, of which the implementation will be discussed in a later section.
+The purpose of the neural network is for the numbers in the image to be determined, so a speed limit can be given as an output.
 
 #### Return Speed Limit
 
