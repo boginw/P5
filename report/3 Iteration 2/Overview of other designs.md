@@ -26,7 +26,7 @@ Since a picture containing a speed encoded sign might have been captured with va
 
 Having a uniform starting point of pixels, the next step is to normalize the picture, before feeding it to a Neural Network (NN). Normalizing in this context is to be seen as conversion into a some sort of data-abstraction the NN can handle.
 
-#### Let Neural Network do its Magic
+#### Neural Network
 
 After all stages of preparation have been applied, the data structure is ready to be given as input to the neural network, of which the implementation will be discussed in a later section.
 The purpose of the neural network is for the numbers in the image to be determined, so a speed limit can be given as an output.
