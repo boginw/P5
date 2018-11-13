@@ -1,5 +1,5 @@
 # Machine intelligence algorithm candidates
-Three different reports on this subject was analyzed in order to create a foundation for choosing the right sequence of algorithms.
+Three different reports on this subject were analyzed in order to create a foundation for choosing the right sequence of algorithms.
 The following section accounts for the different algorithms described in the papers that is considered potential candidate algorithms.
 Most papers take the same abstract steps in recognition of a speed sign: detect if there's actually a red circle, check if it's a speed sign, isolate and normalize the numbers, recognize the numbers and thus the speed sign.
 
