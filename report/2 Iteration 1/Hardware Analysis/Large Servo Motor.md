@@ -43,7 +43,7 @@ Afterward, the rim is attached to the motor, so that when the motor rotates, the
 
 The lifting, lowering, and adding weights is repeated until the motor cannot lift the weight of the container and extra weights, at which point the rim is detached from the motor put on a scale, along with the wire, container, and weights.
 
-Given the radius as $A$, the weight as $W$, and the gravitational acceleration as $g$, the torque can be calculated as seen in +@eq:torqueFormula2.
+Given the radius $A$, the weight $W$, and the gravitational acceleration $g$, the torque can be calculated as seen in +@eq:torqueFormula2.
 
 $$ \tau = A \times W \times g $$ {#eq:torqueFormula2}
 
