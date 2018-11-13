@@ -1,8 +1,8 @@
 ## EV3 Large Servo Motor
 
-The vehicle to be built is required to drive; hence a motor or two are required. The LEGO Group provides two types of motors with its LEGO Mindstorms set[@mindstorm_set], and to achieve higher speeds with the vehicle, the larger motors, EV3 Large Servo Motor[@large_servo_motor], will be used for driving since these motors are the largest available for the group.
+The vehicle to be built is required to drive; hence motors are required. The LEGO Group provides two sizes of motors with its LEGO Mindstorms set[@mindstorm_set], to achieve higher speeds with the vehicle, the larger motors, EV3 Large Servo Motor[@large_servo_motor], will be used for driving since these motors are the largest available for the group.
 
-According to LEGO, the EV3 Large Servo Motor is a powerful motor which uses tacho feedback (tachometer) which is an instrument that measures the rotation speed of the motor. This tachometer allows for precise control which LEGO claims is within one degree of accuracy. LEGO also claims that motors have some intelligence that allows for aligning motors together, such that they would be able to drive in a straight line at the same speed[@large_servo_motor].
+According to LEGO, the EV3 Large Servo Motor is a powerful motor which uses tacho feedback (tachometer) which is an instrument that measures the rotation speed of the motor. This tachometer allows for precise control which LEGO claims is within one degree of accuracy. LEGO also claims that motors have a system which allows for aligning motors together, such that they would be able to drive in a straight line at the same speed[@large_servo_motor].
 
 ### Specifications
 
@@ -43,7 +43,7 @@ Afterward, the rim is attached to the motor, so that when the motor rotates, the
 
 The lifting, lowering, and adding weights is repeated until the motor cannot lift the weight of the container and extra weights, at which point the rim is detached from the motor put on a scale, along with the wire, container, and weights.
 
-Given the radius as $A$, the weight as $W$, and the gravitational acceleration as $g$, the torque can be calculated as seen in +@eq:torqueFormula2.
+Given the radius $A$, the weight $W$, and the gravitational acceleration $g$, the torque can be calculated as seen in +@eq:torqueFormula2.
 
 $$ \tau = A \times W \times g $$ {#eq:torqueFormula2}
 
