@@ -1,7 +1,7 @@
 # Machine intelligence algorithm candidates
 Three different reports on this subject were analyzed in order to create a foundation for choosing the right sequence of algorithms.
 The following section accounts for the different algorithms described in the papers that is considered potential candidate algorithms.
-Most papers take the same abstract steps in recognition of a speed sign: detect if there's actually a red circle, check if it's a speed sign, isolate and normalize the numbers, recognize the numbers and thus the speed sign.
+Most papers take the same abstract steps as described in section \ref{ssec:DEMOPROG} when recognizing a speed sign: detect if there's actually a red circle, check if it's a speed sign, isolate and normalize the numbers, recognize the numbers and thus the speed sign.
 
 This section will describe the different methods in each step, as the specific method is interchangeable with little to no alterations needed to the previous and following steps. This is due to the similarity of the input and output of each step.
 
@@ -17,11 +17,11 @@ The first two methods are quite similar, as they use Template Matching[@torresen
 Both of these algorithms slide a "window" across the screen, where the algorithm only computes inside the window.
 In terms of Template Matching, the window fits the size of the templates provided.
 A template consists of the item to be recognized, i.e. the red rings.
-Templates are size-specific, so it is necessary to provide red rings in different sizes, in order to recognize roadsigns at different distances, as shown on figure  {@fig:templates}.
+Templates are size-specific, so it is necessary to provide red rings in different sizes, in order to recognize roadsigns at different distances, as shown on figure  +@fig:templates.
 ![](https://i.imgur.com/7HKscOf.png){#fig:templates}
 
 The Viola-Jones Detector on the other hand, slides a window across the screen, wherein it tries to find some predefined Haar-features.
-These Haar-features, as seen in figure {@fig:haar-features} are based on the level of lighting, and will use this to properly recognize the circle shape.
+These Haar-features, as seen in figure +@fig:haar-features are based on the level of lighting, and will use this to properly recognize the circle shape.
 ![](https://qph.fs.quoracdn.net/main-qimg-f14c8b76756db356a4f168d3a998a061){#fig:haar-features}
 
 ### Random Sample Consensus
@@ -43,7 +43,7 @@ It's important to note that all papers first convert to grayscale and then to a 
 Two papers separate the numbers[@torresen_efficient_2004][@real_time_detection].
 The first paper does not mention, how they separate the numbers.
 The other paper, however, describes how they use a vertical projection, in order to separate the numbers.
-Vertical projection, as seen in {@fig:vertical-projection} allows the algorithm to separate numbers by minimas.
+Vertical projection, as seen in +@fig:vertical-projection allows the algorithm to separate numbers by minimas.
 ![](https://i.imgur.com/zZcWtEQ.png){#fig:vertical-projection}
 
 ### Skeletal structure
