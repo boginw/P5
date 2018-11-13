@@ -14,7 +14,7 @@ This process should rather have false-positives (recognizing something as a spee
 
 ### Template Matching and Viola-Jones Detection
 The first two methods are quite similar, as they use Template Matching and the Viola-Jones Detector method.
-Both of these algorithms slide a "window" across the screen, where the algorithm only work inside the window.
+Both of these algorithms slide a "window" across the screen, where the algorithm only computes inside the window.
 In terms of Template Matching, the window fits the size of the templates provided.
 A template consists of the item to be recognized, i.e. the red rings.
 Templates are size-specific, so it is necessary to provide red rings in different sizes, in order to recognize roadsigns at different distances, as shown on figure  {@fig:templates}.
