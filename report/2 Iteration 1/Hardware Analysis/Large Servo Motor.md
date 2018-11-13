@@ -18,11 +18,11 @@ As the motors provided in the set are brand new, it is assumed that they will pe
 
 ### Methodology for the experiments
 
-Each of the following experiments is to be repeated three times in an attempt to eliminate any abnormalities. The EV3 brick will be programmed using the LEGO programming software for LEGO Mindstorms in these tests.
+The EV3 brick will be programmed using the LEGO programming software for LEGO Mindstorms in these tests.
 
 #### Speed (RPM)
 
-The speed test is to be conducted using an Arduino and a rotary encoder. It is essential that the rotary encoder be an incremental encoder. Every incremental rotary encoder has a set of steps in a full rotation, and every step produces a digital output. To calculate how many rotations is as simple as counting the steps up until the number of steps per rotation and then increment the number of rotations. Then the Arduino script takes the number of rotations and divides it with the amount of time passed in minutes.
+The speed test is to be conducted using an Arduino and a rotary encoder. It is essential that the rotary encoder be an incremental encoder. An incremental rotary encoder has a set of steps in a full rotation, and every step produces a digital output. To calculate how many rotations is as simple as counting the steps up until the number of steps per rotation and then increment the number of rotations. Then the Arduino script takes the number of rotations and divides it with the amount of time passed in minutes.
 
 The LEGO Medium Motor is to be attached to the rotary encoder using a custom designed LEGO block, which attaches the encoder in the center and the motor at two points on each side.
 
