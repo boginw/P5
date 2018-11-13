@@ -24,7 +24,7 @@ Since a picture containing a speed encoded sign might have been captured with va
 
 #### Normalizing
 
-Having a uniform starting point of pixels, the next step is to normalize the picture, before feeding it to a Neural Network (NN). Normalizing in is context is to be seen as conversion into a some sort of data-abstraction the NN can handle.
+Having a uniform starting point of pixels, the next step is to normalize the picture, before feeding it to a Neural Network (NN). Normalizing in this context is to be seen as conversion into a some sort of data-abstraction the NN can handle.
 
 #### Let Neural Network do its Magic
 
