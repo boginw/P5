@@ -14,7 +14,7 @@ This process should rather have false-positives (recognizing something as a spee
 
 ### Template Matching and Viola-Jones Detection
 The first two methods are quite similar, as they use Template Matching and the Viola-Jones Detector method.
-Both of these algorithms run a "window" across the screen, where the algorithm only work inside the window.
+Both of these algorithms slide a "window" across the screen, where the algorithm only work inside the window.
 In terms of Template Matching, the window fits the size of the templates provided.
 A template consists of the item to be recognized, i.e. the red rings.
 Templates are size-specific, so it is necessary to provide red rings in different sizes, in order to recognize roadsigns at different distances, as shown on figure  {@fig:templates}.
@@ -26,14 +26,14 @@ These Haar-features, as seen in figure {@fig:haar-features} are based on the lev
 
 ### Random Sample Consensus
 
-RANdom SAmple Consensus (RANSAC) is a method to filter out outliers in samples. It works by randomly selecting a subset og points from a given set, then attempting to fit it as a circle model, then this model is compared to the whole feature set. If the circle modle fits a sufficient set of feature from the feature set, then the feature is evaluating as present.
+RANdom SAmple Consensus (RANSAC) is a method to filter out outliers in samples. It works by randomly selecting a subset of points from a given set, then attempting to fit it as a circle model, then this model is compared to the whole feature set. If the circle model fits a sufficient set of feature from the feature set, then the feature is evaluating as present.
 
 ## Isolate and normalize the numbers
 In order to feed the numbers to the neural networks, there is a need for normalizing the image of the numbers.
 When normalized, the numbers can be given as input to the number-recognizing algorithm, which will determine what speed limit is printed on the sign.
 
 The papers all use a feed-forward neural network to recognize the numbers.
-They do however differentiate, in the amount of preparation that they do with the numbers, before giving them as input.
+They do however differentiate, in the amount of preparation that they do with the numbers, before supplying them as input.
 This section will thus begin by describing the least amount of preparation, and then move on to describe the method with most preparation.
 
 ### Grayscaling and binary representation
