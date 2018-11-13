@@ -1,10 +1,10 @@
-## EV3 Large Servo Motor
+### EV3 Large Servo Motor
 
 The vehicle to be built is required to drive; hence motors are required. The LEGO Group provides two sizes of motors with its LEGO Mindstorms set[@mindstorm_set], to achieve higher speeds with the vehicle, the larger motors, EV3 Large Servo Motor[@large_servo_motor], will be used for driving since these motors are the largest available for the group.
 
 According to LEGO, the EV3 Large Servo Motor is a powerful motor which uses tacho feedback (tachometer) which is an instrument that measures the rotation speed of the motor. This tachometer allows for precise control which LEGO claims is within one degree of accuracy. LEGO also claims that motors have a system which allows for aligning motors together, such that they would be able to drive in a straight line at the same speed[@large_servo_motor].
 
-### Specifications
+#### Specifications
 
 These specifications were obtained from the product page of EV3 Large Servo[@large_servo_motor] and filtered such that only the relevant specifications for the vehicle remain.
 
@@ -12,15 +12,15 @@ These specifications were obtained from the product page of EV3 Large Servo[@lar
 - Running torque of 20 N.cm
 - Stall torque of 40 N.cm
 
-### Hypothesis
+#### Hypothesis
 
-As the motors provided in the set are brand new, it is assumed that they will perform close to the specification provided by LEGO. It is also assumed that the RPM of the motor has a linear growth with the power level provided to the motors by the EV3 brick. 
+As the motors provided in the set are brand new, it is assumed that they will perform close to the specification provided by LEGO. It is also assumed that the RPM of the motor has a linear growth with the power level provided to the motors by the EV3 brick.
 
-### Methodology for the experiments
+#### Methodology for the experiments
 
 The EV3 brick will be programmed using the LEGO programming software for LEGO Mindstorms in these tests.
 
-#### Speed (RPM)
+##### Speed (RPM)
 
 The speed test is to be conducted using an Arduino and a rotary encoder. It is essential that the rotary encoder be an incremental encoder. An incremental rotary encoder has a set of steps in a full rotation, and every step produces a digital output. To calculate how many rotations is as simple as counting the steps up until the number of steps per rotation and then increment the number of rotations. Then the Arduino script takes the number of rotations and divides it with the amount of time passed in minutes.
 
@@ -28,15 +28,15 @@ The LEGO Medium Motor is to be attached to the rotary encoder using a custom des
 
 The Motor is then set to run at speed intervals of 20% power level, i.e., 20%, 40%, 60%, 80%, 100%. Between every run, the battery of the EV3 should stay fully recharged. A run has a duration of 5 minutes per speed interval and the average RPM after the 5 minutes is the result. As to why the motor is tested at different intervals, this is needed to show whether by increasing the motor power level shows a linear or exponetial growth.
 
-#### Torque
+##### Torque
 
 To test the torque of the motors a Prony brake is to be used. As can be seen on figure @fig:prony, two wooden planks are clamped on the motor, in such a way that the planks extend out to lay on a scale. The motor is then started. While the motor is running, the planks are tightened until the motor cannot rotate anymore. At this point, we note the weight on the scale. The length from the center of the motor, to the end of the planks, in conjunction with the weight noted on the scale, can then be used to determine torque.
 
 ![Illustration of Prony Brake](report/assets/pictures/prony.png){#fig:prony}
 
-#### 2nd Torque
+##### 2nd Torque
 
-Due to issues that will be described later, a verification of the first torque test was needed. 
+Due to issues that will be described later, a verification of the first torque test was needed.
 First, a LEGO wheel rim with a radius of 1,5cm is acquired, then a wire is attached to the said wheel rim, in such a way that when the rim rotates the wire is wrapped around the rim.
 
 Afterward, the rim is attached to the motor, so that when the motor rotates, the rim rotates. At the end of the wire, a container is attached. The motor is then set to rotate, and by doing so, it is lifting the container. After the container has been lifted close to the rim, the container is then lowered again, and some extra weight is put in the container.
@@ -47,11 +47,11 @@ Given the radius $A$, the weight $W$, and the gravitational acceleration $g$, th
 
 $$ \tau = A \times W \times g $$ {#eq:torqueFormula2}
 
-### Results
+#### Results
 
 In this section the results from the tests are described.
 
-#### Speed (RPM)
+##### Speed (RPM)
 
 The results from the test can be seen in +@tbl:motorRPM. The table shows each motor's speed at increments of 20%.
 
@@ -75,7 +75,7 @@ As shown in @fig:rpmFig, which plots a graph of +@tbl:motorRPM, a clear linear g
 
 ![The Motors RPM](report/assets/pictures/motor_rpm.png){#fig:rpmFig}
 
-#### Torque
+##### Torque
 
 The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 17 cm in length, the max weight ($W$) was 0,12 Kg.
 
@@ -85,7 +85,7 @@ The percentage difference is shown in +@eq:torquePercent1.
 
 $$ \frac{20,03-40}{40} = -49,925\% $$ {#eq:torquePercent1}
 
-#### 2nd Torque
+##### 2nd Torque
 
 The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 1,5 cm in length, the max weight ($W$) was 1.268 Kg.
 
@@ -95,7 +95,7 @@ The percentage difference is shown in +@eq:torquePercent2.
 
 $$ \frac{18,68-40}{40} = -53,3\% $$ {#eq:torquePercent2}
 
-### Conclusion
+#### Conclusion
 
 Taking the lower bound of the range 160-170 RPM which LEGO provided, the speed test showed that the motors used were close to the specifications LEGO provided. With the average deviation, our motors are around 4% off what LEGO claims, but this is an acceptable margin of error. The motors also show a linear growth, which enables easy predictions for the actual RPM given the power level provided.
 
