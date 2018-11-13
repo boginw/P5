@@ -10,7 +10,7 @@ This step takes an image as input - typically directly from the camera, without 
 All reports isolate the red circle in order to reduce the amount of data to process.
 This can be done since all speed signs are defined by a red circle. When it comes to actually determining if and where the speed sign is, the approaches differ.
 
-This side would rather have false-positives (recognizing something as a speedsign when it is not a speedsign) than false-negatives, as the false-positives will be sorted in later sections.
+This process should rather have false-positives (recognizing something as a speedsign when it is not a speedsign) than false-negatives, as the false-positives will be sorted in later sections.
 
 ### Template Matching and Viola-Jones Detection
 The first two methods are quite similar, as they use Template Matching and the Viola-Jones Detector method.
