@@ -1,0 +1,51 @@
+plugins {
+    id "com.adarshr.test-logger" version "1.5.0"
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.7
+version = '1.0'
+compileJava.options.encoding = 'UTF-8'
+mainClassName = 'dk.sw502e18.ssr.Main'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Speed Sign Recognizing Car ',
+                'Implementation-Version': version,
+                'Main-Class': mainClassName
+    }
+}
+
+configurations {
+    sshAntTask
+    provided
+    tarTree
+    from
+}
+
+sourceSets {
+    main.compileClasspath += configurations.provided
+    test.compileClasspath += configurations.provided
+    test.runtimeClasspath += configurations.provided
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    sshAntTask 'org.apache.ant:ant-jsch:1.9.4', 'jsch:jsch:0.1.29'
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    testCompile 'junit:junit:4.12'
+}
+
+testlogger {
+    theme 'mocha'
+    showExceptions true
+    slowThreshold 1000
+    showSummary true
+    showStandardStreams false
+}
