@@ -46,7 +46,7 @@ cmake-build-*/
 # IntelliJ
 out/
 build/
-lib/leJOS
+car/lib/leJOS
 .gradle/
 gradle/
 

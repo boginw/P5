@@ -1,4 +1,4 @@
-package dk.sw502e18;
+package dk.sw502e18.car;
 
 public class Person {
     private final String name;
