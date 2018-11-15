@@ -2,9 +2,10 @@ package dk.sw502e18.ssr.modules;
 
 import dk.sw502e18.ssr.components.Grayscaler;
 import dk.sw502e18.ssr.components.ImageResizer;
+import dk.sw502e18.ssr.components.Normalizer;
 import dk.sw502e18.ssr.units.Image;
 
-import java.text.Normalizer;
+import java.util.Vector;
 
 /**
  * Preprocesses the image for an Neural Network
@@ -58,5 +59,5 @@ public interface Processor {
      *
      * @return Resized and Normalized floating-point image
      */
-    float[][] normalize(Image image);
+    Vector<Double> normalize(Image image);
 }
