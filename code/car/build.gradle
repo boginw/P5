@@ -83,7 +83,7 @@ task install {
     }
 }
 
-task deployEV3 {
+task deploy {
     doLast {
         ant.taskdef(
                 name: 'scp',

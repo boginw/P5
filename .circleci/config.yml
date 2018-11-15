@@ -24,6 +24,7 @@ jobs:
           - v1-dependencies-{{ checksum "build.gradle" }}
           - v1-dependencies-
       - run: gradle :car:dependencies
+      - run: gradle :ssr:dependencies
       - run: gradle :car:install
       - save_cache:
           paths:
@@ -31,7 +32,7 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
       - run:
           name: Run Gradle Tests
-          command: gradle :car:test
+          command: gradle test
 
 workflows:
   version: 2
