@@ -15,6 +15,26 @@ This section compares the elements of the design criteria to the design of the v
 The design of the car has 114 components (without the camera) which might sound like a lot, but to encompass all the necessary functions, such as rigidness, this was needed. A trade-off to consider is the weight. By shedding some components the weight of the car can be reduced, but as you can read later on, this might not be needed. There might be some optimizations that can be made, but this will not be focused on here.
 
 #### Speed
+// Writing initial thoughts. Everything is subject to change. 
+Given a car with an appropiate level of speed, we want to know whether or not it is possible to have the car adjust its speed in such a way that it is noticeable by a human. 
+
+Hypothesis
+The speed of the car is high enough for a human to notice a 25% and 50% increase or decrease in speed not execeding the top speed. 
+
+Experiment
+An empirical test was conducted in two different phases. 
+The objective of the first phase was to determine the max. speed of the car in order to have an upper bound as a means for ...
+This was done by having the car drive a distance of three meters while measuring the amount of time it took the car.
+The objective of the second phase was to have a human observe the car's speed being reduced by 25% and 50%.
+Based on the observations it was then decided whether or not a change was noticeable. 
+
+Analysis
+
+
+
+Conclusion
+
+// Delete below text. Redefining this whole section. 
 With no specific requirement for velocity, a subjective decision is made regarding the fulfillment of the criterion. 
 An empirical test was conducted with the purpose of figuring out what the speed of the car actually is.
 The test performed was done by having the car drive a distance of three meters while measuring the amount of time it takes the car.
