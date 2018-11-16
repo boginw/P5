@@ -1,0 +1,103 @@
+plugins {
+    id "com.adarshr.test-logger" version "1.5.0"
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.7
+version = '1.0'
+compileJava.options.encoding = 'UTF-8'
+mainClassName = 'dk.sw502e18.car.Main'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Speed Sign Recognizing Car ',
+                'Implementation-Version': version,
+                'Main-Class': mainClassName
+    }
+}
+
+configurations {
+    sshAntTask
+    provided
+    tarTree
+    from
+}
+
+sourceSets {
+    main.compileClasspath += configurations.provided
+    test.compileClasspath += configurations.provided
+    test.runtimeClasspath += configurations.provided
+}
+
+repositories {
+    flatDir {
+        dirs EV3_HOME + '/lib/ev3'
+    }
+    mavenCentral()
+}
+
+dependencies {
+    sshAntTask 'org.apache.ant:ant-jsch:1.9.4', 'jsch:jsch:0.1.29'
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    provided 'lejos:ev3classes:1.0'
+    testCompile 'junit:junit:4.12'
+}
+
+testlogger {
+    theme 'mocha'
+    showExceptions true
+    slowThreshold 1000
+    showSummary true
+    showStandardStreams false
+}
+
+task install {
+    doLast {
+        def folder = new File("car/lib/")
+        folder.mkdirs()
+        def f = new File(folder.toString(), 'lejos.tar.gz')
+        println f.toString()
+
+        if (!f.exists()) {
+            println "downloading leJOS..."
+            new URL('https://sourceforge.net/projects/ev3.lejos.p/files/0.9.1-beta/leJOS_EV3_0.9.1-beta.tar.gz')
+                    .withInputStream { i -> f.withOutputStream { it << i } }
+        }
+
+        println f.toString()
+        println "extracting leJOS..."
+        copy {
+            from tarTree(f.absolutePath)
+            into "lib/"
+        }
+
+        println "cleaning..."
+        file("lib/leJOS_EV3_0.9.1-beta").renameTo(file("lib/leJOS"))
+        f.delete()
+
+        println "Please add the following to your gradle.properties file:"
+        println "EV3_HOME=car/lib/leJOS"
+    }
+}
+
+task deploy {
+    doLast {
+        ant.taskdef(
+                name: 'scp',
+                classname: 'org.apache.tools.ant.taskdefs.optional.ssh.Scp',
+                classpath: configurations.sshAntTask.asPath
+        )
+        ant.scp(
+                todir: ev3_username + '@' + ev3_server + ':/home/lejos/programs',
+                password: ev3_password,
+                verbose: 'true'
+        ) {
+            fileset(dir: '../build/libs') {
+                include(name: '**/*.jar')
+            }
+        }
+    }
+}
