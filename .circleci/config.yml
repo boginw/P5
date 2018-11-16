@@ -23,8 +23,9 @@ jobs:
           keys:
           - v1-dependencies-{{ checksum "build.gradle" }}
           - v1-dependencies-
-      - run: gradle dependencies
-      - run: gradle install
+      - run: gradle :car:dependencies
+      - run: gradle :ssr:dependencies
+      - run: gradle :car:install
       - save_cache:
           paths:
             - ~/.m2

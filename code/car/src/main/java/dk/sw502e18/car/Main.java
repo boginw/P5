@@ -1,4 +1,4 @@
-package dk.sw502e18;
+package dk.sw502e18.car;
 
 import lejos.hardware.BrickFinder;
 import lejos.hardware.Button;
@@ -7,7 +7,7 @@ import lejos.hardware.lcd.Font;
 import lejos.hardware.lcd.GraphicsLCD;
 import lejos.utility.Delay;
 
-public class Car {
+public class Main {
     public static void main(String[] args) {
         GraphicsLCD g = BrickFinder.getDefault().getGraphicsLCD();
         final int SW = g.getWidth();
