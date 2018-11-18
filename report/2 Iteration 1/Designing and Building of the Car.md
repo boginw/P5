@@ -15,36 +15,33 @@ This section compares the elements of the design criteria to the design of the v
 The design of the car has 114 components (without the camera) which might sound like a lot, but to encompass all the necessary functions, such as rigidness, this was needed. A trade-off to consider is the weight. By shedding some components the weight of the car can be reduced, but as you can read later on, this might not be needed. There might be some optimizations that can be made, but this will not be focused on here.
 
 #### Speed
-// Writing initial thoughts. Everything is subject to change. 
 Given a car with an appropiate level of speed, we want to know whether or not it is possible to have the car adjust its speed in such a way that it is noticeable by a human. 
 
 Hypothesis
-The speed of the car is high enough for a human to notice a 25% and 50% decrease in speed. 
+The speed of the car is high enough for a human to notice a different levels of decrease in speed. 
 
 Experiment
-Two separate empirical tests were conducted in order to determine whether or not a decrease of 25% and 50% in speed will be noticeable by a human. This is done to fulfill the criterion that multiple speed levels are required. 
-The tests were done by having the car drive a distance of three meters while the time it took was observed and noted. 
-Based on the observations it was then decided whether or not a change was noticeable.
+Two separate empirical tests were conducted in order to determine whether or not different levels of speeds are noticeable by a human. This is done to fulfill the criterion that multiple speed levels are required. 
+
+The tests were done by having the car drive forward in a straight line while having one human as a control and five others used to make a remark of the moment of decrease. 
+The person conducting the tests would know exactly when the decrease in speed was going to happen. 
+This number is then compared to the time of remark of the participants. The five participants were participating in the experiment individually. 
+Based on the observations, it was then decided whether or not a change was noticeable.
 
 During testing it was observed that the car drove slightly awry. It was then decided that this behavior will be disregarded because nothing could be done about this. 
-
-The dependant, or output, variable is distance whereas the independant, or input, variable is time. The reason why we have this setup is because we want to figure out what the margin of error is every time the car drives.  
 
 Analysis
 The recorded data are presented in a table below. 
 
-| # Speed Test | x | y |
-|--------------|---|---|
-| 1            |   |   |
-| 2            |   |   |
-| 3            |   |   |
-| 4            |   |   |
-| 5            |   |   |
-| 6            |   |   |
-| 7            |   |   |
-| 8            |   |   |
-| 9            |   |   |
-| 10           |   |   |
+| # Speed Test | Predicted point of decrease | Actual point of decrease | Error |
+|--------------|-----------------------------|--------------------------|-------|
+|       1      |            x.xx             |           2.00           |  x.xx |
+|       2      |            x.xx             |           2.00           |  x.xx |
+|       3      |            x.xx             |           2.00           |  x.xx |
+|       4      |            x.xx             |           2.00           |  x.xx |
+|       5      |            x.xx             |           2.00           |  x.xx |
+: 
+
 
 Based on the observed data presented in table [table_above], we wanted to know the margin of error. In order to get an accurate margin of error, the data was plotted in a graph as x and y values where x is the time and y is the distance. To get a good-fit regression line, the data plots were used to calculate the slope, a, and the y-intercept, b, in the equation
 
@@ -57,40 +54,38 @@ After drawing the regression line, a predicted value can be extracted. This valu
 By using this equation, the mean squared error results in (insert value from MSE here). 
 This means that each time a test is performed, the expected error on average (insert value from MSE here) is to be expected. 
 
+So, the whole purpose of this section is to figure out whether or not a decrease of speed of 25% and 50% is noticeable. This is presented in the two table below
 
+| # Speed Test | Noticeable   |
+|--------------|:------------:|
+| 1            |      Yes     |
+| 2            |              |
+| 3            |              |
+| 4            |              |
+| 5            |              |
+| 6            |              |
+| 7            |              |
+| 8            |              |
+| 9            |              |
+| 10           |              |
+: Representation of data for 25% decrease in speed
 
-
+| # Speed Test | Noticeable |
+|--------------|------------|
+| 1            |            |
+| 2            |            |
+| 3            |            |
+| 4            |            |
+| 5            |            |
+| 6            |            |
+| 7            |            |
+| 8            |            |
+| 9            |            |
+| 10           |            |
+: Representation of data for 50% decrease in speed
 
 
 Conclusion
-
-// Delete below text. Redefining this whole section. 
-With no specific requirement for velocity, a subjective decision is made regarding the fulfillment of the criterion. 
-An empirical test was conducted with the purpose of figuring out what the speed of the car actually is.
-The test performed was done by having the car drive a distance of three meters while measuring the amount of time it takes the car.
-The test was performed with a camera and a Raspberry Pi attached to the car while it was driving because images will be processed as the car is driving. 
-
-To calculate the speed, the formula below was used
-
-> $$speed = \frac{\Delta s}{\Delta t} $$
-
-where s is equal to the distance in meters and t is equal to time in seconds. 
-
-The speed test was conducted ten times in order to get an estimate of the speed of the car on average. 
-A video was also captured in slow motion to have another type of measurement to compare with.
-
-The change in space, or distance, was three meters and the change in time was 2.02 seconds on average. Given these measurements, the calculated overall speed is
-
-> $$speed = \frac{3}{2.02} = 1.48 m/s $$
-
-To get this in km/h, 1.48 m/s is multiplied by 3.6 to get 5.33 km/h. 
-
-The video footage that was used as a measure of comparison resulted in 4.67 km/h, which makes the total difference between the ten tests and the video footage .11 km/h. 
-This was done to determine whether or not the speed is accurate or not. 
-
-The goal is to reach a reasonable speed level, which has been decided to range from 5 to 10 km/h, as the car is supposed to adjust its speed level based on the speed sign it processes. 
-
-The conclusion, based on the performed tests, is that the car drives approximately 5.33 km/h, which enables adjustment of different speed levels while the car is driving.
 
 
 #### Weight
