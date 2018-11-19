@@ -29,9 +29,6 @@ RUN pip install pandoc-fignos
 RUN pip install pandoc-eqnos
 RUN pip install pandoc-tablenos
 
-RUN git clone https://github.com/Wandmalfarbe/pandoc-latex-template.git templates
-RUN mv templates/eisvogel.tex /root/.cabal/share/x86_64-linux-ghc-8.0.2/pandoc-1.19.2.1/data/templates/eisvogel.latex
-
 WORKDIR /source
 
 ENTRYPOINT ["/bin/bash"]

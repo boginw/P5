@@ -5,6 +5,8 @@ BIBTEX="$DIR/../report/biblio.bib"
 OUTDIR="$DIR/../dist"
 OUTPUT="$OUTDIR/output.pdf"
 
+cp "$DIR/../template/eisvogel.tex" /root/.cabal/share/x86_64-linux-ghc-8.0.2/pandoc-1.19.2.1/data/templates/eisvogel.latex
+
 cd "$DIR/../"
 
 if [ ! -d "$OUTDIR" ]; then
