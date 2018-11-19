@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run SSR" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="dk.sw502e18.ssr.Main" />
+    <module name="ssr_main" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

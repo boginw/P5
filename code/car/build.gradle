@@ -43,6 +43,7 @@ dependencies {
     sshAntTask 'org.apache.ant:ant-jsch:1.9.4', 'jsch:jsch:0.1.29'
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     provided 'lejos:ev3classes:1.0'
+    provided fileTree(EV3_HOME + '/lib/ev3/3rdparty')
     testCompile 'junit:junit:4.12'
 }
 
@@ -95,7 +96,7 @@ task deploy {
                 password: ev3_password,
                 verbose: 'true'
         ) {
-            fileset(dir: '../build/libs') {
+            fileset(dir: './build/libs') {
                 include(name: '**/*.jar')
             }
         }
