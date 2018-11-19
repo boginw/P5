@@ -23,13 +23,8 @@ public class Camera implements Input<Mat>, CaptureDevice {
     }
 
     @Override
-    public boolean isCameraActive() {
-        return cam.isOpened();
-    }
-
-    @Override
     public Mat capture() {
-        if (!isCameraActive()) {
+        if (!cam.isOpened()) {
             throw new RuntimeException("Camera not opened!");
         }
 
