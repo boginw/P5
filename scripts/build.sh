@@ -1,4 +1,3 @@
-
 DIR="$( cd "$( dirname "$0" )" >/dev/null && pwd )"
 MAIN="$DIR/../report/main.md"
 CSL="$DIR/../report/citation.csl"
@@ -15,6 +14,7 @@ fi
 python $DIR/includes.py $MAIN | \
     pandoc --filter pandoc-fignos \
            --filter pandoc-eqnos \
+           --filter pandoc-tablenos \
            --filter pandoc-citeproc \
            --csl=$CSL \
            --number-sections \
