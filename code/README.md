@@ -5,7 +5,7 @@ Traffic Sign Recognizing Velocity Adjusting Car
 A special install task has been added to Gradle. To Install leJOS, please run the following:
 
 ```bash
-gradle install
+gradle :car:install
 ```
 
 Let it run it's course and follow any on-screen instructions.
@@ -18,7 +18,7 @@ You need to:
 Afterwards, you need to run:
 
 ```bash
-gradle clean build
+gradle build
 ```
 
 By executing this command you build and test your the application. If everything runs successfully then you find the application JAR in the subfolder `build/libs`. You can deploy this JAR on the robot.
@@ -27,7 +27,7 @@ By executing this command you build and test your the application. If everything
 You can deploy your application on a Lego Mindstorm EV3 robot running Lejos by executing the following command:
 
 ```bash
-gradle clean deployEV3
+gradle :car:deploy
 ```
 
 If your robot is not connected via USB, but via WiFi then you must update the `gradle.properties` file to point to the correct IP and use the correct username/password.

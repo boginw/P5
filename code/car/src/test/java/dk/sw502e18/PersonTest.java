@@ -1,5 +1,6 @@
 package dk.sw502e18;
 
+import dk.sw502e18.car.Person;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
