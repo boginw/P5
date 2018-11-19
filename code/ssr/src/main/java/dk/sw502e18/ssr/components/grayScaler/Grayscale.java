@@ -1,7 +1,7 @@
-package dk.sw502e18.ssr;
+package dk.sw502e18.ssr.components.grayScaler;
 
 import dk.sw502e18.ssr.components.Grayscaler;
-import dk.sw502e18.ssr.pipe.Step;
+import dk.sw502e18.ssr.pipeline.Step;
 import org.opencv.core.Mat;
 import org.opencv.imgproc.Imgproc;
 

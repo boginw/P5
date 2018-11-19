@@ -1,7 +1,7 @@
-package dk.sw502e18.ssr;
+package dk.sw502e18.ssr.components.captureDevice;
 
 import dk.sw502e18.ssr.components.CaptureDevice;
-import dk.sw502e18.ssr.pipe.Input;
+import dk.sw502e18.ssr.pipeline.Input;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
 

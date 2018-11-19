@@ -1,9 +1,11 @@
 package dk.sw502e18.ssr;
 
-import dk.sw502e18.ssr.pipe.Pipe;
+import dk.sw502e18.ssr.components.captureDevice.Camera;
+import dk.sw502e18.ssr.components.grayScaler.Grayscale;
+import dk.sw502e18.ssr.pipeline.Pipe;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
-import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgcodecs .Imgcodecs;
 
 
 public class Main {

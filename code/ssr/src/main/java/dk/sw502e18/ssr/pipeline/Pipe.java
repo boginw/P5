@@ -1,4 +1,4 @@
-package dk.sw502e18.ssr.pipe;
+package dk.sw502e18.ssr.pipeline;
 
 import java.util.ArrayList;
 import java.util.List;
