@@ -40,6 +40,7 @@ dependencies {
     sshAntTask 'org.apache.ant:ant-jsch:1.9.4', 'jsch:jsch:0.1.29'
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     compile group: 'org.openpnp', name: 'opencv', version: '3.2.0-0'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
     testCompile 'junit:junit:4.12'
 }
 

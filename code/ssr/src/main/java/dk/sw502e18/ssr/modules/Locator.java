@@ -3,7 +3,7 @@ package dk.sw502e18.ssr.modules;
 import dk.sw502e18.ssr.components.CaptureDevice;
 import dk.sw502e18.ssr.components.CircleRecognizer;
 import dk.sw502e18.ssr.components.ImageCropper;
-import dk.sw502e18.ssr.units.Image;
+import org.opencv.core.Mat;
 
 /**
  * Responsible for grabbing images, and detecting and cropping circles
@@ -58,5 +58,5 @@ public interface Locator {
      *
      * @return Array of circles in image
      */
-    Image[] findCircle();
+    Mat[] findCircle();
 }

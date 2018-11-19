@@ -3,7 +3,7 @@ package dk.sw502e18.ssr.modules;
 import dk.sw502e18.ssr.components.Grayscaler;
 import dk.sw502e18.ssr.components.ImageResizer;
 import dk.sw502e18.ssr.components.Normalizer;
-import dk.sw502e18.ssr.units.Image;
+import org.opencv.core.Mat;
 
 import java.util.Vector;
 
@@ -59,5 +59,5 @@ public interface Processor {
      *
      * @return Resized and Normalized floating-point image
      */
-    Vector<Double> normalize(Image image);
+    Vector<Double> normalize(Mat image);
 }

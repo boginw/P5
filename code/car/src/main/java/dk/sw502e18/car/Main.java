@@ -34,21 +34,11 @@ public class Main {
         writeHeader(sock.getOutputStream(), boundary);
         System.out.println("Written header");
 
-        //long stime = System.currentTimeMillis();
-        //int cnt = 0;
         while (Button.ESCAPE.isUp()) {
             vid.read(mat);
             if (!mat.empty()) {
                 writeJpg(sock.getOutputStream(), mat, boundary);
-                //System.out.println("Written jpg");
-        /*if (cnt++ >= 100)
-        {
-          long stop = System.currentTimeMillis();
-          System.out.println("Frame rate: " + (cnt*1000/(stop - stime)));
-          cnt = 0;
-          stime = stop;
-        }*/
-            } //else  System.out.println("No picture");
+            }
         }
         sock.close();
         ss.close();
