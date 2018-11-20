@@ -1,5 +1,5 @@
 ## The Design of the Gearing
-This section introduces the concept of gearing. When building a car, gearing is an essential part of acceleration and velocity. This section includes a quick overview of what gearing is and how it is implemented in this project.
+This section introduces the concept of gearing. When building a car, gearing is an essential part to control acceleration and velocity. This section includes a quick overview of what gearing is and how it is implemented in this project.
 
 ### Gearing in Vehicles
 By using gears, one can transfer rotational velocity from one axle to another one. By utilizing different sizes of gears, one can convert torque to a higher velocity and vice-versa. An example would be a 1:4 relationship where one full rotation of the larger gear would result in four full rotations on the smaller gear, which means that there is an increase in velocity by a factor of four. The other way around would divide the velocity by four, but increase the torque by a factor of four.
