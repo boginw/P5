@@ -69,7 +69,7 @@ The distribution is as follows:
 | 6x12[@real_time_detection]     | 72 | 10 | 10 |
 | 20x20[@integrated_speed_limit] | 400 | 30 | 12 |
 
-Note: Number of input nodes are just the product of the pixels given. Number of output nodes are just the number of speedsigns plus a node for no sign.
+Note: Number of input nodes are just the product of the image pixel height and width given. Number of output nodes are just the number of speedsigns plus a node for no sign.
 
 Not much is mentioned about the algorithm itself, but the papers implement it differently.
 One paper does not mention how they implement the algorithm.
