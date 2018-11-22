@@ -25,7 +25,9 @@ The EV3 brick will be programmed using the LEGO programming software for LEGO Mi
 The speed test is to be conducted using an Arduino and a rotary encoder. It is essential that the rotary encoder is an incremental encoder, that counts the number of steps taken by a motor.
 To calculate the number of rotations, the number of steps is divided by the number of steps per rotation, as shown below. Then the Arduino script takes the number of rotations and divides it with the amount of time passed in minutes.
 
-$$ rotations = frac{steps}{steps per rotation} {#eq:rotationFormula}
+$$ R = frac{S}{S_R} ## {#eq:rotationFormula}
+
+Where $R$ is the number of rotations, $S$ is the number of steps, and $S_R$ is the number of steps per rotation.
 
 The LEGO Medium Motor is to be attached to the rotary encoder using a custom designed LEGO block, which attaches the encoder in the center and the motor at two points on each side.
 
