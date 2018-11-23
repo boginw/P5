@@ -88,7 +88,7 @@ Preparation makes sure that the neural network only receives the numbers inside 
 The preparation also tries to ensure that the numbers given, albeit still pictures, are as normalized as possible, in order to reduce difference in lighting, glare and rotation.
 This way, the neural network will only be focusing on the numbers that was given as input.
 
-If, instead, the entire picture with the speedsign, road, and surrounding environment was given, the neural network had to work with similarities inside this picture.
+If, instead, the entire picture with the speedsign, road, and surrounding environment was given as an input, the neural network had to work with similarities inside this picture.
 The neural network would not have any way of knowing what is has to look for, or even where to look.
 In order to properley identify a speedsign, the network would have to be trained on all possible scenarios: speedsigns at close, medium, and long distance.
 And all these scenarios had to be placed in all possible environments: A sunny city environment, a rainy city environment and a sunny sahara, and a snowy sahara, etc.
