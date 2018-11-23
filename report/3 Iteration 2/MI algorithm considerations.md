@@ -91,6 +91,6 @@ This way, the neural network will only be focusing on the numbers that was given
 If, instead, the entire picture with the speedsign, road, and surrounding environment was given as an input, the neural network had to work with similarities inside this picture.
 The neural network would not have any way of knowing what is has to look for, or even where to look.
 In order to properley identify a speedsign, the network would have to be trained on all possible scenarios: speedsigns at close, medium, and long distance.
-And all these scenarios had to be placed in all possible environments: A sunny city environment, a rainy city environment and a sunny sahara, and a snowy sahara, etc.
+All these scenarios had to be placed in all possible environments: A sunny city environment, a rainy city environment and a sunny sahara, and a snowy sahara, etc.
 
 By preparing the input image, the neural network is capable of focusing on the relevant data; the numbers inside the speed sign.
