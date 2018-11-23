@@ -85,7 +85,7 @@ And the last paper implemented the algorithm on their own.
 A possible concern in the consideration between using preparation or not, is whether preparation actually adds value.
 Neural networks act by analyzing the given input.
 Preparation makes sure that the neural network only receives the numbers inside the speedsign.
-The preparation also tries to ensure that the numbers given, albeit still pictures, are as normalized as possible, in order to remove different lighting, glare and rotation.
+The preparation also tries to ensure that the numbers given, albeit still pictures, are as normalized as possible, in order to reduce difference in lighting, glare and rotation.
 This way, the neural network will only be focusing on the numbers that was given as input.
 
 If, instead, the entire picture with the speedsign, road, and surrounding environment was given, the neural network had to work with similarities inside this picture.
