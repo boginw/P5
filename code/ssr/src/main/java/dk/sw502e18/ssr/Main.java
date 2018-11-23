@@ -1,5 +1,6 @@
 package dk.sw502e18.ssr;
 
+import dk.sw502e18.ssr.components.OutputtingComponents.Outputter;
 import dk.sw502e18.ssr.components.captureDevice.FolderScanner;
 import dk.sw502e18.ssr.components.grayScaler.Grayscale;
 import dk.sw502e18.ssr.pipeline.Pipe;
@@ -15,7 +16,8 @@ public class Main {
 
         Pipe<Mat> pipe = new Pipe<Mat>()
                 .first(new FolderScanner("SomePath"))
-                .then(new Grayscale());
+                .then(new Grayscale())
+                .then(new Outputter("SomePath"));
 
         Imgcodecs.imwrite("/home/hamburger/Desktop/image.jpg", pipe.run());
         System.out.println("OK");
