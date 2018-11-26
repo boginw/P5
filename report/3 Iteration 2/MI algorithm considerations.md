@@ -14,7 +14,7 @@ This process should rather have false-positives (recognizing something as a spee
 
 #### Template Matching and Viola-Jones Detection
 The first two methods are quite similar, as they use Template Matching[@torresen_efficient_2004] and the Viola-Jones Detector method[@real_time_detection].
-Both of these algorithms slide a "window" across the screen, where the algorithm only computes inside the window.
+Both of these algorithms slide a "window" across the picture, where the algorithm only computes inside the window.
 In terms of Template Matching, the window fits the size of the templates provided.
 A template consists of the item to be recognized, i.e. the red rings.
 Templates are size-specific, so it is necessary to provide red rings in different sizes, in order to recognize roadsigns at different distances, as shown on figure  +@fig:templates.
@@ -73,8 +73,7 @@ The distribution is as follows:
 | 6x12[@real_time_detection]     | 72 | 10 | 10 |
 | 20x20[@integrated_speed_limit] | 400 | 30 | 12 |
 
-Note: Number of input layers are just the product of the pixels given.
-Note: Number of output layers are just the number of signs plus a node for no sign.
+Note: Number of input nodes are just the product of the image pixel height and width given. Number of output nodes are just the number of speedsigns plus a node for no sign.
 
 Not much is mentioned about the algorithm itself, but the papers implement it differently.
 One paper does not mention how they implement the algorithm.
