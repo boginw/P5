@@ -27,7 +27,7 @@ public class Outputter implements Step<Mat, Mat> {
 
     @Override
     public Mat process(Mat input) {
-        Output(input);
+        output(input);
         return input;
     }
 }
