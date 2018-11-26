@@ -4,15 +4,14 @@ import dk.sw502e18.ssr.components.ImageProvider;
 import dk.sw502e18.ssr.pipeline.Input;
 import org.opencv.core.Mat;
 import org.opencv.imgcodecs.Imgcodecs;
-
-
 import java.io.File;
+import java.util.Arrays;
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class FolderScanner implements Input<Mat>, ImageProvider {
 
-    private File[] files = null;
-    private int counter = 0;
-    private int length = 0;
+    private Queue<File> fileQueue = new LinkedBlockingQueue<>();
 
     /**
      * Gets all files in directory specified by path.
@@ -21,9 +20,9 @@ public class FolderScanner implements Input<Mat>, ImageProvider {
      */
     public FolderScanner(String input) {
         File path = new File(input);
-        if (path.canRead()) {
-            files = path.listFiles();
-            length = (int) path.length();
+        File[] files;
+        if (path.canRead() && (files = path.listFiles()) != null) {
+            fileQueue.addAll(Arrays.asList(files));
         } else {
             throw new RuntimeException(new Error("FolderScanner unable to read from input-path."));
         }
@@ -36,10 +35,8 @@ public class FolderScanner implements Input<Mat>, ImageProvider {
 
     @Override
     public Mat capture() {
-        if (length > 0) {
-            int i = counter++;
-            length--;
-            return Imgcodecs.imread(files[i].getAbsolutePath());
+        if (!fileQueue.isEmpty()) {
+            return Imgcodecs.imread(fileQueue.poll().getAbsolutePath());
         } else {
             return null;
         }

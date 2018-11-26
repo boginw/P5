@@ -21,7 +21,7 @@ public class Outputter implements Step<Mat, Mat> {
     }
 
     private void output(Mat input){
-        Imgcodecs.imwrite(path.getAbsolutePath() + (counter++) + ".jpg", input);
+        Imgcodecs.imwrite(path.getAbsolutePath() + (counter++) + ".png", input);
     }
 
     @Override
