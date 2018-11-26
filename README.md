@@ -58,6 +58,10 @@ or
 
 **NOTE:** The `, p. 30` part is optional, and is only used when a specific page is referred.
 
+### References
+
+[Please see this](http://lierdakil.github.io/pandoc-crossref/)
+
 ### Misc
 
 In order to have a checkmark (✓) character in the report, use LaTeX-syntax: `\checkmark`
