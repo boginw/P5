@@ -1,12 +1,11 @@
 package dk.sw502e18.ssr;
 
 import dk.sw502e18.ssr.components.OutputtingComponents.Outputter;
-import dk.sw502e18.ssr.components.captureDevice.FolderScanner;
+import dk.sw502e18.ssr.components.imageProvider.FolderScanner;
 import dk.sw502e18.ssr.components.grayScaler.Grayscale;
 import dk.sw502e18.ssr.pipeline.Pipe;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
-import org.opencv.imgcodecs.Imgcodecs;
 
 
 public class Main {
