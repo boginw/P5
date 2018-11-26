@@ -14,10 +14,10 @@ public class Outputter implements Step<Mat, Mat> {
 
     public Outputter(String input) {
         File path = new File(input);
-        if (path != null) {
+        if (path.canWrite()) {
             _path = path;
         } else {
-            throw new RuntimeErrorException(new Error("OutPutter unable to parse output-path."));
+            throw new RuntimeErrorException(new Error("OutPutter unable to write to output-path."));
         }
     }
 

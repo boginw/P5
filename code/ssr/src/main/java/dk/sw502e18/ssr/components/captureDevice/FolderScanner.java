@@ -15,16 +15,17 @@ public class FolderScanner implements Input<Mat> {
     private static int _length= 0;
 
     /**
-     * Gets all files in dir specified by path.
-     * @param input It is assumed that the path is the absolute path and only contains images
+     * Gets all files in directory specified by path.
+     * @param input It is assumed that the path is the absolute path,
+     *              and the directory only contains images.
      */
     public FolderScanner(String input) {
         File path = new File(input);
-        if (path != null) {
+        if (path.canRead()) {
             _files = path.listFiles();
             _length = (int) path.length();
         } else {
-            throw new RuntimeErrorException(new Error("FolderScanner unable to parse input-path."));
+            throw new RuntimeErrorException(new Error("FolderScanner unable to read from input-path."));
         }
     }
 

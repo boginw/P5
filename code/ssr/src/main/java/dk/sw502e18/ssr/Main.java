@@ -15,11 +15,11 @@ public class Main {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
         Pipe<Mat> pipe = new Pipe<Mat>()
-                .first(new FolderScanner("SomePath"))
+                .first(new FolderScanner("ABSOLUTE PATH TO INPUT-FILES"))
                 .then(new Grayscale())
-                .then(new Outputter("SomePath"));
+                .then(new Outputter("ABSOLUTE PATH TO OUTPUT-FILES"));
 
-        Imgcodecs.imwrite("/home/hamburger/Desktop/image.jpg", pipe.run());
+        pipe.run();
         System.out.println("OK");
     }
 }
