@@ -27,7 +27,11 @@ These Haar-features, as seen in figure +@fig:haar-features are based on the leve
 ![Different Haar-features used in the Viola-Jones Detector](https://qph.fs.quoracdn.net/main-qimg-f14c8b76756db356a4f168d3a998a061){#fig:haar-features}
 
 #### Random Sample Consensus
-RANdom SAmple Consensus (RANSAC)[@integrated_speed_limit] is a method to filter out outliers in samples. It works by randomly selecting a subset of points from a given set, then attempting to fit it as a circle model, then this model is compared to the whole feature set. If the circle model fits a sufficient set of feature from the feature set, then the feature is evaluating as present.
+RANdom SAmple Consensus (RANSAC)[@integrated_speed_limit] is a method to filter out outliers in samples. It works by randomly selecting a subset of points from a given set, then attempting to fit it as a circle model, then this model is compared to the whole feature set. If the circle model fits a sufficient set of feature from the feature set, then the feature is evaluated as present.
+
+Another, similar approach called Hough Circle Transform uses voting instead of fitting.
+Each possible candidate is evaluated on how well it fits the given parameters, and then the best fit is chosen.
+This approach is the OpenCV counterpart to the RANSAC algorithm.
 
 ### Isolate and normalize the numbers
 In order to feed the numbers to the neural networks, there is a need for normalizing the image of the numbers.
@@ -75,3 +79,17 @@ Not much is mentioned about the algorithm itself, but the papers implement it di
 One paper does not mention how they implement the algorithm.
 Another paper mentions OpenCV and Adaboost.
 And the last paper implemented the algorithm on their own.
+
+### Skipping preparation
+A possible concern in the consideration between using preparation or not, is whether preparation actually adds value.
+Neural networks act by analyzing the given input.
+Preparation makes sure that the neural network only receives the numbers inside the speedsign.
+The preparation also tries to ensure that the numbers given, albeit still pictures, are as normalized as possible, in order to reduce difference in lighting, glare and rotation.
+This way, the neural network will only be focusing on the numbers that was given as input.
+
+If, instead, the entire picture with the speedsign, road, and surrounding environment was given as an input, the neural network had to work with similarities inside this picture.
+The neural network would not have any way of knowing what is has to look for, or even where to look.
+In order to properley identify a speedsign, the network would have to be trained on all possible scenarios: speedsigns at close, medium, and long distance.
+All these scenarios had to be placed in all possible environments: A sunny city environment, a rainy city environment and a sunny sahara, and a snowy sahara, etc.
+
+By preparing the input image, the neural network is capable of focusing on the relevant data; the numbers inside the speed sign.
