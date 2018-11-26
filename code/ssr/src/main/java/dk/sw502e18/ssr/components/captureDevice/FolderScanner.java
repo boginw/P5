@@ -25,7 +25,7 @@ public class FolderScanner implements Input<Mat> {
             _files = path.listFiles();
             _length = (int) path.length();
         } else {
-            throw new RuntimeErrorException(new Error("FolderScanner unable to read from input-path."));
+            throw new RuntimeException(new Error("FolderScanner unable to read from input-path."));
         }
     }
 

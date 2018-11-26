@@ -17,12 +17,12 @@ public class Outputter implements Step<Mat, Mat> {
         if (path.canWrite()) {
             _path = path;
         } else {
-            throw new RuntimeErrorException(new Error("OutPutter unable to write to output-path."));
+            throw new RuntimeException(new Error("OutPutter unable to write to output-path."));
         }
     }
 
-    private void Output(Mat input){
-        Imgcodecs.imwrite(_path.getAbsolutePath() + _counter++ + ".jpg", input);
+    private void output(Mat input){
+        Imgcodecs.imwrite(_path.getAbsolutePath() + (_counter++) + ".jpg", input);
     }
 
     @Override
