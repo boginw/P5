@@ -1,4 +1,4 @@
-package dk.sw502e18.ssr.components.OutputtingComponents;
+package dk.sw502e18.ssr.components.outputtingComponents;
 
 import dk.sw502e18.ssr.pipeline.Step;
 import org.opencv.core.Mat;

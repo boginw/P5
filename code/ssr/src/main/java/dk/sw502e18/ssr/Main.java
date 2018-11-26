@@ -1,6 +1,6 @@
 package dk.sw502e18.ssr;
 
-import dk.sw502e18.ssr.components.OutputtingComponents.Outputter;
+import dk.sw502e18.ssr.components.outputtingComponents.Outputter;
 import dk.sw502e18.ssr.components.imageProvider.FolderScanner;
 import dk.sw502e18.ssr.components.grayScaler.Grayscale;
 import dk.sw502e18.ssr.pipeline.Pipe;
