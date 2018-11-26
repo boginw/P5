@@ -35,7 +35,7 @@ The Motor is then set to run at speed intervals of 20% power level, i.e., 20%, 4
 
 ##### Torque
 
-To test the torque of the motors a Prony brake is to be used. As can be seen on figure @fig:prony, two wooden planks are clamped on the motor, in such a way that the planks extend out to lay on a scale. The motor is then started. While the motor is running, the planks are tightened until the motor cannot rotate anymore. At this point, we note the weight on the scale. The length from the center of the motor, to the end of the planks, in conjunction with the weight noted on the scale, can then be used to determine torque.
+To test the torque of the motors a Prony brake is to be used. As can be seen on [@fig:prony], two wooden planks are clamped on the motor, in such a way that the planks extend out to lay on a scale. The motor is then started. While the motor is running, the planks are tightened until the motor cannot rotate anymore. At this point, we note the weight on the scale. The length from the center of the motor, to the end of the planks, in conjunction with the weight noted on the scale, can then be used to determine torque.
 
 ![Illustration of Prony Brake](report/assets/pictures/prony.png){#fig:prony}
 
@@ -48,7 +48,7 @@ Afterward, the rim is attached to the motor, so that when the motor rotates, the
 
 The lifting, lowering, and adding weights is repeated until the motor cannot lift the weight of the container and extra weights, at which point the rim is detached from the motor put on a scale, along with the wire, container, and weights.
 
-Given the radius $A$, the weight $W$, and the gravitational acceleration $g$, the torque can be calculated as seen in +@eq:torqueFormula2.
+Given the radius $A$, the weight $W$, and the gravitational acceleration $g$, the torque can be calculated as seen in [@eq:torqueFormula2].
 
 $$ \tau = A \times W \times g $$ {#eq:torqueFormula2}
 
@@ -58,7 +58,7 @@ In this section the results from the tests are described.
 
 ##### Speed (RPM)
 
-The results from the test can be seen in +@tbl:motorRPM. The table shows each motor's speed at increments of 20%.
+The results from the test can be seen in [@tbl:motorRPM]. The table shows each motor's speed at increments of 20%.
 
 Table: RPM Test results {#tbl:motorRPM} \label{test}
 
@@ -70,13 +70,13 @@ Table: RPM Test results {#tbl:motorRPM} \label{test}
 | 2nd Motor     |  34,50 |  69,01 | 101,71 | 137,83 | 151,14 |
 +---------------+--------+--------+--------+--------+--------+
 
-Taking the lower bound of the 160 - 170 RPM from the specificaton, these motors look to be close to it. The percentage difference is shown in +@eq:rpmPercent1 and +@eq:rpmPercent2.
+Taking the lower bound of the 160 - 170 RPM from the specificaton, these motors look to be close to it. The percentage difference is shown in [@eq:rpmPercent1] and [@eq:rpmPercent2].
 
 $$ \frac{156,06-160}{160} = -2,4625\% $$ {#eq:rpmPercent1}
 
 $$ \frac{151,14-160}{160} = -5,5375\% $$ {#eq:rpmPercent2}
 
-As shown in @fig:rpmFig, which plots a graph of +@tbl:motorRPM, a clear linear growth is observed.
+As shown in [@fig:rpmFig], which plots a graph of [@tbl:motorRPM], a clear linear growth is observed.
 
 ![The Motors RPM](report/assets/pictures/motor_rpm.png){#fig:rpmFig}
 
@@ -86,7 +86,7 @@ The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 17 
 
 $$ \tau = A \times W \times g = 20,03 \text{N}\cdot \text{cm} $$
 
-The percentage difference is shown in +@eq:torquePercent1.
+The percentage difference is shown in [@eq:torquePercent1].
 
 $$ \frac{20,03-40}{40} = -49,925\% $$ {#eq:torquePercent1}
 
@@ -96,7 +96,7 @@ The gravitational acceleration ($g$) of 9,82 is used. The arm used ($A$) was 1,5
 
 $$ \tau = A \times W \times g = 18,68 \text{N}\cdot \text{cm} $$
 
-The percentage difference is shown in +@eq:torquePercent2.
+The percentage difference is shown in [@eq:torquePercent2].
 
 $$ \frac{18,68-40}{40} = -53,3\% $$ {#eq:torquePercent2}
 

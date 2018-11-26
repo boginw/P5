@@ -17,12 +17,12 @@ The first two methods are quite similar, as they use Template Matching[@torresen
 Both of these algorithms slide a "window" across the picture, where the algorithm only computes inside the window.
 In terms of Template Matching, the window fits the size of the templates provided.
 A template consists of the item to be recognized, i.e. the red rings.
-Templates are size-specific, so it is necessary to provide red rings in different sizes, in order to recognize roadsigns at different distances, as shown on figure  +@fig:templates.
+Templates are size-specific, so it is necessary to provide red rings in different sizes, in order to recognize roadsigns at different distances, as shown on [@fig:templates].
 
 ![Templates of different sizes, used for template matching. ](https://i.imgur.com/7HKscOf.png){#fig:templates}
 
 The Viola-Jones Detector on the other hand, slides a window across the screen, wherein it tries to find some predefined Haar-features.
-These Haar-features, as seen in figure +@fig:haar-features are based on the level of lighting, and will use this to properly recognize the circle shape.
+These Haar-features, as seen in [@fig:haar-features] are based on the level of lighting, and will use this to properly recognize the circle shape.
 
 ![Different Haar-features used in the Viola-Jones Detector](https://qph.fs.quoracdn.net/main-qimg-f14c8b76756db356a4f168d3a998a061){#fig:haar-features}
 
@@ -49,7 +49,7 @@ It's important to note that all papers first convert to grayscale and then to a 
 Two papers separate the numbers[@torresen_efficient_2004][@real_time_detection].
 The first paper does not mention, how they separate the numbers.
 The other paper, however, describes how they use a vertical projection, in order to separate the numbers.
-Vertical projection, as seen in +@fig:vertical-projection allows the algorithm to separate numbers by minimas.
+Vertical projection, as seen in [@fig:vertical-projection] allows the algorithm to separate numbers by minimas.
 
 ![Vertical projection of the number '55'](https://i.imgur.com/zZcWtEQ.png){#fig:vertical-projection}
 

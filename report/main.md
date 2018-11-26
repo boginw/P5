@@ -13,6 +13,7 @@ titlepage-rule-height: 1
 logo: $DIR$/assets/pictures/aau.png
 toc-own-page: true
 book: true
+listings: true
 ...
 
 !{{1 Problem Analysis/index.md}}
