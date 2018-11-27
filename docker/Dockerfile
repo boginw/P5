@@ -22,12 +22,13 @@ ENV PANDOC_VERSION "1.19.2.1"
 
 # install pandoc
 RUN cabal update && cabal install pandoc-${PANDOC_VERSION} && cabal install pandoc-citeproc
+RUN cabal install pandoc-crossref
 
 # install pandoc figure numberings
-RUN python -m pip install --upgrade setuptools
-RUN pip install pandoc-fignos
-RUN pip install pandoc-eqnos
-RUN pip install pandoc-tablenos
+#RUN python -m pip install --upgrade setuptools
+#RUN pip install pandoc-fignos
+#RUN pip install pandoc-eqnos
+#RUN pip install pandoc-tablenos
 
 WORKDIR /source
 
