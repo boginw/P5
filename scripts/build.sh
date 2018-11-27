@@ -5,7 +5,7 @@ BIBTEX="$DIR/../report/biblio.bib"
 OUTDIR="$DIR/../dist"
 OUTPUT="$OUTDIR/output.pdf"
 
-cp "$DIR/../template/eisvogel.tex" /root/.cabal/share/x86_64-linux-ghc-8.0.2/pandoc-1.19.2.1/data/templates/eisvogel.latex
+cp "$DIR/../template/eisvogel.tex" /root/.cabal/share/x86_64-linux-ghc-8.0.2/pandoc-2.1.3/data/templates/eisvogel.latex
 
 cd "$DIR/../"
 
@@ -14,9 +14,7 @@ if [ ! -d "$OUTDIR" ]; then
 fi
 
 python $DIR/includes.py $MAIN | \
-    pandoc --filter pandoc-fignos \
-           --filter pandoc-eqnos \
-           --filter pandoc-tablenos \
+    pandoc --filter pandoc-crossref \
            --filter pandoc-citeproc \
            --csl=$CSL \
            --number-sections \
