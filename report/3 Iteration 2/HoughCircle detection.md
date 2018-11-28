@@ -32,7 +32,7 @@ As shown in [@fig:step_circle_detection] after isolating the red channel, there 
 ### Searching for circles
 The last step is to detect the circle, which is done using the OpenCV HoughCircle method. This method will detect multiple circles in the picture and return the center points and radii of every detected circle. One thing to note is that this result in bounding boxes of perfect circles, which means that if the camera was not pointing in an angle perpendicular to the speed sign, the result of HoughCircle will not be a perfect fit on the detected circle. This issue will be elaborated on in section [@sec:elliCirc].
 
-The HoughCircle algorithm is a Hough circle Transform algorithm, which works similarly as the Hough line transform. However, instead of having an accumulator plane one would need an accumulator volume with three dimensions; x, y, and the radius. Doing so would result in a significant increase in time- and memory-complexity.  Therefore the OpenCV library avoids this by using a method called Hough gradient method [@LearnOpenCV]. 
+The HoughCircle algorithm is a Hough circle Transform algorithm, which works similarly to Hough line transform. However, instead of having an accumulator plane, one would need an accumulator volume with three dimensions: x, y, and the radius. Doing so would result in a significant increase in time- and memory-complexity.  Therefore the OpenCV library avoids this by using a method called Hough gradient method [@LearnOpenCV]. 
 
 ![Illustrative example of how the Hough gradient method increments all point on the slope](report/assets/pictures/gradient_of_circle.pdf){#fig:points_on_gradient_slope}
 
