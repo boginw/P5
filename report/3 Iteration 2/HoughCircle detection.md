@@ -9,7 +9,7 @@ Detecting red circles in an image is a task much easier to specify than to solve
 On [@fig:step_circle_detection] the steps of detecting a speed sign are shown in a very high abstraction level. Every step will be explained in detail below, since the abstraction level used in the illustration can be misleading.
 
 
-### Isolating red channel
+### Isolating Red Channel
 The reason one would like to isolate the red channel of the input image is that, in Denmark, every speed sign has a reflective red circle surrounding the number. There exist many different techniques for achieving this. The implemented technique is to convert the RGB input image to YCbCr (also known as YUV), and then isolate the Cr component. Doing so will result in a grayscale image where the value of each pixel denotes the amount of red in the pixel, i.e. the closer a pixel value is to 255 (in 8-bit grayscale values) the redder that pixel was in the original RGB input image. Isolating the red component is possible because the YCbCr color space is defined by a transformation from the RGB color space - hence it is always possible to transform an RGB signal into a YCbCr signal and vice versa. The YCbCr color space is a three-component space; Luminance (denoted as Y), Chrominance toward blue (denoted as Cb) and Chrominance toward red (denoted as Cr)[@ITU-T-T-871].
 
 Isolating the Cr component allows for a more effective search later on, since only potential circles that are red will be present in the data.
