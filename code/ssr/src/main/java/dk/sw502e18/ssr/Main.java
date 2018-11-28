@@ -7,7 +7,6 @@ import dk.sw502e18.ssr.pipeline.Pipe;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 
-
 public class Main {
     public static void main(String[] args) {
         nu.pattern.OpenCV.loadShared();
