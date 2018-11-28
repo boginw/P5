@@ -10,7 +10,9 @@
       </option>
       <option name="taskNames">
         <list>
-          <option value="deploy" />
+          <option value=":car:clean" />
+          <option value=":car:build" />
+          <option value=":car:deploy" />
         </list>
       </option>
       <option name="vmOptions" value="" />
