@@ -6,7 +6,7 @@ Detecting red circles in an image is a task much easier to specify than to solve
 
 ![Step overview of circle detection](report/assets/pictures/CircleDetection.png){#fig:step_circle_detection}
 
-On [@fig:step_circle_detection] the steps of detecting a speed sign is showed, in a very high abstraction level. Below every step will be explained in detail since the abstraction level used in the illustration can be misleading.
+On [@fig:step_circle_detection] the steps of detecting a speed sign are shown in a very high abstraction level. Every step will be explained in detail below, since the abstraction level used in the illustration can be misleading.
 
 
 ### Isolating red channel
