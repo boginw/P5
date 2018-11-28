@@ -26,7 +26,7 @@ We do this by utilizing the OpenCV framework; it has a build in converter from R
     \end{cases}
 $$
 
-### Removing noise and apply the threshold
+### Removing Noise and Apply the Threshold
 As shown in [@fig:step_circle_detection] after isolating the red channel, there still might be elements of red that are not quite red enough to realistically be a speed sign. Therefore a threshold is applied, meaning that every pixel is examined and if the value of said pixel is higher than a predefined threshold that pixel is assigned a value of 255. If the pixel's value is lower than the threshold it would be assigned a value of 0. Doing so allows for limiting the search algorithm to only calculate realistic candidates for speed sign and not every somewhat red circle. Following this threshold-step a blur is applied to the image. This is to remove any remaining noise and to ensure as smooth a circle as possible for the detector to look for.
 
 ### Searching for circles
