@@ -1,4 +1,4 @@
-## Detecting red circles
+## Detecting Red Circles
 This section will explain how circles are detected in the system, and it will try to justify why that approach was chosen, as well as try to highlight any issues or shortcomings of the approach. The section will also show some calculations on the complexity of the algorithms used; this is to ensure that the implementation will be able to perform on the designated system.
 
 ### The overview
