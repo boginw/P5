@@ -11,6 +11,10 @@ public class BinaryBlackAndWhite implements Grayscaler, Step<Mat, Mat> {
      * Threshold value, every pixel under will be black, over will be white
      */
     private int threshold;
+    
+    /**
+     * The maximum value for things above the threshold
+     */
     private int thresholdMax = 255;
 
     /**
