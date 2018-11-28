@@ -7,8 +7,6 @@ import dk.sw502e18.ssr.components.grayScaler.Grayscale;
 import dk.sw502e18.ssr.pipeline.Pipe;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
-import org.opencv.imgproc.Imgproc;
-
 
 public class Main {
     public static void main(String[] args) {
