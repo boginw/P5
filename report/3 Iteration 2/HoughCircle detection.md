@@ -1,7 +1,7 @@
 ## Detecting Red Circles
 This section will explain how circles are detected in the system, and it will try to justify why that approach was chosen, as well as try to highlight any issues or shortcomings of the approach. The section will also show some calculations on the complexity of the algorithms used; this is to ensure that the implementation will be able to perform on the designated system.
 
-### The overview
+### The Overview
 Detecting red circles in an image is a task much easier to specify than to solve. Some steps are necessary in order to be able to detect red circles reliably. These steps will be explained below.
 
 ![Step overview of circle detection](report/assets/pictures/CircleDetection.png){#fig:step_circle_detection}
