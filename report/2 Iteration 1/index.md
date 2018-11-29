@@ -3,4 +3,4 @@
 !{{Hardware Analysis/index.md}}
 !{{Designing and Building of the Car.md}}
 !{{The Design of the Gearing.md}}
-!{{Speedtest.md}}
+!{{Gearing test.md}}
