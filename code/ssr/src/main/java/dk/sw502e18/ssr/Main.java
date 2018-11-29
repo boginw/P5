@@ -1,9 +1,7 @@
 package dk.sw502e18.ssr;
 
-import dk.sw502e18.ssr.components.captureDevice.Camera;
-import dk.sw502e18.ssr.components.captureDevice.Resource;
-import dk.sw502e18.ssr.components.grayScaler.Grayscale;
 import dk.sw502e18.ssr.components.imageCropper.CircleCropper;
+import dk.sw502e18.ssr.components.imageProvider.Resource;
 import dk.sw502e18.ssr.pipeline.Pipe;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
@@ -18,7 +16,7 @@ public class Main {
                 .first(new Resource("sample3.jpg"))
                 .then(new CircleCropper(160));
 
-        Imgcodecs.imwrite("/home/hamburger/Desktop/image.jpg", pipe.run());
+        Imgcodecs.imwrite("./image.jpg", pipe.run());
         System.out.println("OK");
     }
 }

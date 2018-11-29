@@ -47,7 +47,7 @@ public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
     private Point findEdge(Mat input, double x, double y, double xIncr, double yIncr, int thresh) {
         while (x > 0 && x < input.width() && y > 0 && y < input.height()) {
             if (input.get((int) y, (int) x)[0] > thresh) {
-                return point(x, y);
+                return new Point(x, y);
             }
 
             x += xIncr;
@@ -56,10 +56,6 @@ public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
 
         // no edge found
         return null;
-    }
-
-    private Point point(double x, double y) {
-        return new Point(new double[]{x, y});
     }
 
     private Mat fetchRedChannel(Mat input) {
@@ -104,11 +100,13 @@ public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
      * @return The cropped, elliptical image.
      */
     private Mat cropEllipse(Mat input, RotatedRect ellipse) {
+        int thickness = -1; // set to -1 to indicate to fill
+
         // Create a mask
         Mat mask = new Mat(input.rows(), input.cols(), CvType.CV_8U, Scalar.all(0));
 
         // Draw the ellipse on that mask
-        Imgproc.ellipse(mask, ellipse, new Scalar(255, 255, 255), -1);
+        Imgproc.ellipse(mask, ellipse, new Scalar(255, 255, 255), thickness);
 
         // Crop the image, using the mask
         Mat masked = new Mat();

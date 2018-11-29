@@ -1,11 +1,11 @@
-package dk.sw502e18.ssr.components.captureDevice;
+package dk.sw502e18.ssr.components.imageProvider;
 
-import dk.sw502e18.ssr.components.CaptureDevice;
+import dk.sw502e18.ssr.components.ImageProvider;
 import dk.sw502e18.ssr.pipeline.Input;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
 
-public class Camera implements Input<Mat>, CaptureDevice {
+public class Camera implements Input<Mat>, ImageProvider {
     private VideoCapture cam;
 
     /**
@@ -15,11 +15,6 @@ public class Camera implements Input<Mat>, CaptureDevice {
      */
     public Camera(int index) {
         cam = new VideoCapture(index);
-    }
-
-    @Override
-    public void close() {
-        cam.release();
     }
 
     @Override
