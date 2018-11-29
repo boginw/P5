@@ -24,9 +24,6 @@ As mentioned in section \ref{ssec:Design_Components}, some optimizations regardi
 #### Modular
 The car was built with modularity in mind. The camera, programming block, and wheels are easy to remove. Unfortunately, the motors are a bit more difficult to remove, since they sit at the base of the car. This was due to the motors being the centerpiece of the build, as this makes a more rigid car.
 
-#### Steering
-Steering is not the most important feature, and as such, not a lot of time was spent on it. A simple test showed that the car is turning slightly to the right. The issue has been isolated to the front wheels, but nothing will be done about it since the car drives a great enough distance before turning.
-
 ### Results
 The purpose of this section was to construct a durable LEGO car based on certain design criteria. The finished design fulfills all criteria to an acceptable extent. Some issues were introduced in the process regarding weight, and modularity. The result was a more durable and reliable design. 
 
