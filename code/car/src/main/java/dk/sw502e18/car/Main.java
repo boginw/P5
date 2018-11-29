@@ -2,10 +2,8 @@ package dk.sw502e18.car;
 
 import org.opencv.core.Core;
 
-import java.io.IOException;
-
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         // exits whenever ESCAPE is pressed (important!)
         ExitOnEscape.enable();

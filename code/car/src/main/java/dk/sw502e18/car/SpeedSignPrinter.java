@@ -15,7 +15,7 @@ public class SpeedSignPrinter implements PipeListener {
     private final Image c;
 
     public SpeedSignPrinter() {
-        InputStream in = getClass().getResourceAsStream("sign.image");
+        InputStream in = getClass().getResourceAsStream("sign.lsg");
         try {
             c = Image.createImage(in);
         } catch (IOException e) {
