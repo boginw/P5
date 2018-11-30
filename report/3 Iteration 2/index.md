@@ -1,4 +1,5 @@
 !{{Introduction.md}}
 !{{Overview of other designs.md}}
 !{{MI algorithm considerations.md}}
+!{{HoughCircle detection.md}}
 !{{Elliptical Cropper.md}}
