@@ -1,26 +1,23 @@
-package dk.sw502e18.car;
+package dk.sw502e18.car.carClient.listener;
 
+import dk.sw502e18.car.carClient.CarClientMessageListener;
+import dk.sw502e18.car.utils.ImageUtils;
 import lejos.hardware.BrickFinder;
 import lejos.hardware.lcd.Font;
 import lejos.hardware.lcd.GraphicsLCD;
 import lejos.hardware.lcd.Image;
 
 import java.io.IOException;
-import java.io.InputStream;
 
-public class SpeedSignPrinter implements PipeListener {
+public class SpeedSignPrinter implements CarClientMessageListener {
     private final GraphicsLCD g = BrickFinder.getDefault().getGraphicsLCD();
     private final int SW = g.getWidth();
     private final int SH = g.getHeight();
     private final Image c;
 
-    public SpeedSignPrinter() {
-        InputStream in = getClass().getResourceAsStream("sign.lsg");
-        try {
-            c = Image.createImage(in);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public SpeedSignPrinter() throws IOException {
+        //c = ImageUtils.fromResource(this, "sign.lni");
+        c = new Image(10, 10, null);
     }
 
     @Override

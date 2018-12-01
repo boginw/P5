@@ -1,4 +1,4 @@
-package dk.sw502e18.car;
+package dk.sw502e18.car.utils;
 
 import lejos.hardware.Button;
 import lejos.hardware.Key;

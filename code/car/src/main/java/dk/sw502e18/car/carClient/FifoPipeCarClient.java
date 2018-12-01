@@ -1,5 +1,8 @@
-package dk.sw502e18.car;
+package dk.sw502e18.car.carClient;
 
+import dk.sw502e18.car.CarClient;
+
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -8,9 +11,9 @@ import java.util.List;
 
 import static java.util.Collections.synchronizedList;
 
-public class FifoPipe {
+public class FifoPipeCarClient implements CarClient {
     private RandomAccessFile pipe;
-    private List<PipeListener> listenerList = synchronizedList(new ArrayList<PipeListener>());
+    private List<CarClientMessageListener> listenerList = synchronizedList(new ArrayList<CarClientMessageListener>());
     private PipeReader reader = new PipeReader();
     private String path;
 
@@ -19,8 +22,13 @@ public class FifoPipe {
      *
      * @param path Path to the pipe to read/write to/from.
      */
-    public FifoPipe(String path) {
+    public FifoPipeCarClient(String path) {
         this.path = path;
+
+        // create pipe if not exists
+        if (!new File(path).exists()) {
+            this.mkfifo(path);
+        }
     }
 
     /**
@@ -29,7 +37,8 @@ public class FifoPipe {
      * @param listener The listener to add.
      * @return this, as a way to chain listeners.
      */
-    public FifoPipe addListener(PipeListener listener) {
+    @Override
+    public FifoPipeCarClient addListener(CarClientMessageListener listener) {
         listenerList.add(listener);
         return this;
     }
@@ -37,21 +46,35 @@ public class FifoPipe {
     /**
      * Starts reading from the pipe
      */
-    public void read() {
+    @Override
+    public void connect() {
         openPipe();
         Thread readingThread = new Thread(reader);
         readingThread.start();
     }
 
+
     /**
      * Closes the read and pipe
      */
-    public void close() {
+    @Override
+    public void disconnect() {
         try {
             pipe.close();
             reader.exit = true;
             pipe.write('\n');
         } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void mkfifo(String path) {
+        String[] command = new String[]{"mkfifo", path};
+
+        try {
+            Process process = new ProcessBuilder(command).inheritIO().start();
+            process.waitFor();
+        } catch (InterruptedException | IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -87,7 +110,7 @@ public class FifoPipe {
                     break;
                 }
 
-                for (PipeListener listener : listenerList) {
+                for (CarClientMessageListener listener : listenerList) {
                     listener.onMessage(msg);
                 }
             }
