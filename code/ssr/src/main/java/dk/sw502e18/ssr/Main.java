@@ -21,8 +21,8 @@ public class Main {
         Imgcodecs.imwrite("./image.jpg", pipe.run());
         System.out.println("OK");
 
-        //CarServer com = new PipeCarServer("10.0.1.1", "root");
         CarServer com = new SocketCarServer("10.0.1.1", 9090);
+        // CarServer com = new PipeCarServer("10.0.1.1", "root");
 
         if (com.connect()) {
             for (int i = 0; i < 100; i++) {

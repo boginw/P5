@@ -16,7 +16,8 @@ public class SpeedSignPrinter implements CarClientMessageListener {
     private final Image c;
 
     public SpeedSignPrinter() throws IOException {
-        //c = ImageUtils.fromResource(this, "sign.lni");
+        // TODO: this only works sometimes, please fix
+        // c = ImageUtils.fromResource(this, "sign.lni");
         c = new Image(10, 10, null);
     }
 

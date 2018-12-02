@@ -17,17 +17,10 @@ public class Main {
 
         LCD.drawString("Ready for input", 0,0);
 
-        /*{
-            CarClient p = new FifoPipeCarClient("/home/lejos/pipes/speedlimit");
-            p.addListener(new SpeedSignPrinter());
-            p.connect();
-        }*/
-
-        {
-            CarClient p = new SocketCarClient();
-            p.addListener(new SpeedSignPrinter());
-            p.connect();
-        }
+        // CarClient p = new FifoPipeCarClient("/home/lejos/pipes/speedlimit");
+        CarClient p = new SocketCarClient();
+        p.addListener(new SpeedSignPrinter());
+        p.connect();
     }
 }
 
