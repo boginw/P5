@@ -1,6 +1,7 @@
 # Appendix
 
 ## Appendix 1 - Gearing test results
+\label{ssec:appendix_gearing_test}
 Note: All calculations include all decimals.
 
 Results with gear ratio 1/1
@@ -37,3 +38,5 @@ Results with gear ratio 1/4
 | 796            | 1,81 | 6,51 | 0,39%                     |
 | 808            | 1,78 | 6,42 | 1,87%                     |
 | 793            | 1,82 | 6,54 | 0,01%                     |
+
+Results with gear ratio 1/5
