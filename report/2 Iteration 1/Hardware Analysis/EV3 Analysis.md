@@ -43,7 +43,7 @@ Table: The result of the Heap memory test. The result is represented in bytes.
 
 As seen in the table above, the Java runtime identifies the max available memory as around 28.5 MB, and when utilizing the RAM, we can use up to a total of 28.5 MB. The average difference in available memory and usable memory is only 118.4 bytes. The test also shows consistent usability of the ram.
 
-The second test was the stack size test, just like the heap test, this test was also conducted five times to get an average. The result is shown in the table below, and the table shows the Java Runtime statistics at the point of the `StackOverflowError` happened.
+The second test was the stack size test. Just like the heap test, this test was also conducted five times to get an average. The result is shown in the table below, and the table shows the Java Runtime statistics at the point where the `StackOverflowError` happened.
 
 | Attempt   | Total  Memory | Free Memory | Used Memory |
 | ----------- | --------------: | -------------: | --------------: |
