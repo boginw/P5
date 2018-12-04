@@ -1,5 +1,5 @@
 ### Gearing test
-In order to determine the appropriate gearing ratio, the following section will describe the experiment that was done, in order to determine the gearing that will allow for the highest speed in a certain distance, based on the critera in \ref{ssec:DesignCritera}.
+In order to determine the appropriate gearing ratio, the following section will describe the experiment that was done, in order to determine the gearing that will allow for the highest speed in a certain distance, based on the critera in \ref{@ssec:DesignCritera}.
 
 #### Methodology
 The optimal gearing ratio gives a mixture of high speed and acceleration, in order to reach the highest speed in the shortest amount of time.
@@ -15,7 +15,7 @@ The time elapsed between these two points is calculated with a slow motion camer
 
 #### Results
 By analyzing the slow motion video, the speed of the car was obtained. All test results are shown in \ref{ssec:appendix_gearing_test}.
-As an example, the first speed of the result with gear ratio 1:3 in \ref{tbl:ratio13}.
+As an example, the first speed of the result with gear ratio 1:3 in \ref{@tbl:ratio13}.
 First, the time it took for the car to drive the distance is calculated:
 
 $$ \frac{836 F}{480 FPS} = 1.742 seconds $$
