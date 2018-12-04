@@ -38,7 +38,7 @@ The first test conducted was the heap test. The test was conducted five times to
 | Attempt 4 |              28,573,696 |         120 |    28,573,576 |
 | Attempt 5 |              28,573,696 |         120 |    28,573,576 |
 |           |                       |             |             |
-| Avarage   |              28,573,696 |       118.4 |  28,573,577.6 |
+| Average   |              28,573,696 |       118.4 |  28,573,577.6 |
 Table: The result of the Heap memory test. The result are represented in bytes.
 
 As seen in the table above, the Java runtime identifies the max available memory as around 28.5 MB, and when utilizing the RAM, we can use up to a total of 28.5 MB. The average difference in available memory and usable memory is only 118.4 bytes. The test also shows consistent usability of the ram.
