@@ -1,24 +1,25 @@
 package dk.sw502e18.ssr;
 
-import dk.sw502e18.ssr.components.outputtingComponents.Outputter;
-import dk.sw502e18.ssr.components.imageProvider.FolderScanner;
-import dk.sw502e18.ssr.components.grayScaler.Grayscale;
+import dk.sw502e18.ssr.components.imageCropper.CircleCropper;
+import dk.sw502e18.ssr.components.imageProvider.Resource;
+import dk.sw502e18.ssr.components.imageResizer.StandardResizer;
 import dk.sw502e18.ssr.pipeline.Pipe;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
-
+import org.opencv.imgcodecs.Imgcodecs;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         nu.pattern.OpenCV.loadShared();
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
         Pipe<Mat> pipe = new Pipe<Mat>()
-                .first(new FolderScanner("ABSOLUTE PATH TO INPUT-FILES"))
-                .then(new Grayscale())
-                .then(new Outputter("ABSOLUTE PATH TO OUTPUT-FILES"));
+                .first(new Resource("sample3.jpg"))
+                .then(new CircleCropper(160))
+                .then(new StandardResizer(100, 100));
 
-        pipe.run();
+        Imgcodecs.imwrite("./image.jpg", pipe.run());
         System.out.println("OK");
+
     }
 }
