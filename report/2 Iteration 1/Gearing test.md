@@ -3,7 +3,7 @@ In order to determine the appropriate gearing ratio, the following section will 
 
 #### Methodology
 In order to measure the speed of the car, the following experiment was conducted.
-The car was placed 50 cm's in front of a two meters long measuring tape. A program setting the car's speed to full was started, and was terminated when the car reached the end of the measuring tape.
+The car was placed 50 cm in front of a two meters long measuring tape. A program setting the car's speed to full was started and was terminated when the car reached the end of the measuring tape.
 Everything was filmed with a slow motion camera that films 480 FPS, and afterwards analyzed in order to determine the number of frames spent traveling from one end of the measuring tape to the other.
 The timing started when the front of the car reached the start of the measuring tape, and stopped when the front of the car reached the end of the measuring tape.
 This experiment was repeated five times for gearings with ratio: 1:1, 1:2, 1:3, 1:4, 1:5, and 1:6.

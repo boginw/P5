@@ -27,7 +27,7 @@ The weight will affect many other criteria, as more weight requires more torque,
 ### Speed
 There is a need for different speed levels which are distinguishable so that the differences can be clearly observed. This results in a need for sufficient max speed ($C_s$) to accommodate this.
 Moreover, it is important that the speed is obtained rather quickly, as the car will be running on a track of limited length.
-Within as little as half a metre, the car should have obtained it's topspeed.
+Within as little as half a meter, the car should have obtained its top speed.
 
 ### Modular
 As design changes are almost a guarantee, a modular design can be used to eliminate some of the hassles later on. Other benefits include changing of battery on the EV3 computer and testing multiple gearing solutions.
