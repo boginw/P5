@@ -8,16 +8,16 @@ import org.opencv.imgproc.Imgproc;
 
 public class StandardResizer implements dk.sw502e18.ssr.components.ImageResizer, Step<Mat, Mat> {
 
-  private int _destWidth;
-  private int _destHeight;
-  private Mat _dest;
+  private int destWidth;
+  private int destHeight;
+  private Mat dest;
 
   /**
    * Image resizer that fills the image into a 20x20 pixel canvas.
    */
   public StandardResizer(){
-    this._destWidth = this._destHeight = 20;
-    this._dest = new Mat();
+    this.destWidth = this.destHeight = 20;
+    this.dest = new Mat();
   }
 
   /**
@@ -26,15 +26,15 @@ public class StandardResizer implements dk.sw502e18.ssr.components.ImageResizer,
    * @param height
    */
   public StandardResizer(int width, int height){
-    this._destWidth = width;
-    this._destHeight = height;
-    this._dest = new Mat();
+    this.destWidth = width;
+    this.destHeight = height;
+    this.dest = new Mat();
   }
 
   @Override
   public Mat process(Mat input) {
-    Imgproc.resize(input, _dest, new Size(_destWidth, _destHeight));
+    Imgproc.resize(input, dest, new Size(destWidth, destHeight));
 
-    return _dest;
+    return dest;
   }
 }
