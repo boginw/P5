@@ -38,3 +38,22 @@ Note: All calculations include all decimals.
 | 808            | 1,78 | 6,42 | 1,87%                     |
 | 793            | 1,82 | 6,54 | 0,01%                     |
 : Results with gear ratio 1/4 {#tbl:ratio14}
+
+|  Frames elapsed | m/s | km/h | Percentage difference [%] |
+|  ------: | ------: | ------: | ------ |
+|  590 | 1,63 | 5,85 | 0,43% |
+|  576 | 1,67 | 6,00 | -2,06% |
+|  586 | 1,64 | 5,90 | -0,39% |
+|  600 | 1,60 | 5,76 | 2,02% |
+|  595 | 1,61 | 5,81 | 1,23% |
+: Results with gear ratio 1/5 {#tbl:ratio15}
+
+|  Frames elapsed | m/s | km/h | Percentage difference [%] |
+|  ------ | ------ | ------ | ------ |
+|  701 | 1,37 | 4,93 | -2,68% |
+|  706 | 1,36 | 4,90 | -1,98% |
+|  744 | 1,29 | 4,65 | 3,28% |
+|  730 | 1,32 | 4,74 | 1,37% |
+|  715 | 1,34 | 4,83 | -0,61% |
+: Results with gear ratio 1/6 {#tbl:ratio16}
+

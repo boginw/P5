@@ -1,5 +1,5 @@
 ### Gearing test
-In order to determine the appropriate gearing ratio, the following section will describe the experiment that was done, in order to determine the gearing that will allow for the highest speed in a certain distance, based on the critera in \ref{@ssec:DesignCritera}.
+In order to determine the appropriate gearing ratio, the following section will describe the experiment that was done, in order to determine the gearing that will allow for the highest speed in a certain distance, based on the critera in \ref{ssec:DesignCritera}.
 
 #### Methodology
 The optimal gearing ratio gives a mixture of high speed and acceleration, in order to reach the highest speed in the shortest amount of time.
@@ -15,16 +15,16 @@ The time elapsed between these two points is calculated with a slow motion camer
 
 #### Results
 By analyzing the slow motion video, the speed of the car was obtained. All test results are shown in \ref{ssec:appendix_gearing_test}.
-As an example, the first speed of the result with gear ratio 1:3 in \ref{@tbl:ratio13}.
-First, the time it took for the car to drive the distance is calculated:
+As an example, the first speed of the result with gear ratio 1:3 in \ref{tbl:ratio13}.
+First, the time it took for the car to drive the distance is calculated in ref{eq:TimeElapsed}:
 
-$$ \frac{836 F}{480 FPS} = 1.742 seconds $$
+$$ \frac{836 F}{480 FPS} = 1.742 seconds $$ {#eq:TimeElapsed}
 
-Where F is the number of frames that it took the car to drive from the start to the end of the measuring tape, and FPS is the frames per second of the slow motion camera; a constant of 480 frames per second.
+Where F is frames, and FPS is frames per second; a constant of 480 frames per second.
 
-The speed is calculated by dividing the time elapsed by the distance driven, which was a constant of 3 meters:
+The speed is calculated by dividing the time elapsed by the distance driven, which was a constant of 3 meters, as seen in \ref{eq:MetersSecond}:
 
-$$ \frac{3 m}{1.742 s} = 1.72 \frac{m}{s} $$
+$$ \frac{3 m}{1.742 s} = 1.72 \frac{m}{s} $$ {#eq:MetersSecond}
 
 This is trivially converted to $6.20 \frac{km}{h}$.
 
@@ -34,28 +34,17 @@ This is trivially converted to $6.20 \frac{km}{h}$.
 | ---------- | -------------------------------- |
 | 1:1        | 2.2                              |
 | 1:2        | 4.3                              |
-| 1:3        | 6.2                              |
-| 1:4        | 6.5                              |
-| 1:5        | 6.3                              |
-| 1:6        | N/A                              |
+| 1:3        | 4.3                              |
+| 1:4        | 5.0                              |
+| 1:5        | 5.9                              |
+| 1:6        | 4.8                              |
 
 : Test results for a gear ratio of 1/3 {#tbl:avg_speed}
 
-As seen in the table, the speed declines, when the gear ratio exceeds 1:5.
+As seen in table \ref{tbl:avg_speed}, the speed declines, when the gear ratio exceeds 1:5.
 This is due to the distance given for acceleration.
-If the car would have a longer distance to accelerate on, or if the length of the measurement area had been longer, the higher gear ratio would have won.
+If the car would have a longer distance to accelerate on, or if the length of the measurement area had been longer, the higher gear ratio would have been more favorables.
 The low amount of torque in the car results in a low acceleration, and will thus have a lower speed on the short course.
-
-#### Sources of errors
-Different sources of error introduced in the experiments may have an impact on the result.
-Even though the car was placed parallel to the measuring tape, it did not finish parallel to the measuring tape.
-A sample taken on the 1:3 gear ratio test shows that the car would consistently swerve 12 cm to the right.
-This adds extra travel time to the car, and will thus give a lower speed in the results.
-
-A robot that does not have full battery power might not drive at full speed.
-In order to counter this, the robot was fully charged before every change of a gear ratio test.
-The amount of discharge between each run might have an impact on the average speed, but in that case, a decrease in speed is expected.
-This is not the case, and as thus, this source of error does not seem plausible.
 
 ### Implementation in the car
 The gear ratio of 1:5 is chosen, as that gives the best mix of speed and acceleration.
