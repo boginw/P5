@@ -4,7 +4,6 @@
 \label{ssec:appendix_gearing_test}
 Note: All calculations include all decimals.
 
-Results with gear ratio 1/1
 | Frames elapsed | m/s  | km/h | Percentage difference [%] |
 |----------------|------|------|---------------------------|
 | 2374           | 0.61 | 2.18 |                     -0.34 |
@@ -12,16 +11,16 @@ Results with gear ratio 1/1
 | 2392           | 0.60 | 2.17 |                      0.42 |
 | 2375           | 0.61 | 2.18 |                     -0.29 |
 | 2376           | 0.61 | 2.18 |                     -0.25 |
+: Results with gear ratio 1/1 {#tbl:ratio11}
 
-Results with gear ratio 1/2
 | Frames elapsed | m/s  | km/h | Percentage difference [%] |
 |----------------|------|------|---------------------------|
 | 1225           | 1.18 | 4.23 |                      0.60 |
 | 1218           | 1.18 | 4.26 |                      0.03 |
 | 1204           | 1.20 | 4.31 |                     -1.14 |
 | 1224           | 1.18 | 4.24 |                      0.52 |
+: Results with gear ratio 1/2 {#tbl:ratio12}
 
-Results with gear ratio 1/3
 | Frames elapsed | m/s  | km/h | Percentage difference [%] |
 |----------------|------|------|------------------------|
 | 836            | 1.72 | 6.20 |                  -0.02 |
@@ -29,8 +28,8 @@ Results with gear ratio 1/3
 | 834            | 1.73 | 6.22 |                  -0.26 |
 | 840            | 1.71 | 6.17 |                   0.46 |
 | 825            | 1.72 | 6.28 |                  -1.35 |
+: Results with gear ratio 1/3 {#tbl:ratio13}
 
-Results with gear ratio 1/4
 | Frames elapsed | m/s  | km/h | Percentage difference [%] |
 |----------------|------|------|---------------------------|
 | 786            | 1,83 | 6,60 | -0,88%                    |
@@ -38,5 +37,4 @@ Results with gear ratio 1/4
 | 796            | 1,81 | 6,51 | 0,39%                     |
 | 808            | 1,78 | 6,42 | 1,87%                     |
 | 793            | 1,82 | 6,54 | 0,01%                     |
-
-Results with gear ratio 1/5
+: Results with gear ratio 1/4 {#tbl:ratio14}

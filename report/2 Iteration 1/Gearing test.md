@@ -1,16 +1,21 @@
 ### Gearing test
-In order to determine the appropriate gearing ratio, the following section will describe the experiment that was done, in order to determine the gearing that will allow for the highest speed.
+In order to determine the appropriate gearing ratio, the following section will describe the experiment that was done, in order to determine the gearing that will allow for the highest speed in a certain distance, based on the critera in \ref{ssec:DesignCritera}.
 
 #### Methodology
-In order to measure the speed of the car, the following experiment was conducted.
-The car was placed 50 cm in front of a two meters long measuring tape. A program setting the car's speed to full was started and was terminated when the car reached the end of the measuring tape.
-Everything was filmed with a slow motion camera that films 480 FPS, and afterwards analyzed in order to determine the number of frames spent traveling from one end of the measuring tape to the other.
-The timing started when the front of the car reached the start of the measuring tape, and stopped when the front of the car reached the end of the measuring tape.
-This experiment was repeated five times for gearings with ratio: 1:1, 1:2, 1:3, 1:4, 1:5, and 1:6.
+The optimal gearing ratio gives a mixture of high speed and acceleration, in order to reach the highest speed in the shortest amount of time.
+When the gearing ratio is increased, the maximum speed will increase, but on the other hand the maximum acceleration will decrease.
+
+The design of the car's body allows for an implementation of gearing ratios 1:1 through 1:6.
+By measuring the speed a car has achieved over a given distance, the car with the optimal mix of acceleration and speed will be found.
+
+The car is placed in front of a marker on the ground. 50 cm from the marker is a new marker that defines the area at which the time will be started.
+Another 200 cm from the marker at which the time is started, a third marker is placed.
+This marks the point at which the time will be stopped.
+The time elapsed between these two points is calculated with a slow motion camera that fils in 480 FPS.
 
 #### Results
-By analyzing the slow motion video, the speed of the car was obtained. All test results is show in \ref{ssec:appendix_gearing_test}.
-To calculate the results, the first entry is calculated, as an example.
+By analyzing the slow motion video, the speed of the car was obtained. All test results are shown in \ref{ssec:appendix_gearing_test}.
+As an example, the first speed of the result with gear ratio 1:3 in \ref{tbl:ratio13}.
 First, the time it took for the car to drive the distance is calculated:
 
 $$ \frac{836 F}{480 FPS} = 1.742 seconds $$

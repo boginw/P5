@@ -1,4 +1,5 @@
 ## Design Criteria
+\label{ssec:DesignCritera}
 In this section, the design criteria for the car to be built will be discussed. These criteria are determined from the following:
 
 * Achieving specifications
@@ -31,3 +32,4 @@ Within as little as half a meter, the car should have obtained its top speed.
 
 ### Modular
 As design changes are almost a guarantee, a modular design can be used to eliminate some of the hassles later on. Other benefits include changing of battery on the EV3 computer and testing multiple gearing solutions.
+
