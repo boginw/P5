@@ -53,7 +53,7 @@ The second test was the stack size test. Just like the heap test, this test was 
 | Attempt 4     |        5,111,808 |        3,854,776 |         1,257,032 |
 | Attempt 5     |        5,111,808 |        3,855,576 |         1,256,232 |
 |                   |                             |              |                   |
-| Avarage       |        5,111,808 |        3,855,960 |     1,255,848 |
+| Average       |        5,111,808 |        3,855,960 |     1,255,848 |
 Table: The result of the stack size memory test. The result are represented in bytes.
 
 The first thing of note is that the Total Memory seems to be significantly less than the heap test. However, this is due to a somewhat confusing naming convention from the Java Runtime object. The Total Memory turns out to be the total amount of memory allocated to the program as a whole. This particular program runs out of stack size before it ever needs to ask for more memory in the heap. Therefore we only get the first 5 MB of ram. The heap test was revisited after this finding since there is a Max Memory attribute in the Java Runtime object also, which return the maximum amount of memory that is allocatable to the program, but the findings were consistent with the originals, so no further actions were taken.
