@@ -17,6 +17,10 @@ jar {
                 'Implementation-Version': version,
                 'Main-Class': mainClassName
     }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
 
 configurations {
@@ -42,6 +46,8 @@ repositories {
 dependencies {
     sshAntTask 'org.apache.ant:ant-jsch:1.9.4', 'jsch:jsch:0.1.29'
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    
     provided 'lejos:ev3classes:1.0'
     provided fileTree(EV3_HOME + '/lib/ev3/3rdparty')
     testCompile 'junit:junit:4.12'
