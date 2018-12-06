@@ -40,28 +40,40 @@ public class Main {
                         .build()
         );
 
+        options.addOption(
+                Option.builder("p")
+                        .desc("Path to parameter file")
+                        .longOpt("param")
+                        .hasArg()
+                        .required()
+                        .argName("PATH")
+                        .build()
+        );
+
         CommandLineParser parser = new DefaultParser();
         SSR m;
         String train = null;
         String test = null;
         String model = null;
+        String param = null;
 
         try {
             CommandLine line = parser.parse(options, args);
             train = line.getOptionValue("t");
             test = line.getOptionValue("a");
             model = line.getOptionValue("m");
+            param = line.getOptionValue("p");
         } catch (ParseException exp) {
             System.out.println("Unexpected exception:" + exp.getMessage());
         }
 
-        if (model == null || ((train == null) != (test == null))) {
+        if (model == null || ((train == null) != (test == null)) || ((param == null) && (train == null))) {
             HelpFormatter formatter = new HelpFormatter();
             formatter.printHelp("ssr", options);
             return;
         }
 
-        m = new SSR(train, test, model);
+        m = new SSR(train, test, model, param);
         m.detect();
     }
 }

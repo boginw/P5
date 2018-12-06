@@ -82,6 +82,18 @@ public class ANN {
         }
     }
 
+    public void setActivationFunction(int activationFunction, double par1, double par2) {
+        mlp.setActivationFunction(activationFunction, par1, par2); //ANN_MLP.IDENTITY, 0.1, 0.15
+    }
+
+    public void setTrainMethod(int trainMethod, double par1, double par2) {
+        mlp.setTrainMethod(trainMethod, par1, par2); // ANN_MLP.RPROP, 0.15, 0.1
+    }
+
+    public void setTermCriteria(int maxCount, double precision) {
+        mlp.setTermCriteria(new TermCriteria(TermCriteria.MAX_ITER, maxCount, precision)); //1500, 0.6
+    }
+
     private float[] flatten(Mat sample) {
         float[] sampleArr = new float[sample.cols() * sample.rows()];
 

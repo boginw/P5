@@ -66,7 +66,7 @@ public class EllipseProcessor {
 
     private Mat detectCircles(Mat thresholdImage) {
         Mat circles = new Mat();
-        int houghResolution = 3;
+        int houghResolution = 2;
         int houghMinDist = 40;
         int houghCannyThreshold = 50;
         int houghAccumulatorThreshold = 30;

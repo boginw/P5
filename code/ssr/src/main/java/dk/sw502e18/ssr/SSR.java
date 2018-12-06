@@ -1,13 +1,18 @@
 package dk.sw502e18.ssr;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.opencv.core.Mat;
 import org.opencv.core.Size;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
 public class SSR {
     private final WebStream ws;
@@ -17,19 +22,36 @@ public class SSR {
     private String train;
     private String test;
     private String model;
+    private String param;
 
     private static int[] signs = new int[]{20, 30, 50, 60, 70, 80};
 
-    public SSR(String train, String test, String model) {
+    public SSR(String train, String test, String model, String param) {
         this.train = train;
         this.test = test;
         this.model = model;
+        this.param = param;
 
-        Size size = new Size(30, 30);
+        double[] annParams = new double[] {
+                1, 0.1, 0.1,
+                1, 0.1, 0.1,
+                1500, 0.6,
+                40, 40, 6
+        };
+
+        int[] layers = new int[]{40*40, 20*20, 10*10, 6};
+
+        Size size = new Size(40, 40);
         cd = new EllipseProcessor(130, 10, size);
 
+
+
+
         if (train != null) {
-            ann = new ANN((int) size.area(), (int) size.area() / 2, (int) size.area() / 4, 6);
+            ann = new ANN(layers);
+            ann.setActivationFunction((int) annParams[0], annParams[1], annParams[2]);
+            ann.setTrainMethod((int) annParams[3], annParams[4], annParams[5]);
+            ann.setTermCriteria((int) annParams[6], annParams[7]);
         } else {
             ann = new ANN(model);
         }
@@ -107,5 +129,31 @@ public class SSR {
         }
 
         return s;
+    }
+
+    private Pair<double[], int[]> parseParams(String file) {
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] p = line.split(";");
+                if (line.length() < 13) {
+                    throw new RuntimeException("Not enough params");
+                }
+                double[] annParams = Arrays.stream(p).mapToDouble(Double::parseDouble).toArray();
+                int[] layers = new int[annParams.length - 9];
+
+                //Size img = new Size(Integer.valueOf(p[8]), Integer.valueOf(p[9]));
+                layers[0] = (int) annParams[8] * (int) annParams[9];
+                layers[layers.length - 1] = (int) annParams[10];
+
+                for(int i = 1; i < layers.length - 1; i++) {
+                    layers[i] = (int) annParams[i + 10];
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

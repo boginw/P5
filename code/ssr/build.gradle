@@ -29,6 +29,12 @@ task train(type: JavaExec) {
     args = ["-m", MODEL, "-t", TRAIN, "-a", TEST]
 }
 
+task trainParams(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
+    main = 'dk.sw502e18.ssr.Main'
+    args = ["-m", MODEL, "-t", TRAIN, "-a", TEST, "-p", PARAM]
+}
+
 configurations {
     sshAntTask
     provided
