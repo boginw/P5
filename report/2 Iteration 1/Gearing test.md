@@ -14,8 +14,8 @@ This marks the point at which the time will be stopped.
 The time elapsed between these two points is calculated by recording the individual test runs with a slow motion camera filming in 480 frames per second (FPS), and then counting the amount of frames between the car passing the second and third marker.
 
 #### Results
-By analyzing the slow motion video, the speed of the car was obtained. All test results are shown in section @sec:appendix_gearing_test.
-As an example, the result of the first test run with gear ratio 1:3 (as seen in table @tbl:ratio13) was analysed in the following way:
+By analyzing the slow motion video, the speed of the car was obtained. All test results are shown in @section:appendix_gearing_test.
+As an example, the result of the first test run with gear ratio 1:3 (as seen in @tbl:ratio13) was analysed in the following way:
 First, the time it took for the car to drive the distance is calculated in @eq:TimeElapsed:
 
 $$ \frac{836 F}{480 FPS} = 1.742 seconds $$ {#eq:TimeElapsed}

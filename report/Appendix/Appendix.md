@@ -1,7 +1,7 @@
 # Appendix
 
 ## Appendix 1 - Gearing test results
-\label{sec:appendix_gearing_test}
+\label{section:appendix_gearing_test}
 Note: All calculations include all decimals, while the presented results have been rounded.
 
 | Frames elapsed | m/s  | km/h | Percentage difference [%] |
