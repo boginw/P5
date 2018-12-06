@@ -1,6 +1,11 @@
 # Artificial Neural Network
-
-Firstly a small text explaining why we choose to use a neural network and what to expect from the chapter.
+<!--Firstly a small text explaining why we choose to use a neural network and what to expect from the chapter.-->
+The final step in recognizing a speed sign is: recognizing the number in the sign. A neural network is proposed in order to 
+solve this task. The reason for this is, that the speed signs detected can have a lot of variation in their format
+ e.g angel, perspective, and size; these parameters can be difficult to define and take into account if one were to detect
+  the letters mathematically. 
+In this section the concept of a neural network will be described, following that, how we adopted it to our problem.
+This will   
 
 ## What is an Artificial Neural Network  
 An Artificial Neural Network is inspired by how the neurons work in brains. It works by having a network of neurons structured into layers, each neuron can then be connected to the neurons on the adjacent layers either in the form of receiving a signal or sending a signal to the other neurons. In this report, all explanations will assume a fully connected network, which means that every neuron has a connection to all neurons in the adjacent layers, an illustration of this can be seen on [@fig:simpleFullyConnectedNN]
@@ -17,7 +22,14 @@ This section will start to explain the theory behind the neural network, and it 
 Here we will explain what a neuron is.
 
 ### The layers
-Here we will explain what a layer is, and explain the types of layers, ie. Input, Hidden and Output layers also, that they consist of neurons.
+<!--Here we will explain what a layer is, and explain the types of layers, ie. Input, Hidden and Output layers also, that they consist of neurons.-->
+An artificial neural network typically consists 3 layer types: Input layer; Hidden layer; and the Output layer. All of the layers consists of neurons and usually vary in size.
+
+* Input Layer is where the neural network receives its input. The number of neurons in the input layer has to match the number of features in the input, if the input is an image of e.g 20x20 pixels then the size of the input layers would have to be 400 neurons.
+* Hidden Layer is where the  
+
+#### Hidden Layer
+
 
 ### Activation function
 Here it will explain what an activation function is and how it relates to data streaming through the network. We will here introduce the sigmoid function.
