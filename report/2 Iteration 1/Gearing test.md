@@ -47,7 +47,7 @@ If the car would have a longer distance to accelerate on, or if the length of th
 The low amount of torque in the car results in a low acceleration, and will thus have a lower speed on the short course.
 
 ### Implementation in the car
-The gear ratio of 1:5 is chosen, as, according to @tbl:avg_speed that gives the best mix of speed and acceleration.
+The gear ratio of 1:5 is chosen, as, according to @tbl:avg_speed, that gives the highest speed on the specified track.
 
 One of the sources of error introduced was the swerving of the car.
 In order to combat this behavior, the wheels were replaced by some smaller and wider wheels.
