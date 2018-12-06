@@ -2,7 +2,10 @@ package dk.sw502e18.ssr.components.imageCropper;
 
 import dk.sw502e18.ssr.components.ImageCropper;
 import dk.sw502e18.ssr.pipeline.Step;
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.opencv.core.*;
+import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 
 import java.util.ArrayList;
@@ -30,7 +33,9 @@ public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
 
         RotatedRect ellipse = Imgproc.fitEllipse(ellipseCrawler(out, x, y, thresh));
 
-        return cropEllipse(input, ellipse);
+        Pair<Mat, RotatedRect> output = flattenCircle(input, ellipse);
+
+        return cropEllipse(output.getLeft(), output.getRight());
     }
 
     /**
@@ -105,6 +110,7 @@ public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
         // Create a mask
         Mat mask = new Mat(input.rows(), input.cols(), CvType.CV_8U, Scalar.all(0));
 
+
         // Draw the ellipse on that mask
         Imgproc.ellipse(mask, ellipse, new Scalar(255, 255, 255), thickness);
 
@@ -124,6 +130,52 @@ public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
         Rect rect = Imgproc.boundingRect(contours.get(0));
 
         return masked.submat(rect);
+    }
+
+    private Pair<Mat, RotatedRect> flattenCircle(Mat input, RotatedRect ellipse){
+        Mat Malte;              // Mat code-named Malte  - used as placeholder in multiple places.
+        Mat Tobias = new Mat(); // Mat code-named Tobias - used as placeholder in multiple places.
+
+        // Input is rotated to align ellipse focal-points with x-axis. Stored in Tobias.
+        Mat rotateM = Imgproc.getRotationMatrix2D(ellipse.center, ellipse.angle, 1.0);
+        Imgproc.warpAffine(input, Tobias, rotateM, new Size(input.width(), input.width()));
+
+
+        Malte = fetchRedChannel(Tobias);
+
+        // Left/right top/buttom points are located on ellipse.
+        int x = Malte.width() / 2;
+        int y = Malte.height() / 2;
+        Point p1 = findEdge(Malte, x, y, -1, 0, thresh);
+        Point p2 = findEdge(Malte, x, y, 1, 0, thresh);
+        Point p3 = findEdge(Malte, x, y, 0, -1, thresh);
+        Point p4 = findEdge(Malte, x, y, 0, 1, thresh);
+        // Storing p1-p4 as matrix.
+        MatOfPoint2f perspecInputMat = new MatOfPoint2f(p1, p2, p3, p4);
+
+        // Matrix for transforming ellipse to circle is calculated.
+        Mat perspecTransfMat = Imgproc.getPerspectiveTransform(
+                perspecInputMat,  // 1st arg: Points from before.
+                new MatOfPoint2f( // 2nd arg: Points to "land" on.
+                        new Point(p3.y,p1.y),
+                        new Point(p4.y,p2.y),
+                        p3,
+                        p4
+                )
+        );
+
+        // Image warp - ellipse becomes circle.
+        Imgproc.warpPerspective(Tobias, Malte, perspecTransfMat, Tobias.size());
+
+        // Image is rotated back to normal orientation.
+        RotatedRect ellipseOut = Imgproc.fitEllipse(ellipseCrawler(fetchRedChannel(Malte), Malte.width() / 2, Malte.height()/2, thresh));
+        rotateM = Imgproc.getRotationMatrix2D(ellipseOut.center, - ellipse.angle, 1.0);
+        Imgproc.warpAffine(Malte, Tobias, rotateM, Malte.size());
+
+        // Ellipse for further cropping is calculated.
+        ellipseOut = Imgproc.fitEllipse(ellipseCrawler(fetchRedChannel(Tobias), Tobias.width() / 2, Tobias.height()/2, thresh));
+
+        return new ImmutablePair<>(Tobias, ellipseOut);
     }
 
 }
