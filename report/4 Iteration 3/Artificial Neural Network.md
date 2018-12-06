@@ -8,7 +8,9 @@ In this section the concept of a neural network will be described, following tha
 This will   
 
 ## What is an Artificial Neural Network  
-An Artificial Neural Network is inspired by how the neurons work in brains. It works by having a network of neurons structured into layers, each neuron can then be connected to the neurons on the adjacent layers either in the form of receiving a signal or sending a signal to the other neurons. In this report, all explanations will assume a fully connected network, which means that every neuron has a connection to all neurons in the adjacent layers, an illustration of this can be seen on [@fig:simpleFullyConnectedNN]
+An Artificial Neural Network is inspired by how the neurons work in brains.
+It works by having a network of neurons structured into layers, each neuron can then be connected to the neurons on the adjacent layers either in the form of receiving a signal or sending a signal to the other neurons.
+In this report, all explanations will assume a fully connected network, which means that every neuron has a connection to all neurons in the adjacent layers, an illustration of this can be seen on [@fig:simpleFullyConnectedNN]
 
 ![A example of a fully connected Neural Network](report/assets/pictures/nn/6.pdf){#fig:simpleFullyConnectedNN}
 
