@@ -14,9 +14,9 @@ This marks the point at which the time will be stopped.
 The time elapsed between these two points is calculated with a slow motion camera that fils in 480 FPS.
 
 #### Results
-By analyzing the slow motion video, the speed of the car was obtained. All test results are shown in \ref{ssec:appendix_gearing_test}.
-As an example, the first speed of the result with gear ratio 1:3 in \ref{tbl:ratio13}.
-First, the time it took for the car to drive the distance is calculated in ref{eq:TimeElapsed}:
+By analyzing the slow motion video, the speed of the car was obtained. All test results are shown in @ssec:appendix_gearing_test.
+As an example, the first speed of the result with gear ratio 1:3 in @tbl:ratio13.
+First, the time it took for the car to drive the distance is calculated in @eq:TimeElapsed:
 
 $$ \frac{836 F}{480 FPS} = 1.742 seconds $$ {#eq:TimeElapsed}
 
@@ -47,7 +47,7 @@ If the car would have a longer distance to accelerate on, or if the length of th
 The low amount of torque in the car results in a low acceleration, and will thus have a lower speed on the short course.
 
 ### Implementation in the car
-The gear ratio of 1:5 is chosen, as that gives the best mix of speed and acceleration.
+The gear ratio of 1:5 is chosen, as, according to  that gives the best mix of speed and acceleration.
 
 One of the sources of error introduced was the swerving of the car.
 In order to combat this behavior, the wheels were replaced by some smaller and wider wheels.
