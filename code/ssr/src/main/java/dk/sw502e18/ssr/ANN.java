@@ -30,9 +30,9 @@ public class ANN {
         this.outputLayerSize = layers[layers.length - 1];
 
         mlp.setLayerSizes(new MatOfInt(layers));
-        mlp.setActivationFunction(ANN_MLP.SIGMOID_SYM, 0.1, 0.1);
-        mlp.setTrainMethod(ANN_MLP.RPROP, 0.1, 0.1);
-        mlp.setTermCriteria(new TermCriteria(TermCriteria.MAX_ITER, 1500, 0.7));
+        mlp.setActivationFunction(ANN_MLP.SIGMOID_SYM, 0.1, 0.15);
+        mlp.setTrainMethod(ANN_MLP.RPROP, 0.15, 0.1);
+        mlp.setTermCriteria(new TermCriteria(TermCriteria.MAX_ITER, 1500, 0.6));
     }
 
     public void addSample(Mat sample, int label) {
