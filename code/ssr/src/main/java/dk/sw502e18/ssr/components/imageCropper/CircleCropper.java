@@ -31,6 +31,8 @@ public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
         int x = out.width() / 2;
         int y = out.height() / 2;
 
+        Imgcodecs.imwrite("./outtester1.ppm",out);
+
         RotatedRect ellipse = Imgproc.fitEllipse(ellipseCrawler(out, x, y, thresh));
 
         Pair<Mat, RotatedRect> output = flattenCircle(input, ellipse);
@@ -81,13 +83,13 @@ public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
      * @return A matrix of 2D points on the periphery.
      */
     private MatOfPoint2f ellipseCrawler(Mat input, double x, double y, int thresh) {
-        return new MatOfPoint2f(
+
+        return FuckShitCtor(
                 // Left, right, top, bottom
                 findEdge(input, x, y, -1, 0, thresh),
                 findEdge(input, x, y, 1, 0, thresh),
                 findEdge(input, x, y, 0, -1, thresh),
                 findEdge(input, x, y, 0, 1, thresh),
-
                 // Top-left, bottom-left
                 findEdge(input, x, y, -1, -1, thresh),
                 findEdge(input, x, y, -1, 1, thresh),
@@ -133,7 +135,8 @@ public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
     }
 
     private Pair<Mat, RotatedRect> flattenCircle(Mat input, RotatedRect ellipse){
-        Mat Malte;              // Mat code-named Malte  - used as placeholder in multiple places.
+        long timer = System.nanoTime();
+        Mat Malte = new Mat();              // Mat code-named Malte  - used as placeholder in multiple places.
         Mat Tobias = new Mat(); // Mat code-named Tobias - used as placeholder in multiple places.
 
         // Input is rotated to align ellipse focal-points with x-axis. Stored in Tobias.
@@ -141,28 +144,30 @@ public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
         Imgproc.warpAffine(input, Tobias, rotateM, new Size(input.width(), input.width()));
 
 
+
         Malte = fetchRedChannel(Tobias);
 
         // Left/right top/buttom points are located on ellipse.
-        int x = Malte.width() / 2;
-        int y = Malte.height() / 2;
-        Point p1 = findEdge(Malte, x, y, -1, 0, thresh);
-        Point p2 = findEdge(Malte, x, y, 1, 0, thresh);
+        int x = (int)ellipse.center.x;
+        int y = (int)ellipse.center.y;
         Point p3 = findEdge(Malte, x, y, 0, -1, thresh);
         Point p4 = findEdge(Malte, x, y, 0, 1, thresh);
+        Point p1 = findEdge(Malte, x, y, -1, 0, thresh);
+        Point p2 = findEdge(Malte, x, y, 1, 0, thresh);
         // Storing p1-p4 as matrix.
-        MatOfPoint2f perspecInputMat = new MatOfPoint2f(p1, p2, p3, p4);
+        MatOfPoint2f perspecInputMat = FuckShitCtor(p1, p2, p3, p4);
 
         // Matrix for transforming ellipse to circle is calculated.
         Mat perspecTransfMat = Imgproc.getPerspectiveTransform(
                 perspecInputMat,  // 1st arg: Points from before.
-                new MatOfPoint2f( // 2nd arg: Points to "land" on.
-                        new Point(p3.y,p1.y),
-                        new Point(p4.y,p2.y),
+                FuckShitCtor( // 2nd arg: Points to "land" on.
+                        new Point(x-(y - p3.y),p1.y),
+                        new Point(x+(y - p3.y),p2.y),
                         p3,
                         p4
                 )
         );
+
 
         // Image warp - ellipse becomes circle.
         Imgproc.warpPerspective(Tobias, Malte, perspecTransfMat, Tobias.size());
@@ -175,7 +180,26 @@ public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
         // Ellipse for further cropping is calculated.
         ellipseOut = Imgproc.fitEllipse(ellipseCrawler(fetchRedChannel(Tobias), Tobias.width() / 2, Tobias.height()/2, thresh));
 
+        long timer2 = System.nanoTime();
+
+        System.out.print(timer2 - timer);
+
         return new ImmutablePair<>(Tobias, ellipseOut);
+    }
+
+    private MatOfPoint2f FuckShitCtor(Point... a){
+
+
+        try {
+            MatOfPoint2f out = new MatOfPoint2f();
+
+
+            out.fromArray(a);
+            return out;
+        } catch (Exception e) {
+            System.out.println("HEJ HURRA HVAD?");
+        }
+        return null;
     }
 
 }
