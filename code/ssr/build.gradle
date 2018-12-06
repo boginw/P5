@@ -6,7 +6,7 @@ apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'idea'
 
-sourceCompatibility = 1.7
+sourceCompatibility = 1.8
 version = '1.0'
 compileJava.options.encoding = 'UTF-8'
 mainClassName = 'dk.sw502e18.ssr.Main'
@@ -17,6 +17,16 @@ jar {
                 'Implementation-Version': version,
                 'Main-Class': mainClassName
     }
+}
+
+run {
+    args = ["-m", MODEL]
+}
+
+task train(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
+    main = 'dk.sw502e18.ssr.Main'
+    args = ["-m", MODEL, "-t", TRAIN, "-a", TEST]
 }
 
 configurations {
@@ -38,9 +48,10 @@ repositories {
 
 dependencies {
     sshAntTask 'org.apache.ant:ant-jsch:1.9.4', 'jsch:jsch:0.1.29'
+    compile group: 'org.openpnp', name: 'opencv', version: '3.4.2-1'
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
-    compile group: 'org.openpnp', name: 'opencv', version: '3.2.0-0'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
     testCompile 'junit:junit:4.12'
 }
 

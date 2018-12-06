@@ -1,22 +1,67 @@
 package dk.sw502e18.ssr;
 
-import dk.sw502e18.ssr.components.imageCropper.CircleCropper;
-import dk.sw502e18.ssr.components.imageProvider.Resource;
-import dk.sw502e18.ssr.pipeline.Pipe;
-import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.imgcodecs.Imgcodecs;
+import org.apache.commons.cli.*;
+import org.opencv.core.*;
+
+import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws IOException {
         nu.pattern.OpenCV.loadShared();
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
-        Pipe<Mat> pipe = new Pipe<Mat>()
-                .first(new Resource("sample3.jpg"))
-                .then(new CircleCropper(160));
+        Options options = new Options();
+        options.addOption(
+                Option.builder("m")
+                        .desc("Path to model")
+                        .longOpt("model")
+                        .hasArg()
+                        .required()
+                        .argName("PATH")
+                        .build()
+        );
 
-        Imgcodecs.imwrite("./image.jpg", pipe.run());
-        System.out.println("OK");
+        options.addOption(
+                Option.builder("t")
+                        .desc("Path to training dataset")
+                        .longOpt("train")
+                        .hasArg()
+                        .argName("PATH")
+                        .build()
+        );
+
+        options.addOption(
+                Option.builder("a")
+                        .desc("Path to test dataset")
+                        .longOpt("test")
+                        .hasArg()
+                        .argName("PATH")
+                        .build()
+        );
+
+        CommandLineParser parser = new DefaultParser();
+        SSR m;
+        String train = null;
+        String test = null;
+        String model = null;
+
+        try {
+            CommandLine line = parser.parse(options, args);
+            train = line.getOptionValue("t");
+            test = line.getOptionValue("a");
+            model = line.getOptionValue("m");
+        } catch (ParseException exp) {
+            System.out.println("Unexpected exception:" + exp.getMessage());
+        }
+
+        if (model == null || ((train == null) != (test == null))) {
+            HelpFormatter formatter = new HelpFormatter();
+            formatter.printHelp("ssr", options);
+            return;
+        }
+
+        m = new SSR(train, test, model);
+        m.detect();
     }
 }

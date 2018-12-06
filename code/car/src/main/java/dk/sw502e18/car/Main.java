@@ -1,71 +1,19 @@
 package dk.sw502e18.car;
 
-import lejos.hardware.BrickFinder;
-import lejos.hardware.Button;
-import lejos.hardware.Sound;
-import lejos.hardware.lcd.Font;
-import lejos.hardware.lcd.GraphicsLCD;
-import lejos.utility.Delay;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
-import org.opencv.core.MatOfByte;
 import org.opencv.highgui.Highgui;
 import org.opencv.highgui.VideoCapture;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.ServerSocket;
-import java.net.Socket;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         Mat mat = new Mat();
         VideoCapture vid = new VideoCapture(0);
         vid.set(Highgui.CV_CAP_PROP_FRAME_WIDTH, 320);
         vid.set(Highgui.CV_CAP_PROP_FRAME_HEIGHT, 240);
         vid.open(0);
-        System.out.println("Camera open");
-
-        ServerSocket ss = new ServerSocket(8080);
-        Socket sock = ss.accept();
-        System.out.println("Socket connected");
-        String boundary = "Thats it folks!";
-        writeHeader(sock.getOutputStream(), boundary);
-        System.out.println("Written header");
-
-        while (Button.ESCAPE.isUp()) {
-            vid.read(mat);
-            if (!mat.empty()) {
-                writeJpg(sock.getOutputStream(), mat, boundary);
-            }
-        }
-        sock.close();
-        ss.close();
-    }
-
-    private static void writeHeader(OutputStream stream, String boundary) throws IOException {
-        stream.write(("HTTP/1.0 200 OK\r\n" +
-                "Connection: close\r\n" +
-                "Max-Age: 0\r\n" +
-                "Expires: 0\r\n" +
-                "Cache-Control: no-store, no-cache, must-revalidate, pre-check=0, post-check=0, max-age=0\r\n" +
-                "Pragma: no-cache\r\n" +
-                "Content-Type: multipart/x-mixed-replace; " +
-                "boundary=" + boundary + "\r\n" +
-                "\r\n" +
-                "--" + boundary + "\r\n").getBytes());
-    }
-
-    private static void writeJpg(OutputStream stream, Mat img, String boundary) throws IOException {
-        MatOfByte buf = new MatOfByte();
-        Highgui.imencode(".jpg", img, buf);
-        byte[] imageBytes = buf.toArray();
-        stream.write(("Content-type: image/jpeg\r\n" +
-                "Content-Length: " + imageBytes.length + "\r\n" +
-                "\r\n").getBytes());
-        stream.write(imageBytes);
-        stream.write(("\r\n--" + boundary + "\r\n").getBytes());
     }
 }
 
