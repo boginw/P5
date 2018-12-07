@@ -35,7 +35,7 @@ Computation of the value will be done by the following function:
 
 $$ Insert function here $$
 
-Where $ \varphi $ is the activation function, $ i $ is the input, $ w $ is the weight, and $ B $ is the bias. (we need to insert the real symbols here)
+Where $$ \varphi $$ is the activation function, $$ i $$ is the input, $$ w $$ is the weight, and $$ B $$ is the bias. (we need to insert the real symbols here)
 Each neuron is typically connected to every neruon in the adjacent layers, which is why the output of the neuron is the sum of all inputs from the previous layer.
 The activation function is a function that normalizes the input.
 When the product of the input, weight, and bias can become greater than one, the neurons output should be between zero and one.
