@@ -1,45 +1,37 @@
-package dk.sw502e18.ssr;
+package dk.sw502e18.ssr.mode;
 
+import dk.sw502e18.ssr.EllipseProcessor;
+import dk.sw502e18.ssr.Mode;
 import org.opencv.core.*;
 import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
-import org.opencv.videoio.Videoio;
 
 import java.awt.*;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketException;
 import java.util.function.Function;
 
-public class WebStream {
-
-    private int[] labels;
-    private EllipseProcessor processor;
-    private Function<Mat, Float> func;
-
-    public WebStream(int[] labels, EllipseProcessor processor, Function<Mat, Float> func) {
-        this.labels = labels;
-        this.processor = processor;
-
-        this.func = func;
-    }
-
-    public void stream() throws IOException {
+public class WebCamMode implements Mode {
+    public void start(VideoCapture vid, EllipseProcessor processor, Function<Mat, Integer> func) {
         Mat mat = new Mat();
-        VideoCapture vid = new VideoCapture(0);
-        vid.set(Videoio.CV_CAP_PROP_FRAME_WIDTH, 320);
-        vid.set(Videoio.CV_CAP_PROP_FRAME_HEIGHT, 240);
 
         System.out.println("Camera open");
 
-        ServerSocket ss = new ServerSocket(8080);
-        Socket sock = ss.accept();
+        ServerSocket ss;
+        Socket sock = null;
         String boundary = "Thats it folks!";
-        writeHeader(sock.getOutputStream(), boundary);
+
+        try {
+            ss = new ServerSocket(8080);
+            sock = ss.accept();
+            writeHeader(sock.getOutputStream(), boundary);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         while (true) {
             vid.read(mat);
@@ -50,7 +42,7 @@ public class WebStream {
 
                 Imgproc.putText(
                         mat,
-                        "Detected: " + labels[func.apply(p).intValue()],
+                        "Detected: " + func.apply(p),
                         new Point(5,15),
                         Core.FONT_HERSHEY_PLAIN,
                         1.0,
@@ -59,8 +51,10 @@ public class WebStream {
             }
 
             try {
-                writeJpg(sock.getOutputStream(), mat, boundary);
-            } catch (SocketException ignore) {
+                if (sock != null) {
+                    writeJpg(sock.getOutputStream(), mat, boundary);
+                }
+            } catch (IOException ignore) {
                 return;
             }
         }

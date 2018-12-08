@@ -1,67 +1,78 @@
 package dk.sw502e18.ssr;
 
+import dk.sw502e18.ssr.mode.CarMode;
+import dk.sw502e18.ssr.mode.WebCamMode;
 import org.apache.commons.cli.*;
 import org.opencv.core.*;
-
-import java.io.IOException;
+import org.opencv.videoio.VideoCapture;
+import org.opencv.videoio.Videoio;
 
 public class Main {
+    private static int[] signs = new int[]{20, 30, 50, 60, 70, 80};
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         nu.pattern.OpenCV.loadShared();
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
-        Options options = new Options();
-        options.addOption(
-                Option.builder("m")
-                        .desc("Path to model")
-                        .longOpt("model")
-                        .hasArg()
-                        .required()
-                        .argName("PATH")
-                        .build()
-        );
-
-        options.addOption(
-                Option.builder("t")
-                        .desc("Path to training dataset")
-                        .longOpt("train")
-                        .hasArg()
-                        .argName("PATH")
-                        .build()
-        );
-
-        options.addOption(
-                Option.builder("a")
-                        .desc("Path to test dataset")
-                        .longOpt("test")
-                        .hasArg()
-                        .argName("PATH")
-                        .build()
-        );
-
-        CommandLineParser parser = new DefaultParser();
-        SSR m;
         String train = null;
         String test = null;
         String model = null;
+        String param = null;
+        boolean webcam = false;
+
+        Options options = new Options();
+        options.addOption(Option.builder("m").desc("Path to model").hasArg().required().argName("PATH").build());
+        options.addOption(Option.builder("t").desc("Path to training dataset").hasArg().argName("PATH").build());
+        options.addOption(Option.builder("a").desc("Path to test dataset").hasArg().argName("PATH").build());
+        options.addOption(Option.builder("p").desc("Path to parameter file").hasArg().argName("PATH").build());
+        options.addOption(Option.builder("w").desc("Webcam mode").build());
+
 
         try {
-            CommandLine line = parser.parse(options, args);
+            CommandLine line = new DefaultParser().parse(options, args);
             train = line.getOptionValue("t");
             test = line.getOptionValue("a");
             model = line.getOptionValue("m");
+            param = line.getOptionValue("p");
+            webcam = line.hasOption("w");
         } catch (ParseException exp) {
             System.out.println("Unexpected exception:" + exp.getMessage());
         }
 
-        if (model == null || ((train == null) != (test == null))) {
-            HelpFormatter formatter = new HelpFormatter();
-            formatter.printHelp("ssr", options);
+        if (model == null || ((train == null) != (test == null)) || ((param == null) != (train == null))) {
+            new HelpFormatter().printHelp("ssr", options);
             return;
         }
 
-        m = new SSR(train, test, model);
-        m.detect();
+        if (train == null) {
+            // Setup webcam
+            VideoCapture vid = new VideoCapture(0);
+            vid.set(Videoio.CV_CAP_PROP_FRAME_WIDTH, 320);
+            vid.set(Videoio.CV_CAP_PROP_FRAME_HEIGHT, 240);
+
+            // Setup Neural Network with model
+            ANN ann = new ANN(model);
+            Mode m;
+
+            if (webcam) {
+                m = new WebCamMode();
+            } else {
+                m = new CarMode();
+            }
+
+            // start server or webcam
+            m.start(
+                    vid,
+                    new EllipseProcessor(130, 10, ann.getSize()),
+                    (mat) -> signs[(int) ann.predict(mat)]
+            );
+        } else {
+            // create neural network trainer and store the best result
+            ANN best = new SSRTrainer(train, test, param).train();
+
+            if (best != null) {
+                best.save(model);
+            }
+        }
     }
 }

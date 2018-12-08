@@ -1,5 +1,6 @@
 plugins {
     id "com.adarshr.test-logger" version "1.5.0"
+    id "de.undercouch.download" version "3.4.3"
 }
 
 apply plugin: 'java'
@@ -23,10 +24,53 @@ run {
     args = ["-m", MODEL]
 }
 
+task webcam(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
+    main = 'dk.sw502e18.ssr.Main'
+    args = ["-m", MODEL, "-w"]
+}
+
+task trainParams(type: JavaExec) {
+    classpath sourceSets.main.runtimeClasspath
+    main = 'dk.sw502e18.ssr.Main'
+    args = ["-m", MODEL, "-t", TRAIN, "-a", TEST, "-p", PARAMS]
+}
+
 task train(type: JavaExec) {
     classpath sourceSets.main.runtimeClasspath
     main = 'dk.sw502e18.ssr.Main'
     args = ["-m", MODEL, "-t", TRAIN, "-a", TEST]
+}
+
+task install {
+    doLast {
+        def training = "http://benchmark.ini.rub.de/Dataset/GTSRB-Training_fixed.zip"
+        def testing = "http://benchmark.ini.rub.de/Dataset/GTSRB_Online-Test-Images-Sorted.zip"
+        def folder = new File("../$buildDir/dataset")
+        folder.mkdirs()
+        def f_train = new File(folder.toString(), 'training.zip')
+        def f_test = new File(folder.toString(), 'testing.zip')
+
+        download {
+            src training
+            dest f_train.absolutePath
+        }
+
+        download {
+            src testing
+            dest f_test.absolutePath
+        }
+
+        copy {
+            from zipTree(f_train.absolutePath)
+            into "../$buildDir/dataset/"
+        }
+
+        copy {
+            from zipTree(f_test.absolutePath)
+            into "../$buildDir/dataset/"
+        }
+    }
 }
 
 configurations {
@@ -52,6 +96,7 @@ dependencies {
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
     compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
+    compile group: 'com.jcraft', name: 'jsch', version: '0.1.55'
     testCompile 'junit:junit:4.12'
 }
 
