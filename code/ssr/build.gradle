@@ -95,6 +95,7 @@ dependencies {
     compile group: 'org.openpnp', name: 'opencv', version: '3.4.2-1'
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.4'
     compile group: 'com.jcraft', name: 'jsch', version: '0.1.55'
     testCompile 'junit:junit:4.12'
 }
