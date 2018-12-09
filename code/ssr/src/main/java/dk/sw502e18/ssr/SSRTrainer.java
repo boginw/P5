@@ -14,7 +14,7 @@ import java.util.Queue;
 import java.util.function.BiConsumer;
 
 public class SSRTrainer {
-    private final EllipseProcessor cd;
+    private EllipseProcessor cd;
     private String train;
     private String test;
     private Queue<ANN> nns;
@@ -24,18 +24,16 @@ public class SSRTrainer {
     public SSRTrainer(String train, String test, String param) {
         this.train = train;
         this.test = test;
-        Size size = new Size(30, 30);
-        cd = new EllipseProcessor(130, 10, size);
-
         nns = new LinkedList<>(fromConfigFile(param));
     }
 
     public ANN train() {
         while (!nns.isEmpty()) {
             ANN ann = nns.poll();
+            cd = new EllipseProcessor(130, 10, ann.getSize());
             addSamples(ann);
 
-            System.out.println("\nTraining...");
+            System.out.print("Training...");
             ann.train();
 
             float acc = testAccuracy(ann);
@@ -43,7 +41,9 @@ public class SSRTrainer {
             if (acc > maxAcc) {
                 maxAcc = acc;
                 bestANN = ann;
-                System.out.println("New best accuracy: " + maxAcc * 100);
+                System.out.println(" New best accuracy: " + maxAcc * 100);
+            } else {
+                System.out.println();
             }
         }
 
@@ -77,6 +77,9 @@ public class SSRTrainer {
             try (BufferedReader br = new BufferedReader(new FileReader(file))) {
                 String line;
                 while ((line = br.readLine()) != null) {
+                    if (line.startsWith("#")) {
+                        continue;
+                    }
                     nns.add(new ANN(Configuration.fromString(line)));
                 }
             } catch (IOException e) {
@@ -94,11 +97,11 @@ public class SSRTrainer {
     }
 
     private float testAccuracy(ANN ann) {
-        System.out.println("\nTesting accuracy");
+        //System.out.println("\nTesting accuracy");
 
         float accSum = 0;
         for (int i = 1; i < 6; i++) {
-            System.out.print("Testing: " + i);
+            //System.out.print("Testing: " + i);
 
             List<Boolean> q = new ArrayList<>();
 
@@ -108,11 +111,11 @@ public class SSRTrainer {
                 }
             });
 
-            System.out.print(", Samples: " + samples);
+            //System.out.print(", Samples: " + samples);
 
             float acc = (float) q.size() / samples;
             accSum += acc;
-            System.out.println(", Accuracy: " + acc * 100 + "%");
+            //System.out.println(", Accuracy: " + acc * 100 + "%");
         }
 
         return accSum / 6;

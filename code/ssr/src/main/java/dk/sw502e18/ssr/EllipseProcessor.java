@@ -40,12 +40,8 @@ public class EllipseProcessor {
             Mat cropped = cc.crop(process, out, new Point(c), c[2]);
 
             if (cropped != null && cropped.rows() > minWH && cropped.cols() > minWH) {
-                double mean = Core.mean(cropped).val[0];
-
-                if (mean < 100 && mean > 20) {
-                    Imgproc.resize(cropped, cropped, size);
-                    return cropped;
-                }
+                Imgproc.resize(cropped, cropped, size);
+                return cropped;
             }
         }
 
@@ -71,7 +67,7 @@ public class EllipseProcessor {
     private Mat detectCircles(Mat thresholdImage) {
         Mat circles = new Mat();
         int houghResolution = 2;
-        int houghMinDist = 40;
+        int houghMinDist = 30;
         int houghCannyThreshold = 50;
         int houghAccumulatorThreshold = 30;
         int houghMinCircleRadius = 0;

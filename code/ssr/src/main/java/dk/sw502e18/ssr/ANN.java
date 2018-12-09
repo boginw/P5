@@ -30,6 +30,7 @@ public class ANN {
         mlp = ANN_MLP.create();
         this.config = config;
         outputLayerSize = config.layers[config.layers.length - 1];
+        setFromConf();
     }
 
     public void addSample(Mat sample, int label) {
