@@ -1,5 +1,7 @@
 package dk.sw502e18.ssr;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
@@ -27,8 +29,10 @@ public class CircleCropper {
 
         RotatedRect ellipse = Imgproc.fitEllipse(points);
 
+        Pair<Mat, RotatedRect> smthng = flattenCircle(src, ellipse);
+
         try {
-            return cropEllipse(dst, ellipse);
+            return cropEllipse(smthng.getLeft(), smthng.getRight());
         } catch (IndexOutOfBoundsException e) {
             return null;
         }
@@ -102,7 +106,6 @@ public class CircleCropper {
         // Create a mask
         Mat mask = new Mat(input.rows(), input.cols(), CvType.CV_8U, Scalar.all(0));
 
-
         // Draw the ellipse on that mask
         Imgproc.ellipse(mask, ellipse, new Scalar(255, 255, 255), thickness);
 
@@ -125,71 +128,73 @@ public class CircleCropper {
     }
 
     private Pair<Mat, RotatedRect> flattenCircle(Mat input, RotatedRect ellipse){
+
         long timer = System.nanoTime();
-        Mat Malte = new Mat();              // Mat code-named Malte  - used as placeholder in multiple places.
-        Mat Tobias = new Mat(); // Mat code-named Tobias - used as placeholder in multiple places.
+        Mat tempMat1 = new Mat();
+        Mat tempMat2 = new Mat();
+        MatOfPoint2f tempMOP2f = new MatOfPoint2f();
+
+        input.copyTo(tempMat1);
 
         // Input is rotated to align ellipse focal-points with x-axis. Stored in Tobias.
         Mat rotateM = Imgproc.getRotationMatrix2D(ellipse.center, ellipse.angle, 1.0);
-        Imgproc.warpAffine(input, Tobias, rotateM, new Size(input.width(), input.width()));
-
-
-
-        Malte = fetchRedChannel(Tobias);
+        Imgproc.warpAffine(input, tempMat1, rotateM, new Size(tempMat1.width(), tempMat1.width()));
 
         // Left/right top/buttom points are located on ellipse.
         int x = (int)ellipse.center.x;
         int y = (int)ellipse.center.y;
-        Point p3 = findEdge(Malte, x, y, 0, -1, thresh);
-        Point p4 = findEdge(Malte, x, y, 0, 1, thresh);
-        Point p1 = findEdge(Malte, x, y, -1, 0, thresh);
-        Point p2 = findEdge(Malte, x, y, 1, 0, thresh);
-        // Storing p1-p4 as matrix.
-        MatOfPoint2f perspecInputMat = FuckShitCtor(p1, p2, p3, p4);
+        Point p3 = findEdge(tempMat1, x, y, 0, -1, thresh);
+        Point p4 = findEdge(tempMat1, x, y, 0, 1, thresh);
+        Point p1 = findEdge(tempMat1, x, y, -1, 0, thresh);
+        Point p2 = findEdge(tempMat1, x, y, 1, 0, thresh);
 
-        // Matrix for transforming ellipse to circle is calculated.
+        // If anything has been null, invoke fuck-it-Im-out-of-here
+        if ((p1 == null) || (p2 == null) || (p3 == null) || (p4 == null)){
+            return new ImmutablePair<>(input, ellipse);
+        }
+
+        // Storing p1-p4 as matrix.
+        MatOfPoint2f perspecInputMat = new MatOfPoint2f(p1, p2, p3, p4);
+
+        // Transformation matrix for ellipse-to-circle is calculated.
         Mat perspecTransfMat = Imgproc.getPerspectiveTransform(
                 perspecInputMat,  // 1st arg: Points from before.
-                FuckShitCtor( // 2nd arg: Points to "land" on.
-                        new Point(x-(y - p3.y),p1.y),
-                        new Point(x+(y - p3.y),p2.y),
+                new MatOfPoint2f( // 2nd arg: Points to "land" on.
+                        new Point(x - (y - p3.y), p1.y),
+                        new Point(x + (y - p3.y), p2.y),
                         p3,
                         p4
                 )
         );
 
 
-        // Image warp - ellipse becomes circle.
-        Imgproc.warpPerspective(Tobias, Malte, perspecTransfMat, Tobias.size());
+        // Image warp - ellipse becomes circle, held in tempMat2
+        Imgproc.warpPerspective(tempMat1, tempMat2, perspecTransfMat, tempMat1.size());
 
-        // Image is rotated back to normal orientation.
-        RotatedRect ellipseOut = Imgproc.fitEllipse(ellipseCrawler(fetchRedChannel(Malte), Malte.width() / 2, Malte.height()/2, thresh));
+        tempMOP2f = ellipseCrawler(tempMat2,(float)tempMat2.width() / 2, (float)tempMat2.height()/2, thresh);
+        // If anything has been null, invoke fuck-it-Im-out-of-here
+        if (tempMOP2f == null){
+            return new ImmutablePair<>(input, ellipse);
+        }
+        // Image is rotated back to normal orientation, now held in tempMat1
+        RotatedRect ellipseOut = Imgproc.fitEllipse(tempMOP2f);
         rotateM = Imgproc.getRotationMatrix2D(ellipseOut.center, - ellipse.angle, 1.0);
-        Imgproc.warpAffine(Malte, Tobias, rotateM, Malte.size());
+        Imgproc.warpAffine(tempMat2, tempMat1, rotateM, tempMat2.size());
+
+        tempMOP2f = ellipseCrawler(tempMat1,(float)tempMat1.width() / 2, (float)tempMat1.height()/2, thresh);
+        // If anything has been null, invoke fuck-it-Im-out-of-here
+        if (tempMOP2f == null){
+            return new ImmutablePair<>(input, ellipse);
+        }
 
         // Ellipse for further cropping is calculated.
-        ellipseOut = Imgproc.fitEllipse(ellipseCrawler(fetchRedChannel(Tobias), Tobias.width() / 2, Tobias.height()/2, thresh));
+        ellipseOut = Imgproc.fitEllipse(tempMOP2f);
 
         long timer2 = System.nanoTime();
 
-        System.out.print(timer2 - timer);
+        // System.out.print(timer2 - timer);
 
-        return new ImmutablePair<>(Tobias, ellipseOut);
-    }
-
-    private MatOfPoint2f FuckShitCtor(Point... a){
-
-
-        try {
-            MatOfPoint2f out = new MatOfPoint2f();
-
-
-            out.fromArray(a);
-            return out;
-        } catch (Exception e) {
-            System.out.println("HEJ HURRA HVAD?");
-        }
-        return null;
+        return new ImmutablePair<>(tempMat1, ellipseOut);
     }
 
 }
