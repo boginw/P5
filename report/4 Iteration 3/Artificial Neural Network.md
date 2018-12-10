@@ -63,7 +63,8 @@ This section will start to explain the theory behind the neural network, and it 
 A neuron, also called a unit or node, is basically a mathematical function that accepts some input, calculates a weighted sum, adding a bias and then produces an output. 
 
 The mathematical equation for the function that is used to calculate the weighted sum is:
-$Y = $\sum 5$$
+
+> Y = $\sum (weight * input) + bias$
 
 Before producing a final output, the weighted sum from the original input is sent to adjacent layers within the Artifical Neural Network to be processed. 
 Finally a graded value between 0 and 1 is produced based on what type of neural network you have.
@@ -84,7 +85,15 @@ An artificial neural network typically consists 3 layer types: Input layer; Hidd
 ### Activation Function
 <!-- Here it will explain what an activation function is and how it relates to data streaming through the network. We will here introduce the sigmoid function. -->
 
-The purpose of an activation function is to map resulting values in a neuron to a desired range, which is typically between 0 and 1. 
+Each neuron calculates it weighted sum when given an input.
+This means that, without an activation function to normalize these values, the value for each neuron could range from -infinity to infinity as each neuron does not know the bounds of the value. 
+The purpose of an activation function is then to map resulting values in a neuron to a desired range, which is typically between 0 and 1. 
+However, depending on the problem, different activation functions are used. 
+In this project, the Sigmoid Function has been used because this is the most simple or default activation function. 
+
+> $S(x) = \frac{1}{1 + e^{-x}}$
+
+It is achknowledged that better ones do exist. 
 
 ### The Entire Network
 This section will explain how the entire flow of the network works with neurons in the layers and activation functions. This section is where we will introduce the fact that it is all just simple linear algebra, i.e. matrices and such.
