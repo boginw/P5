@@ -1,9 +1,5 @@
-package dk.sw502e18.ssr.components.imageCropper;
+package dk.sw502e18.ssr;
 
-import dk.sw502e18.ssr.components.ImageCropper;
-import dk.sw502e18.ssr.pipeline.Step;
-import org.apache.commons.lang3.tuple.ImmutablePair;
-import org.apache.commons.lang3.tuple.Pair;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
@@ -11,33 +7,31 @@ import org.opencv.imgproc.Imgproc;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
+public class CircleCropper {
 
     private final int thresh;
 
-    public CircleCropper(int thresh) {
-        this.thresh = thresh;
+    public CircleCropper(int threshold) {
+        this.thresh = threshold;
     }
 
-    @Override
-    public Mat process(Mat input) {
-        return crop(input);
-    }
+    public Mat crop(Mat src, Mat dst, Point point, double radius) {
+        int x = (int) point.x;
+        int y = (int) point.y;
 
-    @Override
-    public Mat crop(Mat input) {
-        Mat out = fetchRedChannel(input);
+        MatOfPoint2f points = ellipseCrawler(src, x, y, thresh);
 
-        int x = out.width() / 2;
-        int y = out.height() / 2;
+        if (points == null) {
+            return null;
+        }
 
-        Imgcodecs.imwrite("./outtester1.ppm",out);
+        RotatedRect ellipse = Imgproc.fitEllipse(points);
 
-        RotatedRect ellipse = Imgproc.fitEllipse(ellipseCrawler(out, x, y, thresh));
-
-        Pair<Mat, RotatedRect> output = flattenCircle(input, ellipse);
-
-        return cropEllipse(output.getLeft(), output.getRight());
+        try {
+            return cropEllipse(dst, ellipse);
+        } catch (IndexOutOfBoundsException e) {
+            return null;
+        }
     }
 
     /**
@@ -65,14 +59,6 @@ public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
         return null;
     }
 
-    private Mat fetchRedChannel(Mat input) {
-        Mat out = new Mat();
-        Imgproc.cvtColor(input, out, Imgproc.COLOR_BGR2YCrCb);
-        List<Mat> ycrcb_planes = new ArrayList<>();
-        Core.split(out, ycrcb_planes);
-        return ycrcb_planes.get(1);
-    }
-
     /**
      * Will crawl an ellipse to find 8 points on the periphery.
      *
@@ -83,20 +69,24 @@ public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
      * @return A matrix of 2D points on the periphery.
      */
     private MatOfPoint2f ellipseCrawler(Mat input, double x, double y, int thresh) {
+        try {
+            return new MatOfPoint2f(
+                    // Left, right, top, bottom
+                    findEdge(input, x, y, -1, 0, thresh),
+                    findEdge(input, x, y, 1, 0, thresh),
+                    findEdge(input, x, y, 0, -1, thresh),
+                    findEdge(input, x, y, 0, 1, thresh),
 
-        return FuckShitCtor(
-                // Left, right, top, bottom
-                findEdge(input, x, y, -1, 0, thresh),
-                findEdge(input, x, y, 1, 0, thresh),
-                findEdge(input, x, y, 0, -1, thresh),
-                findEdge(input, x, y, 0, 1, thresh),
-                // Top-left, bottom-left
-                findEdge(input, x, y, -1, -1, thresh),
-                findEdge(input, x, y, -1, 1, thresh),
-                // Top-right, bottom-right
-                findEdge(input, x, y, 1, -1, thresh),
-                findEdge(input, x, y, 1, 1, thresh)
-        );
+                    // Top-left, bottom-left
+                    findEdge(input, x, y, -1, -1, thresh),
+                    findEdge(input, x, y, -1, 1, thresh),
+                    // Top-right, bottom-right
+                    findEdge(input, x, y, 1, -1, thresh),
+                    findEdge(input, x, y, 1, 1, thresh)
+            );
+        } catch (NullPointerException e) {
+            return null;
+        }
     }
 
     /**
@@ -106,7 +96,7 @@ public class CircleCropper implements ImageCropper, Step<Mat, Mat> {
      * @param ellipse The ellipse to crop to.
      * @return The cropped, elliptical image.
      */
-    private Mat cropEllipse(Mat input, RotatedRect ellipse) {
+    public static Mat cropEllipse(Mat input, RotatedRect ellipse) {
         int thickness = -1; // set to -1 to indicate to fill
 
         // Create a mask

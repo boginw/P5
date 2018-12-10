@@ -21,6 +21,8 @@
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+.idea/compiler.xml
+.idea/**/encodings.xml
 
 # Gradle
 .idea/**/gradle.xml
@@ -75,6 +77,7 @@ fabric.properties
 **/.settings/
 **/.classpath
 **/.project
+**/*.so
 
 
 code.jar

@@ -1,6 +1,5 @@
 package dk.sw502e18.car;
 
-import dk.sw502e18.car.carClient.FifoPipeCarClient;
 import dk.sw502e18.car.carClient.SocketCarClient;
 import dk.sw502e18.car.carClient.listener.SpeedSignPrinter;
 import dk.sw502e18.car.utils.ExitOnEscape;
