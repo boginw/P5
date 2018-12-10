@@ -44,7 +44,7 @@ public class ANN {
                     sample.cols() * sample.rows()
             );
             throw new RuntimeException(err);
-        } else if (label >= 0 && label < outputLayerSize) {
+        } else if (label < 0 || label > outputLayerSize-1) {
             String err = String.format(
                     "Invalid sample size (expected: 0<=label<%d, actual: %d)",
                     outputLayerSize,
@@ -53,7 +53,7 @@ public class ANN {
             throw new RuntimeException(err);
         } else {
             float[] labelArr = new float[outputLayerSize];
-            Arrays.fill(labelArr, 0);
+            Arrays.fill(labelArr, -1);
             labelArr[label] = 1;
             labels.add(labelArr);
 
@@ -129,7 +129,7 @@ public class ANN {
         );
 
         mlp.setTermCriteria(new TermCriteria(
-                TermCriteria.MAX_ITER,
+                TermCriteria.MAX_ITER | TermCriteria.EPS,
                 config.trainingCriteriaLimit,
                 config.trainingCriteriaPrecision
         ));

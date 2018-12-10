@@ -73,7 +73,7 @@ public class Main {
             );
         } else {
             // create neural network trainer and store the best result
-            ANN best = new SSRTrainer(train, test, param).train();
+            ANN best = new SSRTrainer(train, test, param, signs).train();
 
             if (best != null) {
                 best.save(model);
