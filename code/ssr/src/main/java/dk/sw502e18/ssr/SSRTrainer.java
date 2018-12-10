@@ -16,19 +16,19 @@ public class SSRTrainer {
     private EllipseProcessor cd;
     private String train;
     private String test;
-    private Queue<ANN> nns;
+    private Queue<ANN> neuralNetworks;
     private float maxAcc = Float.MIN_VALUE;
     private ANN bestANN = null;
 
     public SSRTrainer(String train, String test, String param) {
         this.train = train;
         this.test = test;
-        nns = new LinkedList<>(fromConfigFile(param));
+        neuralNetworks = new LinkedList<>(fromConfigFile(param));
     }
 
     public ANN train() {
-        while (!nns.isEmpty()) {
-            ANN ann = nns.poll();
+        while (!neuralNetworks.isEmpty()) {
+            ANN ann = neuralNetworks.poll();
             cd = new EllipseProcessor(130, 10, ann.getSize());
             addSamples(ann);
 

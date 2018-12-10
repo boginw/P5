@@ -39,7 +39,12 @@ public class Main {
             System.out.println("Unexpected exception:" + exp.getMessage());
         }
 
-        if (model == null || ((train == null) != (test == null)) || ((param == null) != (train == null))) {
+        // Check if cmd args are valid
+        if (model == null || // model must not be null
+                // if test is set then train should also be set
+                ((train == null) != (test == null)) ||
+                // if param is set then train should also be set
+                ((param == null) != (train == null))) {
             new HelpFormatter().printHelp("ssr", options);
             return;
         }
