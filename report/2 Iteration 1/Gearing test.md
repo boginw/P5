@@ -43,7 +43,7 @@ This is trivially converted to $6.20 \frac{km}{h}$.
 
 : Average speed for different gear ratio {#tbl:avg_speed}
 
-As seen in table @tbl:avg_speed, the speed declines, when the gear ratio exceeds 1:5.
+As can be seen in table @tbl:avg_speed the peak of the curve is 1:5, after which the speed begins to decline.
 This is due to the distance given for acceleration.
 If the car would have a longer distance to accelerate on, or if the length of the measurement area had been longer, the higher gear ratio would have been more favorable.
 The low amount of torque in the car results in a low acceleration, and will thus have a lower speed on the short course.
