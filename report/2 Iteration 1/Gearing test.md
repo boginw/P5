@@ -11,18 +11,18 @@ By measuring the speed that the car achieved, the car with the optimal mix of ac
 The car is placed in front of a marker on the ground, to mark the starting spot for the car. 
 50 cm from the marker is a new marker that defines the area at which the time will be started.
 Another 200 cm from the marker at which the time is started, a third marker is placed.
-This distance is chosen, as it is the length of the track available to us. 
+This distance is chosen, as it is a conveniently already-marked length of floor available to us. 
 It marks the point at which the time will be stopped.
-The time elapsed between these two points is calculated by recording the individual test runs with a slow motion camera filming in 480 frames per second (FPS), and then counting the amount of frames between the car passing the second and third marker.
+By recording the individual test runs with a slow motion camera filming in 480 frames per second (FPS), the time elapsed between these two points is then calculated by counting the amount of frames between the car passing the second and third marker.
 
 #### Results
 By analyzing the slow motion video, the speed of the car was obtained. All test results are shown in @sec:appendix_gearing_test.
 As an example, the result of the first test run with gear ratio 1:3 (as seen in @tbl:ratio13) was analysed in the following way:
 First, the time it took for the car to drive the distance is calculated in @eq:TimeElapsed:
 
-$$ \frac{836 F}{480 FPS} = 1.742 seconds $$ {#eq:TimeElapsed}
+$$ \frac{836 F}{480 F/s} = 1.742 seconds $$ {#eq:TimeElapsed}
 
-Where F is frames, and FPS is frames per second; a constant of 480 frames per second.
+Where F is frames, and F/s is frames per second; a constant of 480 frames per second.
 
 The speed is calculated by dividing the time elapsed by the distance driven, which was a constant of 2 meters, as seen in @eq:MetersSecond:
 
