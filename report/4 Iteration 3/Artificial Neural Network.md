@@ -53,7 +53,11 @@ Designers might identify neurons that looks for a tail or finns, and add extra i
 
 
 ## Why use it
-This section will explain in which scenarios it is beneficial to use a neural network and compare those to our scenario.
+A neural network is excellent at solving tasks that are complicated or having inconsistent, incomplete or imprecise data. A specific situation that could illustrate all these scenarios could be when trying to recognize handwritten digits. This task can be entirely inconsistent since every person writing a digit has their style of handwriting. Also, the positioning and angle of the digit can fluctuate a lot from person to person. These conditions make it a complicated task to try and create an algorithm that can reliably recognize the digits since one person could write their `9` almost identical with another persons `8`. So, in order to solve this task, we need something that can analyze handwritten digits and search for patterns that can help in determining the actual digits of unknown cases. 
+
+Analyzing and recognizing these patterns is what a properly configured neural network do quite well. It is often said that a neural network is a black box of magic since there is no way too deterministic know beforehand which patterns it would recognize or how it would derive at that result. However, this behavior is the strength of the neural network, since it allows for finding patterns in data that even humans can struggle to recognize, thereby allowing to solve tasks that humans cannot formulate in plain old computer algorithms.  When a neural network is appropriately configured and efficiently trained it will be a very efficient way to solve tasks since the prediction part of a neural network is some simple linear algebra agros a set of matrices. Which again showcase one of the strengths of using a neural network, which is, that the prediction is very fast, and the heavy computational aspects exist in the training part of the network. 
+
+An appropriately configured and efficiently trained network is not an easy task to create.  In configuring a network, there is a lot of trial and error, next the training is a very computational demanding task. Depending on the network and training data, it can take hours, weeks, months or even years to train a network correctly, and this is the biggest draw bag of a neural network.
 
 ## Theory behind
 This section will start to explain the theory behind the neural network, and it will try to go through in a 3Blue1Brown inspired manner.
