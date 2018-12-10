@@ -1,7 +1,6 @@
 package dk.sw502e18.ssr;
 
 import org.opencv.core.Mat;
-import org.opencv.core.Size;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -97,11 +96,9 @@ public class SSRTrainer {
     }
 
     private float testAccuracy(ANN ann) {
-        //System.out.println("\nTesting accuracy");
-
         float accSum = 0;
         for (int i = 1; i < 6; i++) {
-            //System.out.print("Testing: " + i);
+            System.out.print("Testing: " + i);
 
             List<Boolean> q = new ArrayList<>();
 
@@ -111,11 +108,11 @@ public class SSRTrainer {
                 }
             });
 
-            //System.out.print(", Samples: " + samples);
+            System.out.print(", Samples: " + samples);
 
             float acc = (float) q.size() / samples;
             accSum += acc;
-            //System.out.println(", Accuracy: " + acc * 100 + "%");
+            System.out.println(", Accuracy: " + acc * 100 + "%");
         }
 
         return accSum / 6;

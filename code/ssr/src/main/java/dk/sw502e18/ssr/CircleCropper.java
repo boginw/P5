@@ -8,17 +8,17 @@ import java.util.List;
 
 public class CircleCropper {
 
-    private final int thresh;
+    private final int threshold;
 
     public CircleCropper(int threshold) {
-        this.thresh = threshold;
+        this.threshold = threshold;
     }
 
-    public Mat crop(Mat src, Mat dst, Point point, double radius) {
+    public Mat crop(Mat src, Mat dst, Point point) {
         int x = (int) point.x;
         int y = (int) point.y;
 
-        MatOfPoint2f points = ellipseCrawler(src, x, y, thresh);
+        MatOfPoint2f points = ellipseCrawler(src, x, y, threshold);
 
         if (points == null) {
             return null;
