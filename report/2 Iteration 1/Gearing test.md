@@ -1,16 +1,18 @@
 ### Gearing test
-In order to determine the appropriate gearing ratio, the following section will describe the experiment that was done, in order to determine the gearing that will allow for the highest speed in a certain distance, based on the critera in @sec:DesignCritera.
+In order to determine the appropriate gearing ratio, the following section will describe the experiment that was done, in order to determine the gearing that will allow for the highest speed after 50 cm's acceleration, based on the critera in @sec:DesignCritera.
 
 #### Methodology
 The optimal gearing ratio gives a mixture of high speed and acceleration, in order to reach the highest speed in the shortest amount of time.
 When the gearing ratio is increased, the maximum speed will increase, but on the other hand the maximum acceleration will decrease.
 
 The design of the car's body allows for an implementation of gearing ratios 1:1 through 1:6.
-By measuring the speed a car has achieved over a given distance, the car with the optimal mix of acceleration and speed will be found.
+By measuring the speed that the car achieved, the car with the optimal mix of acceleration and speed will be found.
 
-The car is placed in front of a marker on the ground. 50 cm from the marker is a new marker that defines the area at which the time will be started.
+The car is placed in front of a marker on the ground, to mark the starting spot for the car. 
+50 cm from the marker is a new marker that defines the area at which the time will be started.
 Another 200 cm from the marker at which the time is started, a third marker is placed.
-This marks the point at which the time will be stopped.
+This distance is chosen, as it is the length of the track available to us. 
+It marks the point at which the time will be stopped.
 The time elapsed between these two points is calculated by recording the individual test runs with a slow motion camera filming in 480 frames per second (FPS), and then counting the amount of frames between the car passing the second and third marker.
 
 #### Results
@@ -39,16 +41,16 @@ This is trivially converted to $6.20 \frac{km}{h}$.
 | 1:5        | 5.9                              |
 | 1:6        | 4.8                              |
 
-: Test results for a gear ratio of 1/3 {#tbl:avg_speed}
+: Average speed for different gear ratio {#tbl:avg_speed}
 
 As seen in table @tbl:avg_speed, the speed declines, when the gear ratio exceeds 1:5.
 This is due to the distance given for acceleration.
-If the car would have a longer distance to accelerate on, or if the length of the measurement area had been longer, the higher gear ratio would have been more favorables.
+If the car would have a longer distance to accelerate on, or if the length of the measurement area had been longer, the higher gear ratio would have been more favorable.
 The low amount of torque in the car results in a low acceleration, and will thus have a lower speed on the short course.
 
 ### Implementation in the car
-The gear ratio of 1:5 is chosen, as, according to @tbl:avg_speed, that gives the highest speed on the specified track.
+The gear ratio of 1:5 is chosen, as, according to @tbl:avg_speed, that gives the highest speed in the given distance.
 
 One of the sources of error introduced was the swerving of the car.
 In order to combat this behavior, the wheels were replaced by some smaller and wider wheels.
-This gave a decrease in speed of 22% (since the ratio between the wheel and wheel axle is a gearing in it self), but practically eliminated the swerve over a course of 10 meters.
+This gave a decrease in speed of 22% (since the ratio between the wheel and wheel axle is a gearing in it self), but eliminated the swerve.

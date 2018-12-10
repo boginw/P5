@@ -1,5 +1,4 @@
-## Design Criteria
-\label{sec:DesignCritera}
+## Design Criteria {#sec:DesignCritera}
 In this section, the design criteria for the car to be built will be discussed. These criteria are determined from the following:
 
 * Achieving specifications
