@@ -59,7 +59,18 @@ This section will explain in which scenarios it is beneficial to use a neural ne
 This section will start to explain the theory behind the neural network, and it will try to go through in a 3Blue1Brown inspired manner.
 
 ### A Neuron
-Here we will explain what a neuron is.
+<!-- Here we will explain what a neuron is. -->
+A neuron, also called a unit or node, is basically a mathematical function that accepts some input, calculates a weighted sum, adding a bias and then produces an output. 
+
+The mathematical equation for the function that is used to calculate the weighted sum is:
+$Y = $\sum 5$$
+
+Before producing a final output, the weighted sum from the original input is sent to adjacent layers within the Artifical Neural Network to be processed. 
+Finally a graded value between 0 and 1 is produced based on what type of neural network you have.
+As mentioned earlier, the value between 0 and 1 is the result of normalization of the activation function used.
+This function is described below. 
+
+<!-- Insert function here -->
 
 ### The layers
 <!--Here we will explain what a layer is, and explain the types of layers, ie. Input, Hidden and Output layers also, that they consist of neurons.-->
@@ -70,14 +81,15 @@ An artificial neural network typically consists 3 layer types: Input layer; Hidd
 
 #### Hidden Layer
 
+### Activation Function
+<!-- Here it will explain what an activation function is and how it relates to data streaming through the network. We will here introduce the sigmoid function. -->
 
-### Activation function
-Here it will explain what an activation function is and how it relates to data streaming through the network. We will here introduce the sigmoid function.
+The purpose of an activation function is to map resulting values in a neuron to a desired range, which is typically between 0 and 1. 
 
-### The entire network
+### The Entire Network
 This section will explain how the entire flow of the network works with neurons in the layers and activation functions. This section is where we will introduce the fact that it is all just simple linear algebra, i.e. matrices and such.
 
-### The model
+### The Model
 Explain what a `model` is regarding a neural network.
 
 ## Training
