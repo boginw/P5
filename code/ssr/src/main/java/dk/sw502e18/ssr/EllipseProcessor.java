@@ -37,7 +37,7 @@ public class EllipseProcessor {
 
         for (int i = 0; i < circles.cols(); i++) {
             double[] c = circles.get(0, i);
-            Mat cropped = cc.crop(process, out, new Point(c), c[2]);
+            Mat cropped = cc.crop(process, out, new Point(c));
 
             if (cropped != null && cropped.rows() > minWH && cropped.cols() > minWH) {
                 Imgproc.resize(cropped, cropped, size);

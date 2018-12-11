@@ -5,6 +5,7 @@ import org.opencv.ml.ANN_MLP;
 import java.util.Arrays;
 
 public class Configuration {
+    // Default values, in case no params are given.
     public int activationFunction = ANN_MLP.SIGMOID_SYM;
     public double activationFunctionParam1 = 0.1;
     public double activationFunctionParam2 = 0.1;

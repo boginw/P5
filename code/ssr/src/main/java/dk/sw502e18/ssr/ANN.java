@@ -9,8 +9,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Artificial Neural Network
+ */
 public class ANN {
-    private ANN_MLP mlp;
+    private ANN_MLP mlp; // Artificial Neural Network - Multilayer Perceptron
     private final int outputLayerSize;
     private final Configuration config;
 
@@ -19,11 +22,11 @@ public class ANN {
 
     public ANN(String model) {
         mlp = ANN_MLP.load(model);
-
         config = new Configuration();
         Mat layers = mlp.getLayerSizes();
         config.layers[0] = (int) layers.get(0, 0)[0];
         outputLayerSize = (int) layers.get(layers.rows() - 1, 0)[0];
+        setFromConf();
     }
 
     public ANN(Configuration config) {
@@ -34,11 +37,23 @@ public class ANN {
     }
 
     public void addSample(Mat sample, int label) {
-        if (sample.cols() * sample.rows() != config.layers[0] && label >= 0 && label < outputLayerSize) {
-            throw new RuntimeException("wtf?");
+        if (sample.cols() * sample.rows() != config.layers[0]) {
+            String err = String.format(
+                    "Invalid sample size (expected: %d, actual: %d)",
+                    config.layers[0],
+                    sample.cols() * sample.rows()
+            );
+            throw new RuntimeException(err);
+        } else if (label < 0 || label > outputLayerSize-1) {
+            String err = String.format(
+                    "Invalid sample size (expected: 0<=label<%d, actual: %d)",
+                    outputLayerSize,
+                    label
+            );
+            throw new RuntimeException(err);
         } else {
             float[] labelArr = new float[outputLayerSize];
-            Arrays.fill(labelArr, 0);
+            Arrays.fill(labelArr, -1);
             labelArr[label] = 1;
             labels.add(labelArr);
 
@@ -49,7 +64,6 @@ public class ANN {
     }
 
     public void train() {
-        setFromConf();
         Mat samples = new Mat(this.samples.size(), config.layers[0], CvType.CV_32FC1);
         Mat labels = new Mat(samples.rows(), outputLayerSize, CvType.CV_32FC1);
 
@@ -115,7 +129,7 @@ public class ANN {
         );
 
         mlp.setTermCriteria(new TermCriteria(
-                TermCriteria.MAX_ITER,
+                TermCriteria.MAX_ITER | TermCriteria.EPS,
                 config.trainingCriteriaLimit,
                 config.trainingCriteriaPrecision
         ));

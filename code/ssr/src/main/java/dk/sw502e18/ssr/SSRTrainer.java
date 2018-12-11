@@ -1,7 +1,6 @@
 package dk.sw502e18.ssr;
 
 import org.opencv.core.Mat;
-import org.opencv.core.Size;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,23 +16,26 @@ public class SSRTrainer {
     private EllipseProcessor cd;
     private String train;
     private String test;
-    private Queue<ANN> nns;
+    private Queue<ANN> neuralNetworks;
     private float maxAcc = Float.MIN_VALUE;
     private ANN bestANN = null;
+    private int[] signs;
 
-    public SSRTrainer(String train, String test, String param) {
+    public SSRTrainer(String train, String test, String param, int[] signs) {
         this.train = train;
         this.test = test;
-        nns = new LinkedList<>(fromConfigFile(param));
+        this.signs = signs;
+        neuralNetworks = new LinkedList<>(fromConfigFile(param));
     }
 
     public ANN train() {
-        while (!nns.isEmpty()) {
-            ANN ann = nns.poll();
+        int maxLength = neuralNetworks.size();
+        while (!neuralNetworks.isEmpty()) {
+            ANN ann = neuralNetworks.poll();
             cd = new EllipseProcessor(130, 10, ann.getSize());
             addSamples(ann);
 
-            System.out.print("Training...");
+            System.out.printf("(%4d/%d) - ", maxLength-neuralNetworks.size(), maxLength);
             ann.train();
 
             float acc = testAccuracy(ann);
@@ -41,7 +43,7 @@ public class SSRTrainer {
             if (acc > maxAcc) {
                 maxAcc = acc;
                 bestANN = ann;
-                System.out.println(" New best accuracy: " + maxAcc * 100);
+                System.out.println("\033[1m  <-------------- Best \033[0m");
             } else {
                 System.out.println();
             }
@@ -91,18 +93,14 @@ public class SSRTrainer {
     }
 
     private void addSamples(ANN ann) {
-        for (int i = 1; i < 6; i++) {
+        for (int i = 0; i < 6; i++) {
             doOnSamples(i, train, ann::addSample);
         }
     }
 
     private float testAccuracy(ANN ann) {
-        //System.out.println("\nTesting accuracy");
-
         float accSum = 0;
-        for (int i = 1; i < 6; i++) {
-            //System.out.print("Testing: " + i);
-
+        for (int i = 0; i < 6; i++) {
             List<Boolean> q = new ArrayList<>();
 
             int samples = doOnSamples(i, test, (mat, label) -> {
@@ -111,13 +109,13 @@ public class SSRTrainer {
                 }
             });
 
-            //System.out.print(", Samples: " + samples);
 
             float acc = (float) q.size() / samples;
             accSum += acc;
-            //System.out.println(", Accuracy: " + acc * 100 + "%");
+            System.out.printf("[%d]: %5.2f%%, ",  signs[i], acc * 100);
         }
 
+        System.out.printf("Average Accuracy: %.2f%%",  (accSum / 6) * 100);
         return accSum / 6;
     }
 
