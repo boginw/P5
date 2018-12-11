@@ -1,34 +1,19 @@
 ### Gearing test
-In order to determine the appropriate gearing ratio, the following section will describe the experiment that was done, in order to determine the gearing that will allow for the highest speed after 50 cm's acceleration, based on the critera in @sec:DesignCritera.
+As described in @sec:DesignCritera optimally the car will drive as fast as possible within a limited range, and as such, it is worth exploring different gearing ratios as these can increase the velocity. This section will, therefore, describe an experiment for determining the best gearing ratio for the car given the previous limitations.
 
 #### Methodology
-The optimal gearing ratio gives a mixture of high speed and acceleration, in order to reach the highest speed in the shortest amount of time.
-When the gearing ratio is increased, the maximum speed will increase, but on the other hand the maximum acceleration will decrease.
 
-The design of the car's body allows for an implementation of gearing ratios 1:1 through 1:6.
-By measuring the speed that the car achieved, the car with the optimal mix of acceleration and speed will be found.
+The design of the body of the car allows for an implementation of gearing ratios 1:1 through 1:6.
+By creating a gearing for each gearing ratio compatible with the car, the best gearing ratio can be determined by implementing each gearing on the car and measuring the time the car takes to drive a certain distance. The gearing ratio that required the least amount of time to drive the given distance, is the optimal solution.  
 
 The car is placed in front of a marker on the ground, to mark the starting spot for the car. 
-50 cm from the marker is a new marker that defines the area at which the time will be started.
-Another 200 cm from the marker at which the time is started, a third marker is placed.
-This distance is chosen, as it is a conveniently already-marked length of floor available to us. 
-It marks the point at which the time will be stopped.
-By recording the individual test runs with a slow motion camera filming in 480 frames per second (FPS), the time elapsed between these two points is then calculated by counting the amount of frames between the car passing the second and third marker.
+The distance between the markers is chosen is 200 cm, as this distance is deemed reasonable for the car to recognize a speed sign within.
 
 #### Results
-By analyzing the slow motion video, the speed of the car was obtained. All test results are shown in @sec:appendix_gearing_test.
-As an example, the result of the first test run with gear ratio 1:3 (as seen in @tbl:ratio13) was analysed in the following way:
 First, the time it took for the car to drive the distance is calculated in @eq:TimeElapsed:
 
-$$ \frac{836 F}{480 F/s} = 1.742 seconds $$ {#eq:TimeElapsed}
+The speed is calculated by dividing the time elapsed by the distance driven, which was a constant of 2 meters.
 
-Where F is frames, and F/s is frames per second; a constant of 480 frames per second.
-
-The speed is calculated by dividing the time elapsed by the distance driven, which was a constant of 2 meters, as seen in @eq:MetersSecond:
-
-$$ \frac{3 m}{1.742 s} = 1.72 \frac{m}{s} $$ {#eq:MetersSecond}
-
-This is trivially converted to $6.20 \frac{km}{h}$.
 
 @Tbl:avg_speed shows the average speed obtained when using different gearing ratios.
 
@@ -43,10 +28,7 @@ This is trivially converted to $6.20 \frac{km}{h}$.
 
 : Average speed for different gear ratio {#tbl:avg_speed}
 
-As can be seen in table @tbl:avg_speed the peak of the curve is 1:5, after which the speed begins to decline.
-This is due to the distance given for acceleration.
-If the car would have a longer distance to accelerate on, or if the length of the measurement area had been longer, the higher gear ratio would have been more favorable.
-The low amount of torque in the car results in a low acceleration, and will thus have a lower speed on the short course.
+As can be seen in table @tbl:avg_speed the peak of the curve is 1:5, after which the speed begins to decline due to the first 50 cm not being enough for the car to reach its maximum velocity, and as such the car uses the first parts of the 200 cm to accelerate.
 
 ### Implementation in the car
 The gear ratio of 1:5 is chosen, as, according to @tbl:avg_speed, that gives the highest speed in the given distance.

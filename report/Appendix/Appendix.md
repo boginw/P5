@@ -11,7 +11,7 @@ Note: All calculations include all decimals, while the presented results have be
 | 1595           | 0.60 | 2.17 |                      0.42 |
 | 1583           | 0.61 | 2.18 |                     -0.29 |
 | 1584           | 0.61 | 2.18 |                     -0.25 |
-: Results with gear ratio 1/1 {#tbl:ratio11}
+: Results with gear ratio 1:1 {#tbl:ratio11}
 
 | Frames elapsed | m/s  | km/h | Percentage difference [%] |
 |----------------|------|------|---------------------------|
