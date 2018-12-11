@@ -1,25 +1,33 @@
 # Artificial Neural Network
 
 The final step in recognizing a speed sign is: recognizing the number in the sign. A neural network is proposed in order to 
-solve this task. The reason for this is, that the speed signs detected can have a lot of variation in their format
- e.g angel, perspective, and size; these parameters can be difficult to define and take into account if one were to detect
+solve this task. The reason for this is that the speed signs detected can have a lot of variation in their format
+ e.g angle, perspective, and size; these parameters can be difficult to define and take into account if one were to detect
   the letters mathematically. 
 In this section the concept of a neural network will be described, why we used it, and following that, how we adopted it to our problem.
-This will   
 
 ## Why use it
 
 A neural network is excellent at solving tasks that are complicated or having inconsistent, incomplete or imprecise data. Neural networks primarily shine in pattern recognition because of their ability to generalize and respond to rather unexpected input or patterns. A specific situation that could illustrate all these scenarios could be when trying to recognize handwritten digits. This task can be entirely inconsistent since every person writing a digit has their style of handwriting. Also, the positioning and angle of the digit can fluctuate a lot from person to person. These conditions make it a complicated task to create an algorithm that can reliably recognize the digits since one person could write their `9` almost identical with another persons `8`. So, in order to solve this task, we need something that can analyze handwritten digits and search for patterns that can help in determining the actual digits of unknown cases in an unsupervised learning manner. 
 
-Analyzing and recognizing these patterns are what a properly configured neural network do quite well. It is often said that a neural network is a black box of magic since there is no way too deterministically know beforehand which patterns it would recognize or how it would derive at that result. However, this behavior is the strength of the neural network since it allows for finding patterns in data that even humans can struggle to recognize thereby allowing to solve tasks that humans cannot formulate in plain old computer algorithms. When a neural network is appropriately configured and efficiently trained, it will be a very efficient way to solve tasks since the prediction part of a neural network is some simple linear algebra agros a set of matrices. This showcases one of the strengths of using a neural network, which is that the prediction is very fast, and the heavy computational aspects exist in the training part of the network. 
+Analyzing and recognizing these patterns are what a properly configured neural network do quite well. 
+It is often said that a neural network is a black box of magic since there is no way to deterministically know beforehand which patterns it would recognize or how it would derive at that result. 
+However, this behavior is the strength of the neural network since it allows for finding patterns in data that even humans can struggle to recognize, thereby allowing to solve tasks that humans cannot formulate in plain old computer algorithms.
+When a neural network is appropriately configured and efficiently trained, it is a very efficient way to solve tasks since the prediction part of a neural network is some simple linear algebra across a set of matrices. 
+This showcases one of the strengths of using a neural network, which is that the prediction is very fast, and the heavy computational aspects exist in the training part of the network. 
 
-An appropriately configured and efficiently trained network is not an easy task to create. In configuring a network, there is a lot of trial and error. Next, the training is a very computational demanding task. Depending on the network and training data, it can take hours, weeks, months or even years to train a network correctly, and this is the biggest drawback of a neural network.
+An appropriately configured and efficiently trained network is not an easy task to create.
+In configuring a network, there is a lot of trial and error.
+Next, the training is a very computational demanding task.
+Depending on the network and training data, it can take hours, weeks, months or even years to train a network correctly, and this is the biggest drawback of a neural network.
 
 ## What is an Artificial Neural Network  
 
-An Artificial Neural Network is inspired by how the neurons work in the brain.
-It works by having a network of neurons structured into layers. Each neuron can be connected to neurons on adjacent layers, each connection is either receiving a signal or sending a signal.
-In this report, all explanations will assume a fully connected network, which means that every neuron has a connection to all neurons in the adjacent layers, an illustration of this can be seen on [@fig:simpleFullyConnectedNN].
+An Artificial Neural Network is inspired by neurons in the brain.
+It works by having a network of neurons structured into layers.
+Each neuron can be connected to neurons in adjacent layers, where each connection is either receiving a signal or sending a signal.
+In this report, all explanations will assume a fully connected network, which means that every neuron has a connection to all neurons in the adjacent layers.
+An illustration of this can be seen in [@fig:simpleFullyConnectedNN].
 
 ![A example of a fully connected Neural Network](report/assets/pictures/nn/6.pdf){#fig:simpleFullyConnectedNN}
 
@@ -29,15 +37,15 @@ Due to this nature, information will never move in cycles, which is the definiti
 
 ### A Neuron
 
-A neuron, also called a unit or node, is basically a mathematical function that accepts some input, calculates a weighted sum, adding a bias and then produces an output. 
+A neuron, also called a unit or node, is basically a mathematical function that accepts some input, calculates a weighted sum, adds a bias and then produces an output. 
 
 The mathematical equation for the function that is used to calculate the weighted sum is:
 
-> Y = $\sum (weight * input) + bias$
+> $$Y = \sum (weight * input) + bias$$
 
 Before producing a final output, the weighted sum from the original input is sent to adjacent layers within the Artifical Neural Network to be processed. 
 Finally a graded value between 0 and 1 is produced based on what type of neural network you have.
-As mentioned earlier, the value between 0 and 1 is the result of normalization of the activation function used.
+<!-- Not actually mentioned earlier!! --> As mentioned earlier, the value between 0 and 1 is the result of normalization of the activation function used.
 This function is described below. 
 
 <!-- Insert function here -->
@@ -46,11 +54,10 @@ This function is described below.
 
 The first layer is called the input layer.
 Considering images as the input, a possible architecture will create an input layer where the number of neurons are the same as the number of pixels in the image.
-Each neuron will then get a specific pixel that is passes to the adjacent layer.
+Each neuron will then get a specific pixel that is passed to the adjacent layer.
 
-As the last layer is the output layer.
-This layer represents the result of what the neural network computed.
-Usually the result is a probability of a given option.
+The last layer is the output layer.
+This layer represents the result of what the neural network computed, and is the probability of a given option.
 If the neural network should determine if it is presented with a picture of a dog, a fish, or neither, the output layer will typically consist of three neurons: one for the dog, one for the fish, and one for none of the two animals.
 Each of those neurons will hold a probability that the input is what the neuron describes.
 
