@@ -1,5 +1,6 @@
 package dk.sw502e18.ssr;
 
+import java.util.Locale;
 import org.opencv.ml.ANN_MLP;
 
 import java.util.Arrays;
@@ -15,7 +16,7 @@ public class Configuration {
     public double trainingMethodParam2 = 0.1;
 
     public int trainingCriteriaLimit = 1500;
-    public double trainingCriteriaPrecision = 0.8;
+    public double trainingCriteriaPrecision = 0.005;
 
     public int[] layers = new int[]{40 * 40, 20 * 20, 10 * 10, 6};
 
@@ -23,6 +24,9 @@ public class Configuration {
     }
 
     public Configuration(double[] params) {
+        if (params.length < 12) {
+            throw new RuntimeException("Not enough params");
+        }
         activationFunction = (int) params[0];
         activationFunctionParam1 = params[1];
         activationFunctionParam2 = params[2];
@@ -34,7 +38,7 @@ public class Configuration {
         trainingCriteriaLimit = (int) params[6];
         trainingCriteriaPrecision = params[7];
 
-        layers = new int[params.length - 9];
+        layers = new int[params.length - 8];
 
         layers[0] = (int) params[8] * (int) params[8];
         layers[layers.length - 1] = (int) params[9];
@@ -47,7 +51,7 @@ public class Configuration {
     public String serialize() {
         StringBuilder conf = new StringBuilder();
 
-        conf.append(String.format("%d;%f;%f;%d;%f;%f;%d;%f;%d;%d;",
+        conf.append(String.format(Locale.US,"%d;%f;%f;%d;%f;%f;%d;%f;%d;%d;",
                 activationFunction,
                 activationFunctionParam1,
                 activationFunctionParam2,
@@ -56,12 +60,12 @@ public class Configuration {
                 trainingMethodParam2,
                 trainingCriteriaLimit,
                 trainingCriteriaPrecision,
-                layers[0],
+                (int) Math.sqrt(layers[0]),
                 layers[layers.length - 1]
         ));
 
         for (int i = 1; i < layers.length - 1; i++) {
-            conf.append(layers[i]);
+            conf.append(layers[i]+";");
         }
 
         return conf.toString();
@@ -69,10 +73,6 @@ public class Configuration {
 
     public static Configuration fromString(String line) {
         String[] p = line.split(";");
-
-        if (line.length() < 12) {
-            throw new RuntimeException("Not enough params");
-        }
 
         double[] params = Arrays.stream(p).mapToDouble(Double::parseDouble).toArray();
 
