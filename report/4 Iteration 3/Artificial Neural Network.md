@@ -124,9 +124,9 @@ The concept of overfitting in machine learning is that the model is really good 
 Overfitting basically means that the model is unable to generalize well. 
 This means that whatever features the model was trained on, it would only correctly classify those since data that slightly deviate from the training set are not correctly classified. 
 
-The way to reduce the effect of overfitting is simply to give the model more data to train on. 
+A possible way to reduce the effect of overfitting is to give the model more data to train on. 
 This means that it will be able to learn more from the training set by, hopefully, adding more diversity. 
-Data augmentation, the act of slightly manipulation the data by changing values or by rotating or zooming in on an image, is another method that can be used to reduce overfitting. 
+Another possible way is data augmentation, which is the act of slightly manipulation the data by changing values or by rotating or zooming in on an image, is another method that can be used to reduce overfitting. 
 This is beneficial because you have data that is similar to your orginal data but with reasonable modified.
 
 ### Testing
