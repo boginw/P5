@@ -1,16 +1,33 @@
 # Artificial Neural Network
-<!--Firstly a small text explaining why we choose to use a neural network and what to expect from the chapter.-->
+
 The final step in recognizing a speed sign is: recognizing the number in the sign. A neural network is proposed in order to 
-solve this task. The reason for this is, that the speed signs detected can have a lot of variation in their format
- e.g angel, perspective, and size; these parameters can be difficult to define and take into account if one were to detect
+solve this task. The reason for this is that the speed signs detected can have a lot of variation in their format
+ e.g angle, perspective, and size; these parameters can be difficult to define and take into account if one were to detect
   the letters mathematically. 
-In this section the concept of a neural network will be described, following that, how we adopted it to our problem.
-This will   
+In this section the concept of a neural network will be described, why we used it, and following that, how we adopted it to our problem.
+
+## Why use it
+
+A neural network is excellent at solving tasks that are complicated or having inconsistent, incomplete or imprecise data. Neural networks primarily shine in pattern recognition because of their ability to generalize and respond to rather unexpected input or patterns. A specific situation that could illustrate all these scenarios could be when trying to recognize handwritten digits. This task can be entirely inconsistent since every person writing a digit has their style of handwriting. Also, the positioning and angle of the digit can fluctuate a lot from person to person. These conditions make it a complicated task to create an algorithm that can reliably recognize the digits since one person could write their `9` almost identical with another persons `8`. So, in order to solve this task, we need something that can analyze handwritten digits and search for patterns that can help in determining the actual digits of unknown cases in an unsupervised learning manner. 
+
+Analyzing and recognizing these patterns are what a properly configured neural network do quite well. 
+It is often said that a neural network is a black box of magic since there is no way to deterministically know beforehand which patterns it would recognize or how it would derive at that result. 
+However, this behavior is the strength of the neural network since it allows for finding patterns in data that even humans can struggle to recognize, thereby allowing to solve tasks that humans cannot formulate in plain old computer algorithms.
+When a neural network is appropriately configured and efficiently trained, it is a very efficient way to solve tasks since the prediction part of a neural network is some simple linear algebra across a set of matrices. 
+This showcases one of the strengths of using a neural network, which is that the prediction is very fast, and the heavy computational aspects exist in the training part of the network. 
+
+An appropriately configured and efficiently trained network is not an easy task to create.
+In configuring a network, there is a lot of trial and error.
+Next, the training is a very computational demanding task.
+Depending on the network and training data, it can take hours, weeks, months or even years to train a network correctly, and this is the biggest drawback of a neural network.
 
 ## What is an Artificial Neural Network  
-An Artificial Neural Network is inspired by how the neurons work in the brain.
-It works by having a network of neurons structured into layers. Each neuron can be connected to neurons on adjacent layers, each connection either receiving a signal or sending a signal.
-In this report, all explanations will assume a fully connected network, which means that every neuron has a connection to all neurons in the adjacent layers, an illustration of this can be seen on [@fig:simpleFullyConnectedNN].
+
+An Artificial Neural Network is inspired by neurons in the brain.
+It works by having a network of neurons structured into layers.
+Each neuron can be connected to neurons in adjacent layers, where each connection is either receiving a signal or sending a signal.
+In this report, all explanations will assume a fully connected network, which means that every neuron has a connection to all neurons in the adjacent layers.
+An illustration of this can be seen in [@fig:simpleFullyConnectedNN].
 
 ![A example of a fully connected Neural Network](report/assets/pictures/nn/6.pdf){#fig:simpleFullyConnectedNN}
 
@@ -18,13 +35,30 @@ Another detail that should be noted in [@fig:simpleFullyConnectedNN] is the flow
 When illustrating the neural network, the flow of information will only go from left to right.
 Due to this nature, information will never move in cycles, which is the definition of a feed-forward neural network.
 
+### A Neuron
+
+A neuron, also called a unit or node, is basically a mathematical function that accepts some input, calculates a weighted sum, adds a bias and then produces an output. 
+
+The mathematical equation for the function that is used to calculate the weighted sum is:
+
+> $$Y = \sum (weight * input) + bias$$
+
+Before producing a final output, the weighted sum from the original input is sent to adjacent layers within the Artifical Neural Network to be processed. 
+Finally a graded value between 0 and 1 is produced based on what type of neural network you have.
+<!-- Not actually mentioned earlier!! --> As mentioned earlier, the value between 0 and 1 is the result of normalization of the activation function used.
+This function is described below. 
+
+<!-- Insert function here -->
+
+### The layers
+
+A neural network consists of multiple layers: input, output, and hidden layers.
 The first layer is called the input layer.
 Considering images as the input, a possible architecture will create an input layer where the number of neurons are the same as the number of pixels in the image.
-Each neuron will then get a specific pixel that is passes to the adjacent layer.
+Each neuron will then get a specific pixel that is passed to the adjacent layer.
 
-As the last layer is the output layer.
-This layer represents the result of what the neural network computed.
-Usually the result is a probability of a given option.
+The last layer is the output layer.
+This layer represents the result of what the neural network computed, and is the probability of a given option.
 If the neural network should determine if it is presented with a picture of a dog, a fish, or neither, the output layer will typically consist of three neurons: one for the dog, one for the fish, and one for none of the two animals.
 Each of those neurons will hold a probability that the input is what the neuron describes.
 
@@ -33,9 +67,9 @@ The number of layers, and the number of neurons in these layers can be anywhere 
 When a number is passed to a neuron in a hidden layer, the neuron will compute it's own value, which can be passed on to the next layer.
 Computation of the value will be done by the following function:
 
-$$ Insert function here $$
+$$ \varphi ( a \omega + b) $$
 
-Where $\varphi$ is the activation function, $i$ is the input, $w$ is the weight, and $B$ is the bias. (we need to insert the real symbols here)
+Where $\varphi$ is the activation function, $a$ is the input, $\omega$ is the weight, and $b$ is the bias. (we need to insert the real symbols here)
 Each neuron is typically connected to every neruon in the adjacent layers, which is why the output of the neuron is the sum of all inputs from the previous layer.
 The activation function is a function that normalizes the input.
 When the product of the input, weight, and bias can become greater than one, the neurons output should be between zero and one.
@@ -51,34 +85,8 @@ If designers of the neural network can identify neurons in the network responsib
 Consider the neural network that tried to identify if it was a cat or a dog on a picture.
 Designers might identify neurons that looks for a tail or finns, and add extra importance to these, while decreasing the importance of neurons that looks for whether there is a clear sky in the picture, or not.
 
-
-## Why use it
-This section will explain in which scenarios it is beneficial to use a neural network and compare those to our scenario.
-
 ## Theory behind
 This section will start to explain the theory behind the neural network, and it will try to go through in a 3Blue1Brown inspired manner.
-
-### A Neuron
-<!-- Here we will explain what a neuron is. -->
-A neuron, also called a unit or node, is basically a mathematical function that accepts some input, calculates a weighted sum, adding a bias and then produces an output. 
-
-The mathematical equation for the function that is used to calculate the weighted sum is:
-
-> Y = $\sum (weight * input) + bias$
-
-Before producing a final output, the weighted sum from the original input is sent to adjacent layers within the Artifical Neural Network to be processed. 
-Finally a graded value between 0 and 1 is produced based on what type of neural network you have.
-As mentioned earlier, the value between 0 and 1 is the result of normalization of the activation function used.
-This function is described below. 
-
-<!-- Insert function here -->
-
-### The layers
-<!--Here we will explain what a layer is, and explain the types of layers, ie. Input, Hidden and Output layers also, that they consist of neurons.-->
-An artificial neural network typically consists 3 layer types: Input layer; Hidden layer; and the Output layer. All of the layers consists of neurons and usually vary in size.
-
-* Input Layer is where the neural network receives its input. The number of neurons in the input layer has to match the number of features in the input, if the input is an image of e.g 20x20 pixels then the size of the input layers would have to be 400 neurons.
-* Hidden Layer is where the  
 
 #### Hidden Layer
 
@@ -101,14 +109,33 @@ This section will explain how the entire flow of the network works with neurons 
 ### The Model
 Explain what a `model` is regarding a neural network.
 
-## Training
-This section will explain what it means to train a neural network and explain the Backpropagation function and use it to create an example. This section should also introduce the notion of training data and what to be aware of when creating a training data set.
+## Training <!-- WIP -->
+
+<!-- This section will explain what it means to train a neural network and explain the Backpropagation function and use it to create an example. This section should also introduce the notion of training data and what to be aware of when creating a training data set. -->
+In order to actually "learn" anything the neural network need to train on what it is suposed to recognize. Training consists of two steps: prediction and back-propagation. 
+In the first step the neural network needs to make a prediction in order to see how well it can recognize the desired features or patterns. For doing this a set of training data is required, in the example case with images of dogs, fish, or neither,  the training set needs to consist of images of dogs, fish, or neither. Furhtermore the images needs to be labeled with what they actually contains, so that the neural network can se if it predicts correctly.
+<!-- Maybe go more in detail on what a good training set is, and what can be done to improve it -  or maybe leave this to the discussion -->
+Then the second step is to calculate how accurate the prediction was. This is done by comparing the result from the output layer to the label of the image. 
+<!-- image her like 3blue1brown - of prediction vector vs label vector -->
+<!-- Then insert picture of squer error! -->
 
 ### Overfitting
-Here we will explain the dangers of overfitting the model. Also, how to ensure that it does not happen.
+<!-- Here we will explain the dangers of overfitting the model. Also, how to ensure that it does not happen. -->
+
+The concept of overfitting in machine learning is that the model is really good at classifying data based on the training set, but when the model is then to classify based on the test examples, the model was not trained on, the model performs poorly and cannot classify the data correctly.
+Overfitting basically means that the model is unable to generalize well. 
+This means that whatever features the model was trained on, it would only correctly classify those since data that slightly deviate from the training set are not correctly classified. 
+
+The way to reduce the effect of overfitting is simply to give the model more data to train on. 
+This means that it will be able to learn more from the training set by, hopefully, adding more diversity. 
+Data augmentation, the act of slightly manipulation the data by changing values or by rotating or zooming in on an image, is another method that can be used to reduce overfitting. 
+This is beneficial because you have data that is similar to your orginal data but with reasonable modified.
 
 ### Testing
-Here we will explain how to test the model after training using a testing data set. It should explain what to be aware of when creating the dataset and also why it is a good idea to have.
+Here we will explain how to test the model after training using a testing data set. It should explain what to be aware of when creating the dataset and also why it is a good idea to have. 
+
+Here we will explain the dangers of overfitting the model. Also, how to ensure that it does not happen.
 
 # Our Artificial Neural Network.
+
 Explain how we configured our neural network and why we did as we did. Explain which activation function/ training function we used, explain how we handled overfitting and the data sets used. 
