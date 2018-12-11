@@ -34,7 +34,7 @@ public class Configuration {
         trainingCriteriaLimit = (int) params[6];
         trainingCriteriaPrecision = params[7];
 
-        layers = new int[params.length - 9];
+        layers = new int[params.length - 8];
 
         layers[0] = (int) params[8] * (int) params[8];
         layers[layers.length - 1] = (int) params[9];
