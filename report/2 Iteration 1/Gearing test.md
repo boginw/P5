@@ -6,7 +6,7 @@ As described in @sec:DesignCritera optimally the car will drive as fast as possi
 The design of the body of the car allows for an implementation of gearing ratios 1:1 through 1:6.
 By creating a gearing for each gearing ratio compatible with the car, the best gearing ratio can be determined by implementing each gearing on the car and measuring the time the car takes to drive a certain distance. The gearing ratio that required the least amount of time to drive the given distance, is the optimal solution.  
 
-The car is placed in front of a marker on the ground, to mark the starting spot for the car. 
+Placing a marker at the start of the track to be driven on, and one at the end determines the track to be driven. The distance between the markers defines the length of the track. The car is then to drive the full length of the track, starting 50 cm before the first marker, to allow the car to reach its maximum velocity.
 The distance between the markers is chosen is 200 cm, as this distance is deemed reasonable for the car to recognize a speed sign within.
 
 #### Results
