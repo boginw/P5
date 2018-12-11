@@ -143,10 +143,10 @@ public class CircleCropper {
         // Left/right top/buttom points are located on ellipse.
         int x = (int)ellipse.center.x;
         int y = (int)ellipse.center.y;
-        Point p3 = findEdge(tempMat1, x, y, 0, -1, thresh);
-        Point p4 = findEdge(tempMat1, x, y, 0, 1, thresh);
-        Point p1 = findEdge(tempMat1, x, y, -1, 0, thresh);
-        Point p2 = findEdge(tempMat1, x, y, 1, 0, thresh);
+        Point p3 = findEdge(tempMat1, x, y, 0, -1, threshold);
+        Point p4 = findEdge(tempMat1, x, y, 0, 1, threshold);
+        Point p1 = findEdge(tempMat1, x, y, -1, 0, threshold);
+        Point p2 = findEdge(tempMat1, x, y, 1, 0, threshold);
 
         // If anything has been null, invoke fuck-it-Im-out-of-here
         if ((p1 == null) || (p2 == null) || (p3 == null) || (p4 == null)){
@@ -171,7 +171,7 @@ public class CircleCropper {
         // Image warp - ellipse becomes circle, held in tempMat2
         Imgproc.warpPerspective(tempMat1, tempMat2, perspecTransfMat, tempMat1.size());
 
-        tempMOP2f = ellipseCrawler(tempMat2,(float)tempMat2.width() / 2, (float)tempMat2.height()/2, thresh);
+        tempMOP2f = ellipseCrawler(tempMat2,(float)tempMat2.width() / 2, (float)tempMat2.height()/2, threshold);
         // If anything has been null, invoke fuck-it-Im-out-of-here
         if (tempMOP2f == null){
             return new ImmutablePair<>(input, ellipse);
@@ -181,7 +181,7 @@ public class CircleCropper {
         rotateM = Imgproc.getRotationMatrix2D(ellipseOut.center, - ellipse.angle, 1.0);
         Imgproc.warpAffine(tempMat2, tempMat1, rotateM, tempMat2.size());
 
-        tempMOP2f = ellipseCrawler(tempMat1,(float)tempMat1.width() / 2, (float)tempMat1.height()/2, thresh);
+        tempMOP2f = ellipseCrawler(tempMat1,(float)tempMat1.width() / 2, (float)tempMat1.height()/2, threshold);
         // If anything has been null, invoke fuck-it-Im-out-of-here
         if (tempMOP2f == null){
             return new ImmutablePair<>(input, ellipse);
