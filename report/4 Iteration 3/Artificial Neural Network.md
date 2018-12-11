@@ -52,6 +52,7 @@ This function is described below.
 
 ### The layers
 
+A neural network consists of multiple layers: input, output, and hidden layers.
 The first layer is called the input layer.
 Considering images as the input, a possible architecture will create an input layer where the number of neurons are the same as the number of pixels in the image.
 Each neuron will then get a specific pixel that is passed to the adjacent layer.
@@ -110,9 +111,15 @@ This section will explain how the entire flow of the network works with neurons 
 
 Explain what a `model` is regarding a neural network.
 
-## Training
+## Training <!-- WIP -->
 
-This section will explain what it means to train a neural network and explain the Backpropagation function and use it to create an example. This section should also introduce the notion of training data and what to be aware of when creating a training data set.
+<!-- This section will explain what it means to train a neural network and explain the Backpropagation function and use it to create an example. This section should also introduce the notion of training data and what to be aware of when creating a training data set. -->
+In order to actually "learn" anything the neural network need to train on what it is suposed to recognize. Training consists of two steps: prediction and back-propagation. 
+In the first step the neural network needs to make a prediction in order to see how well it can recognize the desired features or patterns. For doing this a set of training data is required, in the example case with images of dogs, fish, or neither,  the training set needs to consist of images of dogs, fish, or neither. Furhtermore the images needs to be labeled with what they actually contains, so that the neural network can se if it predicts correctly.
+<!-- Maybe go more in detail on what a good training set is, and what can be done to improve it -  or maybe leave this to the discussion -->
+Then the second step is to calculate how accurate the prediction was. This is done by comparing the result from the output layer to the label of the image. 
+<!-- image her like 3blue1brown - of prediction vector vs label vector -->
+<!-- Then insert picture of squer error! -->
 
 ### Overfitting
 
