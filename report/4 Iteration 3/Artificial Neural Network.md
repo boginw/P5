@@ -132,7 +132,7 @@ This is beneficial because you have data that is similar to your orginal data bu
 ### Testing
 <!-- Here we will explain how to test the model after training using a testing data set. It should explain what to be aware of when creating the dataset and also why it is a good idea to have.  -->
 
-As shortly mentioned in the `Overfitting`subsection, the desired model is one that can generalize and not only work on the data set the model was trained on. 
+As shortly mentioned in the `Overfitting` subsection, the desired model is one that can generalize and not only work on the data set the model was trained on. 
 The model should correctly classify new input as they are given to the neural network. 
 This is why a general rule of thump is to only use a certain percentage to train the model and the rest to test the model to determine overfitting. This distribution could be 75% of the training set used to train the model and 25% used for testing the model. 
 
