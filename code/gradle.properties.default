@@ -1,0 +1,20 @@
+# note: ip address may change if you connect via WiFi.
+# You can find the ip on the display of the EV3 brick
+ev3_server=10.0.1.1
+# default
+ev3_username=root
+ev3_password=
+
+# Your LeJOS path here
+EV3_HOME=lib/leJOS
+
+# Path to the current model, or where the model should be saved
+MODEL=/home/USER/Desktop/GTSRB/model.yml
+
+# Path to the training dataset
+TRAIN=/home/USER/Desktop/GTSRB/Training/
+
+# Path to the testing dataset
+TEST=/home/USER/Desktop/GTSRB/Online-Test-sort/
+
+PARAMS=/home/USER/Desktop/GTSRB/test.csv
