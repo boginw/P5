@@ -42,14 +42,6 @@ public class Configuration {
         for (int i = 1; i < layers.length - 1; i++) {
             layers[i] = (int) params[i + 9];
         }
-
-        System.out.print("[");
-
-        for (int i = 0; i < layers.length; i++) {
-            System.out.print(i + ":" + layers[i] + ", ");
-        }
-
-        System.out.println("]");
     }
 
     public String serialize() {
