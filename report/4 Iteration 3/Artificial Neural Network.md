@@ -44,11 +44,8 @@ The mathematical equation for the function that is used to calculate the weighte
 > $$Y = \sum (weight * input) + bias$$
 
 Before producing a final output, the weighted sum from the original input is sent to adjacent layers within the Artifical Neural Network to be processed. 
-Finally a graded value between 0 and 1 is produced based on what type of neural network you have.
-<!-- Not actually mentioned earlier!! --> As mentioned earlier, the value between 0 and 1 is the result of normalization of the activation function used.
-This function is described below. 
-
-<!-- Insert function here -->
+Finally a value between 0 and 1 is produced based on what type of activation function is used in the neural network. 
+The activation function is described in a later subsection. 
 
 ### The layers
 
