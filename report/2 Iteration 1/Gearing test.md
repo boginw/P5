@@ -10,7 +10,6 @@ The car is placed in front of a marker on the ground, to mark the starting spot 
 The distance between the markers is chosen is 200 cm, as this distance is deemed reasonable for the car to recognize a speed sign within.
 
 #### Results
-First, the time it took for the car to drive the distance is calculated in @eq:TimeElapsed:
 
 The speed is calculated by dividing the time elapsed by the distance driven, which was a constant of 2 meters.
 
