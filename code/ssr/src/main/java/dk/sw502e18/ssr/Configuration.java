@@ -34,7 +34,7 @@ public class Configuration {
         trainingCriteriaLimit = (int) params[6];
         trainingCriteriaPrecision = params[7];
 
-        layers = new int[params.length - 9];
+        layers = new int[params.length - 8];
 
         layers[0] = (int) params[8] * (int) params[8];
         layers[layers.length - 1] = (int) params[9];
@@ -42,6 +42,14 @@ public class Configuration {
         for (int i = 1; i < layers.length - 1; i++) {
             layers[i] = (int) params[i + 9];
         }
+
+        System.out.print("[");
+
+        for (int i = 0; i < layers.length; i++) {
+            System.out.print(i + ":" + layers[i] + ", ");
+        }
+
+        System.out.println("]");
     }
 
     public String serialize() {
