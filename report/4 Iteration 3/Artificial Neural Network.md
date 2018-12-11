@@ -92,12 +92,13 @@ This section will start to explain the theory behind the neural network, and it 
 
 Each neuron calculates it weighted sum when given an input.
 This means that, without an activation function to normalize these values, the value for each neuron could range from -infinity to infinity as each neuron does not know the bounds of the value. 
-The purpose of an activation function is then to map resulting values in a neuron to a desired range, which is typically between 0 and 1. 
-However, depending on the problem, different activation functions are used. 
 In this project, the Sigmoid Function has been used because this is the most simple or default activation function. 
 
 > $S(x) = \frac{1}{1 + e^{-x}}$
 
+The purpose of an activation function is then to map resulting values in a neuron to a desired range, which is typically between 0 and 1. 
+
+However, depending on the problem, different activation functions are used. 
 It is achknowledged that better ones do exist. 
 
 ### The Entire Network
@@ -129,9 +130,11 @@ Data augmentation, the act of slightly manipulation the data by changing values 
 This is beneficial because you have data that is similar to your orginal data but with reasonable modified.
 
 ### Testing
-Here we will explain how to test the model after training using a testing data set. It should explain what to be aware of when creating the dataset and also why it is a good idea to have. 
+<!-- Here we will explain how to test the model after training using a testing data set. It should explain what to be aware of when creating the dataset and also why it is a good idea to have.  -->
 
-Here we will explain the dangers of overfitting the model. Also, how to ensure that it does not happen.
+As shortly mentioned in the `Overfitting`subsection, the desired model is one that can generalize and not only work on the data set the model was trained on. 
+The model should correctly classify new input as they are given to the neural network. 
+This is why a general rule of thump is to only use a certain percentage to train the model and the rest to test the model to determine overfitting. This distribution could be 75% of the training set used to train the model and 25% used for testing the model. 
 
 # Our Artificial Neural Network.
 
