@@ -44,11 +44,8 @@ The mathematical equation for the function that is used to calculate the weighte
 > $$Y = \sum (weight * input) + bias$$
 
 Before producing a final output, the weighted sum from the original input is sent to adjacent layers within the Artifical Neural Network to be processed. 
-Finally a graded value between 0 and 1 is produced based on what type of neural network you have.
-<!-- Not actually mentioned earlier!! --> As mentioned earlier, the value between 0 and 1 is the result of normalization of the activation function used.
-This function is described below. 
-
-<!-- Insert function here -->
+Finally a value between 0 and 1 is produced based on what type of activation function is used in the neural network. 
+The activation function is described in a later subsection. 
 
 ### The layers
 
@@ -95,20 +92,19 @@ This section will start to explain the theory behind the neural network, and it 
 
 Each neuron calculates it weighted sum when given an input.
 This means that, without an activation function to normalize these values, the value for each neuron could range from -infinity to infinity as each neuron does not know the bounds of the value. 
-The purpose of an activation function is then to map resulting values in a neuron to a desired range, which is typically between 0 and 1. 
-However, depending on the problem, different activation functions are used. 
 In this project, the Sigmoid Function has been used because this is the most simple or default activation function. 
 
 > $S(x) = \frac{1}{1 + e^{-x}}$
 
+The purpose of an activation function is then to map resulting values in a neuron to a desired range, which is typically between 0 and 1. 
+
+However, depending on the problem, different activation functions are used. 
 It is achknowledged that better ones do exist. 
 
 ### The Entire Network
-
 This section will explain how the entire flow of the network works with neurons in the layers and activation functions. This section is where we will introduce the fact that it is all just simple linear algebra, i.e. matrices and such.
 
 ### The Model
-
 Explain what a `model` is regarding a neural network.
 
 ## Training <!-- WIP -->
@@ -141,12 +137,23 @@ More to come here
 <!-- Then insert picture of squer error! -->
 
 ### Overfitting
+<!-- Here we will explain the dangers of overfitting the model. Also, how to ensure that it does not happen. -->
 
-Here we will explain the dangers of overfitting the model. Also, how to ensure that it does not happen.
+The concept of overfitting in machine learning is that the model is really good at classifying data based on the training set, but when the model is then to classify based on the test examples, the model was not trained on, the model performs poorly and cannot classify the data correctly.
+Overfitting basically means that the model is unable to generalize well. 
+This means that whatever features the model was trained on, it would only correctly classify those since data that slightly deviate from the training set are not correctly classified. 
+
+A possible way to reduce the effect of overfitting is to give the model more data to train on. 
+This means that it will be able to learn more from the training set by, hopefully, adding more diversity. 
+Another possible way is data augmentation, which is the act of slightly manipulation the data by changing values or by rotating or zooming in on an image, is another method that can be used to reduce overfitting. 
+This is beneficial because you have data that is similar to your orginal data but with reasonable modified.
 
 ### Testing
+<!-- Here we will explain how to test the model after training using a testing data set. It should explain what to be aware of when creating the dataset and also why it is a good idea to have.  -->
 
-Here we will explain how to test the model after training using a testing data set. It should explain what to be aware of when creating the dataset and also why it is a good idea to have.
+As shortly mentioned in the `Overfitting` subsection, the desired model is one that can generalize and not only work on the data set the model was trained on. 
+The model should correctly classify new input as they are given to the neural network. 
+This is why a general rule of thump is to only use a certain percentage to train the model and the rest to test the model to determine overfitting. This distribution could be 75% of the training set used to train the model and 25% used for testing the model. 
 
 # Our Artificial Neural Network.
 
