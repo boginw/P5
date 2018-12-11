@@ -37,7 +37,7 @@ Due to this nature, information will never move in cycles, which is the definiti
 
 ### A Neuron
 
-A neuron, also called a unit or node, is basically a mathematical function that accepts some input, calculates a weighted sum, adds a bias and then produces an output. 
+A neuron, also called a unit or node, is a mathematical function that accepts some input, calculates a weighted sum, adds a bias and then produces an output. 
 
 The mathematical equation for the function that is used to calculate the weighted sum is:
 
