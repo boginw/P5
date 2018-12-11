@@ -34,13 +34,13 @@ public class Configuration {
         trainingCriteriaLimit = (int) params[6];
         trainingCriteriaPrecision = params[7];
 
-        layers = new int[params.length - 9];
+        layers = new int[params.length - 8];
 
-        layers[0] = (int) params[8] * (int) params[9];
-        layers[layers.length - 1] = (int) params[10];
+        layers[0] = (int) params[8] * (int) params[8];
+        layers[layers.length - 1] = (int) params[9];
 
         for (int i = 1; i < layers.length - 1; i++) {
-            layers[i] = (int) params[i + 10];
+            layers[i] = (int) params[i + 9];
         }
     }
 
@@ -70,7 +70,7 @@ public class Configuration {
     public static Configuration fromString(String line) {
         String[] p = line.split(";");
 
-        if (line.length() < 13) {
+        if (line.length() < 12) {
             throw new RuntimeException("Not enough params");
         }
 
