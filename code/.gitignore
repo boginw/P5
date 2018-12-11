@@ -79,5 +79,7 @@ fabric.properties
 **/.project
 **/*.so
 
+gradle.properties
+.idea/misc.xml
 
 code.jar

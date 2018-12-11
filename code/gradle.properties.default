@@ -9,12 +9,12 @@ ev3_password=
 EV3_HOME=lib/leJOS
 
 # Path to the current model, or where the model should be saved
-MODEL=/home/tobias/Desktop/GTSRB/model.yml
+MODEL=/home/USER/Desktop/GTSRB/model.yml
 
 # Path to the training dataset
-TRAIN=/home/tobias/Desktop/GTSRB/Training/
+TRAIN=/home/USER/Desktop/GTSRB/Training/
 
 # Path to the testing dataset
-TEST=/home/tobias/Desktop/GTSRB/Online-Test-sort/
+TEST=/home/USER/Desktop/GTSRB/Online-Test-sort/
 
-PARAMS=/home/tobias/Desktop/GTSRB/test.csv
+PARAMS=/home/USER/Desktop/GTSRB/test.csv
