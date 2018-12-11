@@ -34,6 +34,41 @@ public class CircleCropper {
     }
 
     /**
+     * Crops an image to fit the ellipse found.
+     *
+     * @param input   The original image to be cropped.
+     * @param ellipse The ellipse to crop to.
+     * @return The cropped, elliptical image.
+     */
+    private static Mat cropEllipse(Mat input, RotatedRect ellipse) {
+        int thickness = -1; // set to -1 to indicate to fill
+
+        // Create a mask
+        Mat mask = new Mat(input.rows(), input.cols(), CvType.CV_8U, Scalar.all(0));
+
+        // Draw the ellipse on that mask
+        Imgproc.ellipse(mask, ellipse, new Scalar(255, 255, 255), thickness);
+
+        // Crop the image, using the mask
+        Mat masked = new Mat();
+        input.copyTo(masked, mask);
+
+        // Apply threshold
+        Mat threshold = new Mat();
+        Imgproc.threshold(mask, threshold, 1, 255, Imgproc.THRESH_BINARY);
+
+        // Find contours
+        List<MatOfPoint> contours = new ArrayList<>();
+        Imgproc.findContours(threshold, contours, new Mat(), Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
+
+        // Crop
+        Rect rect = Imgproc.boundingRect(contours.get(0));
+
+        return masked.submat(rect);
+    }
+
+
+    /**
      * Finds an edge from an image, point, increments and threshold
      *
      * @param input  The image inwhich to find an edge on
@@ -87,39 +122,4 @@ public class CircleCropper {
             return null;
         }
     }
-
-    /**
-     * Crops an image to fit the ellipse found.
-     *
-     * @param input   The original image to be cropped.
-     * @param ellipse The ellipse to crop to.
-     * @return The cropped, elliptical image.
-     */
-    public static Mat cropEllipse(Mat input, RotatedRect ellipse) {
-        int thickness = -1; // set to -1 to indicate to fill
-
-        // Create a mask
-        Mat mask = new Mat(input.rows(), input.cols(), CvType.CV_8U, Scalar.all(0));
-
-        // Draw the ellipse on that mask
-        Imgproc.ellipse(mask, ellipse, new Scalar(255, 255, 255), thickness);
-
-        // Crop the image, using the mask
-        Mat masked = new Mat();
-        input.copyTo(masked, mask);
-
-        // Apply threshold
-        Mat threshold = new Mat();
-        Imgproc.threshold(mask, threshold, 1, 255, Imgproc.THRESH_BINARY);
-
-        // Find contours
-        List<MatOfPoint> contours = new ArrayList<>();
-        Imgproc.findContours(threshold, contours, new Mat(), Imgproc.RETR_EXTERNAL, Imgproc.CHAIN_APPROX_SIMPLE);
-
-        // Crop
-        Rect rect = Imgproc.boundingRect(contours.get(0));
-
-        return masked.submat(rect);
-    }
-
 }
