@@ -117,7 +117,26 @@ Explain what a `model` is regarding a neural network.
 In order to actually "learn" anything the neural network need to train on what it is suposed to recognize. Training consists of two steps: prediction and back-propagation. 
 In the first step the neural network needs to make a prediction in order to see how well it can recognize the desired features or patterns. For doing this a set of training data is required, in the example case with images of dogs, fish, or neither,  the training set needs to consist of images of dogs, fish, or neither. Furhtermore the images needs to be labeled with what they actually contains, so that the neural network can se if it predicts correctly.
 <!-- Maybe go more in detail on what a good training set is, and what can be done to improve it -  or maybe leave this to the discussion -->
-Then the second step is to calculate how accurate the prediction was. This is done by comparing the result from the output layer to the label of the image. 
+Then the second step is to calculate how accurate the prediction was, and based on this make adjustments to the neural network based on this. This is called back-propagation and is done by comparing the result from the output layer to the label of the image seen in [@eq:accuracy]. 
+
+$$
+cost = 
+ \begin{bmatrix}
+   &  &  \\
+   &  &  \\
+   &  & 
+ \end{bmatrix}
+ too come
+ $$ {#eq:accuracy}
+
+The difference is found by calculating the sum-of-square errors see [@eq:squareError], this means that lower numbers mean higer prediction accuracy. Note that the sum-of-square errors are calculated for each output neuron  
+
+$$ error = \sum(t - a)^2 $$ {#eq:squareError}
+
+whare $t$ is the prediction and $a$ is the actual labeled value.
+
+
+More to come here
 <!-- image her like 3blue1brown - of prediction vector vs label vector -->
 <!-- Then insert picture of squer error! -->
 
