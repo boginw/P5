@@ -21,7 +21,7 @@ public class CarMode implements Mode {
         Mat mat = new Mat();
 
         while (!cs.connect()) {
-            System.out.println("Connection unsuccessfull, trying again in 5 seconds");
+            System.out.println("Connection unsuccessful, trying again in 5 seconds");
             try {
                 Thread.sleep(5000);
             } catch (InterruptedException e) {
