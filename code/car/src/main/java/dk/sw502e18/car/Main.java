@@ -1,6 +1,7 @@
 package dk.sw502e18.car;
 
 import dk.sw502e18.car.carClient.SocketCarClient;
+import dk.sw502e18.car.carClient.listener.SpeedAdjuster;
 import dk.sw502e18.car.carClient.listener.SpeedSignPrinter;
 import dk.sw502e18.car.utils.ExitOnEscape;
 import lejos.hardware.lcd.LCD;
@@ -18,6 +19,7 @@ public class Main {
 
         // CarClient p = new FifoPipeCarClient("/home/lejos/pipes/speedlimit");
         CarClient p = new SocketCarClient();
+        p.addListener(new SpeedAdjuster(80));
         p.addListener(new SpeedSignPrinter());
         p.connect();
     }
