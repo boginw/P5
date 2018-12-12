@@ -43,18 +43,9 @@ The mathematical equation for the function that is used to calculate the weighte
 
 > $$Y = \sum (weight * input) + bias$$
 
-<<<<<<< HEAD
-Before producing a final output, the weighted sum from the original input is sent to adjacent layers within the Artifical Neural Network to be processed.
-The actual output value of the neuron can be anywhere from minus infinity to maximum infinity, but that output does not make sense to feed to the next layer, as it might be multitudes larger than other nodes.
-To combat this behavior, the output value is processed by an activation function. 
-The activation function takes the neuron's output and normalizes the value before passing it on to the next neurons in the layers.
-The output of the activation function will depend on the type of activation function used.
-These are described in a later section.
-=======
 Before producing a final output, the weighted sum from the original input is sent to adjacent layers within the Artifical Neural Network to be processed. 
 Finally a value between 0 and 1 is produced based on what type of activation function is used in the neural network. 
 The activation function is described in a later subsection. 
->>>>>>> 6c8a747f709d01be2ca3edf3f73198622fe2e004
 
 ### The layers
 
@@ -99,7 +90,6 @@ This section will start to explain the theory behind the neural network, and it 
 ### Activation Function
 <!-- Here it will explain what an activation function is and how it relates to data streaming through the network. We will here introduce the sigmoid function. -->
 
-<<<<<<< HEAD
 Each neuron calculates a weighted sum when given an input.
 Without an activation function to normalize these values, the value for each neuron could range from -infinity to infinity as each neuron does not know the bounds of the value. 
 The purpose of an activation function is then to map resulting values in a neuron to a desired range, which is typically between 0 and 1. 
@@ -109,19 +99,21 @@ In this project, the sigmoid function has been used due to it being the only act
 
 > $S(x) = \frac{1}{1 + e^{-x}}$
 
+<!-- I asked our MI teacher Thomas to verify if the following claim is credible. The source is: https://www.learnopencv.com/understanding-activation-functions-in-deep-learning/ -->
 
-=======
-Each neuron calculates it weighted sum when given an input.
-This means that, without an activation function to normalize these values, the value for each neuron could range from -infinity to infinity as each neuron does not know the bounds of the value. 
-In this project, the Sigmoid Function has been used because this is the most simple or default activation function. 
+One of the problems of the sigmoid activation function is when it is used in training.
+The optimal way of using the sigmoid function involves using manual training, where the weights of the neurons are manually adjusted to give the best result.
+When a training function like the backpropagation technique is used, the gradient of the sigmoid function gives problems.
 
-> $S(x) = \frac{1}{1 + e^{-x}}$
+![The sigmoid function](report/assets/pictures/sigmoid-activation-function.png){#fig:sigmoidAF}
+![The derivative of the sigmoid function](report/assets/pictures/sigmoid-derivative.png){#fig:sigmoidAF_derivative}
 
-The purpose of an activation function is then to map resulting values in a neuron to a desired range, which is typically between 0 and 1. 
+As seen on [@fig:sigmoidAF_derivative], which is the derivative of the sigmoid function in [@fig:sigmoidAF], the derivative function will yield a low value whenever the sigmoid function is nearing it's maximum and minimum value.
+This results in a vanishing gradient problem, due to backpropagation using the partial derivative of the error function to change the weight of the neuron.
+When the value of the partial derivative is very small, becuase the sigmoid function yields a minimum or a maximum, the weight between neurons are also barely changed.
+This results in barely no training taking place, as neurons reach this state.
+The vanishing gradient problem is primarily present when using backpropagation, and a method of avoiding it, is by using the RProp technique[@RPROP, p. 578].
 
-However, depending on the problem, different activation functions are used. 
-It is achknowledged that better ones do exist. 
->>>>>>> 6c8a747f709d01be2ca3edf3f73198622fe2e004
 
 ### The Entire Network
 This section will explain how the entire flow of the network works with neurons in the layers and activation functions. This section is where we will introduce the fact that it is all just simple linear algebra, i.e. matrices and such.
