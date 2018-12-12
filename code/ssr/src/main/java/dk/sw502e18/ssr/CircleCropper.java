@@ -29,10 +29,10 @@ public class CircleCropper {
         RotatedRect ellipse = Imgproc.fitEllipse(points);
 
         // Circle flattening is attempted. Reverts back to normal if flattening fails.
-        Pair<Mat, RotatedRect> newAndImproved = flattenCircle(src, dst, ellipse);
+        Pair<Mat, RotatedRect> flattenedAttempt = flattenCircle(src, dst, ellipse);
 
         try {
-            return cropEllipse(newAndImproved.getLeft(), newAndImproved.getRight());
+            return cropEllipse(flattenedAttempt.getLeft(), flattenedAttempt.getRight());
         } catch (IndexOutOfBoundsException e) {
             return null;
         }
@@ -145,8 +145,6 @@ public class CircleCropper {
         // Temporary Mat used with various opencv-methods
         MatOfPoint2f tempMatOP2f;
 
-        inputDst.copyTo(tempDstMat1);
-
         // Inputs is rotated to align ellipse focal-points with x/y-axis. Stored in temp-Mats1.
         Mat rotateM = Imgproc.getRotationMatrix2D(ellipse.center, ellipse.angle, 1.0);
         Imgproc.warpAffine(inputDst, tempDstMat1, rotateM, new Size(tempDstMat1.width(), tempDstMat1.width()));
@@ -155,18 +153,18 @@ public class CircleCropper {
         // Left/right top/bottom points are located on ellipse.
         int x = (int)ellipse.center.x;
         int y = (int)ellipse.center.y;
-        Point p3 = findEdge(tempSrcMat1, x, y, 0, -1, threshold);
-        Point p4 = findEdge(tempSrcMat1, x, y, 0, 1, threshold);
-        Point p1 = findEdge(tempSrcMat1, x, y, -1, 0, threshold);
-        Point p2 = findEdge(tempSrcMat1, x, y, 1, 0, threshold);
-
-        // If anything has been null, invoke FIIOOH-protocol
-        if ((p1 == null) || (p2 == null) || (p3 == null) || (p4 == null)) {
-            return new ImmutablePair<>(inputSrc, ellipse);
-        }
+        MatOfPoint2f perspectInputMat;
+        Point p3 = findEdge(tempSrcMat1, x, y, 0, -1, threshold); // Left-most
+        Point p4 = findEdge(tempSrcMat1, x, y, 0, 1, threshold);  // Right-most
+        Point p1 = findEdge(tempSrcMat1, x, y, -1, 0, threshold); // Bottom
+        Point p2 = findEdge(tempSrcMat1, x, y, 1, 0, threshold);  // Top
 
         // Storing p1-p4 as matrix.
-        MatOfPoint2f perspectInputMat = new MatOfPoint2f(p1, p2, p3, p4);
+        try {
+            perspectInputMat = new MatOfPoint2f(p1, p2, p3, p4);
+        } catch (NullPointerException e) {
+            return new ImmutablePair<>(inputSrc, ellipse);
+        }
 
         // Transformation matrix for ellipse-to-circle is calculated.
         Mat perspectTransfMat = Imgproc.getPerspectiveTransform(
@@ -178,7 +176,6 @@ public class CircleCropper {
                         p4
                 )
         );
-
 
         // Image warp - ellipse becomes circle, result stored in temp-Mats2
         Imgproc.warpPerspective(tempDstMat1, tempDstMat2, perspectTransfMat, tempDstMat1.size());
