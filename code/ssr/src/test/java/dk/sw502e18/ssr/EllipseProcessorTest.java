@@ -49,8 +49,17 @@ public class EllipseProcessorTest {
 
     Mat result = ep.detect(img);
 
-    Imgcodecs.imwrite("image.jpg", result);
-
     Assert.assertNull(result);
+  }
+
+  @Test
+  public void isAbleToRecognizeRedCircleAmongstOtherObjects() {
+    Mat img = Imgcodecs.imread(getClass().getResource("misc_with_red_circle.jpg").getPath());
+
+    Assert.assertNotNull(img);
+
+    Mat result = ep.detect(img);
+
+    Assert.assertNotNull(result);
   }
 }
