@@ -43,12 +43,12 @@ The mathematical equation for the function that is used to calculate the weighte
 
 > $$Y = \sum (weight * input) + bias$$
 
-Before producing a final output, the weighted sum from the original input is sent to adjacent layers within the Artifical Neural Network to be processed. 
-Finally a graded value between 0 and 1 is produced based on what type of neural network you have.
-<!-- Not actually mentioned earlier!! --> As mentioned earlier, the value between 0 and 1 is the result of normalization of the activation function used.
-This function is described below. 
-
-<!-- Insert function here -->
+Before producing a final output, the weighted sum from the original input is sent to adjacent layers within the Artifical Neural Network to be processed.
+The actual output value of the neuron can be anywhere from minus infinity to maximum infinity, but that output does not make sense to feed to the next layer, as it might be multitudes larger than other nodes.
+To combat this behavior, the output value is processed by an activation function. 
+The activation function takes the neuron's output and normalizes the value before passing it on to the next neurons in the layers.
+The output of the activation function will depend on the type of activation function used.
+These are described in a later section.
 
 ### The layers
 
@@ -93,15 +93,16 @@ This section will start to explain the theory behind the neural network, and it 
 ### Activation Function
 <!-- Here it will explain what an activation function is and how it relates to data streaming through the network. We will here introduce the sigmoid function. -->
 
-Each neuron calculates it weighted sum when given an input.
-This means that, without an activation function to normalize these values, the value for each neuron could range from -infinity to infinity as each neuron does not know the bounds of the value. 
+Each neuron calculates a weighted sum when given an input.
+Without an activation function to normalize these values, the value for each neuron could range from -infinity to infinity as each neuron does not know the bounds of the value. 
 The purpose of an activation function is then to map resulting values in a neuron to a desired range, which is typically between 0 and 1. 
-However, depending on the problem, different activation functions are used. 
-In this project, the Sigmoid Function has been used because this is the most simple or default activation function. 
+The type of activation function can differ between different implementations, and in every implementation it can differ between layers.
+The most basic activation function is the step function, which simply return 1 if the value is above a certain threshold, and 0 otherwise.
+In this project, the sigmoid function has been used due to it being the only activation function, apart from the step function, that was fully supported in the OpenCV library.
 
 > $S(x) = \frac{1}{1 + e^{-x}}$
 
-It is achknowledged that better ones do exist. 
+
 
 ### The Entire Network
 
