@@ -53,5 +53,5 @@ Note: All calculations include all decimals, while the presented results have be
 |  744 | 1.29 | 4.65 | 3.28% |
 |  730 | 1.32 | 4.74 | 1.37% |
 |  715 | 1.34 | 4.83 | -0.61% |
-: Results with gear ratio 1/6 {#tbl:ratio16}
+: Results with gear ratio 1:6 {#tbl:ratio16}
 
