@@ -51,6 +51,7 @@ public class Main {
 
         if (train == null) {
             // Setup webcam
+
             VideoCapture vid = new VideoCapture(0);
             vid.set(Videoio.CV_CAP_PROP_FRAME_WIDTH, 320);
             vid.set(Videoio.CV_CAP_PROP_FRAME_HEIGHT, 240);
@@ -68,7 +69,7 @@ public class Main {
             // start server or webcam
             m.start(
                     vid,
-                    new EllipseProcessor(130, 10, ann.getSize()),
+                    new EllipseProcessor(160, 10, ann.getSize()),
                     (mat) -> signs[(int) ann.predict(mat)]
             );
         } else {

@@ -8,17 +8,13 @@ import java.util.List;
 
 public class CircleCropper {
 
-    private final int threshold;
-
-    public CircleCropper(int threshold) {
-        this.threshold = threshold;
-    }
+    public CircleCropper() { }
 
     public Mat crop(Mat src, Mat dst, Point point) {
         int x = (int) point.x;
         int y = (int) point.y;
 
-        MatOfPoint2f points = ellipseCrawler(src, x, y, threshold);
+        MatOfPoint2f points = ellipseCrawler(src, x, y);
 
         if (points == null) {
             return null;
@@ -26,11 +22,15 @@ public class CircleCropper {
 
         RotatedRect ellipse = Imgproc.fitEllipse(points);
 
+
+
         try {
             return cropEllipse(dst, ellipse);
         } catch (IndexOutOfBoundsException e) {
             return null;
         }
+
+
     }
 
     /**
@@ -76,12 +76,11 @@ public class CircleCropper {
      * @param y      The starting y-coordinate
      * @param xIncr  Increment for x
      * @param yIncr  Increment for y
-     * @param thresh Threshold for edge
      * @return Point of edge or null if nothing was found
      */
-    private Point findEdge(Mat input, double x, double y, double xIncr, double yIncr, int thresh) {
+    private Point findEdge(Mat input, double x, double y, double xIncr, double yIncr) {
         while (x > 0 && x < input.width() && y > 0 && y < input.height()) {
-            if (input.get((int) y, (int) x)[0] > thresh) {
+            if (input.get((int) y, (int) x)[0] > 0) {
                 return new Point(x, y);
             }
 
@@ -99,24 +98,23 @@ public class CircleCropper {
      * @param input  Image to crawl.
      * @param x      X-coordinate inside ellipse.
      * @param y      Y-coordinate inside ellipse.
-     * @param thresh Threshold that catches edge ring.
      * @return A matrix of 2D points on the periphery.
      */
-    private MatOfPoint2f ellipseCrawler(Mat input, double x, double y, int thresh) {
+    private MatOfPoint2f ellipseCrawler(Mat input, double x, double y) {
         try {
             return new MatOfPoint2f(
                     // Left, right, top, bottom
-                    findEdge(input, x, y, -1, 0, thresh),
-                    findEdge(input, x, y, 1, 0, thresh),
-                    findEdge(input, x, y, 0, -1, thresh),
-                    findEdge(input, x, y, 0, 1, thresh),
+                    findEdge(input, x, y, -1, 0),
+                    findEdge(input, x, y, 1, 0),
+                    findEdge(input, x, y, 0, -1),
+                    findEdge(input, x, y, 0, 1),
 
                     // Top-left, bottom-left
-                    findEdge(input, x, y, -1, -1, thresh),
-                    findEdge(input, x, y, -1, 1, thresh),
+                    findEdge(input, x, y, -1, -1),
+                    findEdge(input, x, y, -1, 1),
                     // Top-right, bottom-right
-                    findEdge(input, x, y, 1, -1, thresh),
-                    findEdge(input, x, y, 1, 1, thresh)
+                    findEdge(input, x, y, 1, -1),
+                    findEdge(input, x, y, 1, 1)
             );
         } catch (NullPointerException e) {
             return null;

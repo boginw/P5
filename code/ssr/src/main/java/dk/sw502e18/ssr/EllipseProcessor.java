@@ -15,7 +15,7 @@ public class EllipseProcessor {
     private int threshold;
 
     public EllipseProcessor(int threshold, int minWH, Size size) {
-        cc = new CircleCropper(threshold);
+        cc = new CircleCropper();
         this.threshold = threshold;
         this.minWH = minWH;
         this.size = size;
@@ -30,7 +30,7 @@ public class EllipseProcessor {
         Mat process = crExtract(input.clone());
         Mat out = input.clone();
         threshold(process, false);
-        threshold(out, true);
+        //threshold(out, true);
         Imgproc.GaussianBlur(process, process, new Size(9, 9), 2, 2);
 
         Mat circles = detectCircles(process);
@@ -66,7 +66,7 @@ public class EllipseProcessor {
 
     private Mat detectCircles(Mat thresholdImage) {
         Mat circles = new Mat();
-        int houghResolution = 2;
+        int houghResolution = 1;
         int houghMinDist = 30;
         int houghCannyThreshold = 50;
         int houghAccumulatorThreshold = 30;

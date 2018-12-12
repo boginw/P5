@@ -1,4 +1,4 @@
-package dk.sw502e18;
+package dk.sw502e18.ssr;
 
 import dk.sw502e18.ssr.CircleCropper;
 import org.junit.Assert;

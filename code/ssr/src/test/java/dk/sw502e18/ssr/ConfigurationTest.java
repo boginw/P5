@@ -1,4 +1,4 @@
-package dk.sw502e18;
+package dk.sw502e18.ssr;
 
 import dk.sw502e18.ssr.Configuration;
 import org.junit.Assert;
@@ -92,7 +92,7 @@ public class ConfigurationTest {
 
   @Test(expected = RuntimeException.class)
   public void FromDoubleArrayThrowsErrorIfToFewArguments() {
-    Configuration config = new Configuration(new double[]{ 1 });
+    Configuration config = new Configuration(new double[]{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
   }
 
 }

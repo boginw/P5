@@ -24,7 +24,7 @@ public class Configuration {
     }
 
     public Configuration(double[] params) {
-        if (params.length < 12) {
+        if (params.length < 11) {
             throw new RuntimeException("Not enough params");
         }
         activationFunction = (int) params[0];

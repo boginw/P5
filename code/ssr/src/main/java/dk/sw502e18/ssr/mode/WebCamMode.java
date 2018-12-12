@@ -63,7 +63,7 @@ public class WebCamMode implements Mode {
     private void overlayImage(Mat image, Mat overlay, int x, int y, int width, int height) {
         Rectangle rect = new Rectangle(x, y, width, height);
         Imgproc.resize(overlay, overlay, new Size(rect.getWidth(), rect.getHeight()));
-        Imgproc.cvtColor(overlay, overlay, Imgproc.COLOR_GRAY2BGR);
+        //Imgproc.cvtColor(overlay, overlay, Imgproc.COLOR_GRAY2BGR);
         Mat submat = image.submat(new Rect(rect.x, rect.y, overlay.cols(), overlay.rows()));
         overlay.copyTo(submat);
     }
