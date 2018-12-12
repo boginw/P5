@@ -26,7 +26,6 @@ public class ANN {
         Mat layers = mlp.getLayerSizes();
         config.layers[0] = (int) layers.get(0, 0)[0];
         outputLayerSize = (int) layers.get(layers.rows() - 1, 0)[0];
-        setFromConf();
     }
 
     public ANN(Configuration config) {
