@@ -27,8 +27,13 @@ public class CircleCropper {
         // Circle flattening is attempted. Reverts back to normal if flattening fails.
         Pair<Mat, RotatedRect> flattenedAttempt = flattenCircle(src, dst, ellipse);
 
+        if (flattenedAttempt != null) {
+            dst = flattenedAttempt.getLeft();
+            ellipse = flattenedAttempt.getRight();
+        }
+
         try {
-            return cropEllipse(flattenedAttempt.getLeft(), flattenedAttempt.getRight());
+            return cropEllipse(dst, ellipse);
         } catch (IndexOutOfBoundsException e) {
             return null;
         }
@@ -161,7 +166,7 @@ public class CircleCropper {
         try {
             perspectInputMat = new MatOfPoint2f(p1, p2, p3, p4);
         } catch (NullPointerException e) {
-            return new ImmutablePair<>(inputSrc, ellipse);
+            return null;
         }
 
         // Transformation matrix for ellipse-to-circle is calculated.
@@ -182,7 +187,7 @@ public class CircleCropper {
         tempMatOP2f = ellipseCrawler(tempSrcMat2,(float)tempSrcMat2.width() / 2, (float)tempSrcMat2.height()/2);
         // If anything has been null, invoke FIIOOH-protocol
         if (tempMatOP2f == null) {
-            return new ImmutablePair<>(inputSrc, ellipse);
+            return null;
         }
 
         // Image is rotated back to original rotational orientation, and then stored in temp-Mats1
@@ -202,5 +207,4 @@ public class CircleCropper {
 
         return new ImmutablePair<>(tempDstMat1, ellipseOut);
     }
-
 }

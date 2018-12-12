@@ -5,9 +5,7 @@ import org.opencv.ml.ANN_MLP;
 import org.opencv.ml.Ml;
 import org.opencv.ml.TrainData;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Artificial Neural Network
@@ -19,6 +17,9 @@ public class ANN {
 
     private List<float[]> samples = new ArrayList<>();
     private List<float[]> labels = new ArrayList<>();
+
+    private List<float[]> testSamples = new ArrayList<>();
+    private List<float[]> testLabels = new ArrayList<>();
 
     public ANN(String model) {
         mlp = ANN_MLP.load(model);
@@ -35,7 +36,16 @@ public class ANN {
         setFromConf();
     }
 
+    public void addTestSample(Mat sample, int label) {
+        addSampleToList(sample, label, testSamples, testLabels);
+
+    }
+
     public void addSample(Mat sample, int label) {
+        addSampleToList(sample, label, samples, labels);
+    }
+
+    private void addSampleToList(Mat sample, int label, List<float[]> samples, List<float[]> labels) {
         if (sample.cols() * sample.rows() != config.layers[0]) {
             String err = String.format(
                     "Invalid sample size (expected: %d, actual: %d)",
@@ -71,9 +81,25 @@ public class ANN {
             labels.put(i, 0, this.labels.get(i));
         }
 
-        TrainData td = TrainData.create(samples, Ml.ROW_SAMPLE, labels);
-        td.shuffleTrainTest();
-        mlp.train(td);
+        TrainData trainData = TrainData.create(samples, Ml.ROW_SAMPLE, labels);
+        TrainData testTrainData = TrainData.create(samples, Ml.ROW_SAMPLE, labels);
+
+        trainData.setTrainTestSplitRatio(0.9, true);
+        mlp.train(trainData);
+    }
+
+    public float calcError() {
+        Mat testSamples = new Mat(this.testSamples.size(), config.layers[0], CvType.CV_32FC1);
+        Mat testLabels = new Mat(testSamples.rows(), outputLayerSize, CvType.CV_32FC1);
+
+        for (int i = 0; i < this.testSamples.size(); i++) {
+            testSamples.put(i, 0, this.testSamples.get(i));
+            testLabels.put(i, 0, this.testLabels.get(i));
+        }
+
+        Mat results = new Mat();
+        TrainData testTrainData = TrainData.create(testSamples, Ml.ROW_SAMPLE, testLabels);
+        return mlp.calcError(testTrainData, false, results);
     }
 
     public Size getSize() {
@@ -85,14 +111,20 @@ public class ANN {
         return mlp.isTrained();
     }
 
-    public float predict(Mat sample) {
+    public MatOfFloat predict(Mat sample) {
         MatOfFloat result = new MatOfFloat();
         float[] sampleArr = flatten(sample);
 
         Mat m = new Mat(1, config.layers[0], CvType.CV_32FC1);
         m.put(0, 0, sampleArr);
 
-        return mlp.predict(m, result, 0);
+        mlp.predict(m, result, 0);
+
+        // normalize results
+        Core.normalize(result, result, 0, 1, Core.NORM_MINMAX);
+        Core.divide(result, Core.sumElems(result), result);
+
+        return result;
     }
 
     public void save(String path) {

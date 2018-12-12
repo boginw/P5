@@ -27,7 +27,6 @@ public class Main {
         options.addOption(Option.builder("p").desc("Path to parameter file").hasArg().argName("PATH").build());
         options.addOption(Option.builder("w").desc("Webcam mode").build());
 
-
         try {
             CommandLine line = new DefaultParser().parse(options, args);
             train = line.getOptionValue("t");
@@ -51,10 +50,13 @@ public class Main {
 
         if (train == null) {
             // Setup webcam
-
-            VideoCapture vid = new VideoCapture(0);
+            VideoCapture vid = new VideoCapture(2);
             vid.set(Videoio.CV_CAP_PROP_FRAME_WIDTH, 320);
             vid.set(Videoio.CV_CAP_PROP_FRAME_HEIGHT, 240);
+
+            if (!vid.isOpened()) {
+                throw new RuntimeException("Camera could not be opened, check index.");
+            }
 
             // Setup Neural Network with model
             ANN ann = new ANN(model);
@@ -67,11 +69,7 @@ public class Main {
             }
 
             // start server or webcam
-            m.start(
-                    vid,
-                    new EllipseProcessor(160, 10, ann.getSize()),
-                    (mat) -> signs[(int) ann.predict(mat)]
-            );
+            m.start(vid, new EllipseProcessor(10, ann.getSize()), ann::predict);
         } else {
             // create neural network trainer and store the best result
             ANN best = new SSRTrainer(train, test, param, signs).train();

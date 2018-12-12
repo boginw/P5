@@ -17,7 +17,7 @@ public class CarMode implements Mode {
         cs = new SocketCarServer("10.0.1.1", 9090);
     }
 
-    public void start(VideoCapture vid, EllipseProcessor processor, Function<Mat, Integer> func) {
+    public void start(VideoCapture vid, EllipseProcessor processor, Function<Mat, MatOfFloat> func) {
         Mat mat = new Mat();
 
         while (!cs.connect()) {
@@ -35,7 +35,7 @@ public class CarMode implements Mode {
             Mat p;
 
             if (!mat.empty() && (p = processor.detect(mat)) != null) {
-                cs.send(String.valueOf(func.apply(p)));
+                cs.send(String.valueOf(Core.minMaxLoc(func.apply(p)).maxLoc.y));
             }
         }
     }
