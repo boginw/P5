@@ -110,7 +110,7 @@ When a training function like the backpropagation technique is used, the gradien
 
 ![](report/assets/pictures/sigmoid-derivative.png){#fig:sigmoidAF_derivative width=45%}
 
-The sigmoid function and its derivative.
+The sigmoid function and its derivative. Figures from [@ActivationFunctions].
 </div>
 
 As seen on [@fig:sigmoidAF_derivative], which is the derivative of the sigmoid function in [@fig:sigmoidAF], the derivative function will yield a low value whenever the sigmoid function is nearing it's maximum and minimum value.
