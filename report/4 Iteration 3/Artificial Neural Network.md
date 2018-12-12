@@ -105,8 +105,13 @@ One of the problems of the sigmoid activation function is when it is used in tra
 The optimal way of using the sigmoid function involves using manual training, where the weights of the neurons are manually adjusted to give the best result.
 When a training function like the backpropagation technique is used, the gradient of the sigmoid function gives problems.
 
-![The sigmoid function](report/assets/pictures/sigmoid-activation-function.png){#fig:sigmoidAF}
-![The derivative of the sigmoid function](report/assets/pictures/sigmoid-derivative.png){#fig:sigmoidAF_derivative}
+<div id="fig:sigmoid">
+![](report/assets/pictures/sigmoid-activation-function.png){#fig:sigmoidAF width=45%}
+
+![](report/assets/pictures/sigmoid-derivative.png){#fig:sigmoidAF_derivative width=45%}
+
+The sigmoid function and its derivative.
+</div>
 
 As seen on [@fig:sigmoidAF_derivative], which is the derivative of the sigmoid function in [@fig:sigmoidAF], the derivative function will yield a low value whenever the sigmoid function is nearing it's maximum and minimum value.
 This results in a vanishing gradient problem, due to backpropagation using the partial derivative of the error function to change the weight of the neuron.
