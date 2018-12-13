@@ -10,11 +10,11 @@ In order to achieve a transformation from an ellipse to a circle, the _perspecti
 
 ![Rotating plus identifying boundaries](report/assets/pictures/Ellipse2_1.png){#fig:EllipseFlattening2 width=35%}
 
-Determining where these four points should be ending up, when the ellipse has been transformed into a circle, it is a rather trivial matter of choosing new coordinates that are equally far apart from the center of the ellipse, while still being the top-, left-, bottom- and right-most points. The the chosen points for the output, as well as the now transformed ellipse, can be seen on [@fig:EllipseFlattening3].
+Determining where these four points should be ending up, when the ellipse has been transformed into a circle, it is a rather trivial matter of choosing new coordinates that are equally far apart from the center of the ellipse, while still being the top-, left-, bottom- and right-most points. The chosen points for the output, as well as the now transformed ellipse, can be seen on [@fig:EllipseFlattening3].
 
 ![Warping the image, based on identified points](report/assets/pictures/Ellipse3_1.png){#fig:EllipseFlattening3 width=35%}
 
-The last step, before the flattening is determined to be done, is undo to rotation done in step one, simply by rotating the same amount of degrees, but in the opposite direction. The final result is shown on [@fig:EllipseFlattening4].
+The last step before the flattening-process is completed, is to undo the rotation done in step one, simply by rotating the same amount of degrees, but in the opposite direction. The final result is shown on [@fig:EllipseFlattening4].
 
 ![Image rotated back to original rotation](report/assets/pictures/Ellipse4.png){#fig:EllipseFlattening4 width=35%}
 
