@@ -8,8 +8,6 @@ import org.opencv.videoio.VideoCapture;
 import org.opencv.videoio.Videoio;
 
 public class Main {
-    private static int[] signs = new int[]{20, 30, 50, 60, 70, 80};
-
     public static void main(String[] args) {
         nu.pattern.OpenCV.loadShared();
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -50,7 +48,7 @@ public class Main {
 
         if (train == null) {
             // Setup webcam
-            VideoCapture vid = new VideoCapture(2);
+            VideoCapture vid = new VideoCapture(0);
             vid.set(Videoio.CV_CAP_PROP_FRAME_WIDTH, 320);
             vid.set(Videoio.CV_CAP_PROP_FRAME_HEIGHT, 240);
 
@@ -72,7 +70,7 @@ public class Main {
             m.start(vid, new EllipseProcessor(10, ann.getSize()), ann::predict);
         } else {
             // create neural network trainer and store the best result
-            ANN best = new SSRTrainer(train, test, param, signs).train();
+            ANN best = new SSRTrainer(train, test, param).train();
 
             if (best != null) {
                 best.save(model);

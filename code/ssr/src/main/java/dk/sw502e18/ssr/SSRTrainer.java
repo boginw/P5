@@ -1,6 +1,5 @@
 package dk.sw502e18.ssr;
 
-import org.opencv.core.Core;
 import org.opencv.core.Mat;
 
 import java.io.BufferedReader;
@@ -21,12 +20,10 @@ public class SSRTrainer {
     private Queue<ANN> neuralNetworks;
     private float maxAcc = Float.MAX_VALUE;
     private ANN bestANN = null;
-    private int[] signs;
 
-    public SSRTrainer(String train, String test, String param, int[] signs) {
+    public SSRTrainer(String train, String test, String param) {
         this.train = train;
         this.test = test;
-        this.signs = signs;
         neuralNetworks = new LinkedList<>(fromConfigFile(param));
     }
 
@@ -58,6 +55,10 @@ public class SSRTrainer {
 
     protected EllipseProcessor ellipseProcessorBuilder(int minWH, Size size){
         return new EllipseProcessor(minWH, size);
+    }
+
+    protected ANN ANNBuilder(String line){
+        return new ANN(Configuration.fromString(line));
     }
 
     private int doOnSamples(int i, String path, BiConsumer<Mat, Integer> v) {
@@ -92,7 +93,7 @@ public class SSRTrainer {
                         continue;
                     }
 
-                    nns.add(new ANN(Configuration.fromString(line)));
+                    nns.add(ANNBuilder(line));
                 }
             } catch (IOException e) {
                 e.printStackTrace();

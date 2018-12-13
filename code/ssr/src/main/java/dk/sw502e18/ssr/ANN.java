@@ -90,9 +90,7 @@ public class ANN {
         }
 
         TrainData trainData = TrainData.create(samples, Ml.ROW_SAMPLE, labels);
-        TrainData testTrainData = TrainData.create(samples, Ml.ROW_SAMPLE, labels);
 
-        trainData.setTrainTestSplitRatio(0.9, true);
         mlp.train(trainData);
     }
 

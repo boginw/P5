@@ -1,13 +1,15 @@
 package dk.sw502e18.ssr;
 
 import org.opencv.core.Core;
+import org.opencv.core.Mat;
 import org.opencv.core.MatOfFloat;
 
 public class Speedsign {
     public static int[] signs = new int[]{20, 30, 50, 60, 70, 80};
 
-    public static ANNResultEntry fromNN(MatOfFloat results) {
+    public static ANNResultEntry fromNN(Mat results) {
         Core.MinMaxLocResult mxlr = Core.minMaxLoc(results);
+
         return new ANNResultEntry(mxlr);
     }
 
