@@ -17,7 +17,7 @@ public class CircleCropperTest {
   @Before
   public void initialize() {
     System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-    cc = new CircleCropper(160);
+    cc = new CircleCropper();
   }
 
   @Test

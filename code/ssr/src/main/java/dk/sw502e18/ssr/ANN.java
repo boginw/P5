@@ -35,6 +35,14 @@ public class ANN {
         setFromConf();
     }
 
+    public ANN(ANN_MLP ann) {
+        mlp = ann;
+        config = new Configuration();
+        Mat layers = mlp.getLayerSizes();
+        config.layers[0] = (int) layers.get(0, 0)[0];
+        outputLayerSize = (int) layers.get(layers.rows() - 1, 0)[0];
+    }
+
     public void addSample(Mat sample, int label) {
         if (sample.cols() * sample.rows() != config.layers[0]) {
             String err = String.format(
@@ -89,8 +97,10 @@ public class ANN {
         MatOfFloat result = new MatOfFloat();
         float[] sampleArr = flatten(sample);
 
+
         Mat m = new Mat(1, config.layers[0], CvType.CV_32FC1);
         m.put(0, 0, sampleArr);
+
 
         return mlp.predict(m, result, 0);
     }

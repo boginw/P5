@@ -11,6 +11,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.function.BiConsumer;
+import org.opencv.core.Size;
 
 public class SSRTrainer {
     private EllipseProcessor cd;
@@ -32,7 +33,7 @@ public class SSRTrainer {
         int maxLength = neuralNetworks.size();
         while (!neuralNetworks.isEmpty()) {
             ANN ann = neuralNetworks.poll();
-            cd = new EllipseProcessor(130, 10, ann.getSize());
+            cd = ellipseProcessorBuilder(130, 10, ann.getSize());
             addSamples(ann);
 
             System.out.printf("(%4d/%d) - ", maxLength-neuralNetworks.size(), maxLength);
@@ -50,6 +51,10 @@ public class SSRTrainer {
         }
 
         return bestANN;
+    }
+
+    protected EllipseProcessor ellipseProcessorBuilder(int thresh, int minWH, Size size){
+        return new EllipseProcessor(thresh, minWH, size);
     }
 
     private int doOnSamples(int i, String path, BiConsumer<Mat, Integer> v) {
@@ -76,12 +81,14 @@ public class SSRTrainer {
     private List<ANN> fromConfigFile(String file) {
         List<ANN> nns = new ArrayList<>();
         if (file != null) {
+
             try (BufferedReader br = new BufferedReader(new FileReader(file))) {
                 String line;
                 while ((line = br.readLine()) != null) {
                     if (line.startsWith("#")) {
                         continue;
                     }
+
                     nns.add(new ANN(Configuration.fromString(line)));
                 }
             } catch (IOException e) {
