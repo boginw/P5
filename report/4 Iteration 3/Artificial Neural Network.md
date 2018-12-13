@@ -136,50 +136,72 @@ Usefulness is shown with the models succes of predicting the world around it; a 
 ## Training <!-- WIP -->
 
 <!-- This section will explain what it means to train a neural network and explain the Backpropagation function and use it to create an example. This section should also introduce the notion of training data and what to be aware of when creating a training data set. -->
-In order to actually "learn" anything the neural network need to train on what it is suposed to recognize. Training consists of two steps: prediction and back-propagation. 
-In the first step the neural network needs to make a prediction in order to see how well it can recognize the desired features or patterns. For doing this a set of training data is required, in the example case with images of dogs, fish, or neither,  the training set needs to consist of images of dogs, fish, or neither. Furhtermore the images needs to be labeled with what they actually contains, so that the neural network can se if it predicts correctly.
+In order to actually "learn" anything the neural network needs to train on what it is supposed to recognize. Training 
+consists of two phases: prediction and back-propagation. 
+In the first phases the neural network needs to make a prediction in order to see how well it can recognize the desired 
+features or patterns. For doing this a set of training data is required, in the example case with images of dogs, fish, 
+or neither,  the training set needs to consist of images of dogs, fish, or neither. Furthermore the images needs to be 
+labeled with what they actually contains, so that the neural network can check if it predicts correctly.
 <!-- Maybe go more in detail on what a good training set is, and what can be done to improve it -  or maybe leave this to the discussion -->
-Then the second step is to calculate how accurate the prediction was, and based on this make adjustments to the neural network based on this. This is called back-propagation and is done by comparing the result from the output layer to the label of the image seen in [@eq:accuracy]. 
+Then the second phases is to calculate how accurate the prediction was, and based on this make adjustments to the neural 
+network based on this, this is called back-propagation. More specifically back-propagation strives to minimize a cost function.
+An example og a cost function is to calculate the sum-of-square errors [@eq:squareError]. 
+
+$$ cost = \sum_{n}(p - a)^2 $$ {#eq:squareError}
+
+Where $n$ is the number of neurons in the layer, $p$ is the prediction, and $a$ is the actual feature. One approach on
+minimizing the cost, is to use gradient decent, to find the local minima, this can be used to find best 
+
+<!-- label of the image seen in [@eq:accuracy]. Here the first column contains the output from a network with 3 output nodes,the
+second column contains the target feature, in this case it can be seen the the network is quite uncertain on which output 
+feature is present in the input, as the prediction indicates that multiple features could be present, when the label
+states that only one feature is.
+
 
 $$
 cost = 
- \begin{bmatrix}
-   &  &  \\
-   &  &  \\
-   &  & 
- \end{bmatrix}
- too come
- $$ {#eq:accuracy}
+\begin{matrix}
+  (0.5 - 0.0)^2 & = & 0.5 \\
+  (0.8 - 1.0)^2 & = & -0.2  \\
+  (0.2 - 0.0)^2 & = & 0.2
+\end{matrix}
+$$ {#eq:accuracy}
+ 
+The resulting column shows the quadratic error from each output node. The lower the error the more precise the 
+neural networks prediction is. The individual errors can then be used to indicate how weights should be adjusted, and in
+which direction.  
 
-The difference is found by calculating the sum-of-square errors see [@eq:squareError], this means that lower numbers mean higer prediction accuracy. Note that the sum-of-square errors are calculated for each output neuron  
-
-$$ error = \sum(t - a)^2 $$ {#eq:squareError}
-
-whare $t$ is the prediction and $a$ is the actual labeled value.
-
-
-More to come here
-<!-- image her like 3blue1brown - of prediction vector vs label vector -->
-<!-- Then insert picture of squer error! -->
+The difference is found by calculating the sum-of-square errors see [@eq:squareError]. The sum-of-square errors are 
+calculated for each neuron in the output layer, this yields a vector with a square error for each neuron, the higher the 
+number is the worse the neural network is at predicting the desired features, and the more it shows which weights needs
+ needs to be adjusted.
+-->
 
 ### Overfitting
 <!-- Here we will explain the dangers of overfitting the model. Also, how to ensure that it does not happen. -->
 
-The concept of overfitting in machine learning is that the model is really good at classifying data based on the training set, but when the model is then to classify based on the test examples, the model was not trained on, the model performs poorly and cannot classify the data correctly.
+The concept of overfitting in machine learning is that the model is really good at classifying data based on the 
+training set, but when the model is then to classify based on the test examples, the model was not trained on, the model 
+performs poorly and cannot classify the data correctly.
 Overfitting basically means that the model is unable to generalize well. 
-This means that whatever features the model was trained on, it would only correctly classify those since data that slightly deviate from the training set are not correctly classified. 
+This means that whatever features the model was trained on, it would only correctly classify those since data that 
+slightly deviate from the training set are not correctly classified. 
 
 A possible way to reduce the effect of overfitting is to give the model more data to train on. 
 This means that it will be able to learn more from the training set by, hopefully, adding more diversity. 
-Another possible way is data augmentation, which is the act of slightly manipulation the data by changing values or by rotating or zooming in on an image, is another method that can be used to reduce overfitting. 
+Another possible way is data augmentation, which is the act of slightly manipulation the data by changing values or by 
+rotating or zooming in on an image, is another method that can be used to reduce overfitting. 
 This is beneficial because you have data that is similar to your orginal data but with reasonable modified.
 
 ### Testing {#sec:Testing}
 <!-- Here we will explain how to test the model after training using a testing data set. It should explain what to be aware of when creating the dataset and also why it is a good idea to have.  -->
 
-As shortly mentioned in the `Overfitting` subsection, the desired model is one that can generalize and not only work on the data set the model was trained on. 
+As shortly mentioned in the `Overfitting` subsection, the desired model is one that can generalize and not only work on 
+the data set the model was trained on. 
 The model should correctly classify new input as they are given to the neural network. 
-This is why a general rule of thump is to only use a certain percentage to train the model and the rest to test the model to determine overfitting. This distribution could be 75% of the training set used to train the model and 25% used for testing the model. 
+This is why a general rule of thump is to only use a certain percentage to train the model and the rest to test the 
+model to determine overfitting. This distribution could be 75% of the training set used to train the model and 25% used 
+for testing the model. 
 
 # Our Artificial Neural Network.
 
