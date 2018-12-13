@@ -1,5 +1,6 @@
 package dk.sw502e18.ssr;
 
+import dk.sw502e18.ssr.mode.WebCamMode;
 import org.opencv.core.*;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
@@ -12,11 +13,9 @@ public class EllipseProcessor {
     private CircleCropper cc;
     private int minWH;
     private Size size;
-    private int threshold;
 
-    public EllipseProcessor(int threshold, int minWH, Size size) {
+    public EllipseProcessor(int minWH, Size size) {
         cc = new CircleCropper();
-        this.threshold = threshold;
         this.minWH = minWH;
         this.size = size;
     }
@@ -30,8 +29,8 @@ public class EllipseProcessor {
         Mat process = crExtract(input.clone());
         Mat out = input.clone();
         threshold(process, false);
-        //threshold(out, true);
-        Imgproc.GaussianBlur(process, process, new Size(9, 9), 4, 4);
+        threshold(out, true);
+        Imgproc.GaussianBlur(process, process, new Size(9, 9), 2, 2);
 
         Mat circles = detectCircles(process);
 
@@ -41,6 +40,9 @@ public class EllipseProcessor {
 
             if (cropped != null && cropped.rows() > minWH && cropped.cols() > minWH) {
                 Imgproc.resize(cropped, cropped, size);
+                Rect rectCrop = new Rect(0, 0, (int) size.width / 2, (int) size.height);
+                Imgproc.resize(new Mat(cropped, rectCrop), cropped, size);
+
                 return cropped;
             }
         }
@@ -53,7 +55,8 @@ public class EllipseProcessor {
             Imgproc.cvtColor(c, c, Imgproc.COLOR_BGR2GRAY);
         }
 
-        Imgproc.threshold(c, c, threshold, 255, Imgproc.THRESH_OTSU | (inv ? Imgproc.THRESH_BINARY_INV : Imgproc.THRESH_BINARY));
+        //Imgproc.threshold(c, c, 150, 255, Imgproc.THRESH_TOZERO);
+        Imgproc.threshold(c, c, 160, 255, Imgproc.THRESH_OTSU | (inv ? Imgproc.THRESH_BINARY_INV : Imgproc.THRESH_BINARY));
     }
 
     private Mat crExtract(Mat c) {
@@ -66,10 +69,10 @@ public class EllipseProcessor {
 
     private Mat detectCircles(Mat thresholdImage) {
         Mat circles = new Mat();
-        int houghResolution = 1;
-        int houghMinDist = 10;
-        int houghCannyThreshold = 50;
-        int houghAccumulatorThreshold = 30;
+        double houghResolution = 1;
+        double houghMinDist = 10;
+        double houghCannyThreshold = 50;
+        double houghAccumulatorThreshold = 30;
         int houghMinCircleRadius = 0;
         int houghMaxCircleRadius = 0;
 

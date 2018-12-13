@@ -15,7 +15,7 @@ public class EllipseProcessorTest {
   @Before
   public void initializer() {
     System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-    ep = new EllipseProcessor(160, 10, new Size(30, 30));
+    ep = new EllipseProcessor(10, new Size(30, 30));
   }
 
 

@@ -110,8 +110,8 @@ public class SSRTrainerTest {
     }
 
     @Override
-    protected EllipseProcessor ellipseProcessorBuilder(int thresh, int minWH, Size size){
-      spyEP = Mockito.spy(new EllipseProcessor(thresh, minWH, size));
+    protected EllipseProcessor ellipseProcessorBuilder(int minWH, Size size){
+      spyEP = Mockito.spy(new EllipseProcessor(minWH, size));
 
 
       return spyEP;

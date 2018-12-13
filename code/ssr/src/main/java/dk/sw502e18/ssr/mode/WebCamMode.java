@@ -2,6 +2,7 @@ package dk.sw502e18.ssr.mode;
 
 import dk.sw502e18.ssr.EllipseProcessor;
 import dk.sw502e18.ssr.Mode;
+import dk.sw502e18.ssr.Speedsign;
 import org.opencv.core.*;
 import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
@@ -16,8 +17,9 @@ import java.net.Socket;
 import java.util.function.Function;
 
 public class WebCamMode implements Mode {
-    public void start(VideoCapture vid, EllipseProcessor processor, Function<Mat, Integer> func) {
-        Mat mat = new Mat();
+    public void start(VideoCapture vid, EllipseProcessor processor, Function<Mat, MatOfFloat> func) {
+        Mat frame = new Mat();
+        Mat screenFrame;
 
         System.out.println("Camera open");
 
@@ -34,25 +36,42 @@ public class WebCamMode implements Mode {
         }
 
         while (true) {
-            vid.read(mat);
+            vid.read(frame);
             Mat p;
 
-            if (!mat.empty() && (p = processor.detect(mat)) != null) {
-                overlayImage(mat, p, mat.cols() - p.cols(), mat.rows() - p.rows(), p.cols(), p.rows());
+            screenFrame = Mat.zeros(new Size(frame.cols() + 200, frame.rows()), frame.type());
+            overlayImage(screenFrame, frame, 0, 0);
+
+            if (!frame.empty() && (p = processor.detect(frame)) != null) {
+                overlayImage(screenFrame, p, frame.cols() - p.cols(), frame.rows() - p.rows());
+
+                MatOfFloat results = func.apply(p);
+                Speedsign.ANNResultEntry best = Speedsign.fromNN(func.apply(p));
+
+                for (int i = 0; i < results.cols(); i++) {
+                    Imgproc.putText(
+                            screenFrame,
+                            String.format("%d = %.2f%%", Speedsign.fromLabel(i), results.get(0, i)[0] * 100),
+                            new Point(frame.cols() + 5, 17 * i + 50),
+                            Core.FONT_HERSHEY_COMPLEX_SMALL,
+                            0.8,
+                            new Scalar(255, 255, 255)
+                    );
+                }
 
                 Imgproc.putText(
-                        mat,
-                        "Detected: " + func.apply(p),
-                        new Point(5,15),
-                        Core.FONT_HERSHEY_PLAIN,
-                        1.0,
-                        new Scalar(0,255,255)
+                        screenFrame,
+                        String.format("%d with %.2f%%", best.sign, best.certainty * 100),
+                        new Point(frame.cols() + 15, 15),
+                        Core.FONT_HERSHEY_COMPLEX_SMALL,
+                        1,
+                        new Scalar(0, 255, 255)
                 );
             }
 
             try {
                 if (sock != null) {
-                    writeJpg(sock.getOutputStream(), mat, boundary);
+                    writeJpg(sock.getOutputStream(), screenFrame, boundary);
                 }
             } catch (IOException ignore) {
                 return;
@@ -60,10 +79,14 @@ public class WebCamMode implements Mode {
         }
     }
 
-    private void overlayImage(Mat image, Mat overlay, int x, int y, int width, int height) {
-        Rectangle rect = new Rectangle(x, y, width, height);
+    public static void overlayImage(Mat image, Mat overlay, int x, int y) {
+        Rectangle rect = new Rectangle(x, y, overlay.cols(), overlay.rows());
         Imgproc.resize(overlay, overlay, new Size(rect.getWidth(), rect.getHeight()));
-        //Imgproc.cvtColor(overlay, overlay, Imgproc.COLOR_GRAY2BGR);
+
+        if (overlay.type() != CvType.CV_8UC3) {
+            Imgproc.cvtColor(overlay, overlay, Imgproc.COLOR_GRAY2BGR);
+        }
+
         Mat submat = image.submat(new Rect(rect.x, rect.y, overlay.cols(), overlay.rows()));
         overlay.copyTo(submat);
     }
