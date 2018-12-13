@@ -117,8 +117,10 @@ As seen on [@fig:sigmoidAF_derivative], which is the derivative of the sigmoid f
 This results in a vanishing gradient problem, due to backpropagation using the partial derivative of the error function to change the weight of the neuron.
 When the value of the partial derivative is very small, becuase the sigmoid function yields a minimum or a maximum, the weight between neurons are also barely changed.
 This results in barely no training taking place, as neurons reach this state.
-The vanishing gradient problem is primarily present when using backpropagation, and a method of avoiding it, is by using the RProp technique[@RPROP, p. 578].
-
+The vanishing gradient problem is primarily present when using backpropagation, and other learning functions, such as the RPROP function, have taken measures to overcome this problem.
+The RPROP function changes the scale at which it alters the weights of the network.
+This method allows for the function to accelerate learning, whenever a neuron seems stuck[@RPROP, p. 578].
+How to overcome this, is further described in the [@sec:Testing]
 
 ### The Entire Network
 This section will explain how the entire flow of the network works with neurons in the layers and activation functions. This section is where we will introduce the fact that it is all just simple linear algebra, i.e. matrices and such.
@@ -167,7 +169,7 @@ This means that it will be able to learn more from the training set by, hopefull
 Another possible way is data augmentation, which is the act of slightly manipulation the data by changing values or by rotating or zooming in on an image, is another method that can be used to reduce overfitting. 
 This is beneficial because you have data that is similar to your orginal data but with reasonable modified.
 
-### Testing
+### Testing {#sec:Testing}
 <!-- Here we will explain how to test the model after training using a testing data set. It should explain what to be aware of when creating the dataset and also why it is a good idea to have.  -->
 
 As shortly mentioned in the `Overfitting` subsection, the desired model is one that can generalize and not only work on the data set the model was trained on. 
