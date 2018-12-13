@@ -126,7 +126,12 @@ How to overcome this, is further described in the [@sec:Testing]
 This section will explain how the entire flow of the network works with neurons in the layers and activation functions. This section is where we will introduce the fact that it is all just simple linear algebra, i.e. matrices and such.
 
 ### The Model
-Explain what a `model` is regarding a neural network.
+A model of a system is the representation that the neural network believes to be true.
+Practically that is the output that is obtained after training of the network is done; including weights, biases, and everything else needed to describe the neural network.
+A concern in the case of models, is not wether they are correct, but rather if they are useful.
+Usefulness is shown with the models succes of predicting the world around it; a high succes, and thus a high accuracy, means that the model is useful.
+
+<!-- Idk what to write. -->
 
 ## Training <!-- WIP -->
 
