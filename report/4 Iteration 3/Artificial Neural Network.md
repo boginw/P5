@@ -37,7 +37,7 @@ Due to this nature, information will never move in cycles, which is the definiti
 
 ### A Neuron
 
-A neuron, also called a unit or node, is basically a mathematical function that accepts some input, calculates a weighted sum, adds a bias and then produces an output. 
+A neuron, also called a unit or node, is a mathematical function that accepts some input, calculates a weighted sum, adds a bias and then produces an output. 
 
 The mathematical equation for the function that is used to calculate the weighted sum is:
 
@@ -90,16 +90,37 @@ This section will start to explain the theory behind the neural network, and it 
 ### Activation Function
 <!-- Here it will explain what an activation function is and how it relates to data streaming through the network. We will here introduce the sigmoid function. -->
 
-Each neuron calculates it weighted sum when given an input.
-This means that, without an activation function to normalize these values, the value for each neuron could range from -infinity to infinity as each neuron does not know the bounds of the value. 
-In this project, the Sigmoid Function has been used because this is the most simple or default activation function. 
+Each neuron calculates a weighted sum when given an input.
+Without an activation function to normalize these values, the value for each neuron could range from -infinity to infinity as each neuron does not know the bounds of the value. 
+The purpose of an activation function is then to map resulting values in a neuron to a desired range, which is typically between 0 and 1. 
+The type of activation function can differ between different implementations, and in every implementation it can differ between layers.
+The most basic activation function is the step function, which simply return 1 if the value is above a certain threshold, and 0 otherwise.
+In this project, the sigmoid function has been used due to it being the only activation function, apart from the step function, that was fully supported in the OpenCV library.
 
 > $S(x) = \frac{1}{1 + e^{-x}}$
 
-The purpose of an activation function is then to map resulting values in a neuron to a desired range, which is typically between 0 and 1. 
+<!-- I asked our MI teacher Thomas to verify if the following claim is credible. The source is: https://www.learnopencv.com/understanding-activation-functions-in-deep-learning/ -->
 
-However, depending on the problem, different activation functions are used. 
-It is achknowledged that better ones do exist. 
+One of the problems of the sigmoid activation function is when it is used in training.
+The optimal way of using the sigmoid function involves using manual training, where the weights of the neurons are manually adjusted to give the best result.
+When a training function like the backpropagation technique is used, the gradient of the sigmoid function gives problems.
+
+<div id="fig:sigmoid">
+![](report/assets/pictures/sigmoid-activation-function.png){#fig:sigmoidAF width=45%}
+
+![](report/assets/pictures/sigmoid-derivative.png){#fig:sigmoidAF_derivative width=45%}
+
+The sigmoid function and its derivative. Figures from [@ActivationFunctions].
+</div>
+
+As seen on [@fig:sigmoidAF_derivative], which is the derivative of the sigmoid function in [@fig:sigmoidAF], the derivative function will yield a low value whenever the sigmoid function is nearing it's maximum and minimum value.
+This results in a vanishing gradient problem, due to backpropagation using the partial derivative of the error function to change the weight of the neuron.
+When the value of the partial derivative is very small, becuase the sigmoid function yields a minimum or a maximum, the weight between neurons are also barely changed.
+This results in barely no training taking place, as neurons reach this state.
+The vanishing gradient problem is primarily present when using backpropagation, and other learning functions, such as the RPROP function, have taken measures to overcome this problem.
+The RPROP function changes the scale at which it alters the weights of the network.
+This method allows for the function to accelerate learning, whenever a neuron seems stuck[@RPROP, p. 578].
+How to overcome this, is further described in the [@sec:Testing]
 
 ### The Entire Network
 This section will explain how the entire flow of the network works with neurons in the layers and activation functions. This section is where we will introduce the fact that it is all just simple linear algebra, i.e. matrices and such.
@@ -167,7 +188,7 @@ Another possible way is data augmentation, which is the act of slightly manipula
 rotating or zooming in on an image, is another method that can be used to reduce overfitting. 
 This is beneficial because you have data that is similar to your orginal data but with reasonable modified.
 
-### Testing
+### Testing {#sec:Testing}
 <!-- Here we will explain how to test the model after training using a testing data set. It should explain what to be aware of when creating the dataset and also why it is a good idea to have.  -->
 
 As shortly mentioned in the `Overfitting` subsection, the desired model is one that can generalize and not only work on 
