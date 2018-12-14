@@ -26,10 +26,10 @@ Isolating the Cr component allows for a more effective search later on, since on
 
 We do this by utilizing the OpenCV framework; it has a build in converter from RGB to YCrCb, which is a linear transformation, thereby having time and space complexity of $O(n)$, the function used is:[@opencv_image_transformation]
 
-> $$ Y = 0.299 R + 0.587 G + 0.114 B $$
-> $$ Cb = (B - Y) + delta $$
-> $$ Cr = (R - Y) + delta $$
-> $$ delta = \begin{cases}
+$$ Y = 0.299 R + 0.587 G + 0.114 B $$
+$$ Cb = (B - Y) + delta $$
+$$ Cr = (R - Y) + delta $$
+$$ delta = \begin{cases}
         128 & \quad \text{for 8-bit images}\\
         32768 & \quad \text{for 16-bit images}\\
         0.5 & \quad \text{for floating-point images}
