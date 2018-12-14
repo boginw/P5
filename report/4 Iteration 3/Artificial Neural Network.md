@@ -208,16 +208,17 @@ for testing the model.
 # Our Artificial Neural Network.
 
 <!--Explain how we configured our neural network and why we did as we did. Explain which activation function/ training function we used, explain how we handled overfitting and the data sets used.-->
+The following section will describe 
 
 ## The neural network OpenCv mlp
  
 ## Configuration
  
-### Data set
-
 ### Activation function
 
 ### Training function
+
+#### Data set
 
 ### Overfitting
 
