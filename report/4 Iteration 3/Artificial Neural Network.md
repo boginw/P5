@@ -1,14 +1,16 @@
 # Artificial Neural Network
 
 The final step in recognizing a speed sign is: recognizing the number in the sign. A neural network is proposed in order to 
-solve this task. The reason for this is that the speed signs detected can have a lot of variation in their format
- e.g angle, perspective, and size; these parameters can be difficult to define and take into account if one were to detect
-  the letters mathematically. 
+solve this task.
+<!-- The following section is definitely not true. We do normalization to avoid exactly that! -->
+The reason for this is that the speed signs detected can have a lot of variation in their format e.g angle, perspective, and size; these parameters can be difficult to define and take into account if one were to detect the letters mathematically. 
 In this section the concept of a neural network will be described, why we used it, and following that, how we adopted it to our problem.
 
 ## Why use it
 
-A neural network is excellent at solving tasks that are complicated or having inconsistent, incomplete or imprecise data. Neural networks primarily shine in pattern recognition because of their ability to generalize and respond to rather unexpected input or patterns. A specific situation that could illustrate all these scenarios could be when trying to recognize handwritten digits. This task can be entirely inconsistent since every person writing a digit has their style of handwriting. Also, the positioning and angle of the digit can fluctuate a lot from person to person. These conditions make it a complicated task to create an algorithm that can reliably recognize the digits since one person could write their `9` almost identical with another persons `8`. So, in order to solve this task, we need something that can analyze handwritten digits and search for patterns that can help in determining the actual digits of unknown cases in an unsupervised learning manner. 
+A neural network is excellent at solving tasks that are complicated or having inconsistent, incomplete or imprecise data. Neural networks primarily shine in pattern recognition because of their ability to generalize and respond to rather unexpected input or patterns. A specific situation that could illustrate all these scenarios could be when trying to recognize handwritten digits. This task can be entirely inconsistent since every person writing a digit has their style of handwriting. Also, the positioning and angle of the digit can fluctuate a lot from person to person. These conditions make it a complicated task to create an algorithm that can reliably recognize the digits since one person could write their `9` almost identical with another persons `8`. 
+<!-- Rewrite the part about us having to analyze handwritten digits. Because speedsigns doesn't use handwritten digits - last I checked at least -->
+So, in order to solve this task, we need something that can analyze handwritten digits and search for patterns that can help in determining the actual digits of unknown cases in an unsupervised learning manner. 
 
 Analyzing and recognizing these patterns are what a properly configured neural network do quite well. 
 It is often said that a neural network is a black box of magic since there is no way to deterministically know beforehand which patterns it would recognize or how it would derive at that result. 
@@ -139,13 +141,13 @@ Usefulness is shown with the models success of predicting the world around it; a
 In order to actually "learn" anything the neural network needs to train on what it is supposed to recognize. Training 
 consists of two phases: prediction and back-propagation. 
 In the first phases the neural network needs to make a prediction in order to see how well it can recognize the desired 
-features or patterns. For doing this a set of training data is required, in the example case with images of dogs, fish, 
-or neither,  the training set needs to consist of images of dogs, fish, or neither. Furthermore the images needs to be 
+features or patterns. For doing this, a set of training data is required. In the example case with images of dogs, fish, 
+or neither,  the training set needs to consist of images of dogs, fish, and neither. Furthermore the images needs to be 
 labeled with what they actually contains, so that the neural network can check if it predicts correctly.
 <!-- Maybe go more in detail on what a good training set is, and what can be done to improve it -  or maybe leave this to the discussion -->
 Then the second phases is to calculate how accurate the prediction was, and based on this make adjustments to the neural 
 network based on this, this is called back-propagation. More specifically back-propagation strives to minimize a cost function.
-An example og a cost function is to calculate the sum-of-square errors [@eq:squareError]. 
+An example of a cost function is to calculate the sum-of-square errors [@eq:squareError]. 
 
 $$ cost = \sum_{n}(p - a)^2 $$ {#eq:squareError}
 
