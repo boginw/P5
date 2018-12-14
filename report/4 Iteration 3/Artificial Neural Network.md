@@ -128,8 +128,8 @@ This section will explain how the entire flow of the network works with neurons 
 ### The Model
 A model of a system is the representation that the neural network believes to be true.
 Practically that is the output that is obtained after training of the network is done; including weights, biases, and everything else needed to describe the neural network.
-A concern in the case of models, is not wether they are correct, but rather if they are useful.
-Usefulness is shown with the models succes of predicting the world around it; a high succes, and thus a high accuracy, means that the model is useful.
+A concern in the case of models, is not whether they are correct, but rather if they are useful.
+Usefulness is shown with the models success of predicting the world around it; a high success, and thus a high accuracy, means that the model is useful.
 
 <!-- Idk what to write. -->
 
@@ -205,4 +205,18 @@ for testing the model.
 
 # Our Artificial Neural Network.
 
-Explain how we configured our neural network and why we did as we did. Explain which activation function/ training function we used, explain how we handled overfitting and the data sets used. 
+<!--Explain how we configured our neural network and why we did as we did. Explain which activation function/ training function we used, explain how we handled overfitting and the data sets used.-->
+
+## The neural network OpenCv mlp
+ 
+## Configuration
+ 
+### Data set
+
+### Activation function
+
+### Training function
+
+### Overfitting
+
+## Performance
