@@ -89,7 +89,7 @@ This section will start to explain the theory behind the neural network, and it 
 
 #### Hidden Layer
 
-### Activation Function
+### Activation Function {#sec:activation_function}
 <!-- Here it will explain what an activation function is and how it relates to data streaming through the network. We will here introduce the sigmoid function. -->
 
 Each neuron calculates a weighted sum when given an input.
@@ -115,14 +115,14 @@ When a training function like the backpropagation technique is used, the gradien
 The sigmoid function and its derivative. Figures from [@ActivationFunctions].
 </div>
 
-As seen on [@fig:sigmoidAF_derivative], which is the derivative of the sigmoid function in [@fig:sigmoidAF], the derivative function will yield a low value whenever the sigmoid function is nearing it's maximum and minimum value.
+As seen on [@fig:sigmoidAF_derivative], which is the derivative of the sigmoid function in [@fig:sigmoidAF], the derivative function will yield a low value whenever the sigmoid function is nearing its maximum and minimum value.
 This results in a vanishing gradient problem, due to backpropagation using the partial derivative of the error function to change the weight of the neuron.
 When the value of the partial derivative is very small, becuase the sigmoid function yields a minimum or a maximum, the weight between neurons are also barely changed.
 This results in barely no training taking place, as neurons reach this state.
 The vanishing gradient problem is primarily present when using backpropagation, and other learning functions, such as the RPROP function, have taken measures to overcome this problem.
 The RPROP function changes the scale at which it alters the weights of the network.
 This method allows for the function to accelerate learning, whenever a neuron seems stuck[@RPROP, p. 578].
-How to overcome this, is further described in the [@sec:Testing]
+How to overcome this, is further described in [@sec:Testing].
 
 ### The Entire Network
 This section will explain how the entire flow of the network works with neurons in the layers and activation functions. This section is where we will introduce the fact that it is all just simple linear algebra, i.e. matrices and such.
@@ -230,7 +230,6 @@ This method of testing allows for the exploration of several hypothesis about th
 Training was done this way, in order to determine the best activation and training functions, while also testing multiple different layer configurations. 
  
 ### Activation function
-
 
 ### Training function
 
