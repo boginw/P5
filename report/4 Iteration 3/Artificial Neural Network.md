@@ -231,33 +231,33 @@ Training was done this way, in order to determine the best activation and traini
  
 ### Activation function
 
+
 ### Training function
 
-The neural network was tested with three different training functions, gradient decent, RProp, and simulated annealing.
-Simulated Annealing yielded the best results for us. This could be due to simulated annealing's ability find different 
-local minima. As gradient decent and RProp are more dependant on the initial seed of the neural network. This does not 
-mean that gradient decent and RProp cannot be used, but more extensive testing is required in order to explore the 
-possible local minima.  
+The neural network was tested with three different training functions: gradient decent, RProp, and simulated annealing.
+Simulated Annealing yielded the best results. This could be due to simulated annealing's ability to find different 
+local minima, and approximate a global minima, as gradient decent and RProp are more dependent on the initial seed of the neural network.
+This does not mean that gradient decent and RProp cannot be used, but more extensive testing is required in order to explore the possible global minima.  
 
 #### Data set
 
-The data set used to train the neural network is called GTSRB (German Traffic Sign Recognition Benchmark) [@GTSRB], it is a large
-data set consisting of German traffic signs. The data set is diverse in as it contains images of traffic signs, under
-varying conditions eg. different angles and some are obstructed. 
-Training on this data set proved it hard to get high prediction accuracy, as the images were so diverse, and in some cases
-so noisy that it was virtually unrecognizable see [@fig:badSigns].
+The data set used to train the neural network is called GTSRB (German Traffic Sign Recognition Benchmark) [@GTSRB]. it is a large
+data set consisting of German traffic signs. The data set is diverse, as it contains images of traffic signs under
+varying conditions e.g. different angles and some are obstructed. 
+Training on this data set proved hard to achieve high prediction accuracy, as the images were so diverse, and in some cases
+so noisy that it was virtually unrecognizable, as seen in [@fig:badSigns].
 
 <div id="fig:badSigns">
 
 ![](report/assets/pictures/50SignObstructed.png){width=36% height=36%}
 ![](report/assets/pictures/OtherBadSign.png){width=50% height=50%}
 
-Exapmles of edge case signs from the data set
+Exapmles of edge case signs from the GTSRB data set.
 
 </div>
 
-The prediction accuracy turned out to be better when tested on the actual cars camera, with signs that were not distorted, angled, or obstucted.
-This shows that the model was still trained to detect normal signs, and that the issues was mainly due to difficult signs.
+The prediction accuracy turned out to be better when tested on the actual car's camera, with signs that were not distorted, angled, or obstucted.
+This shows that the model was still trained to detect normal signs, and that the issues was mainly in the event of edge cases.
 
  <!-- http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset -->
 
