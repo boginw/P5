@@ -208,11 +208,26 @@ for testing the model.
 # Our Artificial Neural Network.
 
 <!--Explain how we configured our neural network and why we did as we did. Explain which activation function/ training function we used, explain how we handled overfitting and the data sets used.-->
-The following section will describe 
+The following section will describe the methodology behind the creation of the neural network.
+Topics such as how configuration and which activation, or training functions where used are discussed, as well as why there were chosen.
 
-## The neural network OpenCv mlp
+## The neural network OpenCV MLP
  
 ## Configuration
+In order to train the network, different configurations of the network had to be chosen.
+The implementation had a total of 10 different configurations to alter, all relating to one of the following:
+- The activation function
+- The training method
+- The training length
+- The layer structure
+
+The implementation was capable of performing a single training session in about 2 minutes, when performed on an Intel Xeon W3530, 2.80 GHz and 8 logical cores, 6 x 4 GB ECC memory 1066MHz DDR2 and two GPU's, GTX 750 TI and GTX 660 respectively.
+Our implementation allowed for the values of the configurations to be loaded through a .csv file format, to which we created a script that generated different test configurations.
+When testing a hypothesis, it was sufficient to supply ballpark estimates of the appropriate ranges for the values, as the script methodically creates tests that ensures all configurations in the supplied range, and with the supplied interval are tested.
+
+Testing would ensue at night, and test results was analyzed in the morning.
+This method of testing allows for the exploration of several hypothesis about the structure of the network, and for finetuning the final settings of the network.
+Training was done this way, in order to determine the best activation and training functions, while also testing multiple different layer configurations. 
  
 ### Activation function
 
