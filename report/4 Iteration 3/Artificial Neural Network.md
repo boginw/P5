@@ -136,23 +136,62 @@ Usefulness is shown with the models success of predicting the world around it; a
 <!-- Idk what to write. -->
 
 ## Training <!-- WIP -->
+In order to actually "learn" to recognize anything, the neural network needs to train on what it is supposed to recognize. Training consists of two phases: prediction and backpropagation.
+This section will outline the steps needed for prediction and backpropagation, followed by the mathematical notations needed for implementing the method.
 
 <!-- This section will explain what it means to train a neural network and explain the Backpropagation function and use it to create an example. This section should also introduce the notion of training data and what to be aware of when creating a training data set. -->
-In order to actually "learn" anything the neural network needs to train on what it is supposed to recognize. Training 
-consists of two phases: prediction and back-propagation. 
-In the first phases the neural network needs to make a prediction in order to see how well it can recognize the desired 
-features or patterns. For doing this, a set of training data is required. In the example case with images of dogs, fish, 
-or neither,  the training set needs to consist of images of dogs, fish, and neither. Furthermore the images needs to be 
-labeled with what they actually contains, so that the neural network can check if it predicts correctly.
+
+Training consists of prediction and backpropagation.
+When trainingdata are given to the network, it will try to make a prediction of what is seen in the image, which will be given in the form of an output vector containing the propability, according to the network, of each option in the output layer.
+
+At first, the guess will be random, and quite possibly a long way off, on what the result is.
+Each image in the training data are marked with a label, which represents what the image actually contains.
+
+After the prediction is done, it is time to do the backpropagation.
+Backpropagation will result in some changes to the vectors in the neural network, which will be implemented, to let the training process start over, consider the next image, and do a prediction followed by backpropagation again.
+
+To calculate the result of backpropagation for every image, the cost of the prediction is calculated.
+The cost is calculated as the squares of the differences between the prediction- and the target vector.
+The overall goal of training is to decrease the overall cost of the network.
+This is obtained by nudging the weights, biases, and neurons that influence the output layer.
+
+Determinining which weights, biases, or neurons to nudge is a matter of determining their influence on the final output vector.
+If a neuron is very far off, the connections affecting it will be heavily modified, whereas they will only be slightly modified if the opposite holds true.
+Changing the weight or the bias is pretty straightforward, as that is something the backpropagation algorithm is directly allowed to do.
+Changing the neurons in preceding layers, however, takes an extra step.
+Since backpropagation cannot alter the neurons directly, it will have to do it the same way, as it alters the value of the neurons in the output layer - by changing the weights, biases, and neurons affecting it.
+This way, the backpropagation algorithm becomes a recurrent function that will consider each preceding neuron to change it, according to what output is expected.
+
+A detail to note is the backpropagation algorithm wants to change the neurons that have the biggest impact on the output value.
+If the output of one preceding neuron is $0.10$ compared to $4.20$ of another, changing the weight for the first neuron will impact the output value by $42$ times less, as if the same change in weight was aplied to the second neuron.
+
+Consider an example of a 4-layer neural network, where each layer consists of a single neuron.
+The two last neurons will be named $\gdef\A{A^{(L)}}$ as the last layer, the output layer, and $\A$ as the layer preceding it.
+Taking an example of training, the $A^{(L)}$ layer outputs the value $0.66$ as a prediction of the result.
+However, the target, $t$ is $1.00$.
+How should the network be trained?
+
+First of all, the cost of this training instance is calculated by the formula for sum of square errors, as seen in [@eq:squareError].
+
+$$ C_0 = (A^{(L)} - t)^2 $$
+{#eq:squareError}
+
+For the example given, this would be $(0.66 - 1)^2 = 0.12$.
+This tells that the prediction by $A^{(L)}$ is obviously off, but 
+How are $A^{(L)}$ calculated? 
+
+In the first phase the neural network needs to make a prediction in order to see how well it can recognize the desired features or patterns. For doing this, a set of training data is required. In the example case with images of dogs, fish, 
+or neither,  the training set needs to consist of images of dogs, fish, and neither. Furthermore the images needs to be labeled with what they actually contains, so that the neural network can check if its prediction is correct.
 <!-- Maybe go more in detail on what a good training set is, and what can be done to improve it -  or maybe leave this to the discussion -->
-Then the second phases is to calculate how accurate the prediction was, and based on this make adjustments to the neural 
+Then the second phase is to calculate how accurate the prediction was, and based on this make adjustments to the neural 
 network based on this, this is called back-propagation. More specifically back-propagation strives to minimize a cost function.
 An example of a cost function is to calculate the sum-of-square errors [@eq:squareError]. 
 
-$$ cost = \sum_{n}(p - a)^2 $$ {#eq:squareError}
+$$ cost = \sum_{n}(p - a)^2 $$
+<!-- {#eq:squareError} -->
 
 Where $n$ is the number of neurons in the layer, $p$ is the prediction, and $a$ is the actual feature. One approach on
-minimizing the cost, is to use gradient decent, to find the local minima, this can be used to find best 
+minimizing the cost, is to use gradient descent, to find the local minima, this can be used to find best 
 
 <!-- label of the image seen in [@eq:accuracy]. Here the first column contains the output from a network with 3 output nodes,the
 second column contains the target feature, in this case it can be seen the the network is quite uncertain on which output 
