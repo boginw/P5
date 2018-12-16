@@ -175,8 +175,7 @@ How should the network be trained?
 
 First of all, the cost of this training instance is calculated by the formula for sum of square errors, as seen in [@eq:squareError].
 
-$$ C_0 = (A^{(L)} - t)^2 $$ 
-{#eq:squareError}
+$$ C_0 = (A^{(L)} - t)^2 $$ {#eq:squareError}
 
 For the example given, this would be $(0.66 - 1)^2 = 0.12$.
 This tells that the prediction by $A^{(L)}$ is obviously off, and the question of how to change the prediction is raised.
@@ -184,8 +183,7 @@ This tells that the prediction by $A^{(L)}$ is obviously off, and the question o
 Thinking back to the conceptual walkthrough of the backpropagation algorithm, it should be done by changing either the weights, the bias', or the neurons.
 Looking at how $A^{(L)}$ are calculated in [@eq:outputCalc], it can be determined what to change.
 
-$$ A^{(L)} = \sigma(w^{(L)}A^{(L-1)}+b^{(L)}) \iff A^{(L)} = \sigma(z^{(L)}) $$
-{#eq:outputCalc}
+$$ A^{(L)} = \sigma(w^{(L)}A^{(L-1)}+b^{(L)}) \iff A^{(L)} = \sigma(z^{(L)}) $$ {#eq:outputCalc}
 
 Where $w^{(L)}$ is the weight from $A^{(L-1)}$ to $A^{(L)}$, $b^{(L)}$ is the bias for $A^{(L)}$, and $\sigma$ is the sigmoid activation function applied to the value of $A^{(L)}$.
 For ease of future referencing, all but the sigmoid function is notated as $z^{(L)}$.
@@ -198,16 +196,13 @@ As is also described in the conceptual walkthrough, changing the values of these
 Looking at [@fig:effectOnOutput] it is seen that changes to the weight $w^{(L)}$ directly affects the value of $z^{(L)}$.
 This can be described as seen in [@eq:deltaWdeltaZ].
 
-$$\frac{\delta z^{(L)}}{\delta w^{(L)}}$$
-{#eq:deltaWdeltaZ}
+$$\frac{\delta z^{(L)}}{\delta w^{(L)}}$$ {#eq:deltaWdeltaZ}
 
 Furthermore, changes to $z^{(L)}$ will directly affect $A^{(L)}$, and changes to $A^{(L)}$ will affect $C_0$, which is described in [@eq:deltaAdeltaZ].
 
-$$\frac{\delta A^{(L)}}{\delta z^{(L)}}\ and \ \frac{\delta C_0}{\delta A^{(L)}} $$
-{#eq:deltaAdeltaZ}
+$$\frac{\delta A^{(L)}}{\delta z^{(L)}}\ and \ \frac{\delta C_0}{\delta A^{(L)}} $$ {#eq:deltaAdeltaZ}
 
-$$  $$
-{#eq:chainRule}
+
 
 
 In the first phase the neural network needs to make a prediction in order to see how well it can recognize the desired features or patterns. For doing this, a set of training data is required. In the example case with images of dogs, fish, 
