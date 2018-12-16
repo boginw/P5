@@ -43,7 +43,8 @@ A neuron, also called a unit or node, is a mathematical function that accepts so
 
 The mathematical equation for the function that is used to calculate the weighted sum is:
 
-> $$Y = \sum (weight * input) + bias$$ <!-- add indices here --> 
+$$Y = \sum (weight * input) + bias$$ 
+<!-- add indices here --> 
 
 Before producing a final output, the weighted sum from the original input is sent to adjacent layers within the Artifical Neural Network to be processed. 
 Finally a value between 0 and 1 is produced based on what type of activation function is used in the neural network. 
@@ -165,6 +166,7 @@ This way, the backpropagation algorithm becomes a recurrent function that will c
 A detail to note is the backpropagation algorithm wants to change the neurons that have the biggest impact on the output value.
 If the output of one preceding neuron is $0.10$ compared to $4.20$ of another, changing the weight for the first neuron will impact the output value by $42$ times less, as if the same change in weight was aplied to the second neuron.
 
+<!-- Insert picture of the network here. -->
 Consider an example of a 4-layer neural network, where each layer consists of a single neuron.
 The two last neurons will be named $A^{(L)}$ as the last layer, the output layer, and $A^{(L-1)}$ as the layer preceding it.
 Taking an example of training, the $A^{(L)}$ layer outputs the value $0.66$ as a prediction of the result.
@@ -173,14 +175,40 @@ How should the network be trained?
 
 First of all, the cost of this training instance is calculated by the formula for sum of square errors, as seen in [@eq:squareError].
 
-$$ C_0 = (A^{(L)} - t)^2 $$ {#eq:squareError}
+$$ C_0 = (A^{(L)} - t)^2 $$ 
+{#eq:squareError}
 
 For the example given, this would be $(0.66 - 1)^2 = 0.12$.
-This tells that the prediction by $A^{(L)}$ is obviously off, but the question of how to change the prediction is raised.
+This tells that the prediction by $A^{(L)}$ is obviously off, and the question of how to change the prediction is raised.
 
 Thinking back to the conceptual walkthrough of the backpropagation algorithm, it should be done by changing either the weights, the bias', or the neurons.
-Looking at how $A^{(L)}$ are calculated, it can be determined what to change.
- 
+Looking at how $A^{(L)}$ are calculated in [@eq:outputCalc], it can be determined what to change.
+
+$$ A^{(L)} = \sigma(w^{(L)}A^{(L-1)}+b^{(L)}) \iff A^{(L)} = \sigma(z^{(L)}) $$
+{#eq:outputCalc}
+
+Where $w^{(L)}$ is the weight from $A^{(L-1)}$ to $A^{(L)}$, $b^{(L)}$ is the bias for $A^{(L)}$, and $\sigma$ is the sigmoid activation function applied to the value of $A^{(L)}$.
+For ease of future referencing, all but the sigmoid function is notated as $z^{(L)}$.
+
+![Should be changed to match Markdown comment](report/assets/pictures/nn/6.pdf){#fig:effectOnOutput}
+<!-- Figure where bias, weight, and neuron point to the output layer, which (together with the target) points to C_0.  -->
+
+[@Eq:outputCalc] shows the equation describing $A^{(L)}$, where it is seen that both the weight, bias, and previous neuron have an impact on the output.
+As is also described in the conceptual walkthrough, changing the values of these three parameters will change the value of the output.
+Looking at [@fig:effectOnOutput] it is seen that changes to the weight $w^{(L)}$ directly affects the value of $z^{(L)}$.
+This can be described as seen in [@eq:deltaWdeltaZ].
+
+$$\frac{\delta z^{(L)}}{\delta w^{(L)}}$$
+{#eq:deltaWdeltaZ}
+
+Furthermore, changes to $z^{(L)}$ will directly affect $A^{(L)}$, and changes to $A^{(L)}$ will affect $C_0$, which is described in [@eq:deltaAdeltaZ].
+
+$$\frac{\delta A^{(L)}}{\delta z^{(L)}}\ and \ \frac{\delta C_0}{\delta A^{(L)}} $$
+{#eq:deltaAdeltaZ}
+
+$$  $$
+{#eq:chainRule}
+
 
 In the first phase the neural network needs to make a prediction in order to see how well it can recognize the desired features or patterns. For doing this, a set of training data is required. In the example case with images of dogs, fish, 
 or neither,  the training set needs to consist of images of dogs, fish, and neither. Furthermore the images needs to be labeled with what they actually contains, so that the neural network can check if its prediction is correct.
