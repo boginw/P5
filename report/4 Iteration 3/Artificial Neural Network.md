@@ -273,19 +273,20 @@ This section described what happens for every single image in the training proce
 The entire process starts over when the next image is given as an input.
 
 
-
+<!--  
 In the first phase the neural network needs to make a prediction in order to see how well it can recognize the desired features or patterns. For doing this, a set of training data is required. In the example case with images of dogs, fish,
-or neither,  the training set needs to consist of images of dogs, fish, and neither. Furthermore the images needs to be labeled with what they actually contains, so that the neural network can check if its prediction is correct.
+or neither,  the training set needs to consist of images of dogs, fish, and neither. Furthermore the images needs to be labeled with what they actually contains, so that the neural network can check if its prediction is correct.-->
 <!-- Maybe go more in detail on what a good training set is, and what can be done to improve it -  or maybe leave this to the discussion -->
-Then the second phase is to calculate how accurate the prediction was, and based on this make adjustments to the neural
+<!--  Then the second phase is to calculate how accurate the prediction was, and based on this make adjustments to the neural
 network based on this, this is called back-propagation. More specifically back-propagation strives to minimize a cost function.
 An example of a cost function is to calculate the sum-of-square errors [@eq:squareError].
 
-$$ cost = \sum_{n}(p - a)^2 $$
+$$ cost = \sum_{n}(p - a)^2 $$-->
 <!-- {#eq:squareError} -->
 
+<!--  
 Where $n$ is the number of neurons in the layer, $p$ is the prediction, and $a$ is the actual feature. One approach on
-minimizing the cost, is to use gradient descent, to find the local minima, this can be used to find best
+minimizing the cost, is to use gradient descent, to find the local minima, this can be used to find best-->
 
 <!-- label of the image seen in [@eq:accuracy]. Here the first column contains the output from a network with 3 output nodes,the
 second column contains the target feature, in this case it can be seen the the network is quite uncertain on which output
