@@ -151,16 +151,15 @@ This section will outline the steps needed for prediction and backpropagation, f
 Training consists of prediction and backpropagation.
 When training-data are given to the network, it will make a prediction of what is seen in the image, which will be given in the form of an output vector containing the propability, according to the network, of each option in the output layer.
 
-At first, the guess will be random, and quite possibly a long way off, on what the result is.
-Each image in the training data are marked with a label, which represents what the image actually contains.
+At first, the prediction will be random, and quite possibly a long way off from the actual result.
+Each image in the training-data is combined with a label, which represents what the image actually contains.
 
 After the prediction is done, it is time to do the backpropagation.
 Backpropagation calculates how far off the prediction is from the actual result, and changes the weights, biases, and indirectly the neurons in the neural network, after which the cycle starts over with a new prediction on the next training image.
 
 The difference between the output vector and the target vector is known as the cost, and the overall goal of training is to decrease the overall cost of the network.
 The cost is calculated as the squares of the differences between the prediction- and the target vector.
-To calculate the result of backpropagation for every image, the cost of the prediction is calculated.
-This is obtained by nudging the weights, biases, and neurons that influence the output layer.
+Decreasing the cost is obtained by nudging the weights, biases, and neurons that influence the output layer.
 Determinining which weights, biases, or neurons to nudge is a matter of determining their influence on the final output vector.
 If a neuron is very far away from its predicted value, the connections affecting it will be heavily modified.
 When the opposite holds true, they will only be slightly modified.
@@ -176,61 +175,61 @@ If the output of one preceding neuron is $0.10$ compared to $4.20$ of another, c
 ![The simple network considered in this section.](report/assets/pictures/nn/3b1b2.png){#fig:network}
 
 Consider an example of a 4-layer neural network, where each layer consists of a single neuron, as depicted in [@fig:network].
-The last neuron, the only one in the output layer, will be named $A^{(L)}$ and $A^{(L-1)}$ as the neuron in the layer preceding it.
-Taking an example of training, the $A^{(L)}$ layer outputs the value $0.66$ as a prediction of the result.
+The last neuron, the only one in the output layer, will be named $a^{(L)}$ and $a^{(L-1)}$ as the neuron in the layer preceding it.
+Taking an example of training, the $a^{(L)}$ layer outputs the value $0.66$ as a prediction of the result.
 However, the target, $t$ is $1.00$.
 How should the network be trained?
 
 First of all, the cost of this training instance is calculated by the formula for sum of square errors, as seen in [@eq:squareError].
 
-$$ C_0 = (A^{(L)} - t)^2 $$ {#eq:squareError}
+$$ C_0 = (a^{(L)} - t)^2 $$ {#eq:squareError}
 
 For the example given, this would be $(0.66 - 1)^2 = 0.12$.
-This tells that the prediction by $A^{(L)}$ is obviously off, and the question of how to change the prediction is raised.
+This tells that the prediction by $a^{(L)}$ is obviously off, and the question of how to change the prediction is raised.
 
 Thinking back to the conceptual walkthrough of the backpropagation algorithm, it should be done by changing either the weights, the bias', or the neurons.
-Looking at how $A^{(L)}$ are calculated in [@eq:outputCalc], it can be determined what to change.
+Looking at how $a^{(L)}$ are calculated in [@eq:outputCalc], it can be determined what to change.
 
-$$ A^{(L)} = \sigma(w^{(L)}A^{(L-1)}+b^{(L)}) \iff A^{(L)} = \sigma(z^{(L)}) $$ {#eq:outputCalc}
+$$ a^{(L)} = \sigma(w^{(L)}a^{(L-1)}+b^{(L)}) \iff a^{(L)} = \sigma(z^{(L)}) $$ {#eq:outputCalc}
 
-Where $w^{(L)}$ is the weight from $A^{(L-1)}$ to $A^{(L)}$, $b^{(L)}$ is the bias for $A^{(L)}$, and $\sigma$ is the sigmoid activation function applied to the value of $A^{(L)}$.
+Where $w^{(L)}$ is the weight from $a^{(L-1)}$ to $a^{(L)}$, $b^{(L)}$ is the bias for $a^{(L)}$, and $\sigma$ is the sigmoid activation function applied to the value of $a^{(L)}$.
 For ease of future referencing, all but the sigmoid function is notated as $z^{(L)}$.
 
 ![The direct and indirect influence of different parameters on the cost.](report/assets/pictures/nn/3b1b.png){#fig:effectOnOutput}
 
 <!-- Figure where bias, weight, and neuron point to the output layer, which (together with the target) points to C_0.  -->
 
-[@Eq:outputCalc] shows the equation describing $A^{(L)}$, where it is seen that both the weight, bias, and previous neuron have an impact on the output.
+[@Eq:outputCalc] shows the equation describing $a^{(L)}$, where it is seen that both the weight, bias, and previous neuron have an impact on the output.
 As is also described in the conceptual walkthrough, changing the values of these three parameters will change the value of the output.
 Looking at [@fig:effectOnOutput] it is seen that changes to the weight $w^{(L)}$ directly affects the value of $z^{(L)}$.
 This can be described as seen in [@eq:deltaW].
 
 $$\frac{\delta z^{(L)}}{\delta w^{(L)}}$$ {#eq:deltaW}
 
-Furthermore, changes to $z^{(L)}$ will directly affect $A^{(L)}$, and changes to $A^{(L)}$ will affect $C_0$, which is described in [@eq:deltaAdeltaZ].
+Furthermore, changes to $z^{(L)}$ will directly affect $a^{(L)}$, and changes to $a^{(L)}$ will affect $C_0$, which is described in [@eq:deltaAdeltaZ].
 
-$$\frac{\delta A^{(L)}}{\delta z^{(L)}}\ and \ \frac{\delta C_0}{\delta A^{(L)}} $$ {#eq:deltaAdeltaZ}
+$$\frac{\delta a^{(L)}}{\delta z^{(L)}}\ and \ \frac{\delta C_0}{\delta a^{(L)}} $$ {#eq:deltaAdeltaZ}
 
 The three formulas in [@eq:deltaW] and [@eq:deltaAdeltaZ] shows a correlation between changes in $w^{(L)}$ and changes to $C_0$.
 This is also expressed as the chain rule, and the correlation is shown in [@eq:chainRule].
 
-$$ \frac{\delta C_0}{\delta w^{(L)}} = \frac{\delta z^{(L)}}{\delta w^{(L)}} \frac{\delta A^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta A^{(L)}} $$ {#eq:chainRule}
+$$ \frac{\delta C_0}{\delta w^{(L)}} = \frac{\delta z^{(L)}}{\delta w^{(L)}} \frac{\delta a^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta a^{(L)}} $$ {#eq:chainRule}
 
-The chain rule holds true for both the bias and the weight, but it also hold true for $A^{(L-1)}$, where $A^{(L-1)}$ itself will be dependent on $w^{(L-1)}$, $b^{(L-1)}$, and $A^{(L-2)}$.
+The chain rule holds true for both the bias and the weight, but it also hold true for $a^{(L-1)}$, where $a^{(L-1)}$ itself will be dependent on $w^{(L-1)}$, $b^{(L-1)}$, and $a^{(L-2)}$.
 In order to change the weight of all the parameters influencing the cost, it is necessary to calculate the derivative, as shown in the chain rule.
 From [@eq:squareError], the definition for $C_0$ is given, where the derivative is shown in [@eq:cDerivative].
 
-$$ \frac{\delta C_0}{\delta A^{(L)}} = 2(A^{(L)}-y) $$ {#eq:cDerivative}
+$$ \frac{\delta C_0}{\delta a^{(L)}} = 2(a^{(L)}-y) $$ {#eq:cDerivative}
 
-And from [@eq:outputCalc], the derivate of $A^{(L)}$ is given in [@eq:aDerivative].
+And from [@eq:outputCalc], the derivate of $a^{(L)}$ is given in [@eq:aDerivative].
 
-$$ \frac{\delta A^{(L)}}{\delta z^{(L)}} = \sigma'(z^{(L)})  $$ {#eq:aDerivative}
+$$ \frac{\delta a^{(L)}}{\delta z^{(L)}} = \sigma'(z^{(L)})  $$ {#eq:aDerivative}
 
 And lastly, as well from [@eq:outputCalc], the derivative of $z^{(L)}$ is given in [@eq:zDerivative].
 
 $$ \frac{\delta z^{(L)}}{\delta w^{(L)}} = a^{(L-1)} $$ {#eq:zDerivative}
 
-In [@eq:zDerivative] it is clear that when changing the weight of $\delta w^{(L)}$ it is dependent on the neuron from the previous layer, $A^{(L-1)}$.
+In [@eq:zDerivative] it is clear that when changing the weight of $\delta w^{(L)}$ it is dependent on the neuron from the previous layer, $a^{(L-1)}$.
 A downside of the weight being dependent on the activation function is the dependency of the output of the activation function.
 Weights with low outputs of the activation function will experience small changes in the weight, and in cases where the weight needs to be changed a lot, it is dependent on the activation function changing.
 This leads to the saturation problem described in the conceptual steps.
@@ -240,16 +239,16 @@ These are substituted in the chain rule, and their derivatives are calculated in
 
 For the bias, the chain rule and its derivative is depicted in [@eq:biasChain].
 
-$$ \frac{\delta C_0}{\delta b^{(L)}} = \frac{\delta z^{(L)}}{\delta b^{(L)}} \frac{\delta A^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta A^{(L)}} = 1 \sigma'(z^{(L)})2(A^{(L)}-y) $$ {#eq:biasChain}
+$$ \frac{\delta C_0}{\delta b^{(L)}} = \frac{\delta z^{(L)}}{\delta b^{(L)}} \frac{\delta a^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta a^{(L)}} = 1 \sigma'(z^{(L)})2(a^{(L)}-y) $$ {#eq:biasChain}
 
 The chain rule for the previous layer follows the principle of propagating backwards, as can be seen in [@eq:activationChain] where the weight of the preceding neuron is influencing the cost function.
 
-$$ \frac{\delta C_0}{\delta A^{(L-1)}} = \frac{\delta z^{(L)}}{\delta A^{(L-1)}} \frac{\delta A^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta A^{(L)}} = w^{(L)} \sigma'(z^{(L)})2(A^{(L)}-y) $$ {#eq:activationChain}
+$$ \frac{\delta C_0}{\delta a^{(L-1)}} = \frac{\delta z^{(L)}}{\delta a^{(L-1)}} \frac{\delta a^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta a^{(L)}} = w^{(L)} \sigma'(z^{(L)})2(a^{(L)}-y) $$ {#eq:activationChain}
 
 But so far this walkthrough have only been considering a network with a single neuron in each layer.
 The final part of the section will describe how the equations change if several neurons are introduced in every layer.
-Consider the network depicted in [@fig:newNetwork] where there are 3 neurons in layer $A^{(L-1)}$ and 2 neurons in the output layer $A^{(L)}$.
-In order to describe the neurons in each layer, the neurons in $A^{(L-1)}$ will be labeled as $A_k^{(L-1)}$, while the neurons in $A^{(L)}$ will be labeled as $A_j^{(L)}$.
+Consider the network depicted in [@fig:newNetwork] where there are 3 neurons in layer $a^{(L-1)}$ and 2 neurons in the output layer $a^{(L)}$.
+In order to describe the neurons in each layer, the neurons in $a^{(L-1)}$ will be labeled as $A_k^{(L-1)}$, while the neurons in $a^{(L)}$ will be labeled as $A_j^{(L)}$.
 There will also be more output targets, which will be labeled as $y_j$.
 
 ![A network containing more than one neuron in each layer.](report/assets/pictures/nn/3b1b3.png){#fig:newNetwork}
