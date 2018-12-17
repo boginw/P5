@@ -20,6 +20,7 @@ listings: true
 !{{2 Iteration 1/index.md}}
 !{{3 Iteration 2/index.md}}
 !{{4 Iteration 3/index.md}}
+!{{Appendix/Appendix.md}}
 
 
 # References
