@@ -149,7 +149,7 @@ This section will outline the steps needed for prediction and backpropagation, f
 <!-- This section will explain what it means to train a neural network and explain the Backpropagation function and use it to create an example. This section should also introduce the notion of training data and what to be aware of when creating a training data set. -->
 
 Training consists of prediction and backpropagation.
-When trainingdata are given to the network, it will try to make a prediction of what is seen in the image, which will be given in the form of an output vector containing the propability, according to the network, of each option in the output layer.
+When training data are given to the network, it will try to make a prediction of what is seen in the image, which will be given in the form of an output vector containing the propability, according to the network, of each option in the output layer.
 
 At first, the guess will be random, and quite possibly a long way off, on what the result is.
 Each image in the training data are marked with a label, which represents what the image actually contains.
