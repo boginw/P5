@@ -1,10 +1,10 @@
-# Overview of the project
+# Overview Of The Project
 Every essential part of the system is introduced at this point, and this chapter will show how the different parts operate together in the final product. The system itself is divided into two subsystems, the car system and the Speed Sign Recognition system (SSR system), this chapter will resemble that by explaining those subsystems individually and end of by describing the communication between them.
 
-## The car system
-The car is a relatively simple system. It consists of three components which each has their specific responsibility.  Firstly there is a component which responsibility is to handle the communication with the SSR system. The internal communication between the components is dealt with by an observer pattern, meaning that the parts depending on the messages from the SSR system are added as observers to the communication component. In this project, the word `observer` and `listener` will be used interchangeably. How the communication component work will be shown in [@subsec:communication], the rest of this section will focus on the other two components of the car system.
+## The Car System
+The car is a relatively simple system. It consists of three components which each has their specific responsibility. Firstly there is a component which responsibility is to handle the communication with the SSR system. The internal communication between the components is dealt with by an observer pattern, meaning that the parts depending on the messages from the SSR system are added as observers to the communication component. In this project, the word `observer` and `listener` will be used interchangeably. How the communication component work will be shown in [@subsec:communication], the rest of this section will focus on the other two components of the car system.
 
-### Motor control component
+### Motor Control Component
 The motor control component has, as the name implies the responsibility for controlling the motors. Since the leJOS operating system supplies all necessary boilerplate code to interact with the EV3 brick and the EV3 Motors, the only job of this component is to set the intended speed. The speed is defined as degrees per second. The maximum sustainable speed is 100 x the battery voltage; this means that depending on the battery voltage the car might not be able to reach its maximum speed. Because of that, the group decided to make the recognized speeds relative to the maximum available given the remaining voltage on the battery. Making the speeds relative is possible since leJOS supply an interface to get the maximum amount of degrees per second at any point in time. So taking a naive approach, and consider the cars, maximum amount of degrees per second as equal to the highest speed recognized by the SSR system.  Equation [@eq:calculateSpeed] shows how to set the speed relative to the amount of voltage on the battery, given the naive approach.
 
 $$ \Bigl\lceil \frac{Speed_{max} * Speed_{recognized} }{Speed_{recognitionMax}} \Bigr\rceil $${#eq:calculateSpeed}
@@ -13,7 +13,7 @@ Where $Speed_{max}$ is the maximum speed available given the voltage on the batt
 
 The motor component is registered as a listener to the communication component and such when it receives a message it will stop the motors, set the new speed using [@eq:calculateSpeed] and start the motors again.
 
-### Screen printer component
+### Screen Printer Component
 The Screen printer component has the responsibility to show the recognized speed, i.e., the speed that the car is adjusted too. The component simulates a display on the dashboard of a real car showing the driver what speed the car is moving in. This component is registered as a listener and displays the value received from the communication component.
 
 The screen printer component also acts as a confirmation component to the group, in the way that it allows for the group to assert that the recognized value is the same as the value of the sign held up to the camera.
@@ -47,4 +47,6 @@ The component starts in the center point provided by the `detect circle` sub-com
 
 It then tries to convert the ellipse into a perfect circle, by the technique explained in [@sec:flattening].  The conversion is to normalize the input to the network as much as possible.  The group achieved the conversion by using a number of OpenCV supplied function such as `getRotationMatrix2D` and `warpAffine` to achieve the result shown in  [@fig:EllipseFlattening1] in [@sec:flattening], `getPerspectiveTransform` and `warpPerspective` was used to achieve the result shown on [@fig:EllipseFlattening2]  in the same section.  Afterward, it crawls the new ellipse to retrieve the new pixels defining the circle. All of this work is done both on the process and the output image. Since the ellipse crawling mechanism needs the process image and the image cropper needs the output image. The final step is to crop the image only to contain the circle.
 
-## Communications between the car and SSR system
+## Communications Between the Car and the SSR System
+The communication between the car and the SSR System is achieved through a socket connection. The car will start a socket server and listen for a connection, and the SSR system will try to connect every 5 seconds. When the connection is successful a socket between the two systems is establish where every side has an output and input stream.
+
