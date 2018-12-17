@@ -142,40 +142,41 @@ Usefulness is shown with the models success of predicting the world around it; a
 <!-- Idk what to write. -->
 
 ## Training <!-- WIP -->
-In order to actually "learn" to recognize anything, the neural network needs to train on what it is supposed to recognize.
+In order to actually "learn" to recognize something, the neural network needs to train on what it is supposed to recognize.
 Training consists of two phases: prediction and backpropagation.
-This section will outline the steps needed for prediction and backpropagation, followed by the mathematical notations needed for implementing the method.
+This section will outline the steps needed for prediction and backpropagation, followed by the mathematical notations needed for understanding the method.
 
 <!-- This section will explain what it means to train a neural network and explain the Backpropagation function and use it to create an example. This section should also introduce the notion of training data and what to be aware of when creating a training data set. -->
 
 Training consists of prediction and backpropagation.
-When training data are given to the network, it will try to make a prediction of what is seen in the image, which will be given in the form of an output vector containing the propability, according to the network, of each option in the output layer.
+When training-data are given to the network, it will make a prediction of what is seen in the image, which will be given in the form of an output vector containing the propability, according to the network, of each option in the output layer.
 
 At first, the guess will be random, and quite possibly a long way off, on what the result is.
 Each image in the training data are marked with a label, which represents what the image actually contains.
 
 After the prediction is done, it is time to do the backpropagation.
-Backpropagation will result in some changes to the vectors in the neural network, which will be implemented, to let the training process start over, consider the next image, and do a prediction followed by backpropagation again.
+Backpropagation calculates how far off the prediction is from the actual result, and changes the weights, biases, and indirectly the neurons in the neural network, after which the cycle starts over with a new prediction on the next training image.
 
-To calculate the result of backpropagation for every image, the cost of the prediction is calculated.
+The difference between the output vector and the target vector is known as the cost, and the overall goal of training is to decrease the overall cost of the network.
 The cost is calculated as the squares of the differences between the prediction- and the target vector.
-The overall goal of training is to decrease the overall cost of the network.
+To calculate the result of backpropagation for every image, the cost of the prediction is calculated.
 This is obtained by nudging the weights, biases, and neurons that influence the output layer.
-
 Determinining which weights, biases, or neurons to nudge is a matter of determining their influence on the final output vector.
-If a neuron is very far off, the connections affecting it will be heavily modified, whereas they will only be slightly modified if the opposite holds true.
+If a neuron is very far away from its predicted value, the connections affecting it will be heavily modified.
+When the opposite holds true, they will only be slightly modified.
+
 Changing the weight or the bias is pretty straightforward, as that is something the backpropagation algorithm is directly allowed to do.
 Changing the neurons in preceding layers, however, takes an extra step.
-Since backpropagation cannot alter the neurons directly, it will have to do it the same way, as it alters the value of the neurons in the output layer - by changing the weights, biases, and neurons affecting it.
+Since backpropagation cannot alter the neurons directly, it will have to do it the same way as it alters the value of the neurons in the output layer - by changing the weights, biases, and neurons affecting it.
 This way, the backpropagation algorithm becomes a recurrent function that will consider each preceding neuron to change it, according to what output is expected.
 
-A detail to note is the backpropagation algorithm wants to change the neurons that have the biggest impact on the output value.
+A detail to note is, the backpropagation algorithm wants to change the neurons that have the biggest impact on the output value.
 If the output of one preceding neuron is $0.10$ compared to $4.20$ of another, changing the weight for the first neuron will impact the output value by $42$ times less, as if the same change in weight was aplied to the second neuron.
 
 ![The simple network considered in this section.](report/assets/pictures/nn/3b1b2.png){#fig:network}
 
 Consider an example of a 4-layer neural network, where each layer consists of a single neuron, as depicted in [@fig:network].
-The two last neurons will be named $A^{(L)}$ as the last layer, the output layer, and $A^{(L-1)}$ as the layer preceding it.
+The last neuron, the only one in the output layer, will be named $A^{(L)}$ and $A^{(L-1)}$ as the neuron in the layer preceding it.
 Taking an example of training, the $A^{(L)}$ layer outputs the value $0.66$ as a prediction of the result.
 However, the target, $t$ is $1.00$.
 How should the network be trained?
@@ -227,7 +228,7 @@ $$ \frac{\delta A^{(L)}}{\delta z^{(L)}} = \sigma'(z^{(L)})  $$ {#eq:aDerivative
 
 And lastly, as well from [@eq:outputCalc], the derivative of $z^{(L)}$ is given in [@eq:zDerivative].
 
-$$ \frac{\delta z^{(L)}}{\delta w^{(L)}} = a^{(L-1)} $$ {eq:zDerivative}
+$$ \frac{\delta z^{(L)}}{\delta w^{(L)}} = a^{(L-1)} $$ {#eq:zDerivative}
 
 In [@eq:zDerivative] it is clear that when changing the weight of $\delta w^{(L)}$ it is dependent on the neuron from the previous layer, $A^{(L-1)}$.
 A downside of the weight being dependent on the activation function is the dependency of the output of the activation function.
@@ -239,7 +240,7 @@ These are substituted in the chain rule, and their derivatives are calculated in
 
 For the bias, the chain rule and its derivative is depicted in [@eq:biasChain].
 
-$$ \frac{\delta C_0}{\delta b^{(L)}} = \frac{\delta z^{(L)}}{\delta b^{(L)}} \frac{\delta A^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta A^{(L)}} = 1 \sigma'(z^{(L)})2(A^{(L)}-y) $$ {@eq:biasChain}
+$$ \frac{\delta C_0}{\delta b^{(L)}} = \frac{\delta z^{(L)}}{\delta b^{(L)}} \frac{\delta A^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta A^{(L)}} = 1 \sigma'(z^{(L)})2(A^{(L)}-y) $$ {#eq:biasChain}
 
 The chain rule for the previous layer follows the principle of propagating backwards, as can be seen in [@eq:activationChain] where the weight of the preceding neuron is influencing the cost function.
 
