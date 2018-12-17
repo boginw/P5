@@ -206,7 +206,7 @@ $$\frac{\delta A^{(L)}}{\delta z^{(L)}}\ and \ \frac{\delta C_0}{\delta A^{(L)}}
 The three formulas in [@eq:deltaW] and [@eq:deltaAdeltaZ] shows a correlation between changes in $w^{(L)}$ and changes to $C_0$.
 This is also expressed as the chain rule, and the correlation is shown in [@eq:chainRule].
 
-$$ \frac{\delta C_0}{\delta w^{(L)}} = \frac{\delta z^{(L)}}{\delta w^{(L)}} \frac{\delta A^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta A^{(L)}} $$ [#eq:chainRule]
+$$ \frac{\delta C_0}{\delta w^{(L)}} = \frac{\delta z^{(L)}}{\delta w^{(L)}} \frac{\delta A^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta A^{(L)}} $$ {#eq:chainRule}
 
 The chain rule holds true for both the bias and the weight, but it also hold true for $A^{(L-1)}$, where $A^{(L-1)}$ itself will be dependent on $w^{(L-1)}$, $b^{(L-1)}$, and $A^{(L-2)}$.
 In order to change the weight of all the parameters influencing the cost, it is necessary to calculate the derivative, as shown in the chain rule.
