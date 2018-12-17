@@ -137,7 +137,8 @@ Usefulness is shown with the models success of predicting the world around it; a
 <!-- Idk what to write. -->
 
 ## Training <!-- WIP -->
-In order to actually "learn" to recognize anything, the neural network needs to train on what it is supposed to recognize. Training consists of two phases: prediction and backpropagation.
+In order to actually "learn" to recognize anything, the neural network needs to train on what it is supposed to recognize.
+Training consists of two phases: prediction and backpropagation.
 This section will outline the steps needed for prediction and backpropagation, followed by the mathematical notations needed for implementing the method.
 
 <!-- This section will explain what it means to train a neural network and explain the Backpropagation function and use it to create an example. This section should also introduce the notion of training data and what to be aware of when creating a training data set. -->
@@ -194,16 +195,41 @@ For ease of future referencing, all but the sigmoid function is notated as $z^{(
 [@Eq:outputCalc] shows the equation describing $A^{(L)}$, where it is seen that both the weight, bias, and previous neuron have an impact on the output.
 As is also described in the conceptual walkthrough, changing the values of these three parameters will change the value of the output.
 Looking at [@fig:effectOnOutput] it is seen that changes to the weight $w^{(L)}$ directly affects the value of $z^{(L)}$.
-This can be described as seen in [@eq:deltaWdeltaZ].
+This can be described as seen in [@eq:deltaW].
 
-$$\frac{\delta z^{(L)}}{\delta w^{(L)}}$$ {#eq:deltaWdeltaZ}
+$$\frac{\delta z^{(L)}}{\delta w^{(L)}}$$ {#eq:deltaW}
 
 Furthermore, changes to $z^{(L)}$ will directly affect $A^{(L)}$, and changes to $A^{(L)}$ will affect $C_0$, which is described in [@eq:deltaAdeltaZ].
 
 $$\frac{\delta A^{(L)}}{\delta z^{(L)}}\ and \ \frac{\delta C_0}{\delta A^{(L)}} $$ {#eq:deltaAdeltaZ}
 
+The three formulas in [@eq:deltaW] and [@eq:deltaAdeltaZ] shows a correlation between changes in $w^{(L)}$ and changes to $C_0$.
+This is also expressed as the chain rule, and the correlation is shown in [@eq:chainRule].
 
+$$ \frac{\delta C_0}{\delta w^{(L)}} = \frac{\delta z^{(L)}}{\delta w^{(L)}} \frac{\delta A^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta A^{(L)}} $$ [#eq:chainRule]
 
+The chain rule holds true for both the bias and the weight, but it also hold true for $A^{(L-1)}$, where $A^{(L-1)}$ itself will be dependent on $w^{(L-1)}$, $b^{(L-1)}$, and $A^{(L-2)}$.
+In order to change the weight of all the parameters influencing the cost, it is necessary to calculate the derivative, as shown in the chain rule.
+From [@eq:squareError], the definition for $C_0$ is given, where the derivative is shown in [@eq:cDerivative].
+
+$$ \frac{\delta C_0}{\delta A^{(L)}} = 2(A^{(L)}-y) $$ {#eq:cDerivative}
+
+And from [@eq:outputCalc], the derivate of $A^{(L)}$ is given in [@eq:aDerivative].
+
+$$ \frac{\delta A^{(L)}}{\delta z^{(L)}} = \sigma'(z^{(L)})  $$ {#eq:aDerivative}
+
+And lastly, as well from [@eq:outputCalc], the derivative of $z^{(L)}$ is given in [@eq:zDerivative].
+
+$$ \frac{\delta z^{(L)}}{\delta w^{(L)}} = a^{(L-1)} $$ [#eq:zDerivative]
+
+In [@eq:zDerivative] it is clear that when changing the weight of $\delta w^{(L)}$ it is dependent on the neuron from the previous layer, $A^{(L-1)}$.
+A downside of the weight being dependent on the activation function is the dependency of the output of the activation function.
+Weights with low outputs of the activation function will experience small changes in the weight, and in cases where the weight needs to be changed a lot, it is dependent on the activation function changing.
+This leads to the saturation problem described in the conceptual steps.
+
+The chain rule is described for the weight, but it also holds true for the bias, and the activation function from the previous layer.
+These are substituted in the chain rule, and their derivatives are calculated in order to obtain their function.
+This is omitted from the report as it is trivially derived from [@eq:chainRule].
 
 In the first phase the neural network needs to make a prediction in order to see how well it can recognize the desired features or patterns. For doing this, a set of training data is required. In the example case with images of dogs, fish, 
 or neither,  the training set needs to consist of images of dogs, fish, and neither. Furthermore the images needs to be labeled with what they actually contains, so that the neural network can check if its prediction is correct.
