@@ -173,6 +173,7 @@ A detail to note is the backpropagation algorithm wants to change the neurons th
 If the output of one preceding neuron is $0.10$ compared to $4.20$ of another, changing the weight for the first neuron will impact the output value by $42$ times less, as if the same change in weight was aplied to the second neuron.
 
 ![The simple network considered in this section.](report/assets/pictures/nn/3b1b2.png){#fig:network}
+
 Consider an example of a 4-layer neural network, where each layer consists of a single neuron, as depicted in [@fig:network].
 The two last neurons will be named $A^{(L)}$ as the last layer, the output layer, and $A^{(L-1)}$ as the layer preceding it.
 Taking an example of training, the $A^{(L)}$ layer outputs the value $0.66$ as a prediction of the result.
@@ -195,6 +196,7 @@ Where $w^{(L)}$ is the weight from $A^{(L-1)}$ to $A^{(L)}$, $b^{(L)}$ is the bi
 For ease of future referencing, all but the sigmoid function is notated as $z^{(L)}$.
 
 ![The direct and indirect influence of different parameters on the cost.](report/assets/pictures/nn/3b1b.png){#fig:effectOnOutput}
+
 <!-- Figure where bias, weight, and neuron point to the output layer, which (together with the target) points to C_0.  -->
 
 [@Eq:outputCalc] shows the equation describing $A^{(L)}$, where it is seen that both the weight, bias, and previous neuron have an impact on the output.
