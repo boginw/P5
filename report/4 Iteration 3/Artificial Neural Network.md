@@ -220,7 +220,7 @@ $$ \frac{\delta A^{(L)}}{\delta z^{(L)}} = \sigma'(z^{(L)})  $$ {#eq:aDerivative
 
 And lastly, as well from [@eq:outputCalc], the derivative of $z^{(L)}$ is given in [@eq:zDerivative].
 
-$$ \frac{\delta z^{(L)}}{\delta w^{(L)}} = a^{(L-1)} $$ [#eq:zDerivative]
+$$ \frac{\delta z^{(L)}}{\delta w^{(L)}} = a^{(L-1)} $$ {eq:zDerivative}
 
 In [@eq:zDerivative] it is clear that when changing the weight of $\delta w^{(L)}$ it is dependent on the neuron from the previous layer, $A^{(L-1)}$.
 A downside of the weight being dependent on the activation function is the dependency of the output of the activation function.
@@ -249,7 +249,7 @@ There will also be more output targets, which will be labeled as $y_j$.
 This will alter the cost function, as it is now depending on multiple neurons in the output layer.
 The new cost function is depicted in [@eq:newCost].
 
-$$ C_0 = \displaystyle\sum_{j = 0}^{N_l-1} (a_j^{(L)}-y_j) $$ {#eq:newCost}
+$$ C_0 = \displaystyle\sum_{j = 0}^{N_L-1} (a_j^{(L)}-y_j)^2 $$ {#eq:newCost}
 
 The only way that the new cost function in [@eq:newCost] differs from the cost function in [@eq:squareError] is the addition of the summation over all output neurons.
 In this equation $z$ also changes its value to take the extra neurons into account, as shown in [@eq:newZ].
@@ -258,9 +258,13 @@ $$ z = \displaystyle\sum_{k = 0}^{N_l-1} w_{jk}^{(L)} a_k^{(L-1)} $$ {#eq:newZ}
 
 For the chain rule of the bias and the weight, the only difference is the addition of the indices in the definition, and these equations are thus omitted.
 However, when it comes to the addition of neurons in the previous layer, it is obviously dependent on the additional neurons.
-This new equation is described in [@newA].
+This new equation is described in [@eq:newA].
 
-$$ \frac{\delta C_0}{\delta A_k^{(L-1)}} = \displaystyle\sum_{j = 0}^{N_l-1} \frac{\delta z^{(L)}}{\delta A_k^{(L-1)}} \frac{\delta A_j^{(L)}}{\delta z_j^{(L)}} \frac{\delta C_0}{\delta A_j^{(L)}} $$ {#newA}
+$$ \frac{\delta C_0}{\delta A_k^{(L-1)}} = \displaystyle\sum_{j = 0}^{N_L-1} \frac{\delta z^{(L)}}{\delta A_k^{(L-1)}} \frac{\delta A_j^{(L)}}{\delta z_j^{(L)}} \frac{\delta C_0}{\delta A_j^{(L)}} $$ {#eq:newA}
+
+This section described what happens for every single image in the training process.
+The entire process starts over when the next image is given as an input.
+
 
 
 In the first phase the neural network needs to make a prediction in order to see how well it can recognize the desired features or patterns. For doing this, a set of training data is required. In the example case with images of dogs, fish, 
