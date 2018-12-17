@@ -1,4 +1,3 @@
-# Iteration 1
+# Hardware \& Design
 
-In this chapter, the first iteration of the car is built. This chapter describes the different aspects of the iteration performed, completed with analysis, experiments, design, and building.
-
+This chapter describes the different aspects of building the car, complete with analysis, experiments, design, and construction.
