@@ -167,8 +167,8 @@ This way, the backpropagation algorithm becomes a recurrent function that will c
 A detail to note is the backpropagation algorithm wants to change the neurons that have the biggest impact on the output value.
 If the output of one preceding neuron is $0.10$ compared to $4.20$ of another, changing the weight for the first neuron will impact the output value by $42$ times less, as if the same change in weight was aplied to the second neuron.
 
-<!-- Insert picture of the network here. -->
-Consider an example of a 4-layer neural network, where each layer consists of a single neuron.
+![The simple network considered in this section.](report/assets/pictures/nn/3b1b2.png){#fig:network}
+Consider an example of a 4-layer neural network, where each layer consists of a single neuron, as depicted in [@fig:network].
 The two last neurons will be named $A^{(L)}$ as the last layer, the output layer, and $A^{(L-1)}$ as the layer preceding it.
 Taking an example of training, the $A^{(L)}$ layer outputs the value $0.66$ as a prediction of the result.
 However, the target, $t$ is $1.00$.
@@ -189,7 +189,7 @@ $$ A^{(L)} = \sigma(w^{(L)}A^{(L-1)}+b^{(L)}) \iff A^{(L)} = \sigma(z^{(L)}) $$ 
 Where $w^{(L)}$ is the weight from $A^{(L-1)}$ to $A^{(L)}$, $b^{(L)}$ is the bias for $A^{(L)}$, and $\sigma$ is the sigmoid activation function applied to the value of $A^{(L)}$.
 For ease of future referencing, all but the sigmoid function is notated as $z^{(L)}$.
 
-![Should be changed to match Markdown comment](report/assets/pictures/nn/6.pdf){#fig:effectOnOutput}
+![The direct and indirect influence of different parameters on the cost.](report/assets/pictures/nn/3b1b.png){#fig:effectOnOutput}
 <!-- Figure where bias, weight, and neuron point to the output layer, which (together with the target) points to C_0.  -->
 
 [@Eq:outputCalc] shows the equation describing $A^{(L)}$, where it is seen that both the weight, bias, and previous neuron have an impact on the output.
@@ -229,7 +229,39 @@ This leads to the saturation problem described in the conceptual steps.
 
 The chain rule is described for the weight, but it also holds true for the bias, and the activation function from the previous layer.
 These are substituted in the chain rule, and their derivatives are calculated in order to obtain their function.
-This is omitted from the report as it is trivially derived from [@eq:chainRule].
+
+For the bias, the chain rule and its derivative is depicted in [@eq:biasChain].
+
+$$ \frac{\delta C_0}{\delta b^{(L)}} = \frac{\delta z^{(L)}}{\delta b^{(L)}} \frac{\delta A^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta A^{(L)}} = 1 \sigma'(z^{(L)})2(A^{(L)}-y) $$ {@eq:biasChain}
+
+The chain rule for the previous layer follows the principle of propagating backwards, as can be seen in [@eq:activationChain] where the weight of the preceding neuron is influencing the cost function.
+
+$$ \frac{\delta C_0}{\delta A^{(L-1)}} = \frac{\delta z^{(L)}}{\delta A^{(L-1)}} \frac{\delta A^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta A^{(L)}} = w^{(L)} \sigma'(z^{(L)})2(A^{(L)}-y) $$ {#eq:activationChain}
+
+But so far this walkthrough have only been considering a network with a single neuron in each layer.
+The final part of the section will describe how the equations change if several neurons are introduced in every layer.
+Consider the network depicted in [@fig:newNetwork] where there are 3 neurons in layer $A^{(L-1)}$ and 2 neurons in the output layer $A^{(L)}$.
+In order to describe the neurons in each layer, the neurons in $A^{(L-1)}$ will be labeled as $A_k^{(L-1)}$, while the neurons in $A^{(L)}$ will be labeled as $A_j^{(L)}$.
+There will also be more output targets, which will be labeled as $y_j$.
+
+![A network containing more than one neuron in each layer.](report/assets/pictures/nn/3b1b3.png){#fig:newNetwork}
+
+This will alter the cost function, as it is now depending on multiple neurons in the output layer.
+The new cost function is depicted in [@eq:newCost].
+
+$$ C_0 = \displaystyle\sum_{j = 0}^{N_l-1} (a_j^{(L)}-y_j) $$ {#eq:newCost}
+
+The only way that the new cost function in [@eq:newCost] differs from the cost function in [@eq:squareError] is the addition of the summation over all output neurons.
+In this equation $z$ also changes its value to take the extra neurons into account, as shown in [@eq:newZ].
+
+$$ z = \displaystyle\sum_{k = 0}^{N_l-1} w_{jk}^{(L)} a_k^{(L-1)} $$ {#eq:newZ}
+
+For the chain rule of the bias and the weight, the only difference is the addition of the indices in the definition, and these equations are thus omitted.
+However, when it comes to the addition of neurons in the previous layer, it is obviously dependent on the additional neurons.
+This new equation is described in [@newA].
+
+$$ \frac{\delta C_0}{\delta A_k^{(L-1)}} = \displaystyle\sum_{j = 0}^{N_l-1} \frac{\delta z^{(L)}}{\delta A_k^{(L-1)}} \frac{\delta A_j^{(L)}}{\delta z_j^{(L)}} \frac{\delta C_0}{\delta A_j^{(L)}} $$ {#newA}
+
 
 In the first phase the neural network needs to make a prediction in order to see how well it can recognize the desired features or patterns. For doing this, a set of training data is required. In the example case with images of dogs, fish, 
 or neither,  the training set needs to consist of images of dogs, fish, and neither. Furthermore the images needs to be labeled with what they actually contains, so that the neural network can check if its prediction is correct.
