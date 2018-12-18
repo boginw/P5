@@ -1,5 +1,5 @@
-### Gearing test
-As described in @sec:DesignCritera optimally the car will drive as fast as possible within a limited range, and as such, it is worth exploring different gearing ratios as these can increase the velocity. This section will, therefore, describe an experiment for determining the best gearing ratio for the car given the previous limitations.
+### Gearing test {#sec:gearingTest}
+As described in [@sec:DesignCritera] optimally the car will drive as fast as possible within a limited range, and as such, it is worth exploring different gearing ratios as these can increase the velocity. This section will, therefore, describe an experiment for determining the best gearing ratio for the car given the previous limitations.
 
 #### Methodology
 
@@ -9,7 +9,7 @@ By creating a gearing for each gearing ratio compatible with the car, the best g
 Placing a marker at the start of the track to be driven on, and one at the end determines the track to be driven. The distance between the markers defines the length of the track. The car is then to drive the full length of the track, starting 50 cm before the first marker, to allow the car to reach its maximum velocity.
 The distance between the markers is chosen as 200 cm, as this distance is deemed reasonable for the car to recognize a speed sign within.
 
-#### Results
+#### Results {#sec:gearingTestResults}
 
 The speed is calculated by dividing the time elapsed by the distance driven, which was a constant of 2 meters.
 
