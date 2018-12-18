@@ -373,7 +373,7 @@ A possible way to reduce the effect of overfitting is to give the model more dat
 This means that it will be able to learn more from the training set by, hopefully, adding more diversity.
 Another possible way is data augmentation, which is the act of slightly manipulation the data by changing values or by
 rotating or zooming in on an image, is another method that can be used to reduce overfitting.
-This is beneficial because you have data that is similar to your orginal data but with reasonable modified.
+This is beneficial because you have data that is similar to your original data but with reasonable modified.
 
 ### Testing {#sec:Testing}
 <!-- Here we will explain how to test the model after training using a testing data set. It should explain what to be aware of when creating the dataset and also why it is a good idea to have.  -->
@@ -414,15 +414,14 @@ Training was done this way, in order to determine the best activation and traini
 ### Training function
 
 The neural network was tested with three different training functions: gradient decent, RProp, and simulated annealing.
-Simulated Annealing yielded the best results. This could be due to simulated annealing's ability to find different
-local minima, and approximate a global minima, as gradient decent and RProp are more dependent on the initial seed of the neural network.
+Simulated Annealing yielded the best results. This could be due to simulated annealing's ability to find different local minima, and approximate a global minima, as gradient decent and RProp are more dependent on the initial seed of the neural network.
 This does not mean that gradient decent and RProp cannot be used, but more extensive testing is required in order to explore the possible global minima.  
 
 #### Data set
 
 The data set used to train the neural network is called GTSRB (German Traffic Sign Recognition Benchmark) [@GTSRB]. it is a large
 data set consisting of German traffic signs. The data set is diverse, as it contains images of traffic signs under
-varying conditions e.g. different angles and some are obstructed.
+varying conditions e.g. different angles varying degrees of obstruction.
 Training on this data set proved hard to achieve high prediction accuracy, as the images were so diverse, and in some cases
 so noisy that it was virtually unrecognizable, as seen in [@fig:badSigns].
 
@@ -431,11 +430,11 @@ so noisy that it was virtually unrecognizable, as seen in [@fig:badSigns].
 ![](report/assets/pictures/50SignObstructed.png){width=36% height=36%}
 ![](report/assets/pictures/OtherBadSign.png){width=50% height=50%}
 
-Exapmles of edge case signs from the GTSRB data set.
+Examples of edge case signs from the GTSRB data set.
 
 </div>
 
-The prediction accuracy turned out to be better when tested on the actual car's camera, with signs that were not distorted, angled, or obstucted.
+The prediction accuracy turned out to be better when tested on the actual car's camera, with signs that were not distorted, angled, or obstructed.
 This shows that the model was still trained to detect normal signs, and that the issues was mainly in the event of edge cases.
 
  <!-- http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset -->
