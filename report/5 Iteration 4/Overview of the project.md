@@ -11,7 +11,7 @@ $$ \Bigl\lceil \frac{Speed_{max} * Speed_{recognized} }{Speed_{recognitionMax}} 
 
 Where $Speed_{max}$ is the maximum speed available given the voltage on the battery, $Speed_{recognized}$ is the value received from the SSR system and $Speed_{recognitionMax}$ is the maximum recognizable value of the SSR system.
 
-The motor component is registered as a listener to the communication component and such when it receives a message it will stop the motors, set the new speed using [@eq:calculateSpeed] and start the motors again.
+The motor component is registered as a listener to the communication component and when it receives a message it will stop the motors, set the new speed using [@eq:calculateSpeed] and start the motors again.
 
 ### Screen Printer Component
 The Screen printer component has the responsibility to show the recognized speed, i.e., the speed that the car is adjusted too. The component simulates a display on the dashboard of a real car showing the driver what speed the car is moving in. This component is registered as a listener and displays the value received from the communication component.
