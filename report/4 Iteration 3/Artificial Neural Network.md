@@ -282,7 +282,7 @@ The entire process starts over when the next image is given as an input.
 
 ### Simulated annealing
 Another technique for learning is called simulated annealing.
-This section describes the technique based on multiple sources of [@openCV_simulatedAnnealing;@cleverAlgorithms;machineIntelligence].
+This section describes the technique based on multiple sources, namely [@openCV_simulatedAnnealing;@cleverAlgorithms;machineIntelligence].
 The technique imitates annealing from metallurgy where a material is heated and slowly cooled in order to reach the optimal crystal structure of the material.
 The simulated annealing algorithm uses much of the terminology from the original method.
 
@@ -298,7 +298,8 @@ During the runs, the algorithm will keep track of the configuration that has bee
 The algorithm will randomly pick a new configuration of weights and biases, that is not associated with the previous configuration in any way.
 This configuration will be evaluated, and if the new configuration produces a lower cost for the system, in simulated annealing terms called energy, the new configuration is used instead.
 Since 'cost' is already used to describe what the 'energy' is, cost will be used in this section, to keep consistency throughout the report.
-A new configuration, which changes a few of the weights or biasses will be chosen, in order to be tested again.
+The term 'energy' is introduced, in case the reader needs to refer to documentation regarding the simulated annealing algorithm outside of this report.
+A new configuration, which changes a few of the weights or biasses, will be chosen, in order to be tested again.
 If the new configuration does not have a lower cost, the configuration might still be chosen in order to investigate neighboring solutions.
 Whether the configuration with a higher cost is chosen or not depends on the temperature $T$.
 A high temperature means the algorithm are likely to investigate configurations with higher cost, while a low temperature gives a very low probability that configurations with higher cost are chosen.
@@ -309,7 +310,7 @@ This is done with the Gibbs distribution, which is seen in [@eq:gibbs].
 
 $$ e^{-(C(h')-C(h))/T} $$ {#eq:gibbs}
 
-Where $h$ is the current configuration, $h'$ is the randomly chosen new configuration, and $C$ is the the cost of some configuration.
+Where $h$ is the current configuration, $h'$ is the randomly chosen new configuration, and $C$ is the cost of some configuration.
 As an example, if the temperature is $10$ and a configuration is $1$-worse (i.e., $C(h')-C(h) = 1$) the probability that this configuration will be chosen, even though it is worse than the current configuration, will be $e^{-1/0.9}=e^{-0.1} \approx 0.9$.
 In contrast, if the temperature is 0.1 the probability that the same configuration will be chosen are $e^{-1/0.1}=e^{-10} \approx 0.00005$
 
