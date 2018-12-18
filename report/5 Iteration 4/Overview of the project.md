@@ -47,6 +47,6 @@ The component starts in the center point provided by the `detect circle` sub-com
 
 It then tries to convert the ellipse into a perfect circle, by the technique explained in [@sec:flattening].  The conversion is to normalize the input to the network as much as possible.  The group achieved the conversion by using a number of OpenCV supplied function such as `getRotationMatrix2D` and `warpAffine` to achieve the result shown in  [@fig:EllipseFlattening1] in [@sec:flattening], `getPerspectiveTransform` and `warpPerspective` was used to achieve the result shown on [@fig:EllipseFlattening2]  in the same section.  Afterward, it crawls the new ellipse to retrieve the new pixels defining the circle. All of this work is done both on the process and the output image. Since the ellipse crawling mechanism needs the process image and the image cropper needs the output image. The final step is to crop the image only to contain the circle.
 
-## Communications Between the Car and the SSR System
+## Communications Between the Car and the SSR System {#subsec:communication}
 The communication between the car and the SSR System is achieved through a socket connection. The car will start a socket server and listen for a connection, and the SSR system will try to connect every 5 seconds. When the connection is successful a socket between the two systems is establish where every side has an output and input stream.
 
