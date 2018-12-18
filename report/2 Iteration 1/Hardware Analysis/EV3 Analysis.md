@@ -2,7 +2,7 @@
 The EV3 will be running leJOS, a Linux derivative, as its operating system. 
 As the group was unable to identify the actual resource-usage of leJOS, some experiments are conducted to identify how much of the available resources the OS will consume, and hence how many resources are free to use.
 
-#### Hardware specification
+#### Hardware Specification {#sec:ev3HardwareSpec}
 Seen below is a table of the specifications of the LEGO EV3 as found in [@the_lego_group_lmsuser_2015, p. 8].
 
 | EV3 Specification        |             |
@@ -16,18 +16,18 @@ Seen below is a table of the specifications of the LEGO EV3 as found in [@the_le
 
 \*\* For host communication.
 
-#### Test methodology
+#### Test Methodology
 For testing the memory of the EV3 with leJOS, two sub-tests, one for the heap size and one for the stack size, will be conducted to minimize the noise in the measurements.
 
 For testing the size of the heap, a small program was developed, utilizing dynamic memory allocation. This utilization is done by creating a linked list of bytes, and adding a new byte to the head of that linked list until the program throws an `OutOfMemoryError` exception. The exception is then caught, and the memory usage is recorded by utilizing the Java Runtime object.
 
-Through leJOS a Java Virtual Machine is introduced, which in turn introduces a garbage collector. This garbage collector hinders the possibility to naïvely place a new byte in the heap for every step, as these bytes would not be kept "alive" throughout the entire run of the program. To compensate for the garbage collector, a linked list is used, which ensures that the references for every byte are kept alive, albeit at the cost of a memory overhead.
-In pracsis, this does not allow for the amount of used memory to increase by one byte per step, which is a trade-off. This trade-off is considered resonable by the group, since the overhead is expected to be relatively low, and therefore the test should still be able to produce an acceptable result.
+Through leJOS a Java Virtual Machine is introduced, which in turn introduces a garbage collector. This garbage collector hinders the possibility to naïvely place a new byte in the heap for every step, as these bytes would not be kept "alive" throughout the entire run of the program. A linked list is used to compensate for the garbage collection,  which ensures that the references for every byte are kept alive, albeit at the cost of a memory overhead.
+In practice, this does not allow for the amount of used memory to increase by one byte per step, which is a trade-off. This trade-off is considered reasonable by the group since the overhead is expected to be relatively low, and therefore the test should still be able to produce an acceptable result.
 
 For testing the stack size, a different approach was used. Another small program was developed, in which a recursive method is invoked. This method takes an integer as input, stores it to a local variable, increments it by 1, and then invokes the method again with the new value. This never-ending recursion happens within a `try` block which ultimately catches a `StackOverflowError` exception. The Java Runtime object is then utilized to get information about the memory usages.
 
 #### Hypothesis
-Since the EV3 has 64 MB of RAM, according to the specifications provided by LEGO, it is assumed that this means 64 MB of physical RAM installed. This means that some of the RAM will be used by the operating system running on the device. Since the group has chosen to use a third-party operating system, it is assumed that this OS is rather costly in RAM usage. Also, the chosen operating system runs a Java Virtual Machine, and this VM is assumed to take up even more RAM.
+Since the EV3 has 64 MB of RAM, according to the specifications provided by LEGO, it is assumed that this means 64 MB of physical RAM installed. This results in the assumption that some of the RAM will be used by the operating system running on the device. Since the group has chosen to use a third-party operating system, it is assumed that this OS is rather costly in RAM usage. Also, the chosen operating system runs a Java Virtual Machine, and this VM is assumed to take up even more RAM.
 
 Based on the above considerations, the group assumes that the operating system would occupy roughly 1/3 of the RAM, while 2/3 of the RAM will be available for utilization. Since LEGO specifies the EV3 brick to have 64 MB of RAM, it is therefore assumed that the operating system occupies around 21 MB of RAM, and around 43 MB is available for utilization.
 
@@ -43,7 +43,7 @@ The first test conducted was the heap test. The test was conducted five times to
 | Attempt 5 |              28,573,696 |         120 |    28,573,576 |
 Table: The result of the Heap memory test. The result is represented in bytes. {#tbl:heapTestTable}
 
-As seen in [@tbl:heapTestTable], the Java Runtime identifies the total amount of allocated memory for the program execution as 27.25000 MB. When utilizing the linkedList to fill up the RAM, we can occupy up to a total of 27.24989 MB. The upper bound difference between available and usable memory is 120 bytes. The test also shows consistent usability of the ram throughout the five test runs.
+As seen in [@tbl:heapTestTable], the Java Runtime identifies the total amount of allocated memory for the program execution as 27.25000 MB. When utilizing the aforementioned linked list to fill up the RAM, we can occupy up to a total of 27.24989 MB. The upper bound difference between available and usable memory is 120 bytes. The test also shows consistent usability of the ram throughout the five test runs.
 
 The second test was the stack size test. Just like the heap test, this test was also conducted five times. The result is shown in [@tbl:stackSizeTable], which displays the Java Runtime statistics at the point in time where the `StackOverflowError` exception was caught.
 
