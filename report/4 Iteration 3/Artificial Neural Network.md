@@ -138,10 +138,9 @@ A model of a system is the representation that the neural network believes to be
 Practically that is the output that is obtained after training of the network is done; including weights, biases, and everything else needed to describe the neural network.
 A concern in the case of models, is not whether they are correct, but rather if they are useful.
 Usefulness is shown with the models success of predicting the world around it; a high success, and thus a high accuracy, means that the model is useful.
-
 <!-- Idk what to write. -->
 
-## Training <!-- WIP -->
+## Training
 In order to actually "learn" to recognize something, the neural network needs to train on what it is supposed to recognize.
 Training consists of two phases: prediction and backpropagation.
 This section will outline the steps needed for prediction and backpropagation, followed by the mathematical notations needed for understanding the method.
@@ -311,7 +310,7 @@ This is done with the Gibbs distribution, which is seen in [@eq:gibbs].
 $$ e^{-(C(h')-C(h))/T} $$ {#eq:gibbs}
 
 Where $h$ is the current configuration, $h'$ is the randomly chosen new configuration, and $C$ is the cost of some configuration.
-As an example, if the temperature is $10$ and a configuration is $1$-worse (i.e., $C(h')-C(h) = 1$) the probability that this configuration will be chosen, even though it is worse than the current configuration, will be $e^{-1/0.9}=e^{-0.1} \approx 0.9$.
+As an example, if the temperature is $10$ and a configuration is $1$-worse (i.e., $C(h')-C(h) = 1$) the probability that this configuration will be chosen, even though it is worse than the current configuration, will be $e^{-1/10}=e^{-0.1} \approx 0.9$.
 In contrast, if the temperature is 0.1 the probability that the same configuration will be chosen are $e^{-1/0.1}=e^{-10} \approx 0.00005$
 
 An implementation-specific detail is that the OpenCV library tries a number of different neighboring configurations before decreasing the temperature, instead of decreasing the temperature every time a new configuration is tried.
@@ -364,10 +363,10 @@ number is the worse the neural network is at predicting the desired features, an
 <!-- Here we will explain the dangers of overfitting the model. Also, how to ensure that it does not happen. -->
 
 The concept of overfitting in machine learning is that the model is really good at classifying data based on the
-training set, but when the model is then to classify based on the test examples, the model was not trained on, the model
+training set, but when the model is then to classify based on data that was not part of the test data, the model
 performs poorly and cannot classify the data correctly.
-Overfitting basically means that the model is unable to generalize well.
-This means that whatever features the model was trained on, it would only correctly classify those since data that
+Overfitting occurs when the model is unable to generalize, and instead focuses on too concrete data in the training data.
+This means that whatever features the model was trained on, it would only correctly classify those, since data that
 slightly deviate from the training set are not correctly classified.
 
 A possible way to reduce the effect of overfitting is to give the model more data to train on.
