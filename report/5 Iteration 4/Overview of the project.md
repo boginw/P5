@@ -25,7 +25,7 @@ The system is designed to support different modes, and this is to allow for diff
 
 After initializing the mode, one can start the entire system by calling the method `start` on the mode-object. This method takes three parameters which are a `VideoCapture` object, an `EllipseProccessor` object and an `Interface Function`, which is a Java object that works like a lambda expression. The `Interface Function` allows for passing a function as a parameter and then invoke it inside the method. We use this to pass along the `predict` method of the ANN.
 
-When invoking the `start` method, the first thing that happens is that the connection to the car is established. After a successful connection an infinity-loop starts which reads an image from the `video capture` pass it to the `ellipse processor` and if the that locates and abstracts a speed sign it is then sent to the `predict` method of the `ANN`. Lastly, the prediction from the ANN is then sent over the communication socket. Sending the message concludes the loop, and it will start over grabbing an image. 
+When invoking the `start` method, the connection to the car is established. After a successful connection an infinity-loop starts which reads an image from the `video capture`, pass it to the `ellipse processor` and if that locates and abstracts a speed sign it is then sent to the `predict` method of the ANN. Lastly, the prediction from the ANN is then sent over the communication socket. Sending the message concludes the loop, and it will start over grabbing an image. 
 
 As mentioned earlier, the communication component will be shown later. Therefore the focus will be to explain the `video capture`-component, `ellipse processor`-component and the `ANN`-component.
 
