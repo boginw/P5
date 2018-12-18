@@ -151,7 +151,7 @@ This section will outline the steps needed for prediction and backpropagation, f
 Training consists of prediction and backpropagation.
 When training-data are given to the network, it will make a prediction of what is seen in the image, which will be given in the form of an output vector containing the propability, according to the network, of each option in the output layer.
 
-At first, the prediction will be random, and quite possibly a long way off from the actual result.
+At first, the prediction will be random, and quite possibly a long way off the actual result.
 Each image in the training-data is combined with a label, which represents what the image actually contains.
 
 After the prediction is done, it is time to do the backpropagation.
@@ -169,15 +169,15 @@ Changing the neurons in preceding layers, however, takes an extra step.
 Since backpropagation cannot alter the neurons directly, it will have to do it the same way as it alters the value of the neurons in the output layer - by changing the weights, biases, and neurons affecting it.
 This way, the backpropagation algorithm becomes a recurrent function that will consider each preceding neuron to change it, according to what output is expected.
 
-A detail to note is, the backpropagation algorithm wants to change the neurons that have the biggest impact on the output value.
-If the output of one preceding neuron is $0.10$ compared to $4.20$ of another, changing the weight for the first neuron will impact the output value by $42$ times less, as if the same change in weight was aplied to the second neuron.
+The backpropagation algorithm wants to change the neurons that have the biggest impact on the output value.
+As an example, if the output of one preceding neuron is $0.10$ compared to $4.20$ of another, changing the weight for the first neuron will impact the output value by $42$ times less, as if the same change in weight was aplied to the second neuron.
 
 ![The simple network considered in this section.](report/assets/pictures/nn/3b1b2.png){#fig:network}
 
 Consider an example of a 4-layer neural network, where each layer consists of a single neuron, as depicted in [@fig:network].
-The last neuron, the only one in the output layer, will be named $a^{(L)}$ and $a^{(L-1)}$ as the neuron in the layer preceding it.
+The last neuron, the only one in the output layer, will be named $a^{(L)}$ and $a^{(L-1)}$ is the neuron in the layer preceding it.
 Taking an example of training, the $a^{(L)}$ layer outputs the value $0.66$ as a prediction of the result.
-However, the target, $t$ is $1.00$.
+However, the target, $y$ is $1.00$.
 How should the network be trained?
 
 First of all, the cost of this training instance is calculated by the formula for sum of square errors, as seen in [@eq:squareError].
@@ -185,15 +185,15 @@ First of all, the cost of this training instance is calculated by the formula fo
 $$ C_0 = (a^{(L)} - t)^2 $$ {#eq:squareError}
 
 For the example given, this would be $(0.66 - 1)^2 = 0.12$.
-This tells that the prediction by $a^{(L)}$ is obviously off, and the question of how to change the prediction is raised.
+This tells that the prediction by $a^{(L)}$ is obviously off, and the network needs to be changed.
 
-Thinking back to the conceptual walkthrough of the backpropagation algorithm, it should be done by changing either the weights, the bias', or the neurons.
+Thinking back to the conceptual walkthrough of the backpropagation algorithm, the prediction of the network can be changed by changing either the weights, the biasses, or the neurons.
 Looking at how $a^{(L)}$ are calculated in [@eq:outputCalc], it can be determined what to change.
 
 $$ a^{(L)} = \sigma(w^{(L)}a^{(L-1)}+b^{(L)}) \iff a^{(L)} = \sigma(z^{(L)}) $$ {#eq:outputCalc}
 
 Where $w^{(L)}$ is the weight from $a^{(L-1)}$ to $a^{(L)}$, $b^{(L)}$ is the bias for $a^{(L)}$, and $\sigma$ is the sigmoid activation function applied to the value of $a^{(L)}$.
-For ease of future referencing, all but the sigmoid function is notated as $z^{(L)}$.
+For ease of future referencing, the value of $a^{(L)}$ (everything without the sigmoid function) is notated as $z^{(L)}$.
 
 ![The direct and indirect influence of different parameters on the cost.](report/assets/pictures/nn/3b1b.png){#fig:effectOnOutput}
 
@@ -206,16 +206,20 @@ This can be described as seen in [@eq:deltaW].
 
 $$\frac{\delta z^{(L)}}{\delta w^{(L)}}$$ {#eq:deltaW}
 
-Furthermore, changes to $z^{(L)}$ will directly affect $a^{(L)}$, and changes to $a^{(L)}$ will affect $C_0$, which is described in [@eq:deltaAdeltaZ].
+Furthermore, changes to $z^{(L)}$ will directly affect $a^{(L)}$, which is described in [@eq:deltaA].
 
-$$\frac{\delta a^{(L)}}{\delta z^{(L)}}\ and \ \frac{\delta C_0}{\delta a^{(L)}} $$ {#eq:deltaAdeltaZ}
+$$\frac{\delta a^{(L)}}{\delta z^{(L)}} $$ {#eq:deltaA}
 
-The three formulas in [@eq:deltaW] and [@eq:deltaAdeltaZ] shows a correlation between changes in $w^{(L)}$ and changes to $C_0$.
-This is also expressed as the chain rule, and the correlation is shown in [@eq:chainRule].
+Lastly changes to $a^{(L)}$ will affect $C_0$, as shown in [@eq:deltaZ].
+
+$$\frac{\delta C_0}{\delta a^{(L)}}$$ {#eq:deltaZ}
+
+The three formulas in [@eq:deltaW], [@eq:deltaA], and [@eq:deltaZ] shows a correlation between changes in $w^{(L)}$ and changes to $C_0$.
+The correlation is shown in [@eq:chainRule].
 
 $$ \frac{\delta C_0}{\delta w^{(L)}} = \frac{\delta z^{(L)}}{\delta w^{(L)}} \frac{\delta a^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta a^{(L)}} $$ {#eq:chainRule}
 
-The chain rule holds true for both the bias and the weight, but it also hold true for $a^{(L-1)}$, where $a^{(L-1)}$ itself will be dependent on $w^{(L-1)}$, $b^{(L-1)}$, and $a^{(L-2)}$.
+[@Eq:chainRule] is also called the chain rule and holds true for both the bias and the weight, but it also hold true for $a^{(L-1)}$, where $a^{(L-1)}$ itself will be dependent on $w^{(L-1)}$, $b^{(L-1)}$, and $a^{(L-2)}$.
 In order to change the weight of all the parameters influencing the cost, it is necessary to calculate the derivative, as shown in the chain rule.
 From [@eq:squareError], the definition for $C_0$ is given, where the derivative is shown in [@eq:cDerivative].
 
@@ -229,9 +233,8 @@ And lastly, as well from [@eq:outputCalc], the derivative of $z^{(L)}$ is given 
 
 $$ \frac{\delta z^{(L)}}{\delta w^{(L)}} = a^{(L-1)} $$ {#eq:zDerivative}
 
-In [@eq:zDerivative] it is clear that when changing the weight of $\delta w^{(L)}$ it is dependent on the neuron from the previous layer, $a^{(L-1)}$.
-A downside of the weight being dependent on the activation function is the dependency of the output of the activation function.
-Weights with low outputs of the activation function will experience small changes in the weight, and in cases where the weight needs to be changed a lot, it is dependent on the activation function changing.
+In [@eq:zDerivative] it is clear that when changing the weight of $w^{(L)}$ it is dependent on the neuron from the previous layer, $a^{(L-1)}$.
+A downside of the weight being dependent on the activation function is that weights with low outputs from the activation function only will experience small changes in the weight, and in cases where the weight needs to be changed a lot, it needs the activation function to provide a bigger value first.
 This leads to the saturation problem described in the conceptual steps.
 
 The chain rule is described for the weight, but it also holds true for the bias, and the activation function from the previous layer.
@@ -249,22 +252,23 @@ But so far this walkthrough have only been considering a network with a single n
 The final part of the section will describe how the equations change if several neurons are introduced in every layer.
 Consider the network depicted in [@fig:newNetwork] where there are 3 neurons in layer $a^{(L-1)}$ and 2 neurons in the output layer $a^{(L)}$.
 In order to describe the neurons in each layer, the neurons in $a^{(L-1)}$ will be labeled as $A_k^{(L-1)}$, while the neurons in $a^{(L)}$ will be labeled as $A_j^{(L)}$.
+The weight between the two neurons will be notated as $w_{jk}^{(L)}$.
 There will also be more output targets, which will be labeled as $y_j$.
 
 ![A network containing more than one neuron in each layer.](report/assets/pictures/nn/3b1b3.png){#fig:newNetwork}
 
-This will alter the cost function, as it is now depending on multiple neurons in the output layer.
+The new network will alter the cost function, as it is now depending on multiple neurons in the output layer.
 The new cost function is depicted in [@eq:newCost].
 
 $$ C_0 = \displaystyle\sum_{j = 0}^{N_L-1} (a_j^{(L)}-y_j)^2 $$ {#eq:newCost}
 
 The only way that the new cost function in [@eq:newCost] differs from the cost function in [@eq:squareError] is the addition of the summation over all output neurons.
-In this equation $z$ also changes its value to take the extra neurons into account, as shown in [@eq:newZ].
+In the new network $z$ also changes its value to take the extra neurons into account, as shown in [@eq:newZ].
 
 $$ z = \displaystyle\sum_{k = 0}^{N_l-1} w_{jk}^{(L)} a_k^{(L-1)} $$ {#eq:newZ}
 
-For the chain rule of the bias and the weight, the only difference is the addition of the indices in the definition, and these equations are thus omitted.
-However, when it comes to the addition of neurons in the previous layer, it is obviously dependent on the additional neurons.
+For the chain rule for the bias and the weight, the only difference is the addition of the indices in the definition, and these equations are thus omitted.
+However, when it comes to the addition of neurons in the previous layer, each neuron will be dependent on the additional neurons, as they each take an input from neurons in their preceding layer.
 This new equation is described in [@eq:newA].
 
 $$ \frac{\delta C_0}{\delta A_k^{(L-1)}} = \displaystyle\sum_{j = 0}^{N_L-1} \frac{\delta z^{(L)}}{\delta A_k^{(L-1)}} \frac{\delta A_j^{(L)}}{\delta z_j^{(L)}} \frac{\delta C_0}{\delta A_j^{(L)}} $$ {#eq:newA}
@@ -272,6 +276,8 @@ $$ \frac{\delta C_0}{\delta A_k^{(L-1)}} = \displaystyle\sum_{j = 0}^{N_L-1} \fr
 This section described what happens for every single image in the training process.
 The entire process starts over when the next image is given as an input.
 
+### Simulated annealing
+Another process that allows for training and is also supported by the 
 
 <!--  
 In the first phase the neural network needs to make a prediction in order to see how well it can recognize the desired features or patterns. For doing this, a set of training data is required. In the example case with images of dogs, fish,
