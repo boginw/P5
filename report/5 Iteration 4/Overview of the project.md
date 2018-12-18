@@ -30,7 +30,7 @@ When invoking the `start` method, the connection to the car is established. Afte
 As mentioned earlier, the communication component will be shown later. Therefore the focus will be to explain the `video capture`-component, `ellipse processor`-component and the `ANN`-component.
 
 ### Video Capture
-The OpenCV framework supplies this component, it allows for opening a video camera and interact with it. It is configured to use the machines default camera and to grab frames in a size of 320x240 pixels.  Invoking the `read`-method will retrieve a single frame from the camera, which then can be sent to the `ellipse processor`.
+The OpenCV framework supplies this component, it allows for interacting with a video camera. It is configured to use the machine's default camera and to grab frames in a size of 320x240 pixels.  Invoking the `read`-method will retrieve a single frame from the camera, which then can be sent to the `ellipse processor`.
 
 ### Ellipse Processor
 The Ellipse Processor component contains a lot of moving parts. The responsibility of this component is to detect a speed sign, crop to it, resize and convert the image to binary. In other words, the responsibility of the Ellipse Processor is to act as a pre-processor for the `ANN` and prepare the "signal" (image) for the network.
