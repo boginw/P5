@@ -1,7 +1,6 @@
 package dk.sw502e18.car.carClient.listener;
 
 import dk.sw502e18.car.carClient.CarClientMessageListener;
-import dk.sw502e18.car.utils.ImageUtils;
 import lejos.hardware.BrickFinder;
 import lejos.hardware.lcd.Font;
 import lejos.hardware.lcd.GraphicsLCD;
