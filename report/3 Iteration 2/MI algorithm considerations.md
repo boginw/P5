@@ -80,7 +80,7 @@ One paper does not mention how they implement the algorithm.
 Another paper mentions OpenCV and Adaboost.
 And the last paper implemented the algorithm on their own.
 
-### Skipping preparation
+### Skipping preparation {#sec:skip_prep}
 A possible concern in the consideration between using preparation or not, is whether preparation actually adds value.
 Neural networks act by analyzing the given input.
 Preparation makes sure that the neural network only receives the numbers inside the speedsign.

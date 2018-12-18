@@ -54,9 +54,14 @@ Add everything in the document to `report/biblio.bib`. The syntax for citing is 
 or
 > `Jet fuel can't melt steel beams[@waugh_here_2016].`
 
+> `Citation can belong to a single sentence like this, where the cite-number appears before the sentence-ending period[1].`
+
+> `Citation can sometimes belong to an entire paragraph. Such cases are usually a large number of postulations packed into multiple sentences. In these cases it was deemed necessary to write an entire set of sentences, all (or most) making statements needing citation, which might be from the same source(s). In such cases, it would be inefficient to refer to the same source(s) multiple times, instead of referencing once after the entire paragraph. After the final period.[1]`
+
 **NOTE:** Period goes after the source, and there's no space between the last word of the sentence and the source.
 
 **NOTE:** The `, p. 30` part is optional, and is only used when a specific page is referred.
+
 
 ### References
 
