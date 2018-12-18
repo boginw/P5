@@ -145,6 +145,7 @@ Usefulness is shown with the models success of predicting the world around it; a
 In order to actually "learn" to recognize something, the neural network needs to train on what it is supposed to recognize.
 Training consists of two phases: prediction and backpropagation.
 This section will outline the steps needed for prediction and backpropagation, followed by the mathematical notations needed for understanding the method.
+The following section is based on the work of [@machineIntelligence;@michaelNeuralNet;@calculusComputation].
 
 <!-- This section will explain what it means to train a neural network and explain the Backpropagation function and use it to create an example. This section should also introduce the notion of training data and what to be aware of when creating a training data set. -->
 
@@ -172,7 +173,7 @@ This way, the backpropagation algorithm becomes a recurrent function that will c
 The backpropagation algorithm wants to change the neurons that have the biggest impact on the output value.
 As an example, if the output of one preceding neuron is $0.10$ compared to $4.20$ of another, changing the weight for the first neuron will impact the output value by $42$ times less, as if the same change in weight was aplied to the second neuron.
 
-![The simple network considered in this section.](report/assets/pictures/nn/3b1b2.png){#fig:network}
+![The simple network considered in this section.](report/assets/pictures/nn/Figure4.4.pdf){#fig:network}
 
 Consider an example of a 4-layer neural network, where each layer consists of a single neuron, as depicted in [@fig:network].
 The last neuron, the only one in the output layer, will be named $a^{(L)}$ and $a^{(L-1)}$ is the neuron in the layer preceding it.
@@ -195,7 +196,7 @@ $$ a^{(L)} = \sigma(w^{(L)}a^{(L-1)}+b^{(L)}) \iff a^{(L)} = \sigma(z^{(L)}) $$ 
 Where $w^{(L)}$ is the weight from $a^{(L-1)}$ to $a^{(L)}$, $b^{(L)}$ is the bias for $a^{(L)}$, and $\sigma$ is the sigmoid activation function applied to the value of $a^{(L)}$.
 For ease of future referencing, the value of $a^{(L)}$ (everything without the sigmoid function) is notated as $z^{(L)}$.
 
-![The direct and indirect influence of different parameters on the cost.](report/assets/pictures/nn/3b1b.png){#fig:effectOnOutput}
+![The direct and indirect influence of different parameters on the cost.](report/assets/pictures/nn/Figure4.5.pdf){#fig:effectOnOutput}
 
 <!-- Figure where bias, weight, and neuron point to the output layer, which (together with the target) points to C_0.  -->
 
@@ -255,7 +256,7 @@ In order to describe the neurons in each layer, the neurons in $a^{(L-1)}$ will 
 The weight between the two neurons will be notated as $w_{jk}^{(L)}$.
 There will also be more output targets, which will be labeled as $y_j$.
 
-![A network containing more than one neuron in each layer.](report/assets/pictures/nn/3b1b3.png){#fig:newNetwork}
+![A network containing more than one neuron in each layer.](report/assets/pictures/nn/Figure4.6.pdf){#fig:newNetwork}
 
 The new network will alter the cost function, as it is now depending on multiple neurons in the output layer.
 The new cost function is depicted in [@eq:newCost].
@@ -275,9 +276,6 @@ $$ \frac{\delta C_0}{\delta A_k^{(L-1)}} = \displaystyle\sum_{j = 0}^{N_L-1} \fr
 
 This section described what happens for every single image in the training process.
 The entire process starts over when the next image is given as an input.
-
-### Simulated annealing
-Another process that allows for training and is also supported by the 
 
 <!--  
 In the first phase the neural network needs to make a prediction in order to see how well it can recognize the desired features or patterns. For doing this, a set of training data is required. In the example case with images of dogs, fish,
