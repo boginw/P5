@@ -1,3 +1,24 @@
+### Camera Analysis
+
+The group collected a set of webcams to test, in order to identify one (or more) that would work for this project. Detailed specifications on all camera models, but the one chosen by the group, will not be posted in detail in this report.
+
+#### Hardware Specification
+
+
+#### Methodology
+Two tests were formulated and used for identifying usable webcams.
+The first and (at the time of formulating) most important test, was whether or not the camera would be accessible to the EV3 directly through the leJOS webcam API.
+The second test was whether or not the webcam would be supported by the OpenCV webcam API (as we, at the time of testing, already knew that OpenCV would be an important part of this project).
+
+The first two cameras were unsuccessful, the first one was suspected to fail because of the camera being broken.
+The second one failed since the leJOS API could not interface with it, which most likely were due to the fact, that the camera was a webcam combined with a microphone which might have interfered with the leJos API.
+The third camera we tested was successful in both the leJOS and OpenCV API's.
+
+After identifying a working camera some demo programs were written to get a sense of the capabilities of using a webcam on the EV3, as well as testing whether or not there were any potential performance benefits in choosing one API over the other.
+
+<!-- The group ended up looking into several different options in terms of a camera, with the first option explored being the only one the university was able to supply: the Pixy CMUcam5. This camera is capable of lot of things (detecting objects, identifying boundary boxes and color recognition, to name a few) that could be beneficial for this project, but it falls through when it comes to the output for the group to work with, as it was not feasible to extract the captured frame from the camera. This would limit at least part of the workflow to only occur on the Pixy CMUcam5 microcontroller, which was not agreeable with the group. Eh? -->
+
+<!--
 ### Pixy CMUCAM5 Image Sensor Lego
 Is a vision as a sensor, which means it is a camera with a microcontroller onboard. The microcontroller then uses a blob algorithm to detect objects based on colors. The result of the microcontroller is then either communicated via SPI, I2C, UART, USB or analog/digital output interfaces. The output is simply a data object that contains the (x,y)-coordinates of the recognized object, the size of the boundary box surrounding the object, and which color label ie. which object it is.[@Pixy_Lego_wiki]
 
@@ -7,11 +28,7 @@ This means that even though the Pixy CMUCAM5 has a lot of capabilities that woul
 Since the Pixy CMUCAM5 was the only vision sensor/ camera that the university could supply for the EV3 platform, the group started to look for alternative solutions. It quickly became clear to the group that since the EV3 is a Linux based system, and it has a USB 1.1 port, it probably would be possible to use an ordinary webcam, with a little tinkering. It turns out that this, in fact, was the case. Gabriel Ferrer, a Professor of Computer Science at Hendrix College in Conway, Arkansas, showcased an elegant solution for this on his blog back in 2014[@ferrer_computing_2014]. Ferrer did this using leJOS, which is a tiny Java Virtual Machine that runs on the EV3 platform. Ferrer was able to connect a webcam to the EV3 by carefully configuring leJOS and writing a driver for the camera which allowed for the Java code to interface with it. But since leJOS EV3 0.9.1 release from 2015[@aswin_long_2015] the ability to interface with webcams has been natively supported on the platform, alongside another potentially useful tool, which is OpenCV.
 
 ### leJOS and webcam
-Since leJOS specifies that not all webcams are supported, the group collected a set of webcams to test in order to identify one that would work. The group formulated two tests. The first was whether or not the camera would be supported by the leJOS webcam API. The second test was whether or not the webcam would be supported by the OpenCV webcam API. It was a requirement for the group that both tests should be successful before the camera could be rendered usable.
-
-The first two cameras were unsuccessful, the first one was suspected to fail because of the camera being broken. The second one failed since the leJOS API could not interface with it, which most likely were due to the fact, that the camera was a webcam combined with a microphone which might have interfered with the leJos API. The third camera we tested was successful in both the leJOS and OpenCV API's.
-
-After identifying a working camera some demo programs were written to get a sense of the capabilities of using a webcam on the EV3, as well as testing whether or not there were any potential performance benefits in choosing one API over the other.
+ -->
 
 #### Demo programs
 \label{ssec:DEMOPROG}
