@@ -145,12 +145,12 @@ Usefulness is shown with the models success of predicting the world around it; a
 In order to actually "learn" to recognize something, the neural network needs to train on what it is supposed to recognize.
 Training consists of two phases: prediction and backpropagation.
 This section will outline the steps needed for prediction and backpropagation, followed by the mathematical notations needed for understanding the method.
-The following section is based on the work of [@machineIntelligence;@michaelNeuralNet;@calculusComputation].
+The following section is based on the work of [@machineIntelligence;@michaelNeuralNet;@calculusComputation;3b1b].
 
 <!-- This section will explain what it means to train a neural network and explain the Backpropagation function and use it to create an example. This section should also introduce the notion of training data and what to be aware of when creating a training data set. -->
 
 Training consists of prediction and backpropagation.
-When training-data are given to the network, it will make a prediction of what is seen in the image, which will be given in the form of an output vector containing the propability, according to the network, of each option in the output layer.
+When training-data are given to the network, it will make a prediction of what is seen in the image, which will be given in the form of an output vector containing the probability, according to the network, of each option in the output layer.
 
 At first, the prediction will be random, and quite possibly a long way off the actual result.
 Each image in the training-data is combined with a label, which represents what the image actually contains.
@@ -171,7 +171,7 @@ Since backpropagation cannot alter the neurons directly, it will have to do it t
 This way, the backpropagation algorithm becomes a recurrent function that will consider each preceding neuron to change it, according to what output is expected.
 
 The backpropagation algorithm wants to change the neurons that have the biggest impact on the output value.
-As an example, if the output of one preceding neuron is $0.10$ compared to $4.20$ of another, changing the weight for the first neuron will impact the output value by $42$ times less, as if the same change in weight was aplied to the second neuron.
+As an example, if the output of one preceding neuron is $0.10$ compared to $4.20$ of another, changing the weight for the first neuron will impact the output value by $42$ times less, as if the same change in weight was applied to the second neuron.
 
 ![The simple network considered in this section.](report/assets/pictures/nn/Figure4.4.pdf){#fig:network}
 
@@ -205,34 +205,34 @@ As is also described in the conceptual walkthrough, changing the values of these
 Looking at [@fig:effectOnOutput] it is seen that changes to the weight $w^{(L)}$ directly affects the value of $z^{(L)}$.
 This can be described as seen in [@eq:deltaW].
 
-$$\frac{\delta z^{(L)}}{\delta w^{(L)}}$$ {#eq:deltaW}
+$$\frac{\partial z^{(L)}}{\partial w^{(L)}}$$ {#eq:deltaW}
 
 Furthermore, changes to $z^{(L)}$ will directly affect $a^{(L)}$, which is described in [@eq:deltaA].
 
-$$\frac{\delta a^{(L)}}{\delta z^{(L)}} $$ {#eq:deltaA}
+$$\frac{\partial a^{(L)}}{\partial z^{(L)}} $$ {#eq:deltaA}
 
 Lastly changes to $a^{(L)}$ will affect $C_0$, as shown in [@eq:deltaZ].
 
-$$\frac{\delta C_0}{\delta a^{(L)}}$$ {#eq:deltaZ}
+$$\frac{\partial C_0}{\partial a^{(L)}}$$ {#eq:deltaZ}
 
-The three formulas in [@eq:deltaW], [@eq:deltaA], and [@eq:deltaZ] shows a correlation between changes in $w^{(L)}$ and changes to $C_0$.
+The three formulas in [@eq:deltaW], [@eq:deltaA], and [@eq:deltaZ] shows a relation between changes in $w^{(L)}$ and changes to $C_0$.
 The correlation is shown in [@eq:chainRule].
 
-$$ \frac{\delta C_0}{\delta w^{(L)}} = \frac{\delta z^{(L)}}{\delta w^{(L)}} \frac{\delta a^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta a^{(L)}} $$ {#eq:chainRule}
+$$ \frac{\partial C_0}{\partial w^{(L)}} = \frac{\partial z^{(L)}}{\partial w^{(L)}} \frac{\partial a^{(L)}}{\partial z^{(L)}} \frac{\partial C_0}{\partial a^{(L)}} $$ {#eq:chainRule}
 
 [@Eq:chainRule] is also called the chain rule and holds true for both the bias and the weight, but it also hold true for $a^{(L-1)}$, where $a^{(L-1)}$ itself will be dependent on $w^{(L-1)}$, $b^{(L-1)}$, and $a^{(L-2)}$.
 In order to change the weight of all the parameters influencing the cost, it is necessary to calculate the derivative, as shown in the chain rule.
 From [@eq:squareError], the definition for $C_0$ is given, where the derivative is shown in [@eq:cDerivative].
 
-$$ \frac{\delta C_0}{\delta a^{(L)}} = 2(a^{(L)}-y) $$ {#eq:cDerivative}
+$$ \frac{\partial C_0}{\partial a^{(L)}} = 2(a^{(L)}-y) $$ {#eq:cDerivative}
 
 And from [@eq:outputCalc], the derivate of $a^{(L)}$ is given in [@eq:aDerivative].
 
-$$ \frac{\delta a^{(L)}}{\delta z^{(L)}} = \sigma'(z^{(L)})  $$ {#eq:aDerivative}
+$$ \frac{\partial a^{(L)}}{\partial z^{(L)}} = \sigma'(z^{(L)})  $$ {#eq:aDerivative}
 
 And lastly, as well from [@eq:outputCalc], the derivative of $z^{(L)}$ is given in [@eq:zDerivative].
 
-$$ \frac{\delta z^{(L)}}{\delta w^{(L)}} = a^{(L-1)} $$ {#eq:zDerivative}
+$$ \frac{\partial z^{(L)}}{\partial w^{(L)}} = a^{(L-1)} $$ {#eq:zDerivative}
 
 In [@eq:zDerivative] it is clear that when changing the weight of $w^{(L)}$ it is dependent on the neuron from the previous layer, $a^{(L-1)}$.
 A downside of the weight being dependent on the activation function is that weights with low outputs from the activation function only will experience small changes in the weight, and in cases where the weight needs to be changed a lot, it needs the activation function to provide a bigger value first.
@@ -243,17 +243,18 @@ These are substituted in the chain rule, and their derivatives are calculated in
 
 For the bias, the chain rule and its derivative is depicted in [@eq:biasChain].
 
-$$ \frac{\delta C_0}{\delta b^{(L)}} = \frac{\delta z^{(L)}}{\delta b^{(L)}} \frac{\delta a^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta a^{(L)}} = 1 \sigma'(z^{(L)})2(a^{(L)}-y) $$ {#eq:biasChain}
+$$ \frac{\partial C_0}{\partial b^{(L)}} = \frac{\partial z^{(L)}}{\partial b^{(L)}} \frac{\partial a^{(L)}}{\partial z^{(L)}} \frac{\partial C_0}{\partial a^{(L)}} = 1 \sigma'(z^{(L)})2(a^{(L)}-y) $$ {#eq:biasChain}
 
 The chain rule for the previous layer follows the principle of propagating backwards, as can be seen in [@eq:activationChain] where the weight of the preceding neuron is influencing the cost function.
 
-$$ \frac{\delta C_0}{\delta a^{(L-1)}} = \frac{\delta z^{(L)}}{\delta a^{(L-1)}} \frac{\delta a^{(L)}}{\delta z^{(L)}} \frac{\delta C_0}{\delta a^{(L)}} = w^{(L)} \sigma'(z^{(L)})2(a^{(L)}-y) $$ {#eq:activationChain}
+$$ \frac{\partial C_0}{\partial a^{(L-1)}} = \frac{\partial z^{(L)}}{\partial a^{(L-1)}} \frac{\partial a^{(L)}}{\partial z^{(L)}} \frac{\partial C_0}{\partial a^{(L)}} = w^{(L)} \sigma'(z^{(L)})2(a^{(L)}-y) $$ {#eq:activationChain}
 
 But so far this walkthrough have only been considering a network with a single neuron in each layer.
 The final part of the section will describe how the equations change if several neurons are introduced in every layer.
 Consider the network depicted in [@fig:newNetwork] where there are 3 neurons in layer $a^{(L-1)}$ and 2 neurons in the output layer $a^{(L)}$.
-In order to describe the neurons in each layer, the neurons in $a^{(L-1)}$ will be labeled as $A_k^{(L-1)}$, while the neurons in $a^{(L)}$ will be labeled as $A_j^{(L)}$.
-The weight between the two neurons will be notated as $w_{jk}^{(L)}$.
+In order to describe the neurons in each layer, the neurons in $a^{(L-1)}$ will be labeled as $a_k^{(L-1)}$, while the neurons in $a^{(L)}$ will be labeled as $a_j^{(L)}$.
+The index $k$ and $j$ will thus be used to range over layer $a^{(L-1)}$ and $a^{(L)}$ respectively.
+The weight between the two neurons will be denoted as $w_{jk}^{(L)}$.
 There will also be more output targets, which will be labeled as $y_j$.
 
 ![A network containing more than one neuron in each layer.](report/assets/pictures/nn/Figure4.6.pdf){#fig:newNetwork}
@@ -266,16 +267,57 @@ $$ C_0 = \displaystyle\sum_{j = 0}^{N_L-1} (a_j^{(L)}-y_j)^2 $$ {#eq:newCost}
 The only way that the new cost function in [@eq:newCost] differs from the cost function in [@eq:squareError] is the addition of the summation over all output neurons.
 In the new network $z$ also changes its value to take the extra neurons into account, as shown in [@eq:newZ].
 
-$$ z = \displaystyle\sum_{k = 0}^{N_l-1} w_{jk}^{(L)} a_k^{(L-1)} $$ {#eq:newZ}
+$$ z_j^{(L)} = \displaystyle\sum_{k = 0}^{N_L-1} w_{jk}^{(L)} a_k^{(L-1)} $$ {#eq:newZ}
 
 For the chain rule for the bias and the weight, the only difference is the addition of the indices in the definition, and these equations are thus omitted.
 However, when it comes to the addition of neurons in the previous layer, each neuron will be dependent on the additional neurons, as they each take an input from neurons in their preceding layer.
 This new equation is described in [@eq:newA].
 
-$$ \frac{\delta C_0}{\delta A_k^{(L-1)}} = \displaystyle\sum_{j = 0}^{N_L-1} \frac{\delta z^{(L)}}{\delta A_k^{(L-1)}} \frac{\delta A_j^{(L)}}{\delta z_j^{(L)}} \frac{\delta C_0}{\delta A_j^{(L)}} $$ {#eq:newA}
+$$ \frac{\partial C_0}{\partial a_k^{(L-1)}} = \displaystyle\sum_{j = 0}^{N_L-1} \frac{\partial z_j^{(L)}}{\partial a_k^{(L-1)}} \frac{\partial a_j^{(L)}}{\partial z_j^{(L)}} \frac{\partial C_0}{\partial a_j^{(L)}} $$ {#eq:newA}
+
+In [@eq:newA] the summation was added, as all neurons in layer $a^{(L-1)}$ influences all neurons in $a^{(L)}$, and will then become a sum of chain rules.
 
 This section described what happens for every single image in the training process.
 The entire process starts over when the next image is given as an input.
+
+### Simulated annealing
+Another technique for learning is called simulated annealing.
+This section describes the technique based on multiple sources of [@openCV_simulatedAnnealing;@cleverAlgorithms;machineIntelligence].
+The technique imitates annealing from metallurgy where a material is heated and slowly cooled in order to reach the optimal crystal structure of the material.
+The simulated annealing algorithm uses much of the terminology from the original method.
+
+The algorithm begins at a maximum temperature, where the algorithm is doing a random walk, and when it cools, and the temperature gets closer to zero, the algorithm changes from a random walk to a pure greedy descent.
+Slowly transitioning from a random walk to a greedy descent will allow for the initial search to jump out of local minima in order to search for areas with a higher potential to contain a global minima.
+When the algorithm become a pure greedy descent it will focus on finding the local minima in the area that it is currently checking.
+
+The following will discuss each step of the algorithm.
+Initially the algorithm picks a random configuration, i.e. random weights and biasses for each connection in the network.
+During the runs, the algorithm will keep track of the configuration that has been giving the lowest cost.
+
+#### Picking a solution
+The algorithm will randomly pick a new configuration of weights and biases, that is not associated with the previous configuration in any way.
+This configuration will be evaluated, and if the new configuration produces a lower cost for the system, in simulated annealing terms called energy, the new configuration is used instead.
+Since 'cost' is already used to describe what the 'energy' is, cost will be used in this section, to keep consistency throughout the report.
+A new configuration, which changes a few of the weights or biasses will be chosen, in order to be tested again.
+If the new configuration does not have a lower cost, the configuration might still be chosen in order to investigate neighboring solutions.
+Whether the configuration with a higher cost is chosen or not depends on the temperature $T$.
+A high temperature means the algorithm are likely to investigate configurations with higher cost, while a low temperature gives a very low probability that configurations with higher cost are chosen.
+
+#### Temperature
+The temperature governs how willing the algorithm is to accept a configuration with a higher cost.
+This is done with the Gibbs distribution, which is seen in [@eq:gibbs].
+
+$$ e^{-(C(h')-C(h))/T} $$ {#eq:gibbs}
+
+Where $h$ is the current configuration, $h'$ is the randomly chosen new configuration, and $C$ is the the cost of some configuration.
+As an example, if the temperature is $10$ and a configuration is $1$-worse (i.e., $C(h')-C(h) = 1$) the probability that this configuration will be chosen, even though it is worse than the current configuration, will be $e^{-1/0.9}=e^{-0.1} \approx 0.9$.
+In contrast, if the temperature is 0.1 the probability that the same configuration will be chosen are $e^{-1/0.1}=e^{-10} \approx 0.00005$
+
+An implementation-specific detail is that the OpenCV library tries a number of different neighboring configurations before decreasing the temperature, instead of decreasing the temperature every time a new configuration is tried.
+
+When the temperature reaches the minimum that is specified beforehand, the configuration with the lowest cost will be chosen.
+
+
 
 <!--  
 In the first phase the neural network needs to make a prediction in order to see how well it can recognize the desired features or patterns. For doing this, a set of training data is required. In the example case with images of dogs, fish,
