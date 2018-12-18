@@ -1,9 +1,8 @@
 package dk.sw502e18.ssr;
 
-import dk.sw502e18.ssr.Main;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class MainTest {
 
