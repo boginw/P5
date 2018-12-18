@@ -6,10 +6,16 @@ The goal of the project will not be to implement a fully interfaced system in an
 
 Following this initial problem analysis, we arrived at the following problem statement:
 
-> *How would an adaptive-cruise-control-demo be implemented/designed as an embedded intelligent system?*
+> *How would an adaptive-cruise-control-demo that uses intelligent processing be implemented/designed to communicate with an embedded system?*
 
 As a solution to this problem, the expectation is to present a demonstrational prototype capable of the following:
 
 * Driving in a straight line.
 * Being able to manually adjust speed.
 * Being able to intelligently adjust speed according to road signs.
+
+Another subproblem that the project will handle, is the normalization of input data to the intelligent system.
+
+> *How can input data be normalized so data that are as alike as possible is given to the intelligent system?*
+
+Current solutions described in {@sec:currentSystems} treats the data by, e.g. cropping the input image to only consider the relevant speed sign on the image.
