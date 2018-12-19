@@ -11,20 +11,19 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.function.BiConsumer;
+import org.opencv.core.Size;
 
 public class SSRTrainer {
     private EllipseProcessor cd;
     private String train;
     private String test;
     private Queue<ANN> neuralNetworks;
-    private float maxAcc = Float.MIN_VALUE;
+    private float maxAcc = Float.MAX_VALUE;
     private ANN bestANN = null;
-    private int[] signs;
 
-    public SSRTrainer(String train, String test, String param, int[] signs) {
+    public SSRTrainer(String train, String test, String param) {
         this.train = train;
         this.test = test;
-        this.signs = signs;
         neuralNetworks = new LinkedList<>(fromConfigFile(param));
     }
 
@@ -32,7 +31,7 @@ public class SSRTrainer {
         int maxLength = neuralNetworks.size();
         while (!neuralNetworks.isEmpty()) {
             ANN ann = neuralNetworks.poll();
-            cd = new EllipseProcessor(130, 10, ann.getSize());
+            cd = ellipseProcessorBuilder(10, ann.getSize());
             addSamples(ann);
 
             System.out.printf("(%4d/%d) - ", maxLength-neuralNetworks.size(), maxLength);
@@ -40,7 +39,9 @@ public class SSRTrainer {
 
             float acc = testAccuracy(ann);
 
-            if (acc > maxAcc) {
+            System.out.print(acc);
+
+            if (acc < maxAcc) {
                 maxAcc = acc;
                 bestANN = ann;
                 System.out.println("\033[1m  <-------------- Best \033[0m");
@@ -50,6 +51,14 @@ public class SSRTrainer {
         }
 
         return bestANN;
+    }
+
+    protected EllipseProcessor ellipseProcessorBuilder(int minWH, Size size){
+        return new EllipseProcessor(minWH, size);
+    }
+
+    protected ANN ANNBuilder(String line){
+        return new ANN(Configuration.fromString(line));
     }
 
     private int doOnSamples(int i, String path, BiConsumer<Mat, Integer> v) {
@@ -76,13 +85,15 @@ public class SSRTrainer {
     private List<ANN> fromConfigFile(String file) {
         List<ANN> nns = new ArrayList<>();
         if (file != null) {
+
             try (BufferedReader br = new BufferedReader(new FileReader(file))) {
                 String line;
                 while ((line = br.readLine()) != null) {
                     if (line.startsWith("#")) {
                         continue;
                     }
-                    nns.add(new ANN(Configuration.fromString(line)));
+
+                    nns.add(ANNBuilder(line));
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -95,28 +106,16 @@ public class SSRTrainer {
     private void addSamples(ANN ann) {
         for (int i = 0; i < 6; i++) {
             doOnSamples(i, train, ann::addSample);
+            doOnSamples(i, test, ann::addTestSample);
         }
     }
 
     private float testAccuracy(ANN ann) {
         float accSum = 0;
-        for (int i = 0; i < 6; i++) {
-            List<Boolean> q = new ArrayList<>();
 
-            int samples = doOnSamples(i, test, (mat, label) -> {
-                if (ann.predict(mat) == label) {
-                    q.add(true);
-                }
-            });
+        return ann.calcError();
 
-
-            float acc = (float) q.size() / samples;
-            accSum += acc;
-            System.out.printf("[%d]: %5.2f%%, ",  signs[i], acc * 100);
-        }
-
-        System.out.printf("Average Accuracy: %.2f%%",  (accSum / 6) * 100);
-        return accSum / 6;
+        // return (float) Core.mean(error).val[0];
     }
 
 }
