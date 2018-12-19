@@ -15,7 +15,7 @@ public class CarMode implements Mode {
     private CarServer cs;
 
     public CarMode() {
-        cs = new SocketCarServer("10.0.1.1", 9090);
+        cs = new SocketCarServer("ev3dev.local", 9090);
     }
 
     public void start(VideoCapture vid, EllipseProcessor processor, Function<Mat, MatOfFloat> func) {
