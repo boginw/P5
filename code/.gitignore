@@ -49,6 +49,7 @@ cmake-build-*/
 out/
 build/
 car/lib/leJOS
+car/lib/
 .gradle/
 gradle/
 

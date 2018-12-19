@@ -5,22 +5,17 @@ import dk.sw502e18.car.carClient.listener.SpeedAdjuster;
 import dk.sw502e18.car.carClient.listener.SpeedSignPrinter;
 import dk.sw502e18.car.utils.ExitOnEscape;
 import lejos.hardware.lcd.LCD;
-import org.opencv.core.Core;
-
-import java.io.IOException;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+    public static void main(String[] args) {
         // exits whenever ESCAPE is pressed (important!)
         ExitOnEscape.enable();
 
-        LCD.drawString("Ready for input", 0,0);
+        LCD.drawString("Ready for input", 0, 0);
 
-        // CarClient p = new FifoPipeCarClient("/home/lejos/pipes/speedlimit");
-        CarClient p = new SocketCarClient();
-        p.addListener(new SpeedAdjuster(80));
-        p.addListener(new SpeedSignPrinter());
+        CarClient p = new SocketCarClient()
+                .addListener(new SpeedAdjuster(80))
+                .addListener(new SpeedSignPrinter());
         p.connect();
     }
 }
