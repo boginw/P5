@@ -10,17 +10,13 @@ import java.util.List;
 
 public class CircleCropper {
 
-    private final int threshold;
-
-    public CircleCropper(int threshold) {
-        this.threshold = threshold;
-    }
+    public CircleCropper() { }
 
     public Mat crop(Mat src, Mat dst, Point point) {
         int x = (int) point.x;
         int y = (int) point.y;
 
-        MatOfPoint2f points = ellipseCrawler(src, x, y, threshold);
+        MatOfPoint2f points = ellipseCrawler(src, x, y);
 
         if (points == null) {
             return null;
@@ -31,66 +27,18 @@ public class CircleCropper {
         // Circle flattening is attempted. Reverts back to normal if flattening fails.
         Pair<Mat, RotatedRect> flattenedAttempt = flattenCircle(src, dst, ellipse);
 
+        if (flattenedAttempt != null) {
+            dst = flattenedAttempt.getLeft();
+            ellipse = flattenedAttempt.getRight();
+        }
+
         try {
-            return cropEllipse(flattenedAttempt.getLeft(), flattenedAttempt.getRight());
+            return cropEllipse(dst, ellipse);
         } catch (IndexOutOfBoundsException e) {
             return null;
         }
-    }
 
-    /**
-     * Finds an edge from an image, point, increments and threshold
-     *
-     * @param input  The image inwhich to find an edge on
-     * @param x      The starting x-coordinate
-     * @param y      The starting y-coordinate
-     * @param xIncr  Increment for x
-     * @param yIncr  Increment for y
-     * @param thresh Threshold for edge
-     * @return Point of edge or null if nothing was found
-     */
-    private Point findEdge(Mat input, double x, double y, double xIncr, double yIncr, int thresh) {
-        while (x > 0 && x < input.width() && y > 0 && y < input.height()) {
-            if (input.get((int) y, (int) x)[0] > thresh) {
-                return new Point(x, y);
-            }
 
-            x += xIncr;
-            y += yIncr;
-        }
-
-        // no edge found
-        return null;
-    }
-
-    /**
-     * Will crawl an ellipse to find 8 points on the periphery.
-     *
-     * @param input  Image to crawl.
-     * @param x      X-coordinate inside ellipse.
-     * @param y      Y-coordinate inside ellipse.
-     * @param thresh Threshold that catches edge ring.
-     * @return A matrix of 2D points on the periphery.
-     */
-    private MatOfPoint2f ellipseCrawler(Mat input, double x, double y, int thresh) {
-        try {
-            return new MatOfPoint2f(
-                    // Left, right, top, bottom
-                    findEdge(input, x, y, -1, 0, thresh),
-                    findEdge(input, x, y, 1, 0, thresh),
-                    findEdge(input, x, y, 0, -1, thresh),
-                    findEdge(input, x, y, 0, 1, thresh),
-
-                    // Top-left, bottom-left
-                    findEdge(input, x, y, -1, -1, thresh),
-                    findEdge(input, x, y, -1, 1, thresh),
-                    // Top-right, bottom-right
-                    findEdge(input, x, y, 1, -1, thresh),
-                    findEdge(input, x, y, 1, 1, thresh)
-            );
-        } catch (NullPointerException e) {
-            return null;
-        }
     }
 
     /**
@@ -100,7 +48,7 @@ public class CircleCropper {
      * @param ellipse The ellipse to crop to.
      * @return The cropped, elliptical image.
      */
-    public static Mat cropEllipse(Mat input, RotatedRect ellipse) {
+    private static Mat cropEllipse(Mat input, RotatedRect ellipse) {
         int thickness = -1; // set to -1 to indicate to fill
 
         // Create a mask
@@ -127,6 +75,60 @@ public class CircleCropper {
         return masked.submat(rect);
     }
 
+
+    /**
+     * Finds an edge from an image, point, increments and threshold
+     *
+     * @param input  The image inwhich to find an edge on
+     * @param x      The starting x-coordinate
+     * @param y      The starting y-coordinate
+     * @param xIncr  Increment for x
+     * @param yIncr  Increment for y
+     * @return Point of edge or null if nothing was found
+     */
+    private Point findEdge(Mat input, double x, double y, double xIncr, double yIncr) {
+        while (x > 0 && x < input.width() && y > 0 && y < input.height()) {
+            if (input.get((int) y, (int) x)[0] > 0) {
+                return new Point(x, y);
+            }
+
+            x += xIncr;
+            y += yIncr;
+        }
+
+        // no edge found
+        return null;
+    }
+
+    /**
+     * Will crawl an ellipse to find 8 points on the periphery.
+     *
+     * @param input  Image to crawl.
+     * @param x      X-coordinate inside ellipse.
+     * @param y      Y-coordinate inside ellipse.
+     * @return A matrix of 2D points on the periphery.
+     */
+    private MatOfPoint2f ellipseCrawler(Mat input, double x, double y) {
+        try {
+            return new MatOfPoint2f(
+                    // Left, right, top, bottom
+                    findEdge(input, x, y, -1, 0),
+                    findEdge(input, x, y, 1, 0),
+                    findEdge(input, x, y, 0, -1),
+                    findEdge(input, x, y, 0, 1),
+
+                    // Top-left, bottom-left
+                    findEdge(input, x, y, -1, -1),
+                    findEdge(input, x, y, -1, 1),
+                    // Top-right, bottom-right
+                    findEdge(input, x, y, 1, -1),
+                    findEdge(input, x, y, 1, 1)
+            );
+        } catch (NullPointerException e) {
+            return null;
+        }
+    }
+
     /**
      * Attempts to warp/transform / "flatten" ellipse into circle.
      *
@@ -135,6 +137,7 @@ public class CircleCropper {
      * @param ellipse  The original ellipse.
      * @return New flattened picture and corresponding ellipse, or original picture and ellipse if flattening failed.
      */
+    @SuppressWarnings("Duplicates")
     private Pair<Mat, RotatedRect> flattenCircle(Mat inputSrc, Mat inputDst, RotatedRect ellipse) {
 
         // Temporary placeholders used to preserve original inputsSrc and inputDst.
@@ -154,16 +157,16 @@ public class CircleCropper {
         int x = (int)ellipse.center.x;
         int y = (int)ellipse.center.y;
         MatOfPoint2f perspectInputMat;
-        Point p3 = findEdge(tempSrcMat1, x, y, 0, -1, threshold); // Left-most
-        Point p4 = findEdge(tempSrcMat1, x, y, 0, 1, threshold);  // Right-most
-        Point p1 = findEdge(tempSrcMat1, x, y, -1, 0, threshold); // Bottom
-        Point p2 = findEdge(tempSrcMat1, x, y, 1, 0, threshold);  // Top
+        Point p3 = findEdge(tempSrcMat1, x, y, 0, -1); // Left-most
+        Point p4 = findEdge(tempSrcMat1, x, y, 0, 1);  // Right-most
+        Point p1 = findEdge(tempSrcMat1, x, y, -1, 0); // Bottom
+        Point p2 = findEdge(tempSrcMat1, x, y, 1, 0);  // Top
 
         // Storing p1-p4 as matrix.
         try {
             perspectInputMat = new MatOfPoint2f(p1, p2, p3, p4);
         } catch (NullPointerException e) {
-            return new ImmutablePair<>(inputSrc, ellipse);
+            return null;
         }
 
         // Transformation matrix for ellipse-to-circle is calculated.
@@ -181,10 +184,10 @@ public class CircleCropper {
         Imgproc.warpPerspective(tempDstMat1, tempDstMat2, perspectTransfMat, tempDstMat1.size());
         Imgproc.warpPerspective(tempSrcMat1, tempSrcMat2, perspectTransfMat, tempSrcMat1.size());
 
-        tempMatOP2f = ellipseCrawler(tempSrcMat2,(float)tempSrcMat2.width() / 2, (float)tempSrcMat2.height()/2, threshold);
+        tempMatOP2f = ellipseCrawler(tempSrcMat2,(float)tempSrcMat2.width() / 2, (float)tempSrcMat2.height()/2);
         // If anything has been null, invoke FIIOOH-protocol
         if (tempMatOP2f == null) {
-            return new ImmutablePair<>(inputSrc, ellipse);
+            return null;
         }
 
         // Image is rotated back to original rotational orientation, and then stored in temp-Mats1
@@ -193,7 +196,7 @@ public class CircleCropper {
         Imgproc.warpAffine(tempDstMat2, tempDstMat1, rotateM, tempDstMat2.size());
         Imgproc.warpAffine(tempSrcMat2, tempSrcMat1, rotateM, tempSrcMat2.size());
 
-        tempMatOP2f = ellipseCrawler(tempSrcMat1,(float)tempSrcMat1.width() / 2, (float)tempSrcMat1.height()/2, threshold);
+        tempMatOP2f = ellipseCrawler(tempSrcMat1,(float)tempSrcMat1.width() / 2, (float)tempSrcMat1.height()/2);
         // Once again, if anything has been null: FIIOOH
         if (tempMatOP2f == null) {
             return new ImmutablePair<>(inputSrc, ellipse);
@@ -204,5 +207,4 @@ public class CircleCropper {
 
         return new ImmutablePair<>(tempDstMat1, ellipseOut);
     }
-
 }

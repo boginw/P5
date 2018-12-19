@@ -1,7 +1,7 @@
 ### Flattening {#sec:flattening}
 As mentioned in [@sec:skip_prep], being able to normalize the input to a neural network yields better, more consistent results. An identified ellipse might be of multiple different shapes and orientations, and therefore not guaranteed consistent. This section will describe how such an elliptical shape will be normalized into a circle.
 
-#### The Conceptual Idea
+#### The Conceptual Idea 
 It is assumed that an ellipse already has been identified on an image, and we know the pixel-coordinates of its center. On [@fig:EllipseFlattening1] an example ellipse has been drawn, along with some grid lines to help visualize how each transformation affects the image.
 
 ![A detected ellipse](report/assets/pictures/Ellipse1.png){#fig:EllipseFlattening1 width=35%}

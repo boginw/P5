@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Tests" type="JUnit" factoryName="JUnit">
-    <module name="code_test" />
-    <option name="PACKAGE_NAME" value="dk.sw502e18" />
+    <module name="ssr" />
+    <option name="PACKAGE_NAME" value="dk.sw502e18.ssr" />
     <option name="MAIN_CLASS_NAME" value="" />
     <option name="METHOD_NAME" value="" />
     <option name="TEST_OBJECT" value="package" />
