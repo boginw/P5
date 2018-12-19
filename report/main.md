@@ -19,6 +19,8 @@ listings: true
 !{{1 Problem Analysis/index.md}}
 !{{2 Iteration 1/index.md}}
 !{{3 Iteration 2/index.md}}
+
+!{{6 Discussion/discussion.md}}
 !{{Appendix/Appendix.md}}
 
 
