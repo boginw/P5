@@ -15,3 +15,6 @@ The neural network obtained an accuracy of 68 %, but further research is needed 
 
 Safety features of cars are a continually developed area, and the revelations in this report emphasizes the importance of pre-processing the input data, as well as choosing the right configuration of the neural network.
 Operating in as mutable environments as on the roads, where both time of the day and year have a huge influence on the environment, as well as the weather in general, is a huge task for software systems in cars, and demands great stability.
+To acknowledge this condition, the project did a memory analysis of the system, to ensure that the system never runs out of memory.
+It was concluded that in the worst possible case, the system would use XX % of all available memory, leaving XX bytes free.
+This is part of the step needed for ensuring a fail-free execution of the software.
