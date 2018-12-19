@@ -29,7 +29,7 @@ $$\min(C_w) = E_w + M_w + R_w + (O_w \times 4)$$
 The weight will affect many other criteria, as more weight requires more torque, which leads to less speed.
 The weight will, therefore, be important to keep low.
 
-### Speed
+### Speed {#sec:DesignCritSpeed}
 There is a need for different levels of velocity which are distinguishable, so that the difference in velocity between levels can be easily observed.
 This results in a need for sufficient max velocity ($C_s$) to accommodate the needed span of levels.
 Moreover, it is important that the velocity is obtained rather quickly, as the car will be running on a track of limited length.
