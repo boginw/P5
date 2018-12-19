@@ -1,5 +1,4 @@
 # Artificial Neural Network
-
 The final step in recognizing a speed sign is recognizing the number in the sign. A neural network is proposed in order to
 solve this task.
 The reason for this is that, even after our normalization steps used to minimize variation in angle, perspective and size of the detected sign, there might still be some variation in the normalized input, as shown below in [@fig:webcam_demo].
@@ -9,7 +8,6 @@ The reason for this is that, even after our normalization steps used to minimize
 In this section the concept of a neural network will be described, why we used it, and, following that, how we adopted it to our problem.
 
 ## Why use it
-
 A neural network is excellent at solving tasks that are complicated or having inconsistent, incomplete or imprecise data.
 Neural networks primarily shine in pattern recognition because of their ability to generalize and respond to rather unexpected input or patterns.
 <!-- A specific situation that could illustrate all these scenarios could be when trying to recognize handwritten digits. -->
@@ -29,7 +27,6 @@ Next, the training is a very computational demanding task.
 Depending on the network and training data, it can take hours, weeks, months or even years to train a network correctly, and this is the biggest drawback of a neural network.
 
 ## What is an Artificial Neural Network  
-
 An Artificial Neural Network is inspired by neurons in the brain.
 It works by having a network of neurons structured into layers.
 Each neuron can be connected to neurons in adjacent layers, where each connection is either receiving a signal or sending a signal.
@@ -42,62 +39,60 @@ Another detail that should be noted in [@fig:simpleFullyConnectedNN] is the flow
 When illustrating the neural network, the flow of information will only go from left to right.
 Due to this nature, information will never move in cycles, which is the definition of a feed-forward neural network.
 
-### A Neuron
+### A Neuron {#sec:neuron}
 
-A neuron, also called a unit or node, is a mathematical function that accepts some input, calculates a weighted sum, adds a bias and then produces an output.
+A neuron, also called a unit or node, is a mathematical function.
+The neuron is the smallest possible entity of the neural network.
+Each neuron is connected to all neurons in the adjacent layers, where weights define the relationship between these two.
+The equation for calculating the value of a neuron is described in {@eq:neuronCalc}.
 
-The mathematical equation for the function that is used to calculate the weighted sum is:
+$$a = \displaystyle\sum_{j = 0}^{N_{L-1}} (weight_j^{(L)} * a_j^{(L-1)} + bias)$$ {#eq:neuronCalc}
 
-$$Y = \sum (weight * input) + bias$$
-<!-- add indices here -->
+$N_{L-1}$ is the number of neurons in the previous layer.
+The weight is a multiplier between two neurons that describe the relevance of a neuron's influence on the neuron that is considered.
+Neurons has a weight for each neuron in adjacent layers, which is altered by the training function.
+The bias is a unique multiplier for every neuron, that the training function is also capable of altering.
+The last parameter, $a^{(L-1)}$ is the output of the neuron in the previous layer.
 
-Before producing a final output, the weighted sum from the original input is sent to adjacent layers within the Artifical Neural Network to be processed.
-Finally a value between 0 and 1 is produced based on what type of activation function is used in the neural network.
-The activation function is described in a later subsection.
+
 
 ### The layers
-
-A neural network consists of multiple layers: input, output, and hidden layers.
+A neural network consists of multiple layers: input, output, and an arbitrary number of hidden layers.
 The first layer is called the input layer.
 Considering images as the input, a possible architecture will create an input layer where the number of neurons are the same as the number of pixels in the image.
 Each neuron will then get a specific pixel that is passed to the adjacent layer.
 
 The last layer is the output layer.
 This layer represents the result of what the neural network computed, and is the probability of a given option.
-If the neural network should determine if it is presented with a picture of a dog, a fish, or neither, the output layer will typically consist of three neurons: one for the dog, one for the fish, and one for none of the two animals.
+If the neural network should determine if it is presented with a picture of a dog or a fish, the output layer will consist of two neurons: one for the dog and one for the fish.
 Each of those neurons will hold a probability that the input is what the neuron describes.
 
 Between the input layer and the output layer is the hidden layers.
 The number of layers, and the number of neurons in these layers can be anywhere from zero to almost infinite.
-When a number is passed to a neuron in a hidden layer, the neuron will compute it's own value, which can be passed on to the next layer.
-Computation of the value will be done by the following function:
+When a number is passed to a neuron in a hidden layer, the neuron will compute an output value, which can be passed on to the next layer.
+Computation of the value is described in [@sec:neuron].
 
-$$ \varphi ( a \omega + b) $$
-
-Where $\varphi$ is the activation function, $a$ is the input, $\omega$ is the weight, and $b$ is the bias. (we need to insert the real symbols here)
-Each neuron is typically connected to every neruon in the adjacent layers, which is why the output of the neuron is the sum of all inputs from the previous layer.
-The activation function is a function that normalizes the input.
-When the product of the input, weight, and bias can become greater than one, the neurons output should be between zero and one.
-The activation function will do this, by mapping the input to a value specified by the function.
-It can also be used as a threshold function that will only accepts values greater than some threshold.
+The value of the neuron is passed through an activation function that normalizes the output.
+A typical application is for the activation function to map the output value to some value between 0 and 1.
+The activation function can either use a simple threshold, a linear function, or a more sophisticated approach to map the value of the neuron inside the 0-1 range.
 The activation function is further described in later sections.
 
 The weight is something that is related to a connection between two neurons.
 The weight is also what is adjusted when training the neural network, in order to increase or decrease the importance of certain inputs.
-Another way to alter the weight is through bias, which can be introduced with manual training.
+Another way to alter the weight is through bias, which is a multiplier that is applied directly to a neuron. 
+
+Manually altering the weights and biasses can happen through manual training, where each weight or bias are assigned a fixed value.
 When doing manual training, designers of the network try to manually understand and alter the behavior of the network's hidden layers.
 If designers of the neural network can identify neurons in the network responsible for different features of the input, they can alter the importance of these features.
 Consider the neural network that tried to identify if it was a cat or a dog on a picture.
 Designers might identify neurons that looks for a tail or finns, and add extra importance to these, while decreasing the importance of neurons that looks for whether there is a clear sky in the picture, or not.
 
 ## Theory behind
-This section will start to explain the theory behind the neural network, and it will try to go through in a 3Blue1Brown inspired manner.
-
-#### Hidden Layer
+which can be introduced with manual training.
+Neural networks is practically a collection of matrixes on which matrix operations are performed.
+The following section will explain some of the mathematics involved in the different methods considered in this project, as well as outlining the benefits and drawbacks of the different techniques.
 
 ### Activation Function {#sec:activation_function}
-<!-- Here it will explain what an activation function is and how it relates to data streaming through the network. We will here introduce the sigmoid function. -->
-
 Each neuron calculates a weighted sum when given an input.
 Without an activation function to normalize these values, the value for each neuron could range from -infinity to infinity as each neuron does not know the bounds of the value.
 The purpose of an activation function is then to map resulting values in a neuron to a desired range, which is typically between 0 and 1.
@@ -105,7 +100,7 @@ The type of activation function can differ between different implementations, an
 The most basic activation function is the step function, which simply return 1 if the value is above a certain threshold, and 0 otherwise.
 In this project, the sigmoid function has been used due to it being the only activation function, apart from the step function, that was fully supported in the OpenCV library.
 
-> $S(x) = \frac{1}{1 + e^{-x}}$
+$$S(x) = \frac{1}{1 + e^{-x}}$$
 
 <!-- I asked our MI teacher Thomas to verify if the following claim is credible. The source is: https://www.learnopencv.com/understanding-activation-functions-in-deep-learning/ -->
 
@@ -121,13 +116,12 @@ When a training function like the backpropagation technique is used, the gradien
 The sigmoid function and its derivative. Figures from [@ActivationFunctions].
 </div>
 
-As seen on [@fig:sigmoidAF_derivative], which is the derivative of the sigmoid function in [@fig:sigmoidAF], the derivative function will yield a low value whenever the sigmoid function is nearing its maximum and minimum value.
+As seen on [@fig:sigmoidAF_derivative], which is the derivative of the sigmoid function in [@fig:sigmoidAF], the gradient will yield a low value whenever the sigmoid function is nearing its maximum and minimum value.
 This results in a vanishing gradient problem, due to backpropagation using the partial derivative of the error function to change the weight of the neuron.
-When the value of the partial derivative is very small, becuase the sigmoid function yields a minimum or a maximum, the weight between neurons are also barely changed.
+When the value of the partial derivative is very small, because the sigmoid function yields a minimum or a maximum, the weight between neurons are also barely changed.
 This results in barely no training taking place, as neurons reach this state.
-The vanishing gradient problem is primarily present when using backpropagation, and other learning functions, such as the RPROP function, have taken measures to overcome this problem.
-The RPROP function changes the scale at which it alters the weights of the network.
-This method allows for the function to accelerate learning, whenever a neuron seems stuck[@RPROP, p. 578].
+The vanishing gradient problem is primarily present when using backpropagation, as it is dependent on the gradient to be low when the system is successful, and high when it is not.
+Changing the activation function or the learning method is a way to mitigate the problem[@deepLearningBook].
 How to overcome this, is further described in [@sec:Testing].
 
 ### The Entire Network
@@ -140,14 +134,19 @@ A concern in the case of models, is not whether they are correct, but rather if 
 Usefulness is shown with the models success of predicting the world around it; a high success, and thus a high accuracy, means that the model is useful.
 <!-- Idk what to write. -->
 
-## Training
+### Training
 In order to actually "learn" to recognize something, the neural network needs to train on what it is supposed to recognize.
+There exists numerous different methods for doing the training, but the two that was considered in this report was the backpropagation and the simulated annealing, due to the availability of these methods in supported libraries.
+These methods are described in the following section, where each methods is described, and the potential advantages and drawbacks according to the problem domain are discussed.
+
+#### Backpropagation
 Training consists of two phases: prediction and backpropagation.
 This section will outline the steps needed for prediction and backpropagation, followed by the mathematical notations needed for understanding the method.
-The following section is based on the work of [@machineIntelligence;@michaelNeuralNet;@calculusComputation;3b1b].
+The following section is based on the work of [@machineIntelligence;@michaelNeuralNet;@calculusComputation;@3b1b].
 
 <!-- This section will explain what it means to train a neural network and explain the Backpropagation function and use it to create an example. This section should also introduce the notion of training data and what to be aware of when creating a training data set. -->
 
+##### Conceptual steps
 Training consists of prediction and backpropagation.
 When training-data are given to the network, it will make a prediction of what is seen in the image, which will be given in the form of an output vector containing the probability, according to the network, of each option in the output layer.
 
@@ -172,13 +171,14 @@ This way, the backpropagation algorithm becomes a recurrent function that will c
 The backpropagation algorithm wants to change the neurons that have the biggest impact on the output value.
 As an example, if the output of one preceding neuron is $0.10$ compared to $4.20$ of another, changing the weight for the first neuron will impact the output value by $42$ times less, as if the same change in weight was applied to the second neuron.
 
-![The simple network considered in this section.](report/assets/pictures/nn/Figure4.4.pdf){#fig:network}
-
+##### Mathematical notation
 Consider an example of a 4-layer neural network, where each layer consists of a single neuron, as depicted in [@fig:network].
 The last neuron, the only one in the output layer, will be named $a^{(L)}$ and $a^{(L-1)}$ is the neuron in the layer preceding it.
 Taking an example of training, the $a^{(L)}$ layer outputs the value $0.66$ as a prediction of the result.
 However, the target, $y$ is $1.00$.
 How should the network be trained?
+
+![The simple network considered in this section.](report/assets/pictures/nn/Figure4.4.pdf){#fig:network}
 
 First of all, the cost of this training instance is calculated by the formula for sum of square errors, as seen in [@eq:squareError].
 
@@ -196,8 +196,6 @@ Where $w^{(L)}$ is the weight from $a^{(L-1)}$ to $a^{(L)}$, $b^{(L)}$ is the bi
 For ease of future referencing, the value of $a^{(L)}$ (everything without the sigmoid function) is notated as $z^{(L)}$.
 
 ![The direct and indirect influence of different parameters on the cost.](report/assets/pictures/nn/Figure4.5.pdf){#fig:effectOnOutput}
-
-<!-- Figure where bias, weight, and neuron point to the output layer, which (together with the target) points to C_0.  -->
 
 [@Eq:outputCalc] shows the equation describing $a^{(L)}$, where it is seen that both the weight, bias, and previous neuron have an impact on the output.
 As is also described in the conceptual walkthrough, changing the values of these three parameters will change the value of the output.
@@ -261,27 +259,27 @@ There will also be more output targets, which will be labeled as $y_j$.
 The new network will alter the cost function, as it is now depending on multiple neurons in the output layer.
 The new cost function is depicted in [@eq:newCost].
 
-$$ C_0 = \displaystyle\sum_{j = 0}^{N_L-1} (a_j^{(L)}-y_j)^2 $$ {#eq:newCost}
+$$ C_0 = \displaystyle\sum_{j = 0}^{N_{L-1}} (a_j^{(L)}-y_j)^2 $$ {#eq:newCost}
 
 The only way that the new cost function in [@eq:newCost] differs from the cost function in [@eq:squareError] is the addition of the summation over all output neurons.
 In the new network $z$ also changes its value to take the extra neurons into account, as shown in [@eq:newZ].
 
-$$ z_j^{(L)} = \displaystyle\sum_{k = 0}^{N_L-1} w_{jk}^{(L)} a_k^{(L-1)} $$ {#eq:newZ}
+$$ z_j^{(L)} = \displaystyle\sum_{k = 0}^{N_{L-1}} w_{jk}^{(L)} a_k^{(L-1)} $$ {#eq:newZ}
 
 For the chain rule for the bias and the weight, the only difference is the addition of the indices in the definition, and these equations are thus omitted.
 However, when it comes to the addition of neurons in the previous layer, each neuron will be dependent on the additional neurons, as they each take an input from neurons in their preceding layer.
 This new equation is described in [@eq:newA].
 
-$$ \frac{\partial C_0}{\partial a_k^{(L-1)}} = \displaystyle\sum_{j = 0}^{N_L-1} \frac{\partial z_j^{(L)}}{\partial a_k^{(L-1)}} \frac{\partial a_j^{(L)}}{\partial z_j^{(L)}} \frac{\partial C_0}{\partial a_j^{(L)}} $$ {#eq:newA}
+$$ \frac{\partial C_0}{\partial a_k^{(L-1)}} = \displaystyle\sum_{j = 0}^{N_{L-1}} \frac{\partial z_j^{(L)}}{\partial a_k^{(L-1)}} \frac{\partial a_j^{(L)}}{\partial z_j^{(L)}} \frac{\partial C_0}{\partial a_j^{(L)}} $$ {#eq:newA}
 
 In [@eq:newA] the summation was added, as all neurons in layer $a^{(L-1)}$ influences all neurons in $a^{(L)}$, and will then become a sum of chain rules.
 
 This section described what happens for every single image in the training process.
 The entire process starts over when the next image is given as an input.
 
-### Simulated annealing
+#### Simulated annealing
 Another technique for learning is called simulated annealing.
-This section describes the technique based on multiple sources, namely [@openCV_simulatedAnnealing;@cleverAlgorithms;machineIntelligence].
+This section describes the technique based on multiple sources, namely [@openCV_simulatedAnnealing;@cleverAlgorithms;@machineIntelligence].
 The technique imitates annealing from metallurgy where a material is heated and slowly cooled in order to reach the optimal crystal structure of the material.
 The simulated annealing algorithm uses much of the terminology from the original method.
 
@@ -293,7 +291,7 @@ The following will discuss each step of the algorithm.
 Initially the algorithm picks a random configuration, i.e. random weights and biasses for each connection in the network.
 During the runs, the algorithm will keep track of the configuration that has been giving the lowest cost.
 
-#### Picking a solution
+##### Picking a solution
 The algorithm will randomly pick a new configuration of weights and biases, that is not associated with the previous configuration in any way.
 This configuration will be evaluated, and if the new configuration produces a lower cost for the system, in simulated annealing terms called energy, the new configuration is used instead.
 Since 'cost' is already used to describe what the 'energy' is, cost will be used in this section, to keep consistency throughout the report.
@@ -303,7 +301,7 @@ If the new configuration does not have a lower cost, the configuration might sti
 Whether the configuration with a higher cost is chosen or not depends on the temperature $T$.
 A high temperature means the algorithm are likely to investigate configurations with higher cost, while a low temperature gives a very low probability that configurations with higher cost are chosen.
 
-#### Temperature
+##### Temperature
 The temperature governs how willing the algorithm is to accept a configuration with a higher cost.
 This is done with the Gibbs distribution, which is seen in [@eq:gibbs].
 
@@ -359,7 +357,7 @@ number is the worse the neural network is at predicting the desired features, an
  needs to be adjusted.
 -->
 
-### Overfitting
+#### Overfitting
 <!-- Here we will explain the dangers of overfitting the model. Also, how to ensure that it does not happen. -->
 
 The concept of overfitting in machine learning is that the model is really good at classifying data based on the
@@ -369,21 +367,14 @@ Overfitting occurs when the model is unable to generalize, and instead focuses o
 This means that whatever features the model was trained on, it would only correctly classify those, since data that
 slightly deviate from the training set are not correctly classified.
 
-A possible way to reduce the effect of overfitting is to give the model more data to train on.
-This means that it will be able to learn more from the training set by, hopefully, adding more diversity.
-Another possible way is data augmentation, which is the act of slightly manipulation the data by changing values or by
-rotating or zooming in on an image, is another method that can be used to reduce overfitting.
-This is beneficial because you have data that is similar to your original data but with reasonable modified.
+A possible way to reduce the effect of overfitting is to give the model more, and different, data to train on.
+This can be achieved with data augmentation, which is the act of slightly manipulating the data by changing values or by
+rotating or zooming in on an image.
+This is beneficial because it provides data that is similar to the original data but with concrete data obscured, so the network is forced to generalize.
 
-### Testing {#sec:Testing}
-<!-- Here we will explain how to test the model after training using a testing data set. It should explain what to be aware of when creating the dataset and also why it is a good idea to have.  -->
-
-As shortly mentioned in the `Overfitting` subsection, the desired model is one that can generalize and not only work on
-the data set the model was trained on.
-The model should correctly classify new input as they are given to the neural network.
-This is why a general rule of thump is to only use a certain percentage to train the model and the rest to test the
-model to determine overfitting. This distribution could be 75% of the training set used to train the model and 25% used
-for testing the model.
+To test if the model has been subject to overfitting, the model should be benchmarked relative to data that is has not trained on.
+If the model experiences high accuracy on the training data, while it experiences low accuracy on the test data, it means the model is subject to overfitting.
+The high accuracy on the training data means that the model will not get change a lot if it keeps training - it might only become more overfit.
 
 # Our Artificial Neural Network.
 
