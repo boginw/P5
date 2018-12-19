@@ -1,4 +1,4 @@
-### Flattening
+### Flattening {#sec:flattening}
 As mentioned in [@sec:skip_prep], being able to normalize the input to a neural network yields better, more consistent results. An identified ellipse might be of multiple different shapes and orientations, and therefore not guaranteed consistent. This section will describe how such an elliptical shape will be normalized into a circle.
 
 #### The Conceptual Idea
