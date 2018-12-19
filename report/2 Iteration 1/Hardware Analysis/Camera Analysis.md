@@ -1,4 +1,4 @@
-### Camera Analysis
+### Camera Analysis {#sec:CamAnal}
 
 The group collected a set of webcams to test, in order to identify one (or more) that would work for this project. Detailed specifications will only be presented in regards to the camera model chosen by the group.
 
@@ -18,7 +18,7 @@ Other models:
 * Logitech Skype Webcam (specific model unknown)
 * Unspecified webcam module from disassembled Acer laptop
 
-#### Hypothesis
+#### Hypothesis 
 As mention in [@sec:ev3HardwareSpec], the USB port available for interaction with external hardware is a USB 1.1-interface. It is therefore required that the camera will be able to communicate through that interface.
 It is also required that the camera is supported by the OpenCV API as well as the leJOS API. Finally, it should be possible to grab frames with a custom resolution, to prevent an unnecessary heavy workload computing on frames grabbed in native 1080p resolution.
 
