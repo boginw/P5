@@ -139,7 +139,7 @@ In order to actually "learn" to recognize something, the neural network needs to
 There exists numerous different methods for doing the training, but the two that was considered in this report was the backpropagation and the simulated annealing, due to the availability of these methods in supported libraries.
 These methods are described in the following section, where each methods is described, and the potential advantages and drawbacks according to the problem domain are discussed.
 
-#### Backpropagation
+#### Backpropagation {#sec:backpropagation}
 Training consists of two phases: prediction and backpropagation.
 This section will outline the steps needed for prediction and backpropagation, followed by the mathematical notations needed for understanding the method.
 The following section is based on the work of [@machineIntelligence;@michaelNeuralNet;@calculusComputation;@3b1b].
@@ -159,7 +159,7 @@ Backpropagation calculates how far off the prediction is from the actual result,
 The difference between the output vector and the target vector is known as the cost, and the overall goal of training is to decrease the overall cost of the network.
 The cost is calculated as the squares of the differences between the prediction- and the target vector.
 Decreasing the cost is obtained by nudging the weights, biases, and neurons that influence the output layer.
-Determinining which weights, biases, or neurons to nudge is a matter of determining their influence on the final output vector.
+Determining which weights, biases, or neurons to nudge is a matter of determining their influence on the final output vector.
 If a neuron is very far away from its predicted value, the connections affecting it will be heavily modified.
 When the opposite holds true, they will only be slightly modified.
 
@@ -170,6 +170,8 @@ This way, the backpropagation algorithm becomes a recurrent function that will c
 
 The backpropagation algorithm wants to change the neurons that have the biggest impact on the output value.
 As an example, if the output of one preceding neuron is $0.10$ compared to $4.20$ of another, changing the weight for the first neuron will impact the output value by $42$ times less, as if the same change in weight was applied to the second neuron.
+
+RProp is a variation of backpropagation, where the factor that the weights are altered with is increased or decreased depending on the movement of the cost.
 
 ##### Mathematical notation
 Consider an example of a 4-layer neural network, where each layer consists of a single neuron, as depicted in [@fig:network].
@@ -379,10 +381,9 @@ The high accuracy on the training data means that the model will not get change 
 # Our Artificial Neural Network.
 
 <!--Explain how we configured our neural network and why we did as we did. Explain which activation function/ training function we used, explain how we handled overfitting and the data sets used.-->
+Our implementation uses the OpenCV multi-layer perceptron (MLP) artificial neural network (ANN) to recognize the digits in the speed sign.
 The following section will describe the methodology behind the creation of the neural network.
-Topics such as how configuration and which activation, or training functions where used are discussed, as well as why there were chosen.
-
-## The neural network OpenCV MLP
+Topics such as which configuration and activation-, or training functions were used are discussed, as well as why they were chosen.
 
 ## Configuration
 In order to train the network, different configurations of the network had to be chosen.
@@ -400,21 +401,28 @@ Testing would ensue at night, and test results was analyzed in the morning.
 This method of testing allows for the exploration of several hypothesis about the structure of the network, and for finetuning the final settings of the network.
 Training was done this way, in order to determine the best activation and training functions, while also testing multiple different layer configurations.
 
-### Activation function
-
 ### Training function
+The neural network was tested with two different training functions: gradient descent, RProp, and simulated annealing.
+Simulated annealing yielded the best results.
+This could be due to simulated annealing's ability to find different local minima, and approximate a global minima, as gradient decent and RProp are more dependent on the initial seed of the neural network.
+This does not mean that gradient decent and RProp cannot be used, but more extensive testing is required in order to explore the possible global minima.
+This is partly due to the problems described in [@sec:backpropagation], with the saturation of the neurons.
 
-The neural network was tested with three different training functions: gradient decent, RProp, and simulated annealing.
-Simulated Annealing yielded the best results. This could be due to simulated annealing's ability to find different local minima, and approximate a global minima, as gradient decent and RProp are more dependent on the initial seed of the neural network.
-This does not mean that gradient decent and RProp cannot be used, but more extensive testing is required in order to explore the possible global minima.  
+### Activation function
+The sigmoid activation function was chosen, even though it has the potential of giving saturated neurons.
+This problem, however, was countered with the choice of training function.
 
-#### Data set
+The only other activation function that is fully supported is the step function.
+The step function does not give a descriptive gradient that allows the training function to know if a neuron is improving the cost function or not.
+This is due to the step function being a threshold function that simply gives 0 or 1.
+
+### Data set
 
 The data set used to train the neural network is called GTSRB (German Traffic Sign Recognition Benchmark) [@GTSRB]. it is a large
 data set consisting of German traffic signs. The data set is diverse, as it contains images of traffic signs under
 varying conditions e.g. different angles varying degrees of obstruction.
 Training on this data set proved hard to achieve high prediction accuracy, as the images were so diverse, and in some cases
-so noisy that it was virtually unrecognizable, as seen in [@fig:badSigns].
+so noisy that it was almost unrecognizable by humans, as seen in [@fig:badSigns].
 
 <div id="fig:badSigns">
 
@@ -430,6 +438,11 @@ This shows that the model was still trained to detect normal signs, and that the
 
  <!-- http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset -->
 
-### Overfitting
-
-## Performance
+#### Increasing accuracy
+Trying to recognize both digits in the speed signs proved difficult.
+Since the last digit, the zero, is not a variable, it does not make sense to feed this number to the neural network.
+This realization occurred very late in the process, so a proof-of-concept method was implemented to handle splitting of the number.
+After the circle is flattened, the digits should be in each of their half of the speed sign.
+The proof-of-concept method then takes half of the image and discards it.
+This is not an optimal strategy, and a proper solution should be included in the pre-processor.
+This was not done, as the realization was made late in the project, and the amount of time left was not enough to implement and document the finding.
