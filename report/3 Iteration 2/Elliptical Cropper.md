@@ -1,4 +1,4 @@
-## Elliptical Cropper
+## Elliptical Cropper {#sec:ellipticalCropper}
 
 When the Hough Circle Detector has detected a circle, there is no guarantee that what is detected is actually a circle, the result might just be an ellipse. If what is detected is actually an ellipse, and a circular cropping is used, then the cropping will cut important data from the result and leave irrelevant data in. In order to lower the signal to noise ratio, a elliptical cropper is therefore needed. As this project uses OpenCV the `fitEllipse` function will be used, which implements the Direct Least Square Fitting of Ellipses [@fitzgibbon_direct_1996] [@opencv_fitellipse].
 

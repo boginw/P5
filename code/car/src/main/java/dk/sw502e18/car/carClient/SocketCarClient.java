@@ -2,7 +2,13 @@ package dk.sw502e18.car.carClient;
 
 import dk.sw502e18.car.CarClient;
 
+<<<<<<< HEAD
 import java.io.IOException;
+=======
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+>>>>>>> master
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -12,7 +18,10 @@ import static java.util.Collections.synchronizedList;
 
 public class SocketCarClient implements CarClient {
     private List<CarClientMessageListener> listenerList = synchronizedList(new ArrayList<CarClientMessageListener>());
+<<<<<<< HEAD
     private static final int MAX_CHARACTERS = 8; // fills the width of the EV3 screen
+=======
+>>>>>>> master
 
     @Override
     public CarClient addListener(CarClientMessageListener listener) {
@@ -27,6 +36,7 @@ public class SocketCarClient implements CarClient {
             while (true) {
                 Socket socket = listener.accept();
 
+<<<<<<< HEAD
                 StringBuilder sb = new StringBuilder();
                 int read;
 
@@ -46,6 +56,19 @@ public class SocketCarClient implements CarClient {
                 }
 
                 socket.getInputStream().close();
+=======
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(socket.getInputStream()));
+
+                String data;
+                while ((data = in.readLine()) != null) {
+                    for (CarClientMessageListener carListener : listenerList) {
+                        carListener.onMessage(data);
+                    }
+                }
+
+                in.close();
+>>>>>>> master
                 socket.close();
             }
         } catch (IOException e) {
