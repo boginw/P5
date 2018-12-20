@@ -140,7 +140,7 @@ A concern in the case of models, is not whether they are correct, but rather if 
 Usefulness is shown with the models success of predicting the world around it; a high success, and thus a high accuracy, means that the model is useful.
 <!-- Idk what to write. -->
 
-## Training
+## Training {#sec:training}
 In order to actually "learn" to recognize something, the neural network needs to train on what it is supposed to recognize.
 Training consists of two phases: prediction and backpropagation.
 This section will outline the steps needed for prediction and backpropagation, followed by the mathematical notations needed for understanding the method.
@@ -385,7 +385,7 @@ This is why a general rule of thump is to only use a certain percentage to train
 model to determine overfitting. This distribution could be 75% of the training set used to train the model and 25% used
 for testing the model.
 
-# Our Artificial Neural Network.
+# Our Artificial Neural Network. {#sec:ourANN}
 
 <!--Explain how we configured our neural network and why we did as we did. Explain which activation function/ training function we used, explain how we handled overfitting and the data sets used.-->
 The following section will describe the methodology behind the creation of the neural network.
