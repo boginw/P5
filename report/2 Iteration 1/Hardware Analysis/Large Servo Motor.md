@@ -67,7 +67,8 @@ The results from the test can be seen in [@tbl:motorRPM]. The table shows each m
 +---------------+--------+--------+--------+--------+--------+
 | 2nd Motor     |  34.50 |  69.01 | 101.71 | 137.83 | 151.14 |
 +---------------+--------+--------+--------+--------+--------+
-Table: RPM Test results {#tbl:motorRPM}
+
+: RPM Test results {#tbl:motorRPM}
 
 Taking the lower bound of the 160 - 170 RPM from the specification, these motors look to be close to it. The percentage difference is shown in [@eq:rpmPercent1] and [@eq:rpmPercent2].
 
@@ -103,6 +104,6 @@ $$ \frac{18.68-40}{40} = -53.3\% $$ {#eq:torquePercent2}
 
 Taking the lower bound of the range 160-170 RPM which LEGO provided, the speed test showed that the motors used were close to the specifications LEGO provided. With the average deviation, our motors are around 4% off what LEGO claims, but this is an acceptable margin of error. The motors also show a linear growth, which enables easy predictions for the actual RPM given the power level provided.
 
-The torque tests on the other hand show completely different results. LEGO claims the motors have 40 N$\cdot$cm in stall-torque and 20 N$\cdot$cm in running torque, and to the best of the group's knowledge, our tests tested the stall torque, which only shows the motors getting to half of what LEGO claims. It should be noted, that our tests only tested the motors at their maximum speeds, and it is unknown what their stall torque is at lower levels. Acknowledging the oversight in our test, the group choose not to proceed with further tests. If a problem should arise due to the oversight, new torque tests with the different speed levels will be performed.
+The torque tests on the other hand show completely different results. LEGO claims the motors have $40 N*cm$ in stall-torque and $20 N*cm$ in running torque, and to the best of the group's knowledge, our tests tested the stall torque, which only shows the motors getting to half of what LEGO claims. It should be noted, that our tests only tested the motors at their maximum speeds, and it is unknown what their stall torque is at lower levels. Acknowledging the oversight in our test, the group choose not to proceed with further tests. If a problem should arise due to the oversight, new torque tests with the different speed levels will be performed.
 
-These tests show that the motors have a torque of 20 N.cm, a linear growth in RPM per power level, and match the RPM specifications of roughly 160 RPM. The tests also show a deficit in torque in the motors, compared to the specifications.
+These tests show that the motors have a torque of $20 N*cm$, a linear growth in RPM per power level, and match the RPM specifications of roughly 160 RPM. The tests also show a deficit in torque in the motors, compared to the specifications.

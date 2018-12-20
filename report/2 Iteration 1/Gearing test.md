@@ -28,11 +28,5 @@ The speed is calculated by dividing the time elapsed by the distance driven, whi
 
 As can be seen in table @tbl:avg_speed the peak of the curve is 1:5, after which the speed begins to decline due to the first 50 cm not being enough for the car to reach its maximum velocity, and as such the car uses the first parts of the 200 cm to accelerate.
 
-[_**TOBIAS! WHAT DID YOU DO?! WHERE DID YOU GO FROM LARGE WHEELS TO SMALL ONES?!**_]
-
-### Implementation in the car
+#### Conclusion
 The gear ratio of 1:5 is chosen, as, according to @tbl:avg_speed, this gives the highest average speed in this test.
-
-One of the sources of error introduced was the swerving of the car.
-In order to combat this behavior, the wheels were replaced by some smaller and wider wheels.
-This gave a decrease in speed of 22% (since the ratio between the wheel and wheel axle is a gearing in it self), but eliminated the swerve. Because of time restrictions the group was unable to redo all gearing tests with the new set of wheels, but it is aknowledged that the presented test results are not excat. 

@@ -3,7 +3,7 @@ Instead of trying to invent a usable MI from scratch for this project, the group
 
 ![Flow chart for abstracted MI-activities](report/assets/pictures/MI_Chart.png){#fig:MI_Chart}
 
-As can be seen in [@fig:MI_Chart], the common flow consists of seven different activities. A more in-depth description of the different tactics for select activities will be described in [@sec:].
+As can be seen in [@fig:MI_Chart], the common flow consists of seven different activities. A more in-depth description of the different tactics for the activities will be described throughout the report.
 
 ##### Picture is Captured
 

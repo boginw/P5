@@ -5,7 +5,7 @@ This section describes how the car was designed. Included is a description of th
 This section compares the elements of the design criteria to the design of the vehicle in order to assert that the design complies with the criteria.
 
 #### Weight
-The car weighs [__*WOOOAAAAWWWW!!!!*__] grams with the camera and Raspberry Pi mounted, which, as will be mentioned in [@sec:speedCompare], allows the speed of the car to be appropriate, and as such, no further action will be taken towards optimizing the weight of the car.
+The car weighs 1.264 grams with the camera and Raspberry PI mounted, which, as will be mentioned in [@sec:speedCompare], allows the speed of the car to be appropriate, and as such, no further action will be taken towards optimizing the weight of the car.
 
 #### Speed {#sec:speedCompare}
 Since the speed requirement was a velocity high enough to accommodate visual distinction between various levels of velocity, a subjective determination is made regarding the fulfillment of the criterion. In [@sec:gearingTest] the results following a test of the gearing is presented, in which it is determined that the top speed of the car will be approximately 6 km/h.  
