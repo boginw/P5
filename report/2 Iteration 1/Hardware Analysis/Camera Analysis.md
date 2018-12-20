@@ -1,22 +1,39 @@
-### Pixy CMUCAM5 Image Sensor Lego
-Is a vision as a sensor, which means it is a camera with a microcontroller onboard. The microcontroller then uses a blob algorithm to detect objects based on colors. The result of the microcontroller is then either communicated via SPI, I2C, UART, USB or analog/digital output interfaces. The output is simply a data object that contains the (x,y)-coordinates of the recognized object, the size of the boundary box surrounding the object, and which color label ie. which object it is.[@Pixy_Lego_wiki]
+### Camera Analysis {#sec:CamAnal}
 
-This means that even though the Pixy CMUCAM5 has a lot of capabilities that would be beneficial for the project, such as 50 fps object recognition, we cannot use it in our project. Due to the fact that we actually need to recognize the 'value' of a speed sign, and since there are no color-coded differences between the speed signs, coupled with the fact that the Pixy does not actually transmit any pixel data, it would be impossible to detect the speed signs using the Pixy camera.
+The group collected a set of webcams to test, in order to identify one (or more) that would work for this project. Detailed specifications will only be presented in regards to the camera model chosen by the group.
 
-#### Alternative solutions
-Since the Pixy CMUCAM5 was the only vision sensor/ camera that the university could supply for the EV3 platform, the group started to look for alternative solutions. It quickly became clear to the group that since the EV3 is a Linux based system, and it has a USB 1.1 port, it probably would be possible to use an ordinary webcam, with a little tinkering. It turns out that this, in fact, was the case. Gabriel Ferrer, a Professor of Computer Science at Hendrix College in Conway, Arkansas, showcased an elegant solution for this on his blog back in 2014[@ferrer_computing_2014]. Ferrer did this using leJOS, which is a tiny Java Virtual Machine that runs on the EV3 platform. Ferrer was able to connect a webcam to the EV3 by carefully configuring leJOS and writing a driver for the camera which allowed for the Java code to interface with it. But since leJOS EV3 0.9.1 release from 2015[@aswin_long_2015] the ability to interface with webcams has been natively supported on the platform, alongside another potentially useful tool, which is OpenCV.
+#### Hardware Specification
+Chosen camera model:
 
-### leJOS and webcam
-Since leJOS specifies that not all webcams are supported, the group collected a set of webcams to test in order to identify one that would work. The group formulated two tests. The first was whether or not the camera would be supported by the leJOS webcam API. The second test was whether or not the webcam would be supported by the OpenCV webcam API. It was a requirement for the group that both tests should be successful before the camera could be rendered usable.
+| Microsoft LifeCam Studio        |             |
+| ----------------- |:------------|
+| Resolution        | up to 1080p  |
+| Wide Angle Lens  | Yes         |
+| Autofocus        | Yes |
+| Focal length      | from 10 cm to infinite |
+| Length            | 113 mm |
+| Width             | 40 mm |
 
-The first two cameras were unsuccessful, the first one was suspected to fail because of the camera being broken. The second one failed since the leJOS API could not interface with it, which most likely were due to the fact, that the camera was a webcam combined with a microphone which might have interfered with the leJos API. The third camera we tested was successful in both the leJOS and OpenCV API's.
+Other models:
+* Logitech Skype Webcam (specific model unknown)
+* Unspecified webcam module from disassembled Acer laptop
 
-After identifying a working camera some demo programs were written to get a sense of the capabilities of using a webcam on the EV3, as well as testing whether or not there were any potential performance benefits in choosing one API over the other.
+#### Hypothesis 
+As mention in [@sec:ev3HardwareSpec], the USB port available for interaction with external hardware is a USB 1.1-interface. It is therefore required that the camera will be able to communicate through that interface.
+It is also required that the camera is supported by the OpenCV API as well as the leJOS API. Finally, it should be possible to grab frames with a custom resolution, to prevent an unnecessary heavy workload computing on frames grabbed in native 1080p resolution.
 
-#### Demo programs
-\label{ssec:DEMOPROG}
-The first demo program conducted was to have the EV3 grab frames from the camera and display them on the Monochrome LCD on the EV3. In doing this activity, the group realized that there are some important performance considerations to consider when choosing which image format the camera data should be converted to. The leJOS community claimed that JPEG format is very cost inefficient for the EV3, whereas YUYV format is very cost efficient for the EV3. The group tried both in this demo program, and there was a small barely noticeable difference in response time on the video feed in favor of YUYV. These claims should be tested more in-depth when working with the actual MI model, since the claims of the leJOS community are that YUYV is preferable over everything else when it comes to Computer Vision.
+#### Methodology
+Two tests were formulated and used for identifying usable webcams.
+The first test was whether or not the camera would be accessible to the EV3 directly through the leJOS webcam API.
+The second test was whether or not the webcam would be supported by the OpenCV webcam API (as we, at the time of testing, already knew that OpenCV would be an essential part of this project).
 
-The second demo program conducted was to have the EV3 live stream the video feed over HTTP via a Bluetooth connection. This was to see how converting the camera data to a JPEG format affected the system while using the Bluetooth protocol to communicate. The test showed a high latency, almost unusable when using the leJOS API and JPEG. Switching to OpenCV API and utilizing their Mat-datatype for representing the image significantly decreased the latency to a point that it became somewhat usable. Because of the noticeable differences between leJOS API and OpenCV API, the group should conduct some experiments with OpenCV to recognize whether or not there is any performance to be gained by using that over leJOS API.
+Both tests were conducted by a two-step process, firstly creating a demo program that grabs a frame (using the appropriate API) from the webcam and displaying it on the EV3 Monochrome LCD. Secondly, a demo program is created which grabs a frame (again, using the appropriate API) with a specific resolution, and streaming this frame over a web socket to confirm that the output indeed was the custom resolution.
 
-Finally, the group did a quick test to count the FPS from using the leJOS API to grab frames and nothing else. This yielded a result between 14-15 FPS. This test should be revisited when the MI model's complexity is accounted for, and tested, on both leJOS API and OpenCV API, in order to determine if the number of frames per second is enough.
+#### Results
+The unspecified webcam module from the Acer laptop was unable to interface with anything, and thereby deemed unusable for this project. 
+The Logitech Skype Webcam was unable to interface with the EV3 but seemed to work successfully when tested on a regular laptop. The group assumed that the problem was with the USB 1.1-interface, and deemed it unusable for this project.
+
+The Microsoft LifeCam Studio interfaced successfully with the EV3 and managed to produce the expected pictures on both the EV3 Monochrome LCD as well as on the web socket. 
+
+#### Conclusion
+Based on its successful results, the Microsoft LifeCam Studio was deemed usable for this project.
