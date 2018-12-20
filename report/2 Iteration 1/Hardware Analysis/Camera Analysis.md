@@ -3,7 +3,7 @@ Is a vision as a sensor, which means it is a camera with a microcontroller onboa
 
 This means that even though the Pixy CMUCAM5 has a lot of capabilities that would be beneficial for the project, such as 50 fps object recognition, we cannot use it in our project. Due to the fact that we actually need to recognize the 'value' of a speed sign, and since there are no color-coded differences between the speed signs, coupled with the fact that the Pixy does not actually transmit any pixel data, it would be impossible to detect the speed signs using the Pixy camera.
 
-#### Alternative solutions
+#### Alternative solutions {#sec:webcam}
 Since the Pixy CMUCAM5 was the only vision sensor/ camera that the university could supply for the EV3 platform, the group started to look for alternative solutions. It quickly became clear to the group that since the EV3 is a Linux based system, and it has a USB 1.1 port, it probably would be possible to use an ordinary webcam, with a little tinkering. It turns out that this, in fact, was the case. Gabriel Ferrer, a Professor of Computer Science at Hendrix College in Conway, Arkansas, showcased an elegant solution for this on his blog back in 2014[@ferrer_computing_2014]. Ferrer did this using leJOS, which is a tiny Java Virtual Machine that runs on the EV3 platform. Ferrer was able to connect a webcam to the EV3 by carefully configuring leJOS and writing a driver for the camera which allowed for the Java code to interface with it. But since leJOS EV3 0.9.1 release from 2015[@aswin_long_2015] the ability to interface with webcams has been natively supported on the platform, alongside another potentially useful tool, which is OpenCV.
 
 ### leJOS and webcam
