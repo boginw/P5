@@ -6,7 +6,7 @@ In this chapter, the aspects of speeding will be introduced to achieve a better 
 ## Is Speed a Concern?
 
 Many factors affect every single traffic accident.
-In 2017, 1,756 people were seriously injured in a road accident, and 175 people lost their life in Denmark[@hvid_trafikulykker_2018].
+In 2017, 1.756 people were seriously injured in a road accident, and 175 people lost their life in Denmark[@hvid_trafikulykker_2018].
 To better understand how speed affects traffic accidents, the Danish Council for Safe Traffic composed some statistics based on data published by The Norwegian Public Roads Administration.
 The results show a correlation between speed and fatalities in accidents[@CFST_statistik].
 
@@ -17,7 +17,7 @@ The results show a correlation between speed and fatalities in accidents[@CFST_s
 | 100 km/h  | In 8 out of 10 accidents someone dies    | In 9 out of 10 accidents a pedestrian dies.   |
 : Correlation between traveling speed and collision-fatality {#tbl:SpeedVsFatality}
 
-Likewise, a report from The Danish Road Directorate[@vejdirektoratet_temaanalyse:_2011] shows that in 52% of the accidents in 2010, where the driver drove more than 20 km/h above the speed limit, resulted in a fatal accident, and only 6% escaped without any injuries.
+Likewise, a report from The Danish Road Directorate[@vejdirektoratet_temaanalyse:_2011] shows that 52% of the accidents in 2010, where the driver drove more than 20 km/h above the speed limit, resulted in a fatal accident, and only 6% escaped without any injuries.
 In cases where the driver complied with the speed limit, 31% of accidents were fatal, and 37% were completely unharmed.
 Furthermore, the numbers reveal that the speeding limit was exceeded in 59% of all fatal accidents[@vejdirektoratet_temaanalyse:_2011].
 

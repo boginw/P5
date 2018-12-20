@@ -36,4 +36,4 @@ The Logitech Skype Webcam was unable to interface with the EV3 but seemed to wor
 The Microsoft LifeCam Studio interfaced successfully with the EV3 and managed to produce the expected pictures on both the EV3 Monochrome LCD as well as on the web socket. 
 
 #### Conclusion
-Based on its successful results, the Microsoft LifeCam Studio was deemed usable for this project. 
+Based on its successful results, the Microsoft LifeCam Studio was deemed usable for this project.

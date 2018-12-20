@@ -1,7 +1,7 @@
 ## Problem Statement
 
 By investigating data from The Danish Road Directive it was found that there was a clear correlation between speed and severity in traffic accidents, and, as previously presented, several car manufacturers are currently working on a variety of different technologies used for assisting drivers in driving more safely.
-Thereby it has been established that providing a solution to a problem within this field would be a relevant activity. *[Last sentence. Halp! Does not sound professionallissimistically. Yes. Haelp?]*
+Since the problem shows relevancy and interest from the industry, we have chosen to explore this issue.
 
 The expectations of this project will not be to implement a fully interfaced system in an actual car, but rather to make a small-scale demo of some sorts.
 Seeing as this semester is about embedded systems, implementing some sort of autonomy in a small remote-controlled car would be relevant as well.

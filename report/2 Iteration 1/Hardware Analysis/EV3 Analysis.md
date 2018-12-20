@@ -21,7 +21,7 @@ For testing the memory of the EV3 with leJOS, two sub-tests, one for the heap si
 
 For testing the size of the heap, a small program was developed, utilizing dynamic memory allocation. This utilization is done by creating a linked list of bytes, and adding a new byte to the head of that linked list until the program throws an `OutOfMemoryError` exception. The exception is then caught, and the memory usage is recorded by utilizing the Java Runtime object.
 
-Through leJOS a Java Virtual Machine is introduced, which in turn introduces a garbage collector. This garbage collector hinders the possibility to naïvely place a new byte in the heap for every step, as these bytes would not be kept "alive" throughout the entire run of the program. A linked list is used to compensate for the garbage collection,  which ensures that the references for every byte are kept alive, albeit at the cost of a memory overhead.
+Through leJOS a Java Virtual Machine is introduced, which in turn introduces a garbage collector. This garbage collector hinders the possibility to naively place a new byte in the heap for every step, as these bytes would not be kept "alive" throughout the entire run of the program. A linked list is used to compensate for the garbage collection,  which ensures that the references for every byte are kept alive, albeit at the cost of a memory overhead.
 In practice, this does not allow for the amount of used memory to increase by one byte per step, which is a trade-off. This trade-off is considered reasonable by the group since the overhead is expected to be relatively low, and therefore the test should still be able to produce an acceptable result.
 
 For testing the stack size, a different approach was used. Another small program was developed, in which a recursive method is invoked. This method takes an integer as input, stores it to a local variable, increments it by 1, and then invokes the method again with the new value. This never-ending recursion happens within a `try` block which ultimately catches a `StackOverflowError` exception. The Java Runtime object is then utilized to get information about the memory usages.
@@ -41,20 +41,22 @@ The first test conducted was the heap test. The test was conducted five times to
 | Attempt 3 |              28,573,696 |         120 |    28,573,576 |
 | Attempt 4 |              28,573,696 |         120 |    28,573,576 |
 | Attempt 5 |              28,573,696 |         120 |    28,573,576 |
-Table: The result of the Heap memory test. The result is represented in bytes. {#tbl:heapTestTable}
+
+: The result of the Heap memory test. The result is represented in bytes. {#tbl:heapTestTable}
 
 As seen in [@tbl:heapTestTable], the Java Runtime identifies the total amount of allocated memory for the program execution as 27.25000 MB. When utilizing the aforementioned linked list to fill up the RAM, we can occupy up to a total of 27.24989 MB. The upper bound difference between available and usable memory is 120 bytes. The test also shows consistent usability of the ram throughout the five test runs.
 
 The second test was the stack size test. Just like the heap test, this test was also conducted five times. The result is shown in [@tbl:stackSizeTable], which displays the Java Runtime statistics at the point in time where the `StackOverflowError` exception was caught.
 
-| Attempt   | Total  Memory | Free Memory | Used Memory |
+| Attempt   | Total Memory | Free Memory | Used Memory |
 | ----------- | --------------: | -------------: | --------------: |
 | Attempt 1     |     5,111,808 |        3,857,824 |        1,253,984 |
 | Attempt 2     |        5,111,808 |        3,856,520 |         1,255,288 |
 | Attempt 3     |        5,111,808 |        3,855,104 |         1,256,704 |
 | Attempt 4     |        5,111,808 |        3,854,776 |         1,257,032 |
 | Attempt 5     |        5,111,808 |        3,855,576 |         1,256,232 |
-Table: The result of the stack size memory test. The result are represented in bytes.{#tbl:stackSizeTable}
+
+: The result of the stack size memory test. The result are represented in bytes. {#tbl:stackSizeTable}
 
 The first thing to note is that the Total Memory for program execution seems to be significantly less than in the heap test. This difference is due to a somewhat confusing naming convention from the Java Runtime object. The program runs out of available stack size before it ever needs to ask for more memory in the heap, thereby only occupying the first 5 MB of ram. These results are what made the group realize that the Total Memory from the Java Runtime turns out to be the total amount of memory allocated to the program as a whole. The heap test was revisited after this finding, since there is a Max Memory attribute in the Java Runtime object as well, which returns the maximum amount of memory that is allocatable for the program. The findings were consistent with the originals, so no further actions were taken.
 
