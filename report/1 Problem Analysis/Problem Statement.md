@@ -17,6 +17,6 @@ To determine the success of the project the following sub-problems, and requirem
     - The car must be capable of driving on a straight track.
     - The car must be capable of receiving, and reacting to, external commands through a wired or wireless connection. 
 * A system capable of recognizing speed signs must be designed and implemented.
-    - The system must use commonly uptainable video-capturing hardware.
+    - The system must use commonly obtainable video-capturing hardware.
     - The system must be able to distinguish between different speed signs with a certaincy higher than random.
     - The system must be able to send commands through a wired or wireless connection.
