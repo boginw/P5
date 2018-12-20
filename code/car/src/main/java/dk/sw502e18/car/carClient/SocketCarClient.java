@@ -2,7 +2,9 @@ package dk.sw502e18.car.carClient;
 
 import dk.sw502e18.car.CarClient;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -12,7 +14,6 @@ import static java.util.Collections.synchronizedList;
 
 public class SocketCarClient implements CarClient {
     private List<CarClientMessageListener> listenerList = synchronizedList(new ArrayList<CarClientMessageListener>());
-    private SocketReader reader = new SocketReader();
 
     @Override
     public CarClient addListener(CarClientMessageListener listener) {
@@ -22,47 +23,26 @@ public class SocketCarClient implements CarClient {
 
     @Override
     public void connect() {
-        Thread readingThread = new Thread(reader);
-        readingThread.start();
-    }
+        try (ServerSocket listener = new ServerSocket(9090)) {
+            //noinspection InfiniteLoopStatement
+            while (true) {
+                Socket socket = listener.accept();
 
-    @Override
-    public void disconnect() {
-        reader.exit = true;
-    }
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(socket.getInputStream()));
 
-    /**
-     * This class is for running a continuous listening of a socket.
-     * To close it, set exit = true, and then write anything to the socket.
-     */
-    private class SocketReader implements Runnable {
-        private volatile boolean exit = false;
-
-        public void run() {
-            try (ServerSocket listener = new ServerSocket(9090)) {
-                while (true) {
-                    Socket socket = listener.accept();
-
-                    if (exit) {
-                        break;
+                String data;
+                while ((data = in.readLine()) != null) {
+                    for (CarClientMessageListener carListener : listenerList) {
+                        carListener.onMessage(data);
                     }
-
-                    BufferedReader in = new BufferedReader(
-                            new InputStreamReader(socket.getInputStream()));
-
-                    String data;
-                    while ((data = in.readLine()) != null) {
-                        for (CarClientMessageListener carListener : listenerList) {
-                            carListener.onMessage(data);
-                        }
-                    }
-
-                    in.close();
-                    socket.close();
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
+
+                in.close();
+                socket.close();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
