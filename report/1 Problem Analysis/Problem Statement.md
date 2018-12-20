@@ -1,21 +1,22 @@
 ## Problem Statement
 
-By investigating data from The Danish Road Directive it was found that there was a clear correlation between speed and severity in traffic accidents, and, as previously presented, a lot of car manufacturers are currently working on a variety of different technologies used for assisting drivers in driving more safely.
+By investigating data from The Danish Road Directive it was found that there was a clear correlation between speed and severity in traffic accidents, and, as previously presented, several car manufacturers are currently working on a variety of different technologies used for assisting drivers in driving more safely.
+Thereby it has been established that providing a solution to a problem within this field would be a relevant activity. *[Last sentence. Halp! Does not sound professionallissimistically. Yes. Haelp?]*
 
-The goal of the project will not be to implement a fully interfaced system in an actual car, but rather to make a small-scale demo of some sorts. Seeing as this semester is about embedded systems, implementing some sort of autonomy in a small remote-controlled car would be a feasible task. Furthermore we have access to Lego Mindstorm EV3 through Aalborg University, which gives us the challenge of producing a satisfactory product on relatively limited hardware, with the purpose of emulating the restrictions of an embedded system.
+The expectations of this project will not be to implement a fully interfaced system in an actual car, but rather to make a small-scale demo of some sorts.
+Seeing as this semester is about embedded systems, implementing some sort of autonomy in a small remote-controlled car would be relevant as well.
 
 Following this initial problem analysis, we arrived at the following problem statement:
 
-> *How would an adaptive-cruise-control-demo that uses intelligent processing be implemented/designed to communicate with an embedded system?*
+> __*How can a car-system be designed to recognize speed limits, based on visual inputs, such that the car-system never exceeds the speed limit?*__
 
-As a solution to this problem, the expectation is to present a demonstrational prototype capable of the following:
+To determine the success of the project the following sub-problems, and requirements, have been defined:
 
-* Driving in a straight line.
-* Being able to manually adjust speed.
-* Being able to intelligently adjust speed according to road signs.
-
-Another subproblem that the project will handle, is the normalization of input data to the intelligent system.
-
-> *How can input data be normalized so data that are as alike as possible is given to the intelligent system?*
-
-Current solutions described in {@sec:currentSystems} treats the data by, e.g. cropping the input image to only consider the relevant speed sign on the image.
+* A car must be designed and built out of LEGO.
+    - The design of the car must uphold criteria specified by the group.
+    - The car must be capable of driving on a straight track.
+    - The car must be capable of receiving, and reacting to, external commands through a wired or wireless connection. 
+* A system capable of recognizing speed signs must be designed and implemented.
+    - The system must use commonly obtainable video-capturing hardware.
+    - The system must be able to distinguish between different speed signs with a certaincy higher than random.
+    - The system must be able to send commands through a wired or wireless connection.
