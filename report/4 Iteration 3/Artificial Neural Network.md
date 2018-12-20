@@ -360,9 +360,9 @@ To test if the model has been subject to overfitting, the model should be benchm
 If the model experiences high accuracy on the training data, while it experiences low accuracy on the test data, it means the model is subject to overfitting.
 The high accuracy on the training data means that the model will not get change a lot if it keeps training - it might only become more overfit.
 
-# Our Artificial Neural Network.
+# Our Artificial Neural Network 
+\label{sec:ourANN}
 
-<!--Explain how we configured our neural network and why we did as we did. Explain which activation function/ training function we used, explain how we handled overfitting and the data sets used.-->
 Our implementation uses the OpenCV multi-layer perceptron (MLP) artificial neural network (ANN) to recognize the digits in the speed sign.
 The following section will describe the methodology behind the creation of the neural network.
 Topics such as configuration and activation- or training functions which were used are discussed, as well as why they were chosen.

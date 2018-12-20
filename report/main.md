@@ -24,6 +24,8 @@ listings: true
 !{{3 Iteration 2/index.md}}
 !{{4 Iteration 3/index.md}}
 !{{5 Iteration 4/index.md}}
+!{{6 Discussion/discussion.md}}
+!{{7 Conclusion/conclusion.md}}
 !{{Appendix/Appendix.md}}
 
 
