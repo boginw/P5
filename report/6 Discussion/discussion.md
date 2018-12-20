@@ -9,7 +9,7 @@ The problem statement was:
 
 This problem statement had two different subproblems that supports the problem statement.
 
-**A car must be designed and built out of LEGO**
+**A car must be designed and built out of LEGO**  
 This subproblems specified three criteria to ensure fulfillment of the problem.
 The first criteria demands the car upholds criteria specified by the group.
 These criteria was discovered and defined in [@sec:DesignCritera], where the relevant criteria to discuss is the speed criteria.
@@ -30,7 +30,7 @@ The last criteria demanded the car to be able to receive and react to commands t
 In this project, the wired connection was chosen.
 This is described in [@sec:communication] where a master-slave relationship is defined between a Raspberry PI and the EV3.
 
-**A system capable of recognizing speed signs must be designed and implemented**
+**A system capable of recognizing speed signs must be designed and implemented**  
 This subproblem also specified three criteria to ensure fulfillment of the problem.
 The first criteria demands for the project to use commonly obtainable video-capturing hardware.
 This was achieved by using a standard USB webcam, and abstracting the implementation to allow for any USB webcam to be used.
