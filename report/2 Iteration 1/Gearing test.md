@@ -1,4 +1,4 @@
-### Gearing test
+### Gearing test {#sec:gearingTest}
 As described in @sec:DesignCritera optimally the car will drive as fast as possible within a limited range, and as such, it is worth exploring different gearing ratios as these can increase the velocity. This section will, therefore, describe an experiment for determining the best gearing ratio for the car given the previous limitations.
 
 #### Methodology

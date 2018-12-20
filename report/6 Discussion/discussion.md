@@ -23,7 +23,7 @@ Another question is, whether the motors are actually capable of expressing speed
 Further refinement of the criteria could be done, in order to investigate what the intended outcome of the criteria are.
 If the intended outcome is to make a system where the change of speed is recognizable by the human eye, the test for verification could have considered a test person that tries to identify when the car changes speed.
 If the test person correctly recognizes the time at which the car changes speed, the speed of the car is sufficient.
-The criteria was resolved by running tests of the different gearing configurations during the distance on which the car is expected to reach full speed.
+The criteria was resolved by running tests of the different gearing configurations, as described in [@sec:gearingTest] during the distance on which the car is expected to reach full speed.
 During these tests, the second criteria demanding that the car drives straight was asserted, as the car did not deviate from a straight line.
 
 The last criteria demanded the car to be able to receive and react to commands through a wired or wireless connection.
@@ -40,6 +40,7 @@ The second criteria demands for the project to be able to recognize different sp
 In the project, the neural network was successfully configured to recognize 6 different speed signs, all with an accuracy of about 68 %.
 With 6 different speed signs, a random probability would be an accuracy of 16 %.
 The system is more than 4 times as good as a random guess.
+The configuration of the system is discussed in [@sec:ourANN], while the benchmark is described in [@sec:benchmark].
 
 The last criteria demands for the machine intelligence to be able to send commands to the car through a wired or wireless connection.
 As mentioned under the last criteria, a wired connection was chosen, as is described in [@sec:communication].
@@ -53,6 +54,7 @@ Some networks are designed with different configurations, where some layers or n
 Whether this would actually provide a better result is hard to know without actually testing the different solutions, as it depend on the specific problem.
 A general rule of thumb is that using a linear function right before the output layer is best used when the prediction needs to be any real number, which is not the case in this problem domain.
 Instead, the sigmoid function is better for binary decisions like the ones present in this project, i.e. is it a 20 km/h speed sign or not?
+The choice of activation function is discussed in [@sec:activation_function], as well as [@sec:training].
 
 Overall, this project did not pursue using different activation functions, but future research might find it beneficial to investigate alternative activation functions, as well as a mix of these.
 
