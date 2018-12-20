@@ -55,3 +55,59 @@ Note: All calculations include all decimals, while the presented results have be
 |  715 | 1.34 | 4.83 | -0.61% |
 : Results with gear ratio 1:6 {#tbl:ratio16}
 
+## Appendix 2 {#sec:appendix-mem}
+
+Table: The `drive` function
+
+| Type    | Arr | Name                            | size | Scope |
+|---------|-----|---------------------------------|------|-------|
+| int     |     | max_speed                       |    4 |     0 |
+| int     |     | speed                           |    4 |     0 |
+| int     |     | local_max                       |    4 |     0 |
+| uint8_t |     | i                               |    1 |     0 |
+| call    |     | get_tacho_max_speed             |    9 |     1 |
+| call    |     | get_tacho_max_speed             |    9 |     1 |
+| call    |     | multi_set_tacho_speed_sp        |   12 |     0 |
+| call    |     | multi_set_tacho_stop_action_inx |    9 |     0 |
+| call    |     | multi_set_tacho_command_inx     |    9 |     0 |
+| MAX     |     |                                 |   25 |       |
+
+Table: The `initMotors` function
+
+| Type | Arr | Name             | size | Scope |
+|------|-----|------------------|------|-------|
+| call |     | ev3_init         |    4 |     0 |
+| call |     | ev3_tacho_init   |    4 |     0 |
+| call |     | ev3_search_tacho |   13 |     0 |
+| call |     | ev3_search_tacho |    4 |     0 |
+| MAX  |     |                  |   13 |       |                
+
+Table: The `main` function
+
+| Type               | Arr | Name                     | size | Scope |
+|--------------------|----:|--------------------------|-----:|------:|
+| int                |     | server_fd                |    4 |     0 |
+| int                |     | new_socket               |    4 |     0 |
+| int                |     | msg                      |    4 |     0 |
+| int                |     | opt                      |    4 |     0 |
+| int                |     | addrlen                  |    4 |     0 |
+| struct sockaddr_in |     | address                  |    8 |     0 |
+| double             |     | speed                    |    8 |     0 |
+| char               |   8 | buffer                   |    8 |     0 |
+| call               |     | signal                   |   12 |     0 |
+| char               |  21 | "\ncan't catch SIGINT\n" |   21 |     1 |
+| call               |     | socket                   |   12 |     0 |
+| char               |  14 | "socket failed"          |   14 |     1 |
+| call               |     | setsockopt               |   24 |     0 |
+| char               |  11 | "setsockopt"             |   11 |     1 |
+| call               |     | initMotors               |   17 |     0 |
+| call               |     | bind                     |   16 |     0 |
+| char               |  12 | "bind failed"            |   12 |     1 |
+| call               |     | listen                   |   12 |     0 |
+| char               |   7 | "listen"                 |    7 |     1 |
+| call               |     | accept                   |   16 |     1 |
+| char               |   6 | "accept"                 |    6 |     2 |
+| call               |     | read                     |   16 |     1 |
+| call               |     | drive                    |   37 |     1 |
+| call               |     | close                    |    8 |     1 |
+| MAX                |     |                          |   81 |       |
