@@ -95,7 +95,7 @@ Table: The `main` function
 | double             |     | speed                    |    8 |     0 |
 | char               |   8 | buffer                   |    8 |     0 |
 | call               |     | signal                   |   12 |     0 |
-| char               |  21 | "\ncan't catch SIGINT\n" |   21 |     1 |
+| char               |  21 | "\\ncan't catch SIGINT\\n" |   21 |     1 |
 | call               |     | socket                   |   12 |     0 |
 | char               |  14 | "socket failed"          |   14 |     1 |
 | call               |     | setsockopt               |   24 |     0 |
