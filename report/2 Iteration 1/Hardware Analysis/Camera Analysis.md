@@ -2,7 +2,7 @@
 
 The group collected a set of webcams to test, in order to identify one (or more) that would work for this project. Detailed specifications will only be presented in regards to the camera model chosen by the group.
 
-#### Hardware Specification
+#### Hardware Specification {#sec:hardwareSpec}
 Chosen camera model:
 
 | Microsoft LifeCam Studio        |             |
