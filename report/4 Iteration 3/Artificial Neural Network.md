@@ -386,7 +386,7 @@ model to determine overfitting. This distribution could be 75% of the training s
 for testing the model.
 
 # Our Artificial Neural Network 
-{#sec:ourANN}
+\label{sec:ourANN}
 The following section will describe the methodology behind the creation of the neural network.
 Topics such as how configuration and which activation, or training functions where used are discussed, as well as why there were chosen.
 
