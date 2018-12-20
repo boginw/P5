@@ -9,9 +9,9 @@ As can be seen in [@fig:MI_Chart], the common flow consists of seven different a
 
 The first activity is to capture a picture and store it in a resolution (and file format) fit for use, since this, as previously mentioned in [@sec:CamAnal], can affect overall performance.
 
-##### Red Cirle on Screen?
+##### Red Circle on Screen?
 
-The next activity is to determine whether or not a red circle has been detected on the previously captured picture, since this is a pretty good indication of a speed sign being present. If no circle is found, the picture is discarded, and the process returns to capturing a new picture, as to not waste time on processing a picture without a speed encoded sign.
+The next activity is to determine whether or not a red circle has been detected on the previously captured picture since this is a pretty good indication of a speed sign being present. If no circle is found, the picture is discarded, and the process returns to capturing a new picture, as to not waste time on processing a picture without a speed encoded sign.
 
 ##### Locate Bounding box Surrounding Circle
 
@@ -19,7 +19,7 @@ If a circle is determined to be in the picture, the next activity is to locate, 
 
 ##### Resize and Reduce (to black/white)
 
-Since a picture containing a speed encoded sign might have been captured with various distances between the camera and the sign, the amount of pixels in the picture occupied by the sign may vary as well. The bounding box containing the sign is therefore cropped out of the original picture, stretched or squashed to a predetermined size, as well as converted into a binary black/ white color spectrum.
+Since a picture containing a speed encoded sign might have been captured with various distances between the camera and the sign, the number of pixels in the picture occupied by the sign may vary as well. The bounding box containing the sign is therefore cropped out of the original picture, stretched or squashed to a predetermined size, as well as converted into a binary black/ white color spectrum.
 
 ##### Normalizing
 
