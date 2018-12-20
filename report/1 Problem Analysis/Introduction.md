@@ -1,22 +1,30 @@
 # Introduction
+
+When navigation on public roads, in (or amongst) motorized vehicles, it is not uncommon to encounter one or more signs campaigning for speeding awareness [@RFST_saenk_farten].
 In this chapter, the aspects of speeding will be introduced to achieve a better understanding of how big of a factor speeding is, and to help determine whether or not this is a relevant point of attention.
 
 ## Is Speed a Concern?
 
-When it comes to traffic safety, many factors affect every single accident. In 2017, 1.756 people were seriously injured in a road accident, and 175 people lost their life in Denmark[@hvid_trafikulykker_2018].  
-To better understand how speed affects traffic accidents, the Council for Safe Traffic composed some statistics based on data published by The Norwegian Public Roads Administration. These statistics show a correlation between speed and fatalities in accidents[@CFST_statistik].
+Many factors affect every single traffic accident.
+In 2017, 1.756 people were seriously injured in a road accident, and 175 people lost their life in Denmark[@hvid_trafikulykker_2018].
+To better understand how speed affects traffic accidents, the Danish Council for Safe Traffic composed some statistics based on data published by The Norwegian Public Roads Administration.
+The results show a correlation between speed and fatalities in accidents[@CFST_statistik].
 
-| Speed     | Frontal Collision                     | Pedestrian Crossing                           |
-| -----     | -----------------                     | -------------------                           |
-| 80 km/h   | In 3 out of 10 accidents someone dies | In 6 out of 10 accidents a pedestrian dies.   |
-| 90 km/h   | In 6 out of 10 accidents someone dies | In 8 out of 10 accidents a pedestrian dies.   |
-| 100 km/h  | In 8 out of 10 accidents someone dies | In 9 out of 10 accidents a pedestrian dies.   |
+| Speed     | Car Frontal-Colliding into Other Car     | Car Colliding into Crossing Pedestrian        |
+| --------- | -------------------------------------    | --------------------------------------------- |
+| 80 km/h   | In 3 out of 10 accidents someone dies    | In 6 out of 10 accidents a pedestrian dies.   |
+| 90 km/h   | In 6 out of 10 accidents someone dies    | In 8 out of 10 accidents a pedestrian dies.   |
+| 100 km/h  | In 8 out of 10 accidents someone dies    | In 9 out of 10 accidents a pedestrian dies.   |
+: Correlation between traveling speed and collision-fatality {#tbl:SpeedVsFatality}
 
-Likewise, a report from The Danish Road Directorate[@vejdirektoratet_temaanalyse:_2011] shows that in 2010 52% of the accidents, where the driver drove more than 20 km/h above the speed limit, resulted in a fatal accident, and only 6% escaped without any injuries. In cases where the driver complies with the speed limit, 31% of accidents were fatal, and 37% were completely unharmed. Furthermore, the numbers reveal that the speeding limit was exceeded in 59% of all fatal accidents[@vejdirektoratet_temaanalyse:_2011].
+Likewise, a report from The Danish Road Directorate[@vejdirektoratet_temaanalyse:_2011] shows that 52% of the accidents in 2010, where the driver drove more than 20 km/h above the speed limit, resulted in a fatal accident, and only 6% escaped without any injuries.
+In cases where the driver complied with the speed limit, 31% of accidents were fatal, and 37% were completely unharmed.
+Furthermore, the numbers reveal that the speeding limit was exceeded in 59% of all fatal accidents[@vejdirektoratet_temaanalyse:_2011].
 
-Now that it has been established that speed is a relevant factor in traffic accidents, the following initial problem statement is formed:
+Having presented these numbers, it is easy to establish _speed_ as being a relevant factor in traffic accidents and fatality.
+Based on this factor, the following initial problem statement is formed:
 
-> *What is done today to assist drivers in driving more safely, in order to reduce the amount and severity of traffic accidents?*
+> __*What is done today to assist drivers in driving more safely, in order to reduce the amount and severity of traffic accidents?*__
 
 ## Current Systems {#sec:currentSystems}
 In this section, some of the current solutions used by car manufacturers to increase traffic safety are presented. The section will only investigate what manufacturers are doing for problems derived from the initial problem, as the report will focus on a technological approach to reduce and solve the problem.
