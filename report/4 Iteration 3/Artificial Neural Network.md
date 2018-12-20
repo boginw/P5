@@ -1,43 +1,38 @@
 # Artificial Neural Network
-The final step in recognizing a speed sign is recognizing the number in the sign. A neural network is proposed in order to
-solve this task.
+The final step in recognizing a speed sign is recognizing the number printed on the sign. A neural network is proposed in order to solve this task.
 The reason for this is that, even after our normalization steps used to minimize variation in angle, perspective and size of the detected sign, there might still be some variation in the normalized input, as shown below in [@fig:webcam_demo].
 
 ![normalizing-demo with the normalized version of each picture shown in its corner](report/assets/pictures/webcam_demo.png){#fig:webcam_demo width=80%}
 
-In this section the concept of a neural network will be described, why we used it, and, following that, how we adopted it to our problem.
+Unless otherwise specified, it is to be assumed that all knowledge has been aquired through the Machine Intelligence course, which was attended during the alongside creating this project.
 
-## Why use it
+## Why use Neural Network
 A neural network is excellent at solving tasks that are complicated or having inconsistent, incomplete or imprecise data.
 Neural networks primarily shine in pattern recognition because of their ability to generalize and respond to rather unexpected input or patterns.
 <!-- A specific situation that could illustrate all these scenarios could be when trying to recognize handwritten digits. -->
-As an example, recognizing handwritten digits is a feat previously used to demonstrate the capabilities of a neural network by many different groups/individuals _[Yes, this sentence will be rewritten, but now you have the gist of it...]_.
-This task can be entirely inconsistent since every person writing a digit has their style of handwriting, just like our normalized pictures of speed signs can have some variation as well.
-In order to solve our number recognizing task, we chose to utilize a technique capable of recognizing handwritten digits by searching for, and learning to identify, patterns in written digits.
+As an example, recognizing handwritten digits is a feat previously used to demonstrate the capabilities of a neural network by many different groups/individuals, such as with the MNIST database.
+The data provided for this task can be inconsistent since every person writing a digit has their own style of handwriting, just like our normalized pictures of speed signs can have some variation as well.
+In order to solve our number recognizing task, the group will need a technique capable of approximating an answer based on inconsistent data-input and previous experince. Solving this type of task through analyzing and recognizing patterns is what a neural network does quite well.
 
-Analyzing and recognizing these patterns are what a properly configured neural network do quite well.
-It is often said that a neural network is a black box of magic since there is no way to deterministically know beforehand which patterns it would recognize or how it would derive at that result. _[SOURCE??!]_
+It is often said that a neural network is a black box of magic since there is no way to deterministically know beforehand which patterns it would recognize, or how it would derive at any result.
 However, this behavior is the strength of the neural network since it allows for finding patterns in data that even humans can struggle to recognize, thereby allowing to solve tasks that humans cannot formulate in plain old computer algorithms.
-When a neural network is appropriately configured and efficiently trained, it is a very efficient way to solve tasks since the prediction part of a neural network is some simple linear algebra across a set of matrices.
-This showcases one of the strengths of using a neural network, which is that the prediction is very fast, and the heavy computational aspects exist in the training part of the network.
+When a neural network is appropriately configured and efficiently trained, it is an efficient way to solve tasks, since the prediction-part of a neural network is linear algebra.
 
-Creating an appropriately configured and efficiently trained network is not an easy task to do.
-In configuring a network, there is a lot of trial and error.
-Next, the training is a very computational demanding task.
-Depending on the network and training data, it can take hours, weeks, months or even years to train a network correctly, and this is the biggest drawback of a neural network.
+In configuring a network, there is a lot of trial and error, and training is a very computational demanding task.
+Depending on the network and training data, it can take hours, weeks, months or even years to train a network sufficiently, which is one of the bigger drawbacks of a neural network.
 
 ## What is an Artificial Neural Network  
-An Artificial Neural Network is inspired by neurons in the brain.
-It works by having a network of neurons structured into layers.
-Each neuron can be connected to neurons in adjacent layers, where each connection is either receiving a signal or sending a signal.
+An Artificial Neural Network (ANN) is inspired by neurons in the brain.
+The ANN works by having a network of artificial neurons structured into layers.
+Each neuron can be connected to neurons in adjacent layers, where each connection is either receiving or sending a signal.
 In this report, all explanations will assume a fully connected network, which means that every neuron has a connection to all neurons in the adjacent layers.
 An illustration of this can be seen in [@fig:simpleFullyConnectedNN].
 
 ![A example of a fully connected Neural Network](report/assets/pictures/nn/6.pdf){#fig:simpleFullyConnectedNN}
 
 Another detail that should be noted in [@fig:simpleFullyConnectedNN] is the flow of information.
-When illustrating the neural network, the flow of information will only go from left to right.
-Due to this nature, information will never move in cycles, which is the definition of a feed-forward neural network.
+When illustrating the neural network, the flow of information will only move from left to right.
+Due to this nature, information will never move in cycles, which makes it a feed-forward neural network.
 
 ### A Neuron {#sec:neuron}
 
@@ -51,21 +46,17 @@ $$a = \displaystyle\sum_{j = 0}^{N_{L-1}} (weight_j^{(L)} * a_j^{(L-1)} + bias)$
 $N_{L-1}$ is the number of neurons in the previous layer.
 The weight is a multiplier between two neurons that describe the relevance of a neuron's influence on the neuron that is considered.
 Neurons has a weight for each neuron in adjacent layers, which is altered by the training function.
-The bias is a unique multiplier for every neuron, that the training function is also capable of altering.
+The bias is a unique offset for every neuron, that the training function is also capable of altering.
 The last parameter, $a^{(L-1)}$ is the output of the neuron in the previous layer.
 
-
-
 ### The layers
-A neural network consists of multiple layers: input, output, and an arbitrary number of hidden layers.
-The first layer is called the input layer.
-Considering images as the input, a possible architecture will create an input layer where the number of neurons are the same as the number of pixels in the image.
+A neural network consists of multiple layers: input (always the first layer), output (always the last layer), and an arbitrary amount of hidden layers (between first and last).
+Considering images as the input, a possible architecture will create an input layer where the number of neurons in the first layer is the same as the number of pixels in the image. 
 Each neuron will then get a specific pixel that is passed to the adjacent layer.
 
-The last layer is the output layer.
-This layer represents the result of what the neural network computed, and is the probability of a given option.
+This output layer represents the result of what the neural network computed, and can be converted into a probability of the approximated result.
 If the neural network should determine if it is presented with a picture of a dog or a fish, the output layer will consist of two neurons: one for the dog and one for the fish.
-Each of those neurons will hold a probability that the input is what the neuron describes.
+Each of those neurons will a result, which in turn can be converted into the probability that the input is what the neuron represents.
 
 Between the input layer and the output layer is the hidden layers.
 The number of layers, and the number of neurons in these layers can be anywhere from zero to almost infinite.
@@ -77,36 +68,35 @@ A typical application is for the activation function to map the output value to 
 The activation function can either use a simple threshold, a linear function, or a more sophisticated approach to map the value of the neuron inside the 0-1 range.
 The activation function is further described in later sections.
 
+<!-- 
 The weight is something that is related to a connection between two neurons.
 The weight is also what is adjusted when training the neural network, in order to increase or decrease the importance of certain inputs.
-Another way to alter the weight is through bias, which is a multiplier that is applied directly to a neuron. 
+Another way to alter the weight is through bias, which is a multiplier that is applied directly to a neuron.  -->
+<!-- 
+Manually altering the weights and biasses can happen through manual training, where each weight or bias are assigned a fixed value. -->
 
-Manually altering the weights and biasses can happen through manual training, where each weight or bias are assigned a fixed value.
 When doing manual training, designers of the network try to manually understand and alter the behavior of the network's hidden layers.
-If designers of the neural network can identify neurons in the network responsible for different features of the input, they can alter the importance of these features.
-Consider the neural network that tried to identify if it was a cat or a dog on a picture.
-Designers might identify neurons that looks for a tail or finns, and add extra importance to these, while decreasing the importance of neurons that looks for whether there is a clear sky in the picture, or not.
+If designers of the neural network can identify neurons in the network responsible for different features of the input, they can alter the importance of these features in respect to the output.
+Consider the neural network that tried to identify if it was a fish or a dog on a picture.
+Designers might identify neurons that look for a tail or for finns, and add extra importance to these, while decreasing the importance of neurons looking for whether or not there is a clear sky in the picture.
 
 ## Theory behind
-which can be introduced with manual training.
-Neural networks is practically a collection of matrixes on which matrix operations are performed.
+Neural networks are practically a collection of matrices on which linear algebra operations are performed.
 The following section will explain some of the mathematics involved in the different methods considered in this project, as well as outlining the benefits and drawbacks of the different techniques.
 
 ### Activation Function {#sec:activation_function}
 Each neuron calculates a weighted sum when given an input.
 Without an activation function to normalize these values, the value for each neuron could range from -infinity to infinity as each neuron does not know the bounds of the value.
 The purpose of an activation function is then to map resulting values in a neuron to a desired range, which is typically between 0 and 1.
-The type of activation function can differ between different implementations, and in every implementation it can differ between layers.
-The most basic activation function is the step function, which simply return 1 if the value is above a certain threshold, and 0 otherwise.
-In this project, the sigmoid function has been used due to it being the only activation function, apart from the step function, that was fully supported in the OpenCV library.
+The type of activation function can differ between different implementations, and in every implementation it can theoretically differ between layers.
+The most basic activation function is the step function, which simply return 1 if the value is above a certain threshold, and 0 otherwise. Another activation function, which is quite popular, is the Sigmoid activation funcion ([@eq:sigmundurvisavnerdig]) 
 
-$$S(x) = \frac{1}{1 + e^{-x}}$$
+$$S(x) = \frac{1}{1 + e^{-x}}$$ {#eq:sigmundurvisavnerdig}
 
 <!-- I asked our MI teacher Thomas to verify if the following claim is credible. The source is: https://www.learnopencv.com/understanding-activation-functions-in-deep-learning/ -->
 
 One of the problems of the sigmoid activation function is when it is used in training.
-The optimal way of using the sigmoid function involves using manual training, where the weights of the neurons are manually adjusted to give the best result.
-When a training function like the backpropagation technique is used, the gradient of the sigmoid function gives problems.
+The optimal way of using the sigmoid function involves using manual training, where the weights of the neurons are manually adjusted to give the best result, but when a training function like the backpropagation technique is used, the gradient of the sigmoid function leads to problems.
 
 <div id="fig:sigmoid">
 ![](report/assets/pictures/sigmoid-activation-function.png){#fig:sigmoidAF width=45%}
@@ -122,50 +112,42 @@ When the value of the partial derivative is very small, because the sigmoid func
 This results in barely no training taking place, as neurons reach this state.
 The vanishing gradient problem is primarily present when using backpropagation, as it is dependent on the gradient to be low when the system is successful, and high when it is not.
 Changing the activation function or the learning method is a way to mitigate the problem[@deepLearningBook].
-How to overcome this, is further described in [@sec:Testing].
-
-### The Entire Network
-This section will explain how the entire flow of the network works with neurons in the layers and activation functions. This section is where we will introduce the fact that it is all just simple linear algebra, i.e. matrices and such.
 
 ### The Model
-A model of a system is the representation that the neural network believes to be true.
-Practically that is the output that is obtained after training of the network is done; including weights, biases, and everything else needed to describe the neural network.
-A concern in the case of models, is not whether they are correct, but rather if they are useful.
-Usefulness is shown with the models success of predicting the world around it; a high success, and thus a high accuracy, means that the model is useful.
-<!-- Idk what to write. -->
+If the network is considered to be a data structure, then the model would be the actual values populating the data structure.
+The model is generated by populating the network with different model-permutations, tweaking the values for an arbitrary amount of time, and then storing all values for safe-keeping.
+A concern in the case of models, is not whether they are correct, but rather if they are generalized.
+Generalization is shown as the model's success of predicting previously unseen objects in the world around it; a high success, and thus a high accuracy, means that the model is useful.
 
 ### Training
-In order to actually "learn" to recognize something, the neural network needs to train on what it is supposed to recognize.
-There exists numerous different methods for doing the training, but the two that was considered in this report was the backpropagation and the simulated annealing, due to the availability of these methods in supported libraries.
-These methods are described in the following section, where each methods is described, and the potential advantages and drawbacks according to the problem domain are discussed.
+In order to actually "learn" how to recognize anything, the neural network needs to train on what it is supposed to recognize.
+There exists numerous different methods for doing the training, but the two that were considered in this report was the Backpropagation and the Simulated Annealing, due to the availability of these methods in OpenCV.
+These methods are described in the following section, and the potential advantages and drawbacks according to the problem domain be discussed.
 
 #### Backpropagation {#sec:backpropagation}
 Training consists of two phases: prediction and backpropagation.
 This section will outline the steps needed for prediction and backpropagation, followed by the mathematical notations needed for understanding the method.
 The following section is based on the work of [@machineIntelligence;@michaelNeuralNet;@calculusComputation;@3b1b].
 
-<!-- This section will explain what it means to train a neural network and explain the Backpropagation function and use it to create an example. This section should also introduce the notion of training data and what to be aware of when creating a training data set. -->
-
 ##### Conceptual steps
-Training consists of prediction and backpropagation.
-When training-data are given to the network, it will make a prediction of what is seen in the image, which will be given in the form of an output vector containing the probability, according to the network, of each option in the output layer.
+When training-data is given to the network, it will make a prediction of what is seen in the image. This prediction will be a probabilistic vector containing the options from the output layer.
 
-At first, the prediction will be random, and quite possibly a long way off the actual result.
-Each image in the training-data is combined with a label, which represents what the image actually contains.
+At first, the prediction might seem random, and quite possibly a long way off the correct result.
+Each image in the training-data is combined with a label, which represents what output-node it belongs to.
 
-After the prediction is done, it is time to do the backpropagation.
-Backpropagation calculates how far off the prediction is from the actual result, and changes the weights, biases, and indirectly the neurons in the neural network, after which the cycle starts over with a new prediction on the next training image.
+After the prediction, it is time to do the backpropagation.
+Backpropagation calculates how far off the prediction is from the optimal result, and adjusts the weights, biases, thereby indirectly the neurons, in the neural network, afterwhich the cycle starts over with a new prediction on the next training image.
 
 The difference between the output vector and the target vector is known as the cost, and the overall goal of training is to decrease the overall cost of the network.
-The cost is calculated as the squares of the differences between the prediction- and the target vector.
+The cost is calculated as the differences between the prediction- and the target vector, squared.
 Decreasing the cost is obtained by nudging the weights, biases, and neurons that influence the output layer.
 Determining which weights, biases, or neurons to nudge is a matter of determining their influence on the final output vector.
 If a neuron is very far away from its predicted value, the connections affecting it will be heavily modified.
 When the opposite holds true, they will only be slightly modified.
 
-Changing the weight or the bias is pretty straightforward, as that is something the backpropagation algorithm is directly allowed to do.
+Changing the weight or the bias is straightforward on the output-nodes, as the backpropagation algorithm is directly allowed to do so.
 Changing the neurons in preceding layers, however, takes an extra step.
-Since backpropagation cannot alter the neurons directly, it will have to do it the same way as it alters the value of the neurons in the output layer - by changing the weights, biases, and neurons affecting it.
+Because backpropagation cannot alter the value of neurons directly, it will have to affect it the same way as it alters the value of the neurons in the output layer - by changing _its_ weights, biases, and neurons.
 This way, the backpropagation algorithm becomes a recurrent function that will consider each preceding neuron to change it, according to what output is expected.
 
 The backpropagation algorithm wants to change the neurons that have the biggest impact on the output value.
@@ -184,13 +166,13 @@ How should the network be trained?
 
 First of all, the cost of this training instance is calculated by the formula for sum of square errors, as seen in [@eq:squareError].
 
-$$ C_0 = (a^{(L)} - t)^2 $$ {#eq:squareError}
+$$ C_0 = (a^{(L)} - y)^2 $$ {#eq:squareError}
 
 For the example given, this would be $(0.66 - 1)^2 = 0.12$.
 This tells that the prediction by $a^{(L)}$ is obviously off, and the network needs to be changed.
 
-Thinking back to the conceptual walkthrough of the backpropagation algorithm, the prediction of the network can be changed by changing either the weights, the biasses, or the neurons.
-Looking at how $a^{(L)}$ are calculated in [@eq:outputCalc], it can be determined what to change.
+Thinking back to the conceptual walkthrough of the backpropagation algorithm, the prediction of the network can be changed by changing either the weights, the biasses, (and thereby the neurons).
+Looking at how $a^{(L)}$ is calculated in [@eq:outputCalc], it can be determined what to change.
 
 $$ a^{(L)} = \sigma(w^{(L)}a^{(L-1)}+b^{(L)}) \iff a^{(L)} = \sigma(z^{(L)}) $$ {#eq:outputCalc}
 
@@ -235,7 +217,7 @@ $$ \frac{\partial z^{(L)}}{\partial w^{(L)}} = a^{(L-1)} $$ {#eq:zDerivative}
 
 In [@eq:zDerivative] it is clear that when changing the weight of $w^{(L)}$ it is dependent on the neuron from the previous layer, $a^{(L-1)}$.
 A downside of the weight being dependent on the activation function is that weights with low outputs from the activation function only will experience small changes in the weight, and in cases where the weight needs to be changed a lot, it needs the activation function to provide a bigger value first.
-This leads to the saturation problem described in the conceptual steps.
+This leads to the saturation problem described in the [@sec:activation_function].
 
 The chain rule is described for the weight, but it also holds true for the bias, and the activation function from the previous layer.
 These are substituted in the chain rule, and their derivatives are calculated in order to obtain their function.
@@ -363,7 +345,7 @@ number is the worse the neural network is at predicting the desired features, an
 <!-- Here we will explain the dangers of overfitting the model. Also, how to ensure that it does not happen. -->
 
 The concept of overfitting in machine learning is that the model is really good at classifying data based on the
-training set, but when the model is then to classify based on data that was not part of the test data, the model
+training set, but when the model is utilized to classify based on data that was not part of the test data, the model
 performs poorly and cannot classify the data correctly.
 Overfitting occurs when the model is unable to generalize, and instead focuses on too concrete data in the training data.
 This means that whatever features the model was trained on, it would only correctly classify those, since data that
@@ -383,11 +365,11 @@ The high accuracy on the training data means that the model will not get change 
 <!--Explain how we configured our neural network and why we did as we did. Explain which activation function/ training function we used, explain how we handled overfitting and the data sets used.-->
 Our implementation uses the OpenCV multi-layer perceptron (MLP) artificial neural network (ANN) to recognize the digits in the speed sign.
 The following section will describe the methodology behind the creation of the neural network.
-Topics such as which configuration and activation-, or training functions were used are discussed, as well as why they were chosen.
+Topics such as configuration and activation- or training functions which were used are discussed, as well as why they were chosen.
 
 ## Configuration
-In order to train the network, different configurations of the network had to be chosen.
-The implementation had a total of 10 different configurations to alter, all relating to one of the following:
+In order to train the network, different configuration parameters of the network had to be chosen.
+The implementation had a total of 10 different configuration parameters to alter, all relating to one of the following:
 - The activation function
 - The training method
 - The training length
@@ -395,18 +377,17 @@ The implementation had a total of 10 different configurations to alter, all rela
 
 The implementation was capable of performing a single training session in about 2 minutes, when performed on an Intel Xeon W3530, 2.80 GHz and 8 logical cores, 6 x 4 GB ECC memory 1066MHz DDR2 and two GPU's, GTX 750 TI and GTX 660 respectively.
 Our implementation allowed for the values of the configurations to be loaded through a .csv file format, to which we created a script that generated different test configurations.
-When testing a hypothesis, it was sufficient to supply ballpark estimates of the appropriate ranges for the values, as the script methodically creates tests that ensures all configurations in the supplied range, and with the supplied interval are tested.
+When testing a hypothesis, it was sufficient to supply estimates of the appropriate ranges for the values, as the script methodically creates tests that ensures all configurations in the supplied range, and with the supplied interval, are tested.
 
 Testing would ensue at night, and test results was analyzed in the morning.
-This method of testing allows for the exploration of several hypothesis about the structure of the network, and for finetuning the final settings of the network.
+This method of testing allowed for the exploration of several hypotheses about the structure of the network, and for finetuning the final settings of the network.
 Training was done this way, in order to determine the best activation and training functions, while also testing multiple different layer configurations.
 
 ### Training function
-The neural network was tested with two different training functions: gradient descent, RProp, and simulated annealing.
-Simulated annealing yielded the best results.
-This could be due to simulated annealing's ability to find different local minima, and approximate a global minima, as gradient decent and RProp are more dependent on the initial seed of the neural network.
+The neural network was tested with three different training functions from OpenCV: gradient descent, RProp, and simulated annealing, where simulated annealing yielded the best results.
+This finding could be due to simulated annealing's ability to find different local minima, and approximate a global minima, as gradient decent and RProp are more dependent on the initial seed of the neural network.
 This does not mean that gradient decent and RProp cannot be used, but more extensive testing is required in order to explore the possible global minima.
-This is partly due to the problems described in [@sec:backpropagation], with the saturation of the neurons.
+This is partly due to the problem concerning the saturation of the neurons, described in [@sec:backpropagation].
 
 ### Activation function
 The sigmoid activation function was chosen, even though it has the potential of giving saturated neurons.
@@ -414,13 +395,13 @@ This problem, however, was countered with the choice of training function.
 
 The only other activation function that is fully supported is the step function.
 The step function does not give a descriptive gradient that allows the training function to know if a neuron is improving the cost function or not.
-This is due to the step function being a threshold function that simply gives 0 or 1.
+This is due to the step function being a threshold function that simply returns 0 or 1.
 
 ### Data set
 
-The data set used to train the neural network is called GTSRB (German Traffic Sign Recognition Benchmark) [@GTSRB]. it is a large
-data set consisting of German traffic signs. The data set is diverse, as it contains images of traffic signs under
-varying conditions e.g. different angles varying degrees of obstruction.
+The data set used to train the neural network is called GTSRB (German Traffic Sign Recognition Benchmark) [@GTSRB] -  a large
+data set consisting of German traffic signs, which resembles Danish traffic signs. The data set is diverse, as it contains images of traffic signs under
+varying conditions e.g. different angles and/or varying degrees of obstruction.
 Training on this data set proved hard to achieve high prediction accuracy, as the images were so diverse, and in some cases
 so noisy that it was almost unrecognizable by humans, as seen in [@fig:badSigns].
 
@@ -438,11 +419,11 @@ This shows that the model was still trained to detect normal signs, and that the
 
  <!-- http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset -->
 
-#### Increasing accuracy
-Trying to recognize both digits in the speed signs proved difficult.
-Since the last digit, the zero, is not a variable, it does not make sense to feed this number to the neural network.
-This realization occurred very late in the process, so a proof-of-concept method was implemented to handle splitting of the number.
-After the circle is flattened, the digits should be in each of their half of the speed sign.
-The proof-of-concept method then takes half of the image and discards it.
-This is not an optimal strategy, and a proper solution should be included in the pre-processor.
-This was not done, as the realization was made late in the project, and the amount of time left was not enough to implement and document the finding.
+#### Increasing Accuracy
+Trying to recognize both digits in the speed signs was suspected to be difficult for the netowrk.
+Since the last digit, the zero, does not change from speed sign to speed sign, it does not make sense to feed this number to the neural network.
+This realization occurred very late in the process, which is why a proof-of-concept implementation, handling the number splitting, was the only version the group had time to do.
+After a circle is flattened, the digits are expected to be in each their own half of the speed sign.
+The proof-of-concept method then takes the right half of the image and discards it, and sends the left half to the network.
+
+The group acknowledges that a _proper_ implementation of this strategy _should_ have been part of the pre-processor.
