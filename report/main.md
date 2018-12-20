@@ -1,5 +1,5 @@
 ---
-title: "AwezomeCar"
+title: "SSR"
 author: [B. N. Wennerstrøm, M. Z. Andreasen, M. Hove, M. Jessen, M. Hartvigsen, T. Palludan]
 date: "2018-12-20"
 subject: "Speed sign recognition"
