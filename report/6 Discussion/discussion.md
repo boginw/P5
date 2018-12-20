@@ -1,6 +1,50 @@
 # Discussion
 The following section will discuss the results presented in the report, along with the findings presented along the way.
 
+## Problem statement
+Based on the problem statement defined in the beginning of the report, the following section will discuss the subproblems and their requirements.
+The problem statement was:
+
+> "How can a car-system be designed to recognize speed limits, based on visual inputs, such that the car-system never exceeds the speed limit?"
+
+This problem statement had two different subproblems that supports the problem statement.
+
+**A car must be designed and built out of LEGO**
+This subproblems specified three criteria to ensure fulfillment of the problem.
+The first criteria demands the car upholds criteria specified by the group.
+These criteria was discovered and defined in [@sec:DesignCritera], where the relevant criteria to discuss is the speed criteria.
+The project demands for the speed to be high enough to recognize different speed levels, one for each sign.
+As the car is not capable of reaching speeds that actually surpass the speed of real speed signs, this became a term that was hard to coin.
+When is a car capable of achieving a top speed high enough to allow for multiple different speed levels?
+Technically, if the car was capable of driving 0.10 km/h the car could represent 10 speed levels, each differing by a step of 0.01 km/h.
+This is hardly relevant for the project, as that differentiation on speed probably would not be differentiable by the human eye, or even measuring equipment, such as a RPM counter.
+Another question is, whether the motors are actually capable of expressing speed differences in that range.
+
+Further refinement of the criteria could be done, in order to investigate what the intended outcome of the criteria are.
+If the intended outcome is to make a system where the change of speed is recognizable by the human eye, the test for verification could have considered a test person that tries to identify when the car changes speed.
+If the test person correctly recognizes the time at which the car changes speed, the speed of the car is sufficient.
+The criteria was resolved by running tests of the different gearing configurations during the distance on which the car is expected to reach full speed.
+During these tests, the second criteria demanding that the car drives straight was asserted, as the car did not deviate from a straight line.
+
+The last criteria demanded the car to be able to receive and react to commands through a wired or wireless connection.
+In this project, the wired connection was chosen.
+This is described in [@sec:communication] where a master-slave relationship is defined between a Raspberry PI and the EV3.
+
+**A system capable of recognizing speed signs must be designed and implemented**
+This subproblem also specified three criteria to ensure fulfillment of the problem.
+The first criteria demands for the project to use commonly obtainable video-capturing hardware.
+This was achieved by using a standard USB webcam, and abstracting the implementation to allow for any USB webcam to be used.
+[@Sec:webcam] describes this application.
+
+The second criteria demands for the project to be able to recognize different speed signs with a success rate that is higher than random.
+In the project, the neural network was successfully configured to recognize 6 different speed signs, all with an accuracy of about 68 %.
+With 6 different speed signs, a random probability would be an accuracy of 16 %.
+The system is more than 4 times as good as a random guess.
+
+The last criteria demands for the machine intelligence to be able to send commands to the car through a wired or wireless connection.
+As mentioned under the last criteria, a wired connection was chosen, as is described in [@sec:communication].
+The neural network simply tells the car which kind of speed sign was recognized, and the car becomes responsible for the right adjustment according to the result.
+
 ## Neural network
 For the project, an artificial neural network from the OpenCV Java library was chosen, as described in [@sec:somethingThatComesBeforeANN].
 This implementation of the neural network only allowed for one activation function to be used in the entirety of the network.
