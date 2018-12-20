@@ -419,7 +419,7 @@ This shows that the model was still trained to detect normal signs, and that the
 
  <!-- http://benchmark.ini.rub.de/?section=gtsrb&subsection=dataset -->
 
-#### Increasing Accuracy
+#### Increasing Accuracy {#sec:separate}
 Trying to recognize both digits in the speed signs was suspected to be difficult for the netowrk.
 Since the last digit, the zero, does not change from speed sign to speed sign, it does not make sense to feed this number to the neural network.
 This realization occurred very late in the process, which is why a proof-of-concept implementation, handling the number splitting, was the only version the group had time to do.

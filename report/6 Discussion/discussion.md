@@ -34,27 +34,27 @@ This is described in [@sec:communication] where a master-slave relationship is d
 This subproblem also specified three criteria to ensure fulfillment of the problem.
 The first criteria demands for the project to use commonly obtainable video-capturing hardware.
 This was achieved by using a standard USB webcam, and abstracting the implementation to allow for any USB webcam to be used.
-[@Sec:webcam] describes this application.
+[@Sec:hardwareSpec] describes this application.
 
 The second criteria demands for the project to be able to recognize different speed signs with a success rate that is higher than random.
 In the project, the neural network was successfully configured to recognize 6 different speed signs, all with an accuracy of about 68 %.
 With 6 different speed signs, a random probability would be an accuracy of 16 %.
 The system is more than 4 times as good as a random guess.
-The configuration of the system is discussed in [@sec:ourANN], while the benchmark is described in [@sec:benchmark].
+The configuration of the system is discussed in [@sec:ourANN].
 
 The last criteria demands for the machine intelligence to be able to send commands to the car through a wired or wireless connection.
 As mentioned under the last criteria, a wired connection was chosen, as is described in [@sec:communication].
 The neural network simply tells the car which kind of speed sign was recognized, and the car becomes responsible for the right adjustment according to the result.
 
 ## Neural network
-For the project, an artificial neural network from the OpenCV Java library was chosen, as described in [@sec:somethingThatComesBeforeANN].
+For the project, an artificial neural network from the OpenCV Java library was chosen, as described in [@sec:ourANN].
 This implementation of the neural network only allowed for one activation function to be used in the entirety of the network.
 Some networks are designed with different configurations, where some layers or neurons have one activation function, while other layers have another activation function.
 
 Whether this would actually provide a better result is hard to know without actually testing the different solutions, as it depend on the specific problem.
 A general rule of thumb is that using a linear function right before the output layer is best used when the prediction needs to be any real number, which is not the case in this problem domain.
 Instead, the sigmoid function is better for binary decisions like the ones present in this project, i.e. is it a 20 km/h speed sign or not?
-The choice of activation function is discussed in [@sec:activation_function], as well as [@sec:training].
+The choice of activation function is discussed in [@sec:activation_function].
 
 Overall, this project did not pursue using different activation functions, but future research might find it beneficial to investigate alternative activation functions, as well as a mix of these.
 
@@ -79,7 +79,7 @@ Giving the entire speed sign as an input to the neural network is a contradictio
 On the lowest of speed signs (range 20 km/h - 90 km/h), roughly half the speed sign will never change, and will never have an influence on the actual output of the speed, because the right half of the speed sign is simply a zero.
 When it comes to speed signs at 100 km/h or above, the relevant area is the one containing the first two digits, but the last digit might very well be discarded.
 
-The strategy that is currently introduced, as also described in [@sec:whereWeTalkAboutSplittingTheSpeedsign], simply cuts image of the speed sign in half.
+The strategy that is currently introduced, as also described in [@sec:separate], simply cuts image of the speed sign in half.
 This is a naive strategy that only works for speed signs below 100 km/h, as each digit takes up roughly half of the image.
 If it was applied to speed signs above 100 km/h it would affect a bit of the second digit, as that is in the middle of the image.
 As the project only considers speed signs below 100 km/h, and since the problem was only identified and corrected at the end of the project, the solution is passable for this application, but in future research project, a more sophisticated solution should always be used.
