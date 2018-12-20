@@ -9,7 +9,7 @@ import java.net.Socket;
 public class SocketCarServer implements CarServer {
     private String address;
     private int port;
-    private Socket socket;
+    protected Socket socket;
 
     public SocketCarServer(String address, int port) {
         this.address = address;

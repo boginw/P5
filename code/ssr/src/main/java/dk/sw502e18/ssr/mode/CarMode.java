@@ -3,6 +3,7 @@ package dk.sw502e18.ssr.mode;
 import dk.sw502e18.ssr.CarServer;
 import dk.sw502e18.ssr.EllipseProcessor;
 import dk.sw502e18.ssr.Mode;
+import dk.sw502e18.ssr.Speedsign;
 import dk.sw502e18.ssr.carServer.SocketCarServer;
 import org.opencv.core.*;
 import org.opencv.videoio.VideoCapture;
@@ -17,7 +18,7 @@ public class CarMode implements Mode {
         cs = new SocketCarServer("10.0.1.1", 9090);
     }
 
-    public void start(VideoCapture vid, EllipseProcessor processor, Function<Mat, Integer> func) {
+    public void start(VideoCapture vid, EllipseProcessor processor, Function<Mat, MatOfFloat> func) {
         Mat mat = new Mat();
 
         while (!cs.connect()) {
@@ -35,7 +36,7 @@ public class CarMode implements Mode {
             Mat p;
 
             if (!mat.empty() && (p = processor.detect(mat)) != null) {
-                cs.send(String.valueOf(func.apply(p)));
+                cs.send(String.valueOf(Speedsign.fromNN(func.apply(p)).sign));
             }
         }
     }

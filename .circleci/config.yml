@@ -19,6 +19,7 @@ jobs:
     steps:
       - checkout:
           path: ~/project
+      - run: cp gradle.properties.default gradle.properties
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "build.gradle" }}
