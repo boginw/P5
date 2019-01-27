@@ -48,7 +48,7 @@ public class Main {
 
         if (train == null) {
             // Setup webcam
-            VideoCapture vid = new VideoCapture(0);
+            VideoCapture vid = new VideoCapture(2);
             vid.set(Videoio.CV_CAP_PROP_FRAME_WIDTH, 320);
             vid.set(Videoio.CV_CAP_PROP_FRAME_HEIGHT, 240);
 

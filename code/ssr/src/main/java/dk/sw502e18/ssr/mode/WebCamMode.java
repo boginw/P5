@@ -3,6 +3,7 @@ package dk.sw502e18.ssr.mode;
 import dk.sw502e18.ssr.EllipseProcessor;
 import dk.sw502e18.ssr.Mode;
 import dk.sw502e18.ssr.Speedsign;
+import dk.sw502e18.ssr.carServer.SocketCarServer;
 import org.opencv.core.*;
 import org.opencv.core.Point;
 import org.opencv.imgcodecs.Imgcodecs;
@@ -17,6 +18,14 @@ import java.net.Socket;
 import java.util.function.Function;
 
 public class WebCamMode implements Mode {
+    private final SocketCarServer cs;
+    private String lastResult = "";
+    private int numOfSameResults = 0;
+
+    public WebCamMode() {
+        cs = new SocketCarServer("10.0.1.1", 9090);
+    }
+
     public void start(VideoCapture vid, EllipseProcessor processor, Function<Mat, MatOfFloat> func) {
         Mat frame = new Mat();
         Mat screenFrame;
@@ -48,25 +57,38 @@ public class WebCamMode implements Mode {
                 MatOfFloat results = func.apply(p);
                 Speedsign.ANNResultEntry best = Speedsign.fromNN(func.apply(p));
 
-                for (int i = 0; i < results.cols(); i++) {
+                if (String.valueOf(best.sign).equals(lastResult)) {
+                    numOfSameResults++;
+
+                    for (int i = 0; i < results.cols(); i++) {
+                        Imgproc.putText(
+                                screenFrame,
+                                String.format("%d = %.2f%%", Speedsign.fromLabel(i), results.get(0, i)[0] * 100),
+                                new Point(frame.cols() + 5, 17 * i + 50),
+                                Core.FONT_HERSHEY_COMPLEX_SMALL,
+                                0.8,
+                                new Scalar(255, 255, 255)
+                        );
+                    }
+
                     Imgproc.putText(
                             screenFrame,
-                            String.format("%d = %.2f%%", Speedsign.fromLabel(i), results.get(0, i)[0] * 100),
-                            new Point(frame.cols() + 5, 17 * i + 50),
+                            String.format("%d with %.2f%%", best.sign, best.certainty * 100),
+                            new Point(frame.cols() + 15, 15),
                             Core.FONT_HERSHEY_COMPLEX_SMALL,
-                            0.8,
-                            new Scalar(255, 255, 255)
+                            1,
+                            new Scalar(0, 255, 255)
                     );
+
+                } else {
+                    lastResult = String.valueOf(best.sign);
+                    numOfSameResults = 0;
                 }
 
-                Imgproc.putText(
-                        screenFrame,
-                        String.format("%d with %.2f%%", best.sign, best.certainty * 100),
-                        new Point(frame.cols() + 15, 15),
-                        Core.FONT_HERSHEY_COMPLEX_SMALL,
-                        1,
-                        new Scalar(0, 255, 255)
-                );
+                if (numOfSameResults == 5) {
+                    cs.send(String.valueOf(best.sign));
+                    numOfSameResults = 0;
+                }
             }
 
             try {

@@ -12,7 +12,7 @@
         <list>
           <option value="clean" />
           <option value="build" />
-          <option value="run" />
+          <option value="webcam" />
         </list>
       </option>
       <option name="vmOptions" value="" />
